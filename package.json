@@ -1,0 +1,16 @@
+{
+  "name": "crawford-creative-suites",
+  "version": "1.0.0",
+  "description": "Crawford Creative Suites public website",
+  "scripts": {
+    "build": "node build/patch.mjs && esbuild build/entry.js --bundle --minify --format=iife --define:process.env.NODE_ENV=\\\"production\\\" --outfile=suites/app.js && node build/site.mjs",
+    "serve": "npx --yes http-server -p 4173 -c-1 ."
+  },
+  "type": "commonjs",
+  "devDependencies": {
+    "esbuild": "^0.24.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "private": true
+}
