@@ -101,19 +101,23 @@ const building = `
 @media (max-width:850px){.lobby-board{left:4%;right:4%;width:auto;top:auto;bottom:3%}.upgraded .concierge-card{top:3%!important;bottom:auto!important}}
 
 /* Suites: name and tagline on the reception desk front; floor/suite plaque low */
-.suite-sign{left:50%!important;top:var(--desk-y,57%)!important;transform:translate(-50%,-50%);width:min(34%,520px);max-width:none!important;text-align:center;pointer-events:none;z-index:2}
+.suite-sign{left:var(--desk-x,50%)!important;top:var(--desk-y,57%)!important;transform:translate(-50%,-50%);width:var(--sign-w,34%);max-width:none!important;text-align:center;pointer-events:none;z-index:2}
 .suite-sign h1{font-size:clamp(1.7rem,3.1vw,3.2rem)!important;margin:0 0 .45rem!important;letter-spacing:.02em!important;line-height:1!important;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.6),0 0 18px rgba(0,0,0,.55),0 0 26px color-mix(in srgb,var(--suite-accent) 45%,transparent)}
-.suite-sign p{font-size:clamp(.56rem,.8vw,.72rem)!important;letter-spacing:.2em!important;color:color-mix(in srgb,var(--suite-accent) 55%,#fff);text-shadow:0 1px 8px rgba(0,0,0,.9)}
-.reception-scene[data-suite="217"]{--desk-y:56%}
-.reception-scene[data-suite="305"]{--desk-y:55%}
-.reception-scene[data-suite="412"]{--desk-y:58%}
+.suite-sign p{font:italic 600 clamp(.78rem,1.05vw,1.05rem)/1.25 "Crimson Pro",Georgia,serif!important;letter-spacing:.03em!important;text-transform:none!important;margin:0!important;color:color-mix(in srgb,var(--suite-accent) 55%,#fff);text-shadow:0 1px 8px rgba(0,0,0,.9)}
+/* Each sign sits in a solid area of its desk (never across the light wave). */
+/* Owner choice: desks show the business title only; taglines are hidden (remove this line to show them). */
+.suite-sign p{display:none!important}
+.reception-scene[data-suite="217"]{--desk-y:56%;--sign-w:min(35%,560px)}
+.reception-scene[data-suite="305"]{--desk-x:57%;--desk-y:42.5%;--sign-w:17%}
+.reception-scene[data-suite="412"]{--desk-x:42%;--desk-y:51%;--sign-w:24%}
 .suite-plaque{position:absolute;z-index:3;left:50%;bottom:3%;transform:translateX(-50%);padding:.5rem 1rem;background:rgba(10,9,12,.82);border:1px solid var(--suite-accent);color:var(--suite-accent);font-size:.6rem;letter-spacing:.22em;white-space:nowrap}
-@media (max-width:560px){.suite-sign{top:4%!important;transform:translateX(-50%);width:92%;background:rgba(10,9,12,.55);padding:.6rem .8rem}.suite-plaque{left:auto;right:5%;transform:none}}
+@media (max-width:560px){.suite-sign{top:4%!important;transform:translateX(-50%);width:92%;background:rgba(10,9,12,.55);padding:.6rem .8rem}.suite-plaque{display:none}}
 
 /* Madam Allure's desk is white marble: deep rose-gold lettering, like engraved metal */
-.reception-scene[data-suite="217"] .suite-sign{width:min(35%,560px)}
-.reception-scene[data-suite="217"] .suite-sign h1{margin:0 0 .3rem!important;text-shadow:none}
+.suite-sign h1:has(.suite-logo){margin:0 0 .3rem!important;text-shadow:none}
 .suite-logo{display:block;width:100%;height:auto;margin:0 auto;filter:drop-shadow(0 1px 0 rgba(255,255,255,.55)) drop-shadow(0 2px 3px rgba(70,40,25,.35))}
+.reception-scene:not([data-suite="217"]) .suite-logo{filter:drop-shadow(0 0 10px color-mix(in srgb,var(--suite-accent) 35%,transparent))}
+.reception-scene:not([data-suite="217"]) .suite-sign p{color:#e9f2f2;text-shadow:0 1px 6px #000}
 @media (min-width:561px){
 .reception-scene[data-suite="217"] .suite-sign p{color:#7a4e38;text-shadow:0 1px 0 rgba(255,255,255,.75);font-weight:700}
 }
@@ -134,6 +138,11 @@ const building = `
 .business-showroom.lounge{animation:loungeIn .6s ease 1.25s both}
 @keyframes loungeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reception-scene>img{transition:none}.business-showroom.lounge{animation:none}}
+
+/* Office text uses the portal fonts: Instrument Serif headings, Lora body, Crimson Pro labels. */
+.reception-scene .reception-heading strong,.reception-scene .business-showroom h2,.reception-scene .business-showroom h3,.reception-scene .business-showroom h4,.reception-scene .education-card h2{font-family:"Instrument Serif",Georgia,serif!important;font-weight:400!important;letter-spacing:.005em}
+.reception-scene .reception-desk>p,.reception-scene .business-showroom p,.reception-scene .product-copy>p,.reception-scene .education-card>p{font-family:"Lora",Georgia,serif!important}
+.reception-scene .reception-options button,.reception-scene .business-showroom header small,.reception-scene .reception-heading small{font-family:"Crimson Pro",Georgia,serif!important;font-style:italic;font-weight:600;letter-spacing:.06em}
 
 /* Concierge voice and the sound switch (also shown on phones) */
 .concierge-voice{display:inline-block;margin-top:.6rem;cursor:pointer;background:rgba(255,255,255,.06);border:1px solid rgba(218,166,129,.6);color:#f4e6da;padding:.45rem .75rem;font-size:.68rem;letter-spacing:.04em}
@@ -156,6 +165,9 @@ writeFileSync(here('../suites/index.html'), `<!doctype html>
 <meta property="og:image" content="../img/main-lobby.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@1,600&family=Instrument+Serif:ital@0;1&family=Lora:ital,wght@0,500;0,600;1,500&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class="antialiased">

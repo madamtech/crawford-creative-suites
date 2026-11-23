@@ -36,10 +36,11 @@ const patches = [
   // Madam Allure's accent matches the rose gold in the boutique photo (not pink).
   ['accent:`#d891a0`', 'accent:`#cb9671`'],
 
-  // Suite sign: name and tagline sit on the reception desk front; the
+  // Suite sign: each business's portal title image (Madam Allure: rose gold
+  // signature) and tagline sit on a solid part of the reception desk; the
   // "Floor · Suite" label moves to its own plaque low on the screen.
   ['(0,i.jsxs)(`div`,{className:`suite-sign`,children:[(0,i.jsxs)(`small`,{children:[`FLOOR `,R.floor,` · SUITE `,n]}),(0,i.jsx)(`h1`,{children:R.name}),(0,i.jsx)(`p`,{children:R.tagline})]}),',
-   '(0,i.jsxs)(`div`,{className:`suite-sign`,children:[(0,i.jsx)(`h1`,{children:n===`217`?(0,i.jsx)(`img`,{className:`suite-logo`,src:`../img/madam-allure-signature.png`,alt:R.name}):R.name}),(0,i.jsx)(`p`,{children:R.tagline})]}),(0,i.jsxs)(`div`,{className:`suite-plaque`,children:[`FLOOR `,R.floor,` · SUITE `,n]}),'],
+   '(0,i.jsxs)(`div`,{className:`suite-sign`,children:[(0,i.jsx)(`h1`,{children:(0,i.jsx)(`img`,{className:`suite-logo`,src:{217:`../img/madam-allure-signature.png`,305:`../img/allure-fusions-title.png`,412:`../img/ai-authoritech-title.png`}[n],alt:R.name})}),(0,i.jsx)(`p`,{children:R.tagline})]}),(0,i.jsxs)(`div`,{className:`suite-plaque`,children:[`FLOOR `,R.floor,` · SUITE `,n]}),'],
 
   // Memorial gifts: drop the "Gallery Image Coming Soon" placeholder boxes.
   ['(0,i.jsx)(`span`,{children:`Gallery Image Coming Soon`}),', ''],
