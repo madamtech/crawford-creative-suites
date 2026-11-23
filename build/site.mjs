@@ -139,6 +139,27 @@ const building = `
 @keyframes loungeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reception-scene>img{transition:none}.business-showroom.lounge{animation:none}}
 
+/* Check-in tablet on the desk: the reception options stay hidden until it is tapped. */
+.reception-scene .reception-desk{opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .3s ease,transform .3s ease,visibility 0s linear .3s}
+body[data-kiosk-open] .reception-scene .reception-desk{opacity:1;visibility:visible;transform:none;transition:opacity .3s ease,transform .3s ease}
+.kiosk-close{position:absolute;top:.5rem;right:.6rem;width:30px;height:30px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.35);color:#fff;font-size:1.1rem;line-height:1;cursor:pointer}
+.checkin-tablet{position:absolute;z-index:4;left:var(--kiosk-x,64%);top:var(--kiosk-y,44%);transform:translate(-50%,-100%) perspective(500px) rotateX(10deg);width:clamp(74px,5.6vw,104px);aspect-ratio:4/3;padding:4px;border:1px solid rgba(255,255,255,.35);border-radius:7px;background:linear-gradient(160deg,#2a2a30,#0c0c10);box-shadow:0 6px 14px rgba(0,0,0,.55),0 0 0 1px rgba(0,0,0,.6);cursor:pointer}
+.checkin-tablet:after{content:"";position:absolute;left:50%;bottom:-9px;width:14%;height:9px;transform:translateX(-50%);background:linear-gradient(90deg,#3a3a40,#16161a);border-radius:0 0 3px 3px}
+.checkin-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;width:100%;height:100%;border-radius:4px;background:radial-gradient(circle at 50% 35%,color-mix(in srgb,var(--suite-accent) 38%,#0b0b10),#07070a 75%);box-shadow:inset 0 0 12px color-mix(in srgb,var(--suite-accent) 45%,transparent);animation:kioskPulse 2.6s ease-in-out infinite}
+.checkin-dot{width:7px;height:7px;border-radius:50%;background:var(--suite-accent);box-shadow:0 0 8px var(--suite-accent)}
+.checkin-text{font:italic 600 clamp(.72rem,.95vw,.95rem)/1 "Crimson Pro",Georgia,serif;color:#fff;letter-spacing:.03em}
+.checkin-sub{font-size:clamp(.45rem,.55vw,.56rem);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.checkin-tablet:hover .checkin-screen,.checkin-tablet:focus-visible .checkin-screen,.checkin-tablet[aria-expanded="true"] .checkin-screen{animation:none;box-shadow:inset 0 0 18px var(--suite-accent),0 0 16px color-mix(in srgb,var(--suite-accent) 60%,transparent)}
+@keyframes kioskPulse{0%,100%{box-shadow:inset 0 0 10px color-mix(in srgb,var(--suite-accent) 35%,transparent),0 0 0 transparent}50%{box-shadow:inset 0 0 16px color-mix(in srgb,var(--suite-accent) 60%,transparent),0 0 14px color-mix(in srgb,var(--suite-accent) 45%,transparent)}}
+@media (prefers-reduced-motion:reduce){.checkin-screen{animation:none}}
+/* Tablet sits on the counter at one end of each desk, clear of the receptionist. */
+.reception-scene[data-suite="217"]{--kiosk-x:68%;--kiosk-y:44%}
+.reception-scene[data-suite="305"]{--kiosk-x:32%;--kiosk-y:39%}
+.reception-scene[data-suite="412"]{--kiosk-x:70%;--kiosk-y:43.5%}
+.reception-scene:has(.lounge) .checkin-tablet,.reception-scene:has(.business-showroom) .checkin-tablet{opacity:0;pointer-events:none}
+@media (max-width:850px){body[data-kiosk-open] .reception-scene .reception-desk{bottom:calc(3% + 104px)!important}}
+@media (max-width:850px){.checkin-tablet{left:auto;right:5%;top:auto;bottom:3%;transform:none;width:118px}.checkin-tablet:after{display:none}.checkin-text{font-size:1rem}.checkin-sub{font-size:.55rem}}
+
 /* Office text uses the portal fonts: Instrument Serif headings, Lora body, Crimson Pro labels. */
 .reception-scene .reception-heading strong,.reception-scene .business-showroom h2,.reception-scene .business-showroom h3,.reception-scene .business-showroom h4,.reception-scene .education-card h2{font-family:"Instrument Serif",Georgia,serif!important;font-weight:400!important;letter-spacing:.005em}
 .reception-scene .reception-desk>p,.reception-scene .business-showroom p,.reception-scene .product-copy>p,.reception-scene .education-card>p{font-family:"Lora",Georgia,serif!important}
