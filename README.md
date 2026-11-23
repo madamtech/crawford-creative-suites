@@ -1,6 +1,8 @@
 # Crawford Creative Suites website
 
-Public home of Madam Allure, Allure Fusions and AI AuthoriTech, hosted free on GitHub Pages.
+Public home of Madam Allure, Allure Fusions and AI AuthoriTech, hosted free on GitHub Pages at https://madamtech.github.io/crawford-creative-suites/ (AI AuthoriTech GitHub account `madamtech`).
+
+Before building or publishing anything, follow [PUBLISHING.md](PUBLISHING.md) step by step.
 
 - `index.html`: arrival and preview lobby (the old crawford-creative-suites ChatGPT site)
 - `suites/`: the full building with the concierge, elevator and the three suites (the old tanika-creative-ventures ChatGPT site)
