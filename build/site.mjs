@@ -177,6 +177,11 @@ body[data-kiosk-open] .reception-scene .reception-desk{transform:translate(-50%,
 .reception-scene .reception-desk>p,.reception-scene .business-showroom p,.reception-scene .product-copy>p,.reception-scene .education-card>p{font-family:"Lora",Georgia,serif!important}
 .reception-scene .reception-options button,.reception-scene .business-showroom header small,.reception-scene .reception-heading small{font-family:"Crimson Pro",Georgia,serif!important;font-style:italic;font-weight:600;letter-spacing:.06em}
 
+/* "Entrance" in the header: back out to the arrival page. Styled like the header buttons. */
+.header-actions .entrance-link{display:inline-flex;align-items:center;letter-spacing:.08em;text-transform:uppercase;font-size:.62rem;padding:.6rem .8rem;border:1px solid rgba(255,255,255,.3);color:#fff;text-decoration:none}
+.header-actions .entrance-link:hover,.header-actions .entrance-link:focus-visible{border-color:#daa681;color:#daa681}
+@media (max-width:560px){.header-actions .entrance-link{padding:.55rem;font-size:.5rem}}
+
 /* Concierge voice and the sound switch (also shown on phones) */
 .concierge-voice{display:inline-block;margin-top:.6rem;cursor:pointer;background:rgba(255,255,255,.06);border:1px solid rgba(218,166,129,.6);color:#f4e6da;padding:.45rem .75rem;font-size:.68rem;letter-spacing:.04em}
 .concierge-voice:hover,.concierge-voice:focus-visible{background:rgba(218,166,129,.18)}

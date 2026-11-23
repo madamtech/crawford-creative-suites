@@ -30,6 +30,10 @@ const patches = [
   ['D(`I couldn’t quite place that—try the directory below or mention what kind of business you need.`)',
    'D(window.ccsVoice.say(`I couldn’t quite place that. Try the directory, or tell me what kind of business you need.`))'],
 
+  // A way back out to the entrance page (the arrival site with the three businesses).
+  ['(0,i.jsx)(`button`,{onClick:()=>t(`elevator`),children:`Elevator`})',
+   '(0,i.jsx)(`button`,{onClick:()=>t(`elevator`),children:`Elevator`}),(0,i.jsx)(`a`,{className:`entrance-link`,href:`../`,children:`Entrance`})'],
+
   // Madam Allure's lounge, The Powder Room (owner's lounge plan): a reception
   // button, and its card buttons lead to the product catalog.
   ['n===`217`&&(0,i.jsxs)(`button`,{onClick:()=>k(`services`),children:[`Browse products & pricing `,(0,i.jsx)(`span`,{children:`→`})]})',
