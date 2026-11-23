@@ -40,8 +40,9 @@ function hslToRgb(h, s, l) {
 // Returns a new [r,g,b] or null to leave the color alone.
 function brand(r, g, b) {
   const [h, s, l] = rgbToHsl(r, g, b);
-  // Gold, brass, champagne and bronze -> metallic rose gold (same lightness).
-  if (h >= 22 && h <= 52 && s >= 0.18 && l > 0.08 && l < 0.97) return hslToRgb(352, Math.min(s, 0.55) * 0.85, l);
+  // Gold, brass, champagne and bronze -> metallic rose gold matched to the rose
+  // gold in the Madam Allure photo (#cb9671: warm copper-blush, not pink).
+  if (h >= 22 && h <= 52 && s >= 0.18 && l > 0.08 && l < 0.97) return hslToRgb(24, Math.min(s, 0.5) * 0.9, l);
   // Mint "live" indicator dots -> teal.
   if (r === 110 && g === 217 && b === 154) return [33, 184, 176];
   // Cool/purple greys used for muted text -> warm taupe.
@@ -69,19 +70,79 @@ const extras = `
 body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 :focus-visible{outline-color:#4f7fe0}
 .digital-directory small{color:#efe7e4!important;font-size:.66rem!important;line-height:1.45}
-.digital-directory b{color:#e7b9bd}
+.digital-directory b{color:#daa681}
 .memorial-grid article{min-height:0}
-.ccs-sent{position:fixed;z-index:2147483000;left:50%;bottom:24px;transform:translateX(-50%);width:min(440px,calc(100% - 32px));padding:18px 20px;background:rgba(12,11,14,.97);color:#fff;border:1px solid rgba(255,255,255,.25);border-top:3px solid #c98b93;box-shadow:0 20px 60px rgba(0,0,0,.6);font:14px/1.5 Arial,Helvetica,sans-serif}
+.ccs-sent{position:fixed;z-index:2147483000;left:50%;bottom:24px;transform:translateX(-50%);width:min(440px,calc(100% - 32px));padding:18px 20px;background:rgba(12,11,14,.97);color:#fff;border:1px solid rgba(255,255,255,.25);border-top:3px solid #cb9671;box-shadow:0 20px 60px rgba(0,0,0,.6);font:14px/1.5 Arial,Helvetica,sans-serif}
 .ccs-sent strong{display:block;font:400 1.1rem Georgia,serif;margin-bottom:6px}
 .ccs-sent p{margin:0 0 12px;color:#e6dcd6}
 .ccs-sent a{color:#9cc0ff;text-decoration:underline}
 .ccs-sent div{display:flex;gap:8px;flex-wrap:wrap}
-.ccs-sent button{cursor:pointer;padding:9px 14px;border:1px solid #c98b93;background:transparent;color:#fff;font-size:.8rem}
-.ccs-sent button[data-copy]{background:linear-gradient(135deg,#e8bcc0,#b0707c);color:#1a1012;border-color:#e0aab0;font-weight:700}
+.ccs-sent button{cursor:pointer;padding:9px 14px;border:1px solid #cb9671;background:transparent;color:#fff;font-size:.8rem}
+.ccs-sent button[data-copy]{background:linear-gradient(135deg,#eccbb0,#b9805d);color:#21150d;border-color:#daa681;font-weight:700}
+`;
+
+// Building-only layout: lobby digital board, desk signage, Madam Allure rose gold,
+// concierge voice button.
+const building = `
+/* Lobby: welcome + directory on one digital board */
+.lobby-board{position:absolute;z-index:3;left:50.6%;top:5%;width:clamp(270px,19.5%,360px);background:rgba(8,8,11,.93);border:1px solid rgba(255,255,255,.22);box-shadow:0 0 0 1px rgba(0,0,0,.6),0 0 38px rgba(203,150,113,.16),0 24px 60px rgba(0,0,0,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.lobby-board .lobby-title{position:static!important;transform:none!important;width:auto!important;height:auto!important;display:block!important;padding:18px 16px 12px!important;background:none!important;border:0!important;text-align:center;overflow:visible!important}
+.lobby-board .lobby-title h1{font-size:clamp(1.35rem,2.1vw,1.9rem)!important;margin:0 0 .5rem!important;line-height:1.05!important}
+.lobby-board .lobby-title .brand-statement{margin-bottom:.35rem!important}
+.lobby-board .digital-directory{position:static!important;transform:none!important;width:auto!important;display:block!important;inset:auto!important;max-height:none!important;overflow:visible!important;background:none!important;border:0!important;border-top:1px solid rgba(255,255,255,.16)!important;box-shadow:none!important;padding:4px 10px 10px!important}
+.lobby-board .screen-header{padding:.5rem .3rem .45rem!important;font-size:.55rem;justify-content:center}
+.lobby-board .screen-header i{display:none}
+.lobby-board .digital-directory>button{display:grid!important;grid-template-columns:46px 1fr 16px!important;min-height:0!important;border:0!important;border-bottom:1px solid rgba(255,255,255,.12)!important;padding:.62rem .35rem!important}
+.lobby-board .digital-directory>button:last-child{border-bottom:0!important}
+.lobby-board .digital-directory b{display:none}
+.lobby-board .suite-no{font-size:1.4rem}
+.lobby-board .digital-directory strong{font-size:1.02rem!important}
+.lobby-board .digital-directory small{font-size:.68rem!important;white-space:normal}
+@media (max-width:850px){.lobby-board{left:4%;right:4%;width:auto;top:auto;bottom:3%}.upgraded .concierge-card{top:3%!important;bottom:auto!important}}
+
+/* Suites: name and tagline on the reception desk front; floor/suite plaque low */
+.suite-sign{left:50%!important;top:var(--desk-y,57%)!important;transform:translate(-50%,-50%);width:min(34%,520px);max-width:none!important;text-align:center;pointer-events:none;z-index:2}
+.suite-sign h1{font-size:clamp(1.7rem,3.1vw,3.2rem)!important;margin:0 0 .45rem!important;letter-spacing:.02em!important;line-height:1!important;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.6),0 0 18px rgba(0,0,0,.55),0 0 26px color-mix(in srgb,var(--suite-accent) 45%,transparent)}
+.suite-sign p{font-size:clamp(.56rem,.8vw,.72rem)!important;letter-spacing:.2em!important;color:color-mix(in srgb,var(--suite-accent) 55%,#fff);text-shadow:0 1px 8px rgba(0,0,0,.9)}
+.reception-scene[data-suite="217"]{--desk-y:56%}
+.reception-scene[data-suite="305"]{--desk-y:55%}
+.reception-scene[data-suite="412"]{--desk-y:58%}
+.suite-plaque{position:absolute;z-index:3;left:50%;bottom:3%;transform:translateX(-50%);padding:.5rem 1rem;background:rgba(10,9,12,.82);border:1px solid var(--suite-accent);color:var(--suite-accent);font-size:.6rem;letter-spacing:.22em;white-space:nowrap}
+@media (max-width:560px){.suite-sign{top:4%!important;transform:translateX(-50%);width:92%;background:rgba(10,9,12,.55);padding:.6rem .8rem}.suite-plaque{left:auto;right:5%;transform:none}}
+
+/* Madam Allure's desk is white marble: deep rose-gold lettering, like engraved metal */
+.reception-scene[data-suite="217"] .suite-sign{width:min(35%,560px)}
+.reception-scene[data-suite="217"] .suite-sign h1{margin:0 0 .3rem!important;text-shadow:none}
+.suite-logo{display:block;width:100%;height:auto;margin:0 auto;filter:drop-shadow(0 1px 0 rgba(255,255,255,.55)) drop-shadow(0 2px 3px rgba(70,40,25,.35))}
+@media (min-width:561px){
+.reception-scene[data-suite="217"] .suite-sign p{color:#7a4e38;text-shadow:0 1px 0 rgba(255,255,255,.75);font-weight:700}
+}
+@media (max-width:560px){.suite-logo{width:78%;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}}
+
+/* Madam Allure: rose gold from the boutique photo, not pink */
+.reception-scene[data-suite="217"] .business-showroom header small{color:#daa681}
+.reception-scene[data-suite="217"] .reception-desk,.reception-scene[data-suite="217"] .business-showroom{border-top-color:#cb9671;box-shadow:rgba(185,128,93,.24) 0 18px 55px}
+.reception-scene[data-suite="217"] .guided-form>button,.reception-scene[data-suite="217"] .education-card button{color:#22150c;background:linear-gradient(125deg,#eccbb0,#b9805d 55%,#efd3bb);border-color:#cb9671}
+
+/* Lounges: walk past reception into the back room before the tips appear.
+   AI Clarity Lounge = glass meeting room (Floor 4); Maker's Lounge = studio with the 3D printer (Floor 3). */
+.reception-scene>img{transition:transform 1.5s cubic-bezier(.45,.05,.3,1),filter 1.5s ease;transform-origin:var(--room,50% 40%)}
+.reception-scene[data-suite="412"]{--room:96% 30%}
+.reception-scene[data-suite="305"]{--room:90% 20%}
+.reception-scene:has(.lounge)>img{transform:scale(1.65);filter:brightness(.72) blur(1.5px)}
+.reception-scene:has(.lounge) .reception-desk,.reception-scene:has(.lounge) .suite-sign,.reception-scene:has(.lounge) .suite-plaque,.reception-scene:has(.lounge) .scene-actions{opacity:0;pointer-events:none;transition:opacity .4s ease}
+.business-showroom.lounge{animation:loungeIn .6s ease 1.25s both}
+@keyframes loungeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.reception-scene>img{transition:none}.business-showroom.lounge{animation:none}}
+
+/* Concierge voice and the sound switch (also shown on phones) */
+.concierge-voice{display:inline-block;margin-top:.6rem;cursor:pointer;background:rgba(255,255,255,.06);border:1px solid rgba(218,166,129,.6);color:#f4e6da;padding:.45rem .75rem;font-size:.68rem;letter-spacing:.04em}
+.concierge-voice:hover,.concierge-voice:focus-visible{background:rgba(218,166,129,.18)}
+@media (max-width:900px){.header-actions button:first-child{display:inline-block!important}}
 `;
 
 // ---------- building page ----------
-writeFileSync(here('../suites/styles.css'), recolor(read('../src/ccs-styles.css')) + extras);
+writeFileSync(here('../suites/styles.css'), recolor(read('../src/ccs-styles.css')) + extras + building);
 writeFileSync(here('../suites/index.html'), `<!doctype html>
 <html lang="en">
 <head>

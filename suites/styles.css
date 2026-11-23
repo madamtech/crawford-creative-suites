@@ -33,7 +33,7 @@ button{font: inherit; color: inherit;}
 .experience{height: 100svh; overflow: hidden;}
 .building-header{z-index: 20; background: rgb(12, 11, 14); border-bottom: 1px solid rgba(255, 255, 255, 0.16); grid-template-columns: 1fr auto 1fr; align-items: center; height: 74px; padding: 0px 3vw; display: grid; position: relative;}
 .building-name{text-align: left; cursor: pointer; background: 0px 0px; border: 0px; align-items: center; gap: 0.8rem; padding: 0px; display: flex;}
-.building-name > span{color: rgb(213, 162, 169); border: 1px solid rgb(178, 117, 125); border-radius: 50%; place-items: center; width: 40px; height: 40px; font: 700 0.72rem Arial; display: grid;}
+.building-name > span{color: rgb(214, 182, 161); border: 1px solid rgb(179, 141, 116); border-radius: 50%; place-items: center; width: 40px; height: 40px; font: 700 0.72rem Arial; display: grid;}
 .building-name div{flex-direction: column; gap: 0.15rem; display: flex;}
 .building-name strong{font: 400 1rem Georgia, serif;}
 .building-name small, .location{letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.59rem;}
@@ -48,40 +48,40 @@ button{font: inherit; color: inherit;}
 .lobby-title h1{letter-spacing: -0.05em; margin: 0.7rem 0px; font: 400 clamp(2.8rem, 5.5vw, 6.4rem) / 0.9 Georgia, serif;}
 .lobby-title span{letter-spacing: 0.08em; font-size: 0.78rem;}
 .concierge-card{backdrop-filter: blur(12px); background: rgba(13, 11, 14, 0.9); border: 1px solid rgba(255, 255, 255, 0.3); gap: 0.9rem; width: min(430px, 32vw); padding: 1rem; display: flex; position: absolute; bottom: 5%; left: 3vw;}
-.concierge-avatar{color: rgb(215, 164, 171); border: 1px solid rgb(184, 125, 133); border-radius: 50%; flex: 0 0 auto; place-items: center; width: 38px; height: 38px; display: grid;}
+.concierge-avatar{color: rgb(216, 184, 163); border: 1px solid rgb(186, 148, 123); border-radius: 50%; flex: 0 0 auto; place-items: center; width: 38px; height: 38px; display: grid;}
 .concierge-content{flex: 1 1 0%; min-width: 0px;}
-.concierge-card small, .reception-heading small{color: rgb(195, 133, 142); letter-spacing: 0.17em; margin-bottom: 0.35rem; font-size: 0.55rem; display: block;}
+.concierge-card small, .reception-heading small{color: rgb(196, 158, 132); letter-spacing: 0.17em; margin-bottom: 0.35rem; font-size: 0.55rem; display: block;}
 .concierge-card strong, .reception-heading strong{font: 400 1.03rem Georgia, serif;}
 .concierge-card p{color: rgb(196, 188, 179); margin: 0.45rem 0px 0px; font-size: 0.7rem; line-height: 1.5;}
 .concierge-search{grid-template-columns: minmax(0px, 1fr) auto; gap: 0.45rem; margin-top: 0.8rem; display: grid;}
 .concierge-search input{color: rgb(255, 255, 255); background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.24); outline: none; min-width: 0px; padding: 0.65rem 0.7rem; font-size: 0.7rem;}
 .concierge-search input::placeholder{color: rgb(179, 169, 158);}
-.concierge-search input:focus{border-color: rgb(210, 151, 159);}
-.concierge-search button{color: rgb(17, 17, 17); cursor: pointer; background: rgb(178, 117, 125); border: 1px solid rgb(178, 117, 125); padding: 0.65rem 0.8rem; font-size: 0.66rem; font-weight: 700;}
-:is(.concierge-search button:hover, .concierge-search button:focus-visible){background: rgb(215, 164, 171);}
-.concierge-reply{background: rgba(255, 255, 255, 0.06); border-left: 2px solid rgb(210, 151, 159); padding: 0.5rem 0.6rem; color: rgb(238, 233, 240) !important; margin-top: 0.65rem !important;}
+.concierge-search input:focus{border-color: rgb(212, 174, 149);}
+.concierge-search button{color: rgb(17, 17, 17); cursor: pointer; background: rgb(179, 141, 116); border: 1px solid rgb(179, 141, 116); padding: 0.65rem 0.8rem; font-size: 0.66rem; font-weight: 700;}
+:is(.concierge-search button:hover, .concierge-search button:focus-visible){background: rgb(216, 184, 163);}
+.concierge-reply{background: rgba(255, 255, 255, 0.06); border-left: 2px solid rgb(212, 174, 149); padding: 0.5rem 0.6rem; color: rgb(238, 233, 240) !important; margin-top: 0.65rem !important;}
 .sr-only{clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; border: 0px; width: 1px; height: 1px; margin: -1px; padding: 0px; position: absolute; overflow: hidden;}
 .digital-directory{background: rgba(7, 7, 10, 0.93); border: 1px solid rgba(255, 255, 255, 0.35); width: min(610px, 48vw); padding: 0.8rem 1rem 1rem; position: absolute; top: 23%; right: 3vw; box-shadow: rgba(0, 0, 0, 0.45) 0px 24px 70px;}
 .screen-header{letter-spacing: 0.18em; border-bottom: 1px solid rgba(255, 255, 255, 0.22); justify-content: space-between; padding: 0.5rem 0.4rem 0.9rem; font-size: 0.56rem; display: flex;}
 .screen-header i{color: rgb(154, 140, 126); font-style: normal;}
 .digital-directory > button{text-align: left; cursor: pointer; background: 0px 0px; border-width: 0px 0px 1px; border-style: none none solid; border-color: currentcolor currentcolor rgba(255, 255, 255, 0.16); border-image: none; grid-template-columns: 54px 1fr 70px 24px; align-items: center; gap: 0.8rem; width: 100%; padding: 1rem 0.35rem; transition: background 0.2s, padding 0.2s; display: grid;}
 :is(.digital-directory > button:hover, .digital-directory > button:focus-visible){background: rgba(255, 255, 255, 0.09); padding-inline: 0.75rem;}
-.suite-no{color: rgb(210, 151, 159); font: 400 1.6rem Georgia, serif;}
+.suite-no{color: rgb(212, 174, 149); font: 400 1.6rem Georgia, serif;}
 .digital-directory button span:nth-child(2){flex-direction: column; gap: 0.28rem; display: flex;}
 .digital-directory strong{font: 400 clamp(1rem, 1.5vw, 1.4rem) Georgia, serif;}
 .digital-directory small{color: rgb(179, 169, 158); font-size: 0.57rem;}
-.digital-directory b{letter-spacing: 0.11em; color: rgb(191, 142, 149); font-size: 0.56rem;}
+.digital-directory b{letter-spacing: 0.11em; color: rgb(192, 161, 141); font-size: 0.56rem;}
 .digital-directory button > i{font-style: normal;}
 .elevator-shade{background: radial-gradient(circle, rgba(5, 4, 6, 0.05), rgba(5, 4, 6, 0.62));}
 .elevator-status{text-align: center; background: rgba(5, 5, 7, 0.82); border: 1px solid rgba(255, 255, 255, 0.23); min-width: 250px; padding: 1.2rem 2rem; position: absolute; top: 10%; left: 50%; transform: translate(-50%);}
-.elevator-status small{letter-spacing: 0.2em; color: rgb(200, 147, 154); font-size: 0.54rem; display: block;}
+.elevator-status small{letter-spacing: 0.2em; color: rgb(202, 168, 145); font-size: 0.54rem; display: block;}
 .elevator-status strong{margin: 0.45rem; font: 400 4rem / 1 Georgia, serif; display: block;}
 .elevator-status span{font-size: 0.66rem;}
-.elevator-panel{background: rgba(10, 9, 11, 0.92); border: 1px solid rgb(164, 110, 117); grid-template-columns: repeat(3, 1fr); gap: 0.65rem; width: 160px; padding: 1rem; display: grid; position: absolute; top: 50%; right: 7%; transform: translateY(-50%);}
+.elevator-panel{background: rgba(10, 9, 11, 0.92); border: 1px solid rgb(166, 131, 108); grid-template-columns: repeat(3, 1fr); gap: 0.65rem; width: 160px; padding: 1rem; display: grid; position: absolute; top: 50%; right: 7%; transform: translateY(-50%);}
 .elevator-panel p{text-align: center; letter-spacing: 0.13em; text-transform: uppercase; grid-column: 1 / -1; margin: 0px 0px 0.5rem; font-size: 0.57rem;}
 .elevator-panel > button:disabled{opacity: 0.35;}
 .travel-line{background: rgba(255, 255, 255, 0.2); width: 260px; height: 4px; position: absolute; bottom: 11%; left: 50%; overflow: hidden; transform: translate(-50%);}
-.travel-line span{background: rgb(210, 148, 156); width: 42%; height: 100%; animation: 1s ease-in-out 0s infinite normal none running travel; display: block;}
+.travel-line span{background: rgb(212, 172, 146); width: 42%; height: 100%; animation: 1s ease-in-out 0s infinite normal none running travel; display: block;}
 @keyframes travel {0% { transform: translate(-100%); }100% { transform: translate(340%); }}
 .reception-shade{background: linear-gradient(90deg, rgba(5, 4, 6, 0.7), rgba(5, 4, 6, 0.05) 58%, rgba(5, 4, 6, 0.25));}
 .suite-sign{text-shadow: rgb(0, 0, 0) 0px 2px 18px; max-width: 590px; position: absolute; top: 8%; left: 4%;}
@@ -104,7 +104,7 @@ button{font: inherit; color: inherit;}
 .product-card{background: rgb(255, 255, 255); border: 1px solid rgba(23, 20, 25, 0.12); grid-template-columns: 122px 1fr; min-height: 180px; display: grid; overflow: hidden;}
 .product-card > img{object-fit: cover; width: 100%; height: 100%; min-height: 180px;}
 .product-copy{flex-direction: column; padding: 0.85rem; display: flex;}
-.product-copy > small{letter-spacing: 0.12em; text-transform: uppercase; color: rgb(136, 99, 104); font-size: 0.52rem;}
+.product-copy > small{letter-spacing: 0.12em; text-transform: uppercase; color: rgb(137, 114, 98); font-size: 0.52rem;}
 .product-copy h3{margin: 0.35rem 0px; font: 400 1.16rem / 1.05 Georgia, serif;}
 .product-copy > strong{font-size: 0.72rem;}
 .product-copy > p{color: rgb(110, 104, 112); margin: 0.55rem 0px; font-size: 0.62rem; line-height: 1.45;}
@@ -113,7 +113,7 @@ button{font: inherit; color: inherit;}
 @media (max-width: 560px) {.product-grid{padding: 0.65rem;}.product-card{grid-template-columns: 92px 1fr;}.product-card > img{min-height: 170px;}.product-copy > p{display: none;}}
 @media (min-width: 851px) {.concierge-card{width: min(430px, 32vw); top: 28%; bottom: auto;}.digital-directory{grid-template-columns: repeat(3, 1fr); width: min(1040px, 90vw); padding: 0.7rem; display: grid; inset: auto auto 4% 50%; transform: translate(-50%);}.screen-header{grid-column: 1 / -1; padding: 0.35rem 0.55rem 0.7rem;}.digital-directory > button{border-bottom: 0px; border-right: 1px solid rgba(255, 255, 255, 0.16); grid-template-columns: 48px minmax(0px, 1fr) 58px 18px; min-height: 92px; padding: 0.8rem;}.digital-directory > button:last-child{border-right: 0px;}:is(.digital-directory > button:hover, .digital-directory > button:focus-visible){padding-inline: 1rem;}.digital-directory strong{font-size: clamp(0.92rem, 1.2vw, 1.2rem);}.digital-directory small{white-space: normal; line-height: 1.35;}}
 @keyframes voiceBar {0%, 100% { transform: scaleY(0.55); }50% { transform: scaleY(1.25); }}
-@keyframes voiceGlow {0%, 100% { box-shadow: rgba(215, 164, 171, 0) 0px 0px; }50% { box-shadow: rgba(215, 164, 171, 0.65) 0px 0px 20px; }}
+@keyframes voiceGlow {0%, 100% { box-shadow: rgba(216, 184, 163, 0) 0px 0px; }50% { box-shadow: rgba(216, 184, 163, 0.65) 0px 0px 20px; }}
 .business-showroom{z-index: 9; color: rgb(247, 244, 250); background: rgb(16, 16, 21); border: 1px solid rgba(255, 255, 255, 0.2); flex-direction: column; width: min(980px, 65vw); display: flex; position: absolute; inset: 3% 2% 8% auto; box-shadow: rgba(0, 0, 0, 0.7) 0px 28px 90px;}
 .business-showroom > header{border-bottom: 1px solid rgba(255, 255, 255, 0.14); justify-content: space-between; gap: 2rem; padding: 1.25rem 1.4rem; display: flex;}
 .business-showroom header small{letter-spacing: 0.18em; color: var(--suite-accent); font-size: 0.55rem;}
@@ -160,15 +160,15 @@ button{font: inherit; color: inherit;}
 .lobby-title p{letter-spacing: 0.22em; margin: 0px 0px 0.65rem; font-size: 0.72rem;}
 .lobby-title h1{letter-spacing: -0.045em; margin: 0px 0px 0.95rem; font-size: 4svh; line-height: 0.98;}
 .lobby-title span{letter-spacing: 0.04em; font-size: 0.76rem; line-height: 1.45; display: block;}
-@media (max-width: 560px) {.lobby-title{background: rgba(10, 9, 12, 0.64); border-left: 2px solid rgb(210, 151, 159); width: 92%; padding: 0.65rem 0.8rem; top: 3%; left: 4%;}.lobby-title p{margin-bottom: 0.35rem; font-size: 0.58rem;}.lobby-title h1{margin-bottom: 0.45rem; font-size: clamp(1.85rem, 7.4vw, 2.25rem); line-height: 0.95;}.lobby-title span{font-size: 0.62rem;}}
+@media (max-width: 560px) {.lobby-title{background: rgba(10, 9, 12, 0.64); border-left: 2px solid rgb(212, 174, 149); width: 92%; padding: 0.65rem 0.8rem; top: 3%; left: 4%;}.lobby-title p{margin-bottom: 0.35rem; font-size: 0.58rem;}.lobby-title h1{margin-bottom: 0.45rem; font-size: clamp(1.85rem, 7.4vw, 2.25rem); line-height: 0.95;}.lobby-title span{font-size: 0.62rem;}}
 .lobby-title{width: 31svh;}
 .lobby-title h1{margin: 0px 0px 0.7rem; font-size: 3.35svh; line-height: 1.02;}
-.lobby-title .brand-statement{color: rgb(221, 171, 178); letter-spacing: 0.13em; text-transform: uppercase; margin-bottom: 0.5rem; font-size: 0.72rem; line-height: 1.35; display: block;}
+.lobby-title .brand-statement{color: rgb(222, 191, 170); letter-spacing: 0.13em; text-transform: uppercase; margin-bottom: 0.5rem; font-size: 0.72rem; line-height: 1.35; display: block;}
 @media (max-width: 560px) {.lobby-title h1{font-size: clamp(1.7rem, 6.8vw, 2.15rem); line-height: 1;}.lobby-title .brand-statement{letter-spacing: 0.1em; margin-bottom: 0.3rem; font-size: 0.58rem;}}
 @media (min-width: 561px) {.lobby-title{flex-direction: column; justify-content: center; align-items: center; width: 14%; height: 42%; padding: 7% 1.1% 5%; display: flex; top: 7%; left: 51%; overflow: hidden; transform: none;}.lobby-title h1{letter-spacing: -0.035em; text-wrap: balance; max-width: 100%; margin: 0px 0px clamp(0.4rem, 1.1svh, 0.7rem); font-size: clamp(1.05rem, 2.35svh, 1.6rem); line-height: 1.04;}.lobby-title .brand-statement{letter-spacing: 0.1em; text-wrap: balance; max-width: 100%; margin: 0px 0px clamp(0.3rem, 0.8svh, 0.5rem); font-size: clamp(0.48rem, 0.82svh, 0.62rem); line-height: 1.35;}.lobby-title span{letter-spacing: 0.025em; text-wrap: balance; max-width: 100%; font-size: clamp(0.5rem, 0.86svh, 0.64rem); line-height: 1.4;}}
 @media (max-width: 560px) {.lobby-title{width: 92%; height: auto; padding: 0.65rem 0.85rem; top: 2.5%; left: 4%; overflow: hidden; transform: none;}.lobby-title h1{text-wrap: balance; max-width: 100%; font-size: clamp(1.45rem, 6.1vw, 1.9rem); line-height: 1.02;}.lobby-title .brand-statement, .lobby-title span{text-wrap: balance; max-width: 100%;}}
-.upgraded{--gold: #d28e97; --panel: #111015;}
-:is(.upgraded button:focus-visible, .upgraded a:focus-visible, .upgraded input:focus-visible, .upgraded select:focus-visible, .upgraded textarea:focus-visible){outline-offset: 3px; outline: rgb(227, 176, 183) solid 3px;}
+.upgraded{--gold: #d4a98c; --panel: #111015;}
+:is(.upgraded button:focus-visible, .upgraded a:focus-visible, .upgraded input:focus-visible, .upgraded select:focus-visible, .upgraded textarea:focus-visible){outline-offset: 3px; outline: rgb(226, 197, 177) solid 3px;}
 .header-actions{justify-self: end; gap: 0.45rem; display: flex;}
 .header-actions button{letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; background: 0px 0px; border: 1px solid rgb(135, 119, 95); padding: 0.62rem 0.72rem; font-size: 0.56rem;}
 .upgraded .lobby-title{display: flex;}
@@ -188,8 +188,8 @@ button{font: inherit; color: inherit;}
 .upgraded .product-card{color: rgb(23, 20, 25);}
 .upgraded .product-copy h4{margin: 0.25rem 0px; font: 400 1.05rem Georgia, serif;}
 .memorial-grid{grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 0.75rem; margin-top: 0.8rem; display: grid;}
-.memorial-grid article{background: linear-gradient(145deg, rgb(37, 33, 42), rgb(23, 21, 27)); border: 1px solid rgba(210, 142, 151, 0.35); flex-direction: column; justify-content: flex-end; min-height: 190px; padding: 1rem; display: flex;}
-.memorial-grid span{text-align: center; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(198, 170, 173); max-width: 120px; margin: auto; font-size: 0.58rem;}
+.memorial-grid article{background: linear-gradient(145deg, rgb(37, 33, 42), rgb(23, 21, 27)); border: 1px solid rgba(212, 169, 140, 0.35); flex-direction: column; justify-content: flex-end; min-height: 190px; padding: 1rem; display: flex;}
+.memorial-grid span{text-align: center; letter-spacing: 0.12em; text-transform: uppercase; color: rgb(199, 181, 169); max-width: 120px; margin: auto; font-size: 0.58rem;}
 .memorial-grid h4{margin: 0.8rem 0px 0.35rem; font: 400 1.05rem Georgia, serif;}
 .memorial-grid p{color: rgb(195, 187, 178); margin: 0px; font-size: 0.65rem; line-height: 1.45;}
 .guided-form{padding: 1.2rem;}
@@ -201,10 +201,10 @@ button{font: inherit; color: inherit;}
 .guided-form .check{flex-direction: row; align-items: flex-start; gap: 0.6rem;}
 .guided-form .check input{width: auto; margin-top: 0.15rem;}
 .disabled-upload{border: 1px dashed rgba(255, 255, 255, 0.26); padding: 0.8rem;}
-.disabled-upload small{color: rgb(209, 147, 155); line-height: 1.45;}
+.disabled-upload small{color: rgb(211, 171, 145); line-height: 1.45;}
 .dense-form{display: block;}
-.policy-notice{background: rgba(210, 142, 151, 0.08); border: 1px solid rgba(210, 142, 151, 0.35); margin: 1rem 0px 0px; padding: 1rem;}
-.policy-notice strong{color: rgb(227, 177, 184); font: 400 1rem Georgia, serif;}
+.policy-notice{background: rgba(212, 169, 140, 0.08); border: 1px solid rgba(212, 169, 140, 0.35); margin: 1rem 0px 0px; padding: 1rem;}
+.policy-notice strong{color: rgb(226, 197, 178); font: 400 1rem Georgia, serif;}
 .policy-notice p{color: rgb(205, 199, 192); font-size: 0.65rem; line-height: 1.55;}
 .service-strip{border: 1px solid rgba(255, 255, 255, 0.16); margin-top: 1rem; padding: 1rem;}
 .service-strip h3{margin: 0px; font: 400 1.3rem Georgia, serif;}
@@ -317,12 +317,68 @@ button{font: inherit; color: inherit;}
 body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 :focus-visible{outline-color:#4f7fe0}
 .digital-directory small{color:#efe7e4!important;font-size:.66rem!important;line-height:1.45}
-.digital-directory b{color:#e7b9bd}
+.digital-directory b{color:#daa681}
 .memorial-grid article{min-height:0}
-.ccs-sent{position:fixed;z-index:2147483000;left:50%;bottom:24px;transform:translateX(-50%);width:min(440px,calc(100% - 32px));padding:18px 20px;background:rgba(12,11,14,.97);color:#fff;border:1px solid rgba(255,255,255,.25);border-top:3px solid #c98b93;box-shadow:0 20px 60px rgba(0,0,0,.6);font:14px/1.5 Arial,Helvetica,sans-serif}
+.ccs-sent{position:fixed;z-index:2147483000;left:50%;bottom:24px;transform:translateX(-50%);width:min(440px,calc(100% - 32px));padding:18px 20px;background:rgba(12,11,14,.97);color:#fff;border:1px solid rgba(255,255,255,.25);border-top:3px solid #cb9671;box-shadow:0 20px 60px rgba(0,0,0,.6);font:14px/1.5 Arial,Helvetica,sans-serif}
 .ccs-sent strong{display:block;font:400 1.1rem Georgia,serif;margin-bottom:6px}
 .ccs-sent p{margin:0 0 12px;color:#e6dcd6}
 .ccs-sent a{color:#9cc0ff;text-decoration:underline}
 .ccs-sent div{display:flex;gap:8px;flex-wrap:wrap}
-.ccs-sent button{cursor:pointer;padding:9px 14px;border:1px solid #c98b93;background:transparent;color:#fff;font-size:.8rem}
-.ccs-sent button[data-copy]{background:linear-gradient(135deg,#e8bcc0,#b0707c);color:#1a1012;border-color:#e0aab0;font-weight:700}
+.ccs-sent button{cursor:pointer;padding:9px 14px;border:1px solid #cb9671;background:transparent;color:#fff;font-size:.8rem}
+.ccs-sent button[data-copy]{background:linear-gradient(135deg,#eccbb0,#b9805d);color:#21150d;border-color:#daa681;font-weight:700}
+
+/* Lobby: welcome + directory on one digital board */
+.lobby-board{position:absolute;z-index:3;left:50.6%;top:5%;width:clamp(270px,19.5%,360px);background:rgba(8,8,11,.93);border:1px solid rgba(255,255,255,.22);box-shadow:0 0 0 1px rgba(0,0,0,.6),0 0 38px rgba(203,150,113,.16),0 24px 60px rgba(0,0,0,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.lobby-board .lobby-title{position:static!important;transform:none!important;width:auto!important;height:auto!important;display:block!important;padding:18px 16px 12px!important;background:none!important;border:0!important;text-align:center;overflow:visible!important}
+.lobby-board .lobby-title h1{font-size:clamp(1.35rem,2.1vw,1.9rem)!important;margin:0 0 .5rem!important;line-height:1.05!important}
+.lobby-board .lobby-title .brand-statement{margin-bottom:.35rem!important}
+.lobby-board .digital-directory{position:static!important;transform:none!important;width:auto!important;display:block!important;inset:auto!important;max-height:none!important;overflow:visible!important;background:none!important;border:0!important;border-top:1px solid rgba(255,255,255,.16)!important;box-shadow:none!important;padding:4px 10px 10px!important}
+.lobby-board .screen-header{padding:.5rem .3rem .45rem!important;font-size:.55rem;justify-content:center}
+.lobby-board .screen-header i{display:none}
+.lobby-board .digital-directory>button{display:grid!important;grid-template-columns:46px 1fr 16px!important;min-height:0!important;border:0!important;border-bottom:1px solid rgba(255,255,255,.12)!important;padding:.62rem .35rem!important}
+.lobby-board .digital-directory>button:last-child{border-bottom:0!important}
+.lobby-board .digital-directory b{display:none}
+.lobby-board .suite-no{font-size:1.4rem}
+.lobby-board .digital-directory strong{font-size:1.02rem!important}
+.lobby-board .digital-directory small{font-size:.68rem!important;white-space:normal}
+@media (max-width:850px){.lobby-board{left:4%;right:4%;width:auto;top:auto;bottom:3%}.upgraded .concierge-card{top:3%!important;bottom:auto!important}}
+
+/* Suites: name and tagline on the reception desk front; floor/suite plaque low */
+.suite-sign{left:50%!important;top:var(--desk-y,57%)!important;transform:translate(-50%,-50%);width:min(34%,520px);max-width:none!important;text-align:center;pointer-events:none;z-index:2}
+.suite-sign h1{font-size:clamp(1.7rem,3.1vw,3.2rem)!important;margin:0 0 .45rem!important;letter-spacing:.02em!important;line-height:1!important;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.6),0 0 18px rgba(0,0,0,.55),0 0 26px color-mix(in srgb,var(--suite-accent) 45%,transparent)}
+.suite-sign p{font-size:clamp(.56rem,.8vw,.72rem)!important;letter-spacing:.2em!important;color:color-mix(in srgb,var(--suite-accent) 55%,#fff);text-shadow:0 1px 8px rgba(0,0,0,.9)}
+.reception-scene[data-suite="217"]{--desk-y:56%}
+.reception-scene[data-suite="305"]{--desk-y:55%}
+.reception-scene[data-suite="412"]{--desk-y:58%}
+.suite-plaque{position:absolute;z-index:3;left:50%;bottom:3%;transform:translateX(-50%);padding:.5rem 1rem;background:rgba(10,9,12,.82);border:1px solid var(--suite-accent);color:var(--suite-accent);font-size:.6rem;letter-spacing:.22em;white-space:nowrap}
+@media (max-width:560px){.suite-sign{top:4%!important;transform:translateX(-50%);width:92%;background:rgba(10,9,12,.55);padding:.6rem .8rem}.suite-plaque{left:auto;right:5%;transform:none}}
+
+/* Madam Allure's desk is white marble: deep rose-gold lettering, like engraved metal */
+.reception-scene[data-suite="217"] .suite-sign{width:min(35%,560px)}
+.reception-scene[data-suite="217"] .suite-sign h1{margin:0 0 .3rem!important;text-shadow:none}
+.suite-logo{display:block;width:100%;height:auto;margin:0 auto;filter:drop-shadow(0 1px 0 rgba(255,255,255,.55)) drop-shadow(0 2px 3px rgba(70,40,25,.35))}
+@media (min-width:561px){
+.reception-scene[data-suite="217"] .suite-sign p{color:#7a4e38;text-shadow:0 1px 0 rgba(255,255,255,.75);font-weight:700}
+}
+@media (max-width:560px){.suite-logo{width:78%;filter:drop-shadow(0 1px 2px rgba(0,0,0,.6))}}
+
+/* Madam Allure: rose gold from the boutique photo, not pink */
+.reception-scene[data-suite="217"] .business-showroom header small{color:#daa681}
+.reception-scene[data-suite="217"] .reception-desk,.reception-scene[data-suite="217"] .business-showroom{border-top-color:#cb9671;box-shadow:rgba(185,128,93,.24) 0 18px 55px}
+.reception-scene[data-suite="217"] .guided-form>button,.reception-scene[data-suite="217"] .education-card button{color:#22150c;background:linear-gradient(125deg,#eccbb0,#b9805d 55%,#efd3bb);border-color:#cb9671}
+
+/* Lounges: walk past reception into the back room before the tips appear.
+   AI Clarity Lounge = glass meeting room (Floor 4); Maker's Lounge = studio with the 3D printer (Floor 3). */
+.reception-scene>img{transition:transform 1.5s cubic-bezier(.45,.05,.3,1),filter 1.5s ease;transform-origin:var(--room,50% 40%)}
+.reception-scene[data-suite="412"]{--room:96% 30%}
+.reception-scene[data-suite="305"]{--room:90% 20%}
+.reception-scene:has(.lounge)>img{transform:scale(1.65);filter:brightness(.72) blur(1.5px)}
+.reception-scene:has(.lounge) .reception-desk,.reception-scene:has(.lounge) .suite-sign,.reception-scene:has(.lounge) .suite-plaque,.reception-scene:has(.lounge) .scene-actions{opacity:0;pointer-events:none;transition:opacity .4s ease}
+.business-showroom.lounge{animation:loungeIn .6s ease 1.25s both}
+@keyframes loungeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.reception-scene>img{transition:none}.business-showroom.lounge{animation:none}}
+
+/* Concierge voice and the sound switch (also shown on phones) */
+.concierge-voice{display:inline-block;margin-top:.6rem;cursor:pointer;background:rgba(255,255,255,.06);border:1px solid rgba(218,166,129,.6);color:#f4e6da;padding:.45rem .75rem;font-size:.68rem;letter-spacing:.04em}
+.concierge-voice:hover,.concierge-voice:focus-visible{background:rgba(218,166,129,.18)}
+@media (max-width:900px){.header-actions button:first-child{display:inline-block!important}}

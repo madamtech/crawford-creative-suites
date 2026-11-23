@@ -12,8 +12,34 @@ const patches = [
   ['image:`/allure-fusions-gallery.png`', 'image:`../img/allure-fusions.jpg`'],
   ['image:`/reception-303.jpg`', 'image:`../img/ai-authoritech.jpg`'],
 
-  // Elevator chime is off until the visitor turns it on.
-  ['[b,x]=(0,r.useState)(!0)', '[b,x]=(0,r.useState)(!1)'],
+  // Sound (chime, concierge voice, floor announcements) is off until the visitor
+  // turns it on; the choice is remembered on their device (build/voice.js).
+  ['[b,x]=(0,r.useState)(!0)', '[b,x]=(0,r.useState)(()=>window.ccsVoice.isOn())'],
+  ['onClick:()=>x(e=>!e)', 'onClick:()=>x(e=>window.ccsVoice.setOn(!e))'],
+
+  // Elevator announces the floor as the car arrives (before the doors open),
+  // then the receptionist greets the visitor once the doors have opened.
+  ['t(`traveling`);', 't(`traveling`),window.ccsVoice.approach(e);'],
+  ['z(),y(!1)', 'z(),window.ccsVoice.arrive(e),y(!1)'],
+
+  // Concierge speaks: a "Hear the concierge" button, and spoken replies.
+  ['(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),',
+   '(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),(0,i.jsx)(`button`,{type:`button`,className:`concierge-voice`,onClick:()=>{x(window.ccsVoice.setOn(!0)),window.ccsVoice.greet()},children:b?`🔊 Hear the greeting again`:`🔊 Hear the concierge`}),'],
+  ['D({217:`', 'D(window.ccsVoice.say({217:`'],
+  ['}[r]),window.setTimeout', '}[r])),window.setTimeout'],
+  ['D(`I couldn’t quite place that—try the directory below or mention what kind of business you need.`)',
+   'D(window.ccsVoice.say(`I couldn’t quite place that. Try the directory, or tell me what kind of business you need.`))'],
+
+  // Lounges: a spoken welcome as the visitor walks into the room.
+  ['U=e=>{j(e),', 'U=e=>{window.ccsVoice.lounge(e),j(e),'],
+
+  // Madam Allure's accent matches the rose gold in the boutique photo (not pink).
+  ['accent:`#d891a0`', 'accent:`#cb9671`'],
+
+  // Suite sign: name and tagline sit on the reception desk front; the
+  // "Floor · Suite" label moves to its own plaque low on the screen.
+  ['(0,i.jsxs)(`div`,{className:`suite-sign`,children:[(0,i.jsxs)(`small`,{children:[`FLOOR `,R.floor,` · SUITE `,n]}),(0,i.jsx)(`h1`,{children:R.name}),(0,i.jsx)(`p`,{children:R.tagline})]}),',
+   '(0,i.jsxs)(`div`,{className:`suite-sign`,children:[(0,i.jsx)(`h1`,{children:n===`217`?(0,i.jsx)(`img`,{className:`suite-logo`,src:`../img/madam-allure-signature.png`,alt:R.name}):R.name}),(0,i.jsx)(`p`,{children:R.tagline})]}),(0,i.jsxs)(`div`,{className:`suite-plaque`,children:[`FLOOR `,R.floor,` · SUITE `,n]}),'],
 
   // Memorial gifts: drop the "Gallery Image Coming Soon" placeholder boxes.
   ['(0,i.jsx)(`span`,{children:`Gallery Image Coming Soon`}),', ''],
@@ -38,6 +64,24 @@ for (const [from, to] of patches) {
   const n = src.split(from).length - 1;
   if (n !== 1) throw new Error(`Expected exactly one match, found ${n}: ${from.slice(0, 60)}`);
   src = src.replace(from, () => to);
+}
+
+// Lobby: the welcome and the directory become one digital board (on the
+// board in the photo) instead of a wide strip along the bottom.
+{
+  const titleStart = src.indexOf('(0,i.jsxs)(`div`,{className:`lobby-title`');
+  const titleEnd = src.indexOf(',(0,i.jsxs)(`aside`,{className:`concierge-card`');
+  const dirStart = src.indexOf(',(0,i.jsxs)(`section`,{className:`digital-directory`');
+  const dirEndMarker = '},e))]})';
+  const dirEnd = src.indexOf(dirEndMarker, dirStart) + dirEndMarker.length;
+  if ([titleStart, titleEnd, dirStart].some((i) => i < 0) || dirEnd < dirStart || !(titleStart < titleEnd && titleEnd < dirStart)) {
+    throw new Error('Lobby layout not found');
+  }
+  const title = src.slice(titleStart, titleEnd);
+  const directory = src.slice(dirStart + 1, dirEnd);
+  src = src.slice(0, titleStart)
+    + '(0,i.jsxs)(`div`,{className:`lobby-board`,children:[' + title + ',' + directory + ']})'
+    + src.slice(titleEnd, dirStart) + src.slice(dirEnd);
 }
 
 // AI AuthoriTech gets its own consulting terms; product floors keep theirs.
