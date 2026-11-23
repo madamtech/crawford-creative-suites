@@ -1,49 +1,46 @@
-# Removes the duplicate heel from the Allure Fusions shelf (top-right cell)
-# by placing a copy of the white lattice vase from the lower shelf there.
-# The large heel by the entrance stays as the feature piece.
+# Removes the duplicate heel from the Allure Fusions shelf (top-right cell).
+# The large heel by the entrance stays as the feature piece. The shelf cell is
+# left empty with its warm backlight (no copied object, so nothing repeats).
 # Usage: python build/fix_fusions.py src/img-original/allure-fusions.jpg img/allure-fusions.jpg
+#
+# Each row of the cell is rebuilt by blending the cell's own left and right
+# edges (smooth lighting), with the original spotlight glow kept on top.
 import sys
 import cv2
 import numpy as np
 
 src, out = sys.argv[1], sys.argv[2]
 img = cv2.imread(src)
-s = img.shape[1] / 1672  # coordinates below are for the 1672px-wide image
+s = img.shape[1] / 1672
 
 def px(v):
     return int(round(v * s))
 
-# Lower-right cell holding the lattice vase, and the matching area of the heel cell.
-x0, x1 = px(350), px(449)
-sy0, sy1 = px(331), px(432)
-ty1 = px(180)
-ty0 = ty1 - (sy1 - sy0)
-patch = img[sy0:sy1, x0:x1].astype(np.float32)
-dest = img[ty0:ty1, x0:x1].astype(np.float32)
+x0, x1 = px(351), px(447)        # inside of the shelf cell
+y0, y1 = px(66), px(180)         # from under the spotlight down to the shelf surface
+edge = px(5)
+res = img.copy().astype(np.float32)
+left = img[y0:y1, x0:x0 + edge].astype(np.float32).mean(1)    # (rows, 3)
+right = img[y0:y1, x1 - edge:x1].astype(np.float32).mean(1)
+t = np.linspace(0, 1, x1 - x0)[None, :, None]
+fill = left[:, None, :] * (1 - t) + right[:, None, :] * t
 
-# The upper cell is lit more brightly; match the copy's overall level to it,
-# using the wall at the top-left of each cell (no objects there).
-ref_src = patch[4:20, 4:14].reshape(-1, 3).mean(0)
-ref_dst = dest[4:20, 4:14].reshape(-1, 3).mean(0)
-patch *= np.clip(ref_dst / np.maximum(ref_src, 1), 0.7, 1.6)
+# Keep the soft center glow from the spotlight: brighten the middle a little,
+# fading toward the bottom, matching the lit empty cells elsewhere.
+cx = (x1 - x0) / 2
+xs = np.arange(x1 - x0)[None, :]
+ys = np.arange(y1 - y0)[:, None]
+glow = np.exp(-((xs - cx) / ((x1 - x0) * 0.45)) ** 2) * np.clip(1 - ys / (y1 - y0), 0, 1)
+fill *= (1 + 0.12 * glow)[..., None]
 
-# Soft top edge so the copy fades into the wall above; hard edges elsewhere
-# line up with the shelf frame.
-alpha = np.ones(patch.shape[:2], np.float32)
-fade = px(10)
-alpha[:fade] = np.linspace(0, 1, fade)[:, None]
-res = img.copy()
-res[ty0:ty1, x0:x1] = (patch * alpha[..., None] + dest * (1 - alpha[..., None])).clip(0, 255).astype(np.uint8)
+# Light grain so the wall doesn't look airbrushed.
+rng = np.random.default_rng(7)
+fill += rng.normal(0, 2.0, fill.shape)
 
-# Clear whatever of the heel still shows above the copy.
-top = np.zeros(img.shape[:2], np.uint8)
-y_a, y_b = px(60), ty0 + fade
-cell = res[y_a:y_b, x0:x1]
-hsv = cv2.cvtColor(cell, cv2.COLOR_BGR2HSV)
-heel = ((hsv[..., 1] < 70) & (hsv[..., 2] > 170)) | ((hsv[..., 0] > 100) & (hsv[..., 0] < 130) & (hsv[..., 1] > 80))
-top[y_a:y_b, x0:x1][heel] = 255
-top = cv2.dilate(top, np.ones((7, 7), np.uint8))
-res = cv2.inpaint(res, top, 7, cv2.INPAINT_TELEA)
-
-cv2.imwrite(out, res, [cv2.IMWRITE_JPEG_QUALITY, 88])
+# Feather the top edge into the original spotlight area.
+alpha = np.ones((y1 - y0, x1 - x0, 1), np.float32)
+f = px(10)
+alpha[:f] = np.linspace(0, 1, f)[:, None, None]
+res[y0:y1, x0:x1] = fill * alpha + res[y0:y1, x0:x1] * (1 - alpha)
+cv2.imwrite(out, res.clip(0, 255).astype(np.uint8), [cv2.IMWRITE_JPEG_QUALITY, 88])
 print('fixed', out)

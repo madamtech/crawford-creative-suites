@@ -351,7 +351,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 /* Owner choice: desks show the business title only; taglines are hidden (remove this line to show them). */
 .suite-sign p{display:none!important}
 .reception-scene[data-suite="217"]{--desk-y:56%;--sign-w:min(35%,560px)}
-.reception-scene[data-suite="305"]{--desk-x:57%;--desk-y:42.5%;--sign-w:17%}
+.reception-scene[data-suite="305"]{--desk-x:57%;--desk-y:45%;--sign-w:17%}
 .reception-scene[data-suite="412"]{--desk-x:42%;--desk-y:51%;--sign-w:24%}
 .suite-plaque{position:absolute;z-index:3;left:50%;bottom:3%;transform:translateX(-50%);padding:.5rem 1rem;background:rgba(10,9,12,.82);border:1px solid var(--suite-accent);color:var(--suite-accent);font-size:.6rem;letter-spacing:.22em;white-space:nowrap}
 @media (max-width:560px){.suite-sign{top:4%!important;transform:translateX(-50%);width:92%;background:rgba(10,9,12,.55);padding:.6rem .8rem}.suite-plaque{display:none}}
