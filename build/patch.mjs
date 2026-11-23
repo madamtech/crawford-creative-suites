@@ -30,6 +30,13 @@ const patches = [
   ['D(`I couldn’t quite place that—try the directory below or mention what kind of business you need.`)',
    'D(window.ccsVoice.say(`I couldn’t quite place that. Try the directory, or tell me what kind of business you need.`))'],
 
+  // Madam Allure's lounge, The Powder Room (owner's lounge plan): a reception
+  // button, and its card buttons lead to the product catalog.
+  ['n===`217`&&(0,i.jsxs)(`button`,{onClick:()=>k(`services`),children:[`Browse products & pricing `,(0,i.jsx)(`span`,{children:`→`})]})',
+   'n===`217`&&(0,i.jsxs)(i.Fragment,{children:[(0,i.jsxs)(`button`,{onClick:()=>k(`services`),children:[`Browse products & pricing `,(0,i.jsx)(`span`,{children:`→`})]}),(0,i.jsxs)(`button`,{onClick:()=>U(`powder`),children:[`Step into The Powder Room `,(0,i.jsx)(`span`,{children:`→`})]})]})'],
+  ['J=()=>{A===`maker`?(j(null),k(`project`)):(j(null),k(`ai`))}',
+   'J=()=>{A===`maker`?(j(null),k(`project`)):A===`powder`?(j(null),k(`services`)):(j(null),k(`ai`))}'],
+
   // Lounges: a spoken welcome as the visitor walks into the room.
   ['U=e=>{j(e),', 'U=e=>{window.ccsVoice.lounge(e),j(e),'],
 

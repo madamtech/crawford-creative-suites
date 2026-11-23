@@ -381,6 +381,11 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .reception-scene:has(.lounge)>img{transform:scale(1.65);filter:brightness(.72) blur(1.5px)}
 .reception-scene:has(.lounge) .reception-desk,.reception-scene:has(.lounge) .suite-sign,.reception-scene:has(.lounge) .suite-plaque,.reception-scene:has(.lounge) .scene-actions{opacity:0;pointer-events:none;transition:opacity .4s ease}
 .business-showroom.lounge{animation:loungeIn .6s ease 1.25s both}
+.reception-scene[data-suite="217"]{--room:8% 38%}
+/* Dedicated room photo (img/lounge-<id>.jpg): fades in after the walk toward the back. */
+.lounge-room{position:absolute;inset:0;z-index:1;background:center/cover no-repeat;opacity:0;transition:opacity .9s ease;pointer-events:none}
+.reception-scene:has(.lounge) .lounge-room.ready{opacity:1;transition:opacity .9s ease .8s}
+.reception-scene:has(.lounge-room.ready) .business-showroom.lounge{background:rgba(10,10,14,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 @keyframes loungeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.reception-scene>img{transition:none}.business-showroom.lounge{animation:none}}
 

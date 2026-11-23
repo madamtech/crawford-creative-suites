@@ -4,6 +4,7 @@ import './send.js';
 import './voice.js';
 import './kiosk.js';
 import './board.js';
+import './lounge.js';
 import Building from './app.patched.js';
 
 createRoot(document.getElementById('app')).render(createElement(Building));

@@ -66,9 +66,11 @@ window.ccsVoice = {
   },
   // Walking into a lounge.
   lounge(id) {
-    const line = id === 'clarity'
-      ? 'Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype.'
-      : "Welcome to the Maker's Lounge, where ideas, materials, and technology come together.";
+    const line = {
+      clarity: 'Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype.',
+      maker: "Welcome to the Maker's Lounge, where ideas, materials, and technology come together.",
+      powder: 'Welcome to the Powder Room, a quiet place to explore beauty rituals, fragrance, and self-care.',
+    }[id];
     speak(line, { interrupt: true });
   },
   // Doors open: the receptionist greets the visitor.
