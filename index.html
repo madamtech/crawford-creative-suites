@@ -174,7 +174,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
     function placeMarquee(){const sign=hero.querySelector('.architectural-sign');if(!sign)return;const r=hero.getBoundingClientRect(),cs=getComputedStyle(hero),px=parseFloat(cs.backgroundPositionX)/100||.5,py=parseFloat(cs.backgroundPositionY)/100||.5,k=Math.max(r.width/CANOPY.w,r.height/CANOPY.h),ox=(r.width-CANOPY.w*k)*px,oy=(r.height-CANOPY.h*k)*py;sign.classList.add('on-canopy');const v0=(14-ox)/k,v1=(r.width-14-ox)/k,a0=Math.max(FACE.x0,v0),a1=Math.min(FACE.x1,v1),cropped=a0>FACE.x0||a1<FACE.x1;if(SIGN==='photo'){hero.classList.toggle('sign-photo',!cropped);if(!cropped)return}if(SIGN==='parallel'||SIGN==='photo'){fitToCanopy(sign,ox,oy,k,a0,a1);return}sign.style.fontSize=((SIGN==='parallel'?29:SIGN==='plaque'?22:CANOPY.font)*k)+'px';let w=sign.offsetWidth;const room=r.width-24;if(w>room){sign.style.fontSize=(CANOPY.font*k*room/w)+'px';w=sign.offsetWidth}const h=sign.offsetHeight;sign.style.left=Math.min(Math.max(12,ox+CANOPY.cx*k-w/2),r.width-12-w)+'px';sign.style.top=(oy+CANOPY.cy*k-h/2)+'px';sign.style.transform='none'}
     window.addEventListener('resize',placeMarquee);window.addEventListener('load',placeMarquee);if(document.fonts)document.fonts.ready.then(placeMarquee);
     // Lobby TV: where the LED TV sits in img/crawford-lobby.jpg (photo pixels). Set from the image.
-    const TV={w:1672,h:941,left:595,top:89,right:1077,bottom:267};
+    const TV={w:1672,h:941,left:593,top:86,right:1077,bottom:264};
     const ACC={madam:'#cb9671',fusions:'#6c9dff',ai:'#21b8b0'};
     let tv=null,tvSuite=null;
     function tvFits(){return TV.right>TV.left&&window.innerWidth>900}
