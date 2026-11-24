@@ -356,7 +356,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .reception-scene .ai-grid>.guided-form{overflow:visible!important;height:auto!important;max-height:none!important;border-top:1px solid rgba(255,255,255,.18);margin-top:.5rem;padding-top:1.1rem}
 
 /* Readability (owner, Nov 23): panels use comfortable text sizes and less oversized headings. */
-@media (min-width:851px){.reception-scene .business-showroom.business-showroom{width:min(640px,46vw)!important}}
+@media (min-width:851px){.reception-scene .business-showroom.business-showroom{width:min(640px,46vw)!important;bottom:calc(3% + 60px)!important}}
 .reception-scene .business-showroom header h2{font-size:clamp(1.6rem,2.3vw,2.2rem)!important}
 .reception-scene .business-showroom header p{font-size:.98rem!important;line-height:1.5!important}
 .reception-scene .business-showroom header small{font-size:.72rem!important}
@@ -375,6 +375,8 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .card-guide ol{font-size:1rem!important}
 .card-guide dl{font-size:.95rem!important}
 .card-guide h3{font-size:1.4rem!important}
+
+.reception-scene .scene-actions button{font-size:.85rem!important;padding:.65rem 1rem!important;letter-spacing:.06em}
 
 /* Lounge cards: the button opens the card's own ritual or explainer (build/lounge.js) */
 .card-guide{margin-top:.9rem;padding:1rem 1.1rem;border-left:2px solid var(--suite-accent);background:rgba(0,0,0,.38);animation:guideIn .3s ease both}
