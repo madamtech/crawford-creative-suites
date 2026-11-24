@@ -61,6 +61,7 @@
     .lobby-tv h4{font:400 1.6em/1 Georgia,serif;margin:0 0 .12em}
     .lobby-tv .tv-in{display:flex;flex-direction:column;justify-content:center}
     .lobby-tv .tv-tag{font:italic .9em/1.3 Georgia,serif;color:var(--tv-acc,#c69676);margin:0}
+    .lobby-tv .tv-tag-sub{display:block;font-size:.82em;font-style:normal;color:#e8e1dd;letter-spacing:.02em}
     .lobby-tv p{font-size:.78em;line-height:1.55;margin:0 0 .6em;color:#e2dbd7}
     .lobby-tv .tv-services{display:flex;flex-wrap:wrap;gap:.25em;margin:.2em 0 0}
     .lobby-tv .tv-services span{border:1px solid color-mix(in srgb,var(--tv-acc,#c69676) 55%,transparent);padding:.2em .45em;font-size:.46em;letter-spacing:.05em;text-transform:uppercase}
@@ -118,12 +119,16 @@
     .topbar{background:linear-gradient(180deg,rgba(8,8,8,.6),rgba(8,8,8,0))!important;border-bottom:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
     /* TV services: a slow LED-style ticker so every service shows at a readable size. */
     .lobby-tv .tv-ticker{overflow:hidden;margin:.4em -5.5% 0;padding:.3em 0;border-top:1px solid color-mix(in srgb,var(--tv-acc,#c69676) 35%,transparent);border-bottom:1px solid color-mix(in srgb,var(--tv-acc,#c69676) 35%,transparent);background:rgba(0,0,0,.25);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-    .lobby-tv .tv-track{display:inline-flex;gap:1.6em;white-space:nowrap;padding-left:1.6em;animation:tvTicker 30s linear infinite}
-    .lobby-tv .tv-track span{font-size:.62em;letter-spacing:.12em;text-transform:uppercase;color:#f3eeea}
-    .lobby-tv .tv-track span:before{content:"◆";color:var(--tv-acc,#c69676);margin-right:1.6em;font-size:.8em}
+    .lobby-tv .tv-track{display:inline-flex;white-space:nowrap;animation:tvTicker 30s linear infinite;will-change:transform}
+    .lobby-tv .tv-track span{font-size:.62em;letter-spacing:.12em;text-transform:uppercase;color:#f3eeea;padding-right:1.4em}
+    .lobby-tv .tv-track span:before{content:"◆";display:inline-block;color:var(--tv-acc,#c69676);margin-right:1.4em;font-size:.8em;text-shadow:0 0 4px var(--tv-acc,#c69676),0 0 9px var(--tv-acc,#c69676);animation:sepGlow 2.4s ease-in-out infinite}
+    @keyframes sepGlow{0%,100%{opacity:.75}50%{opacity:1;filter:brightness(1.35)}}
     .lobby-tv:hover .tv-track{animation-play-state:paused}
     @keyframes tvTicker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
     @media(prefers-reduced-motion:reduce){.lobby-tv .tv-track{animation:none;white-space:normal;display:flex;flex-wrap:wrap}}
+    /* Madam Allure sign: brighter rose-gold glow so it matches the blue and teal signs. */
+    .lobby.placed .suite-entry[data-suite="madam"]{--acc:#ffab7c}
+    .lobby.placed .suite-entry[data-suite="madam"] h3{color:#f8f0eb}
     .about-business{margin-top:1.1rem;padding-top:1rem;border-top:1px solid rgba(224, 194, 174,.2)}
     .about-business h5{font:400 1.15rem Georgia,serif;margin:0 0 .45rem;color:#e6cdbc}
     .about-business p{font-size:.84rem;line-height:1.65;color:#d4cec5;margin:0}
@@ -176,7 +181,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
     function placeTv(){if(!tv)return;const r=lobby.getBoundingClientRect(),k=Math.max(r.width/TV.w,r.height/TV.h),ox=(r.width-TV.w*k)/2,oy=(r.height-TV.h*k)/2,w=(TV.right-TV.left)*k;Object.assign(tv.style,{left:ox+TV.left*k+'px',top:oy+TV.top*k+'px',width:w+'px',height:(TV.bottom-TV.top)*k+'px',fontSize:(w/26)+'px'})}
     function ensureTv(){if(!tv){tv=document.createElement('div');tv.className='lobby-tv';tv.setAttribute('role','region');tv.setAttribute('aria-live','polite');lobby.appendChild(tv)}}
     function showTvIdle(){ensureTv();tvSuite=null;tv.style.removeProperty('--tv-acc');tv.setAttribute('aria-label','Lobby screen');tv.innerHTML='<div class="tv-idle"><h4>Welcome to CCS</h4><p>Three businesses. Three specialties. One creative destination.</p><div class="tv-point">Select a suite sign below to see it here ↓</div></div>';tv.classList.add('on');lobby.classList.remove('tv-mode');document.getElementById('previewPanel').classList.remove('visible');document.querySelectorAll('.suite-entry').forEach(el=>{el.classList.remove('active','softened');el.setAttribute('aria-expanded','false')});placeTv()}
-    function showOnTv(id){const d=suites[id];ensureTv();tvSuite=id;tv.style.setProperty('--tv-acc',ACC[id]);tv.setAttribute('aria-label',d.name+' details');const esc=t=>t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));tv.innerHTML='<button class="tv-close" aria-label="Back to the welcome screen">×</button><div class="tv-in"><div class="tv-kicker">Now showing</div><h4>'+esc(d.name)+'</h4><div class="tv-tag">'+esc(d.tagline)+(d.taglineSub?' '+esc(d.taglineSub):'')+'</div><div class="tv-ticker" aria-label="Services"><div class="tv-track" style="animation-duration:'+(d.services.length*3.2)+'s">'+(d.services.map(x=>'<span>'+esc(x)+'</span>').join('')).repeat(2)+'</div></div></div>';tv.classList.remove('on');void tv.offsetWidth;tv.classList.add('on');lobby.classList.add('tv-mode');placeTv();tv.querySelector('.tv-close').onclick=showTvIdle;}
+    function showOnTv(id){const d=suites[id];ensureTv();tvSuite=id;tv.style.setProperty('--tv-acc',ACC[id]);tv.setAttribute('aria-label',d.name+' details');const esc=t=>t.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));tv.innerHTML='<button class="tv-close" aria-label="Back to the welcome screen">×</button><div class="tv-in"><div class="tv-kicker">Now showing</div><h4>'+esc(d.name)+'</h4><div class="tv-tag">'+esc(d.tagline)+(d.taglineSub?'<span class="tv-tag-sub">'+esc(d.taglineSub)+'</span>':'')+'</div><div class="tv-ticker" aria-label="Services"><div class="tv-track" style="animation-duration:'+(d.services.length*3.2)+'s">'+(d.services.map(x=>'<span>'+esc(x)+'</span>').join('')).repeat(2)+'</div></div></div>';tv.classList.remove('on');void tv.offsetWidth;tv.classList.add('on');lobby.classList.add('tv-mode');placeTv();tv.querySelector('.tv-close').onclick=showTvIdle;}
     window.addEventListener('resize',()=>{if(tv&&!tvFits()&&tvSuite){const id=tvSuite;tv.classList.remove('on');lobby.classList.remove('tv-mode');selectSuite(id)}});
     // Storefront centers in img/crawford-lobby-tv.jpg (photo pixels). Names sit on the glass,
     // bottoms at y 600, just above the concierge desk (which starts at x 1487 on the right).
