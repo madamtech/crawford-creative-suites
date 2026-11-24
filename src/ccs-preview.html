@@ -100,6 +100,12 @@
     .lobby-tv .tv-idle .tv-point{font-size:.7em;letter-spacing:.2em;text-transform:uppercase;color:#f1d9b4;animation:tvPoint 1.6s ease-in-out infinite}
     @keyframes tvPoint{0%,100%{transform:translateY(0);opacity:.75}50%{transform:translateY(.35em);opacity:1}}
     @media(prefers-reduced-motion:reduce){.lobby.placed .suite-entry h3,.lobby-tv .tv-idle .tv-point{animation:none!important}}
+    /* Sign options for comparison: ?sign=parallel | plaque | photo */
+    .hero.sign-photo{background-image:url('img/crawford-exterior-signed.jpg')}
+    .hero.sign-photo .architectural-sign{display:none}
+    .hero.sign-plaque .architectural-sign.on-canopy{padding:.32em .9em .36em;background:linear-gradient(180deg,#3a2a1d,#20160f);border:1px solid rgba(214,176,132,.75);box-shadow:0 2px 6px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,230,200,.25);border-radius:2px}
+    .hero.sign-parallel .architectural-sign.on-canopy strong,.hero.sign-parallel .architectural-sign.on-canopy span{letter-spacing:.24em}
+    .hero.sign-plaque .architectural-sign.on-canopy strong,.hero.sign-plaque .architectural-sign.on-canopy span{letter-spacing:.2em}
     .about-business{margin-top:1.1rem;padding-top:1rem;border-top:1px solid rgba(227,207,171,.2)}
     .about-business h5{font:400 1.15rem Georgia,serif;margin:0 0 .45rem;color:#efd9b3}
     .about-business p{font-size:.84rem;line-height:1.65;color:#d4cec5;margin:0}
@@ -120,9 +126,10 @@
     const DOOR={w:1672,h:941,cx:893,cy:540};
     function walkIn(done){const r=hero.getBoundingClientRect(),cs=getComputedStyle(hero),px=parseFloat(cs.backgroundPositionX)/100||.5,py=parseFloat(cs.backgroundPositionY)/100||.5;const k=Math.max(r.width/DOOR.w,r.height/DOOR.h),ox=(r.width-DOOR.w*k)*px,oy=(r.height-DOOR.h*k)*py;const w=document.createElement('div');w.className='walk';w.setAttribute('aria-hidden','true');w.innerHTML='<div class="walk-view"></div><div class="glass"></div><div class="warm"></div>';const v=w.firstChild;v.style.backgroundPosition=cs.backgroundPosition;v.style.transformOrigin=(ox+DOOR.cx*k)+'px '+(oy+DOOR.cy*k)+'px';hero.classList.add('walking');hero.appendChild(w);setTimeout(()=>{done();setTimeout(()=>{w.remove();hero.classList.remove('walking')},900)},2750)}
     function revealLobby(animated){if(animated&&!reduced){walkIn(()=>{lobby.classList.add('visible','walked');placeSuites();lobby.scrollIntoView({behavior:'auto'})})}else{lobby.classList.add('visible');placeSuites();lobby.scrollIntoView({behavior:reduced?'auto':'smooth'})}}
+    const SIGN=new URLSearchParams(location.search).get('sign')||'';if(SIGN)hero.classList.add('sign-'+SIGN);
     // Building name on the canopy over the revolving door (img/crawford-exterior.jpg, 1672 x 941).
     const CANOPY={w:1672,h:941,cx:854,cy:190,font:19};
-    function placeMarquee(){const sign=hero.querySelector('.architectural-sign');if(!sign)return;const r=hero.getBoundingClientRect(),cs=getComputedStyle(hero),px=parseFloat(cs.backgroundPositionX)/100||.5,py=parseFloat(cs.backgroundPositionY)/100||.5,k=Math.max(r.width/CANOPY.w,r.height/CANOPY.h),ox=(r.width-CANOPY.w*k)*px,oy=(r.height-CANOPY.h*k)*py;sign.classList.add('on-canopy');sign.style.fontSize=(CANOPY.font*k)+'px';let w=sign.offsetWidth;const room=r.width-24;if(w>room){sign.style.fontSize=(CANOPY.font*k*room/w)+'px';w=sign.offsetWidth}const h=sign.offsetHeight;sign.style.left=Math.min(Math.max(12,ox+CANOPY.cx*k-w/2),r.width-12-w)+'px';sign.style.top=(oy+CANOPY.cy*k-h/2)+'px';sign.style.transform='none'}
+    function placeMarquee(){const sign=hero.querySelector('.architectural-sign');if(!sign)return;const r=hero.getBoundingClientRect(),cs=getComputedStyle(hero),px=parseFloat(cs.backgroundPositionX)/100||.5,py=parseFloat(cs.backgroundPositionY)/100||.5,k=Math.max(r.width/CANOPY.w,r.height/CANOPY.h),ox=(r.width-CANOPY.w*k)*px,oy=(r.height-CANOPY.h*k)*py;sign.classList.add('on-canopy');sign.style.fontSize=((SIGN==='parallel'?29:SIGN==='plaque'?22:CANOPY.font)*k)+'px';let w=sign.offsetWidth;const room=r.width-24;if(w>room){sign.style.fontSize=(CANOPY.font*k*room/w)+'px';w=sign.offsetWidth}const h=sign.offsetHeight;sign.style.left=Math.min(Math.max(12,ox+CANOPY.cx*k-w/2),r.width-12-w)+'px';sign.style.top=(oy+CANOPY.cy*k-h/2)+'px';sign.style.transform=SIGN==='parallel'?'skewY(-4.3deg)':'none'}
     window.addEventListener('resize',placeMarquee);window.addEventListener('load',placeMarquee);if(document.fonts)document.fonts.ready.then(placeMarquee);
     // Lobby TV: where the LED TV sits in img/crawford-lobby.jpg (photo pixels). Set from the image.
     const TV={w:1672,h:941,left:595,top:89,right:1077,bottom:267};
