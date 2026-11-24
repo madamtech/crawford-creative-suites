@@ -2,7 +2,17 @@
 
 Make each line below with your ElevenLabs voice (or record it yourself). Save it as an **MP3** with the **exact file name** shown, and put it in this `audio` folder. Each file starts working on its own as soon as it's in place. A line without a file stays silent; the device's robotic voice is not used.
 
-**Voice chosen (Nov 23, 2026): Tanika Real.** Use the same settings as your Nov 17 sample so every line matches: model Eleven Multilingual v2, speed 0.96, stability 50, similarity 75, style 0, speaker boost on.
+**Voices (Nov 23, 2026):** each person in the building has her own voice.
+
+| Who | Voice | Lines |
+|---|---|---|
+| Lobby concierge (Floor 1) | **Veda Sky** (Expressive Customer Service), chosen by Tanika. Speed 1.08 for the four replies (her greeting is her own download), stability 50, similarity 75, style 0 | `greeting`, `reply-217`, `reply-305`, `reply-412`, `reply-unknown` |
+| Madam Allure receptionist (Floor 2) | Niki (trial; likely to change) | `welcome-217`, `lounge-powder` |
+| Allure Fusions receptionist (Floor 3) | Julie (trial; likely to change) | `welcome-305`, `lounge-maker` |
+| AI AuthoriTech receptionist (Floor 4) | Viktoria (trial; likely to change) | `welcome-412`, `lounge-clarity` |
+| Elevator | to be chosen | `floor-1` to `floor-4` |
+
+Use the same settings for every line of one voice so they match.
 
 Tips: keep a short natural pause at the start and end, use the same voice and settings for every line, and keep each file under 1 MB.
 
