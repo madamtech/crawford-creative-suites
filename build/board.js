@@ -52,11 +52,39 @@ function placeKeypad() {
   panel.classList.add('on-wall');
 }
 
+// Reception desks: each business name is pinned to the front of its desk in the
+// photo, so it stays on the desk at every window size (it used to drift because
+// the photo is cropped to fill the window). Photo pixels: center x/y and width.
+const DESK = {
+  217: { x: 836, y: 527, w: 560 },
+  305: { x: 953, y: 423, w: 284 },
+  412: { x: 702, y: 480, w: 401 },
+};
+function placeDeskSign() {
+  const scene = document.querySelector('.reception-scene');
+  const sign = scene && scene.querySelector('.suite-sign');
+  const img = scene && scene.querySelector(':scope > img');
+  const d = scene && DESK[scene.dataset.suite];
+  if (!sign || !img || !d) return;
+  if (window.innerWidth <= 560) {
+    ['left', 'top', 'width'].forEach((p) => sign.style.removeProperty(p));
+    return;
+  }
+  const s = scene.getBoundingClientRect();
+  const r = img.getBoundingClientRect();
+  const k = Math.max(r.width / PHOTO.w, r.height / PHOTO.h);
+  const ox = r.left - s.left + (r.width - PHOTO.w * k) / 2;
+  const oy = r.top - s.top + (r.height - PHOTO.h * k) / 2;
+  sign.style.setProperty('left', `${ox + d.x * k}px`, 'important');
+  sign.style.setProperty('top', `${oy + d.y * k}px`, 'important');
+  sign.style.setProperty('width', `${d.w * k}px`, 'important');
+}
+
 let queued = false;
 function schedule() {
   if (queued) return;
   queued = true;
-  requestAnimationFrame(() => { queued = false; place(); placeKeypad(); });
+  requestAnimationFrame(() => { queued = false; place(); placeKeypad(); placeDeskSign(); });
 }
 window.addEventListener('resize', schedule);
 window.addEventListener('load', schedule);
