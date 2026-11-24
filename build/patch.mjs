@@ -91,6 +91,8 @@ const patches = [
   ['`Secure upload — JPG, PNG, PDF, SVG, DXF, STL, or 3MF`', '`Artwork and model files`'],
   ['`Secure private upload is awaiting Supabase Storage configuration. Do not send confidential files here yet.`',
    '`Online upload is not available yet. After you send this request, reply to our email with your JPG, PNG, PDF, SVG, DXF, STL, or 3MF files attached.`'],
+  // AI Clarity Lounge: short button text.
+  ['cta:`See Human-Centered AI Services`', 'cta:`See AI Services`'],
   // Owner's taglines (desk signs and suite pages).
   ['tagline:`Beauty, fragrance, self-care, and personalized design.`', 'tagline:`Beauty Crafted to Captivate.`'],
   ['tagline:`Where Beauty Takes Shape Through Dimensional Art`', 'tagline:`Where Bold Design and Beauty Fuse.`'],
