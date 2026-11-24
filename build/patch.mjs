@@ -32,6 +32,10 @@ const patches = [
   // Lounges: Previous and Next are enough; no Surprise Me button.
   ['(0,i.jsx)(`button`,{onClick:q,children:`Surprise Me`}),', ''],
 
+  // Lounges: arrow-only Previous / Next (labels kept for screen readers).
+  ['(0,i.jsx)(`button`,{onClick:()=>F(e=>(e-1+W.length)%W.length),children:`← Previous`})', '(0,i.jsx)(`button`,{className:`arrow-btn`,"aria-label":`Previous card`,title:`Previous`,onClick:()=>F(e=>(e-1+W.length)%W.length),children:`←`})'],
+  ['(0,i.jsx)(`button`,{onClick:()=>F(e=>(e+1)%W.length),children:`Next →`})', '(0,i.jsx)(`button`,{className:`arrow-btn`,"aria-label":`Next card`,title:`Next`,onClick:()=>F(e=>(e+1)%W.length),children:`→`})'],
+
   // Lounges: extra tip cards (build/lounge-guides.js) so every topic has at least three.
   ['W=A?l[A].cards.filter', 'W=A?l[A].cards.concat(window.ccsExtraCards&&window.ccsExtraCards[A]||[]).filter'],
   ['D(`I couldn’t quite place that—try the directory below or mention what kind of business you need.`)',

@@ -143,6 +143,15 @@ const building = `
 .reception-scene .return-reception{font-size:.8rem!important;padding:.45rem 1rem!important;width:auto!important;min-height:0!important;margin:.3rem 0 0 auto}
 .reception-scene .lounge-controls span{color:#fff3e6!important;font-size:.85rem!important;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.5)}
 
+.reception-scene .lounge-controls button.arrow-btn{width:2.6rem;height:2.6rem;padding:0!important;display:grid;place-items:center;font-size:1.25rem!important;line-height:1;border-radius:50%}
+.reception-scene .lounge-controls{gap:1rem!important}
+
+
+/* CCS seal glows until the real logo is ready (owner, Nov 24) */
+.brand-seal,.building-name>span{color:#fbe7d3!important;border-color:#e2b28c!important;text-shadow:0 0 6px rgba(240,190,140,.9),0 0 14px rgba(214,150,105,.6);box-shadow:0 0 10px rgba(224,168,120,.55),inset 0 0 8px rgba(224,168,120,.35);animation:sealGlow 3.2s ease-in-out infinite}
+@keyframes sealGlow{0%,100%{box-shadow:0 0 8px rgba(224,168,120,.45),inset 0 0 6px rgba(224,168,120,.3)}50%{box-shadow:0 0 18px rgba(236,185,140,.85),inset 0 0 10px rgba(236,185,140,.45)}}
+@media(prefers-reduced-motion:reduce){.brand-seal,.building-name>span{animation:none}}
+
 /* Lounge cards: the button opens the card's own ritual or explainer (build/lounge.js) */
 .card-guide{margin-top:.9rem;padding:1rem 1.1rem;border-left:2px solid var(--suite-accent);background:rgba(0,0,0,.38);animation:guideIn .3s ease both}
 @keyframes guideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
