@@ -52,7 +52,8 @@ new MutationObserver(() => {
 // ---------- Card buttons open the card's own ritual or explainer ----------
 // The button first shows the guide on the card (build/lounge-guides.js); the
 // guide's own button then continues to the original destination.
-import { GUIDES } from './lounge-guides.js';
+import { GUIDES, EXTRA_CARDS } from './lounge-guides.js';
+window.ccsExtraCards = EXTRA_CARDS;
 
 let passThrough = false;
 const esc = (t) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -77,6 +78,8 @@ window.addEventListener('click', (e) => {
     return;
   }
   if (e.target.closest('[data-guide-next]')) {
+    const g = GUIDES[card.querySelector('h2')?.textContent.trim()];
+    window.ccsLoungeGo = g && g.to || null;   // which page the button opens
     passThrough = true;
     try { ctaBtn?.click(); } finally { passThrough = false; }
     return;

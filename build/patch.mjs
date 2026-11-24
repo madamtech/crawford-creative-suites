@@ -26,7 +26,11 @@ const patches = [
   ['(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),',
    '(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),(0,i.jsx)(`button`,{type:`button`,className:`concierge-voice`,onClick:()=>{x(window.ccsVoice.setOn(!0)),window.ccsVoice.greet()},children:b?`🔊 Hear the greeting again`:`🔊 Hear the concierge`}),'],
   ['D({217:`', 'D(window.ccsVoice.say({217:`'],
-  ['}[r]),window.setTimeout', '}[r])),window.setTimeout'],
+  // The concierge finishes her answer before the visitor is taken to the elevator.
+  ['}[r]),window.setTimeout(()=>V(r),700)', '}[r])),window.ccsVoice.afterSpeech(()=>V(r),700)'],
+
+  // Lounges: extra tip cards (build/lounge-guides.js) so every topic has at least three.
+  ['W=A?l[A].cards.filter', 'W=A?l[A].cards.concat(window.ccsExtraCards&&window.ccsExtraCards[A]||[]).filter'],
   ['D(`I couldn’t quite place that—try the directory below or mention what kind of business you need.`)',
    'D(window.ccsVoice.say(`I couldn’t quite place that. Try the directory, or tell me what kind of business you need.`))'],
 
@@ -39,7 +43,7 @@ const patches = [
   ['n===`217`&&(0,i.jsxs)(`button`,{onClick:()=>k(`services`),children:[`Browse products & pricing `,(0,i.jsx)(`span`,{children:`→`})]})',
    'n===`217`&&(0,i.jsxs)(i.Fragment,{children:[(0,i.jsxs)(`button`,{onClick:()=>k(`services`),children:[`Browse products & pricing `,(0,i.jsx)(`span`,{children:`→`})]}),(0,i.jsxs)(`button`,{onClick:()=>U(`powder`),children:[`Step into The Powder Room `,(0,i.jsx)(`span`,{children:`→`})]})]})'],
   ['J=()=>{A===`maker`?(j(null),k(`project`)):(j(null),k(`ai`))}',
-   'J=()=>{A===`maker`?(j(null),k(`project`)):A===`powder`?(j(null),k(`services`)):(j(null),k(`ai`))}'],
+   'J=()=>{let t=window.ccsLoungeGo||(A===`maker`?`services`:A===`powder`?`services`:`ai`);window.ccsLoungeGo=null,j(null),k(t)}'],
 
   // Lounges: a spoken welcome as the visitor walks into the room.
   ['U=e=>{j(e),', 'U=e=>{window.ccsVoice.lounge(e),j(e),'],

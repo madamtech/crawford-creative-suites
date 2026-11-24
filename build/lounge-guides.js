@@ -118,6 +118,7 @@ export const GUIDES = {
       'After approval and payment or deposit, the piece is printed or engraved, finished, and inspected.',
       'It ships to you once the balance is paid.',
     ],
+    to: 'project',
     next: 'Start my custom project',
   },
   'What Makes Dimensional Art Different?': {
@@ -128,7 +129,8 @@ export const GUIDES = {
       'Multicolor pieces that combine several materials or colors in one build.',
       'Engraved or cut details on wood, acrylic, and other materials.',
     ],
-    next: 'Explore dimensional art',
+    to: 'services',
+    next: 'See products & pricing',
   },
   'PLA Product Care': {
     title: 'Caring for PLA pieces',
@@ -138,7 +140,8 @@ export const GUIDES = {
       'For smudges, use a slightly damp cloth and dry right away.',
       'Avoid harsh cleaners and solvents.',
     ],
-    next: 'Start a project',
+    to: 'services',
+    next: 'See products & pricing',
   },
   'PLA or PETG?': {
     title: 'Help choosing a filament',
@@ -149,7 +152,8 @@ export const GUIDES = {
       ['Flexible (TPU)', 'Rubber-like and bendable. Used for bumpers, grips, and straps. Ask whether your piece is a fit.'],
     ],
     note: 'Not sure? Describe where the piece will live and how it will be used, and Tanika will recommend the material. 3D-printed pieces are not recommended for food or drink contact.',
-    next: 'Start my project',
+    to: 'services',
+    next: 'See products & pricing',
   },
   'How a Lithophane Works': {
     title: 'Planning a lithophane lamp',
@@ -159,6 +163,7 @@ export const GUIDES = {
       'Add optional text, such as a name or date.',
       'The image only shows clearly when light shines through, so lamps include a light source.',
     ],
+    to: 'project',
     next: 'Plan a lithophane lamp',
   },
   'Why Photo Quality Matters': {
@@ -170,6 +175,7 @@ export const GUIDES = {
       'High contrast helps; very dark or washed-out photos may not translate well.',
       'Send several options if you are not sure.',
     ],
+    to: 'project',
     next: 'Start my project',
   },
   'NFC-Enabled Creations': {
@@ -180,7 +186,8 @@ export const GUIDES = {
       'The link can usually be changed later without changing the piece.',
       'Most modern phones read NFC without an app.',
     ],
-    next: 'Explore NFC options',
+    to: 'services',
+    next: 'See products & pricing',
   },
   'STL Versus 3MF': {
     title: 'Which file you need',
@@ -190,6 +197,7 @@ export const GUIDES = {
       'Printing multicolor at home? Ask for 3MF.',
       'Sending to a print service or another program? STL works almost everywhere.',
     ],
+    to: 'project',
     next: 'Request a digital design file',
   },
   'Why Multicolor Printing Can Cost More': {
@@ -200,6 +208,7 @@ export const GUIDES = {
       'Larger pieces and finer detail add time too.',
       'Fewer colors, or colors in separate layers, can lower the cost.',
     ],
+    to: 'project',
     next: 'Configure my project',
   },
   'School and Organization Creations': {
@@ -210,6 +219,7 @@ export const GUIDES = {
       'Estimate quantities and your deadline; larger orders need more lead time.',
       'A sample can be approved before the full run.',
     ],
+    to: 'project',
     next: 'Plan a school or organization project',
   },
   'File-Only Design Service': {
@@ -220,6 +230,7 @@ export const GUIDES = {
       'You receive the final digital file (such as STL, 3MF, or SVG) to make yourself.',
       'No physical piece is shipped.',
     ],
+    to: 'project',
     next: 'Request a file-only quote',
   },
   'Caring for Dimensional Art': {
@@ -231,7 +242,8 @@ export const GUIDES = {
       'Lamps: use the included or recommended light source and keep cords untangled.',
       'Engraved wood: keep dry; acrylic: wipe with a soft cloth to avoid scratches.',
     ],
-    next: 'Start a project',
+    to: 'services',
+    next: 'See products & pricing',
   },
   'Laser Engraving or Laser Cutting?': {
     title: 'Engraving or cutting',
@@ -240,7 +252,8 @@ export const GUIDES = {
       'Cutting goes all the way through to make shapes, letters, layered signs, and ornaments.',
       'Many pieces combine both: cut a shape, then engrave details on it.',
     ],
-    next: 'Explore laser services',
+    to: 'services',
+    next: 'See laser products & pricing',
   },
   'Preparing Artwork for Laser Work': {
     title: 'Getting artwork ready',
@@ -250,6 +263,7 @@ export const GUIDES = {
       'Keep very thin lines and tiny text to a minimum; they may not hold up.',
       'Tell us the finished size so the detail can be checked.',
     ],
+    to: 'project',
     next: 'Start my project',
   },
 
@@ -376,4 +390,312 @@ export const GUIDES = {
     ],
     next: 'Request an AI readiness conversation',
   },
+
+  // ---------- Added Nov 23, 2026: every topic has at least three cards ----------
+  // Madam Allure: at-home self-care built on herbs, natural oils, infused essential oils, and raw butters.
+  'Raw Butters for Dry Skin': {
+    title: 'A raw-butter softening ritual',
+    steps: [
+      'After a warm shower, pat skin so it is still slightly damp.',
+      'Scoop a small amount of butter and warm it between your palms until it melts.',
+      'Press and smooth it into dry spots: elbows, knees, heels, and hands.',
+      'For extra-dry hands or feet, apply at night and slip on cotton gloves or socks.',
+      'A little goes a long way; add more only where skin still feels tight.',
+    ],
+    next: 'See body butters',
+  },
+  'An Herbal Bath Soak': {
+    title: 'Steep a bath like a cup of tea',
+    steps: [
+      'Run a comfortably warm bath.',
+      'Place the herbal bath blend in a muslin bag or tea strainer so petals and leaves stay contained.',
+      'Let it steep in the water for a few minutes, gently squeezing the bag.',
+      'Soak 15 to 20 minutes and breathe slowly.',
+      'Rinse, pat dry, and seal in moisture with a natural body oil.',
+      'Stop using it if any irritation occurs.',
+    ],
+    next: 'See bath rituals',
+  },
+  'An Oil-Infused Moisture Bath': {
+    title: 'A bath for very dry skin',
+    steps: [
+      'Fill the tub with comfortably warm water, not hot.',
+      'Add about a tablespoon of natural body oil and swirl it in.',
+      'Soak 10 to 15 minutes so the oil can soften skin.',
+      'Step out carefully: oil makes the tub slippery.',
+      'Pat dry gently instead of rubbing, so a light layer of oil stays on the skin.',
+    ],
+    next: 'See bath rituals',
+  },
+  'A Warm Herbal Oil Scalp Treatment': {
+    title: 'A pre-wash herbal oil treatment',
+    steps: [
+      'Warm a little herb-infused hair oil by setting the bottle in a cup of warm water. Test it on your wrist first.',
+      'Part hair into sections and apply the oil along the scalp.',
+      'Massage with your fingertips for 3 to 5 minutes to relax the scalp.',
+      'Smooth what is left over the ends, then cover with a shower cap for 20 to 30 minutes.',
+      'Shampoo and condition as usual.',
+    ],
+    next: 'See hair care',
+  },
+  'Essential Oils Need a Carrier': {
+    title: 'Using essential oils safely',
+    steps: [
+      'Essential oils are concentrated, so they are always blended into a carrier such as a natural oil or butter before touching skin.',
+      'Patch-test a new blend on the inner arm and wait 24 hours.',
+      'Keep them away from the eyes, and wash your hands after applying.',
+      'Some citrus essential oils can make skin more sensitive to the sun; apply them where clothing will cover.',
+      'Store blends in dark bottles, away from heat and light.',
+    ],
+    next: 'See fragrance options',
+  },
+  'How Herbs Are Infused Into Oil': {
+    title: 'From herb to oil',
+    steps: [
+      'Dried herbs chosen for hair and skin are covered with a natural oil.',
+      'They steep slowly with gentle warmth, sometimes for weeks.',
+      'The oil is strained, leaving the herbs behind and keeping what they release.',
+      'The infused oil becomes the base for hair oils, body oils, butters, and balms.',
+      'Keep infused products cool and out of direct sun so they stay fresh.',
+    ],
+    next: 'See products made with herbal oils',
+  },
+  'A Five-Minute Beard Routine': {
+    title: 'A quick daily beard routine',
+    steps: [
+      'Rinse or wash the beard and pat it almost dry.',
+      'Warm 3 to 5 drops of beard oil in your palms.',
+      'Work it into the skin first, then through the beard.',
+      'Comb or brush from the roots down.',
+      'For longer beards, finish with a little butter-based beard balm to soften and shape.',
+    ],
+    next: 'See grooming',
+  },
+  'Soothe the Skin Under Your Beard': {
+    title: 'Care for the skin, not just the hair',
+    steps: [
+      'Cleanse gently a few times a week, lathering the soap in your hands first.',
+      'Rinse thoroughly so nothing is left on the skin.',
+      'Pat dry, then massage an herb-infused beard oil into the skin underneath.',
+      'Brush daily to lift flakes and spread the oil.',
+      'See a professional if itching or irritation continues.',
+    ],
+    next: 'See grooming',
+  },
+
+  // Allure Fusions
+  'What to Send With Your Request': {
+    title: 'A request checklist',
+    steps: [
+      'What the piece is and who it is for.',
+      'Size or measurements, if it needs to fit something.',
+      'Colors, names, dates, or text to include, spelled exactly.',
+      'Photos, logos, or artwork as original files.',
+      'Your deadline, and whether it will be a gift, display piece, or used every day.',
+    ],
+    to: 'project',
+    next: 'Start my project',
+  },
+  'How Timing Works for Custom Pieces': {
+    title: 'What affects your timeline',
+    steps: [
+      'Design time: original designs take longer than catalog items.',
+      'Approval: the piece is made after you approve the preview.',
+      'Print or engraving time: larger, multicolor, and detailed pieces take longer.',
+      'Finishing and inspection before packing.',
+      'Shipping time is added after the balance is paid. Your quote confirms the timeline.',
+    ],
+    to: 'services',
+    next: 'See products & pricing',
+  },
+  'Caring for Engraved Slate and Wood': {
+    title: 'Keep engraved pieces looking new',
+    steps: [
+      'Slate coasters: wipe with a damp cloth and dry; avoid soaking or the dishwasher.',
+      'Wood signs and ornaments: dust with a soft dry cloth; keep away from water and heat.',
+      'Keep wood out of strong direct sun to protect the color.',
+      'Display away from humid spots, like over a kettle.',
+    ],
+    to: 'services',
+    next: 'See products & pricing',
+  },
+  'Choosing Colors That Print Well': {
+    title: 'Picking colors for a printed piece',
+    steps: [
+      'High contrast reads best: light on dark or dark on light.',
+      'Raised names and lettering stand out when they differ in color from the base.',
+      'Very thin details in a light color can be hard to see.',
+      'School and brand colors are matched as closely as the available filaments allow.',
+      'Ask for a preview so you can approve colors before printing.',
+    ],
+    to: 'services',
+    next: 'See products & pricing',
+  },
+  'Indoor or Outdoor?': {
+    title: 'Choosing for where it will live',
+    steps: [
+      'Indoors, away from heat: PLA gives the crispest detail and widest color choice.',
+      'Near sunny windows, in cars, or outside: ask about PETG, which handles moisture and moderate heat better.',
+      'Items handled every day: a tougher material helps prevent snapping.',
+      'Tell us where the piece will live, and the material will be recommended for it.',
+    ],
+    to: 'services',
+    next: 'See products & pricing',
+  },
+  'Choosing a Lithophane Shape': {
+    title: 'Which lithophane style fits',
+    steps: [
+      'Flat panel: simple and classic, great on a shelf with a light behind it.',
+      'Curved panel: a soft wraparound look that shows well from several angles.',
+      'Cylinder lamp: the photo wraps all the way around a lamp.',
+      'Multi-photo lamp: several photos around one lamp for families and memorials.',
+    ],
+    to: 'services',
+    next: 'See lithophane lamps & pricing',
+  },
+  'Files for Laser Cutting': {
+    title: 'Files that work for laser work',
+    steps: [
+      'SVG, PDF, AI, or EPS vector files give the cleanest cuts and lines.',
+      'Convert text to outlines, or send the font name.',
+      'Photos for engraving: send the original, highest-resolution file.',
+      'Not sure what you have? Send it anyway and it will be checked.',
+    ],
+    to: 'project',
+    next: 'Start my project',
+  },
+  'Why Size Changes the Price': {
+    title: 'How size affects a 3D-printed piece',
+    steps: [
+      'Bigger pieces use more material.',
+      'Print time grows quickly with height and width.',
+      'Very large pieces may be printed in parts and assembled.',
+      'A slightly smaller size can lower the cost without losing the look.',
+    ],
+    to: 'services',
+    next: 'See products & pricing',
+  },
+  'What Are Layer Lines?': {
+    title: 'Understanding the 3D-printed look',
+    steps: [
+      '3D printers build a piece one thin layer at a time.',
+      'Fine lines on the surface are normal and part of the handmade look.',
+      'Finer layers look smoother but take longer to print.',
+      'Some finishes and angles hide layer lines better; this is considered in the design.',
+    ],
+    to: 'services',
+    next: 'See products & pricing',
+  },
+  'Engraving on Different Materials': {
+    title: 'How engraving looks on each surface',
+    steps: [
+      'Wood: warm, darker engraving with the natural grain showing through.',
+      'Slate: a light gray engraving with strong contrast on the dark stone.',
+      'Each natural piece is a little different, so results vary slightly.',
+      'Ask about other materials; each is tested before your piece is made.',
+    ],
+    to: 'services',
+    next: 'See laser products & pricing',
+  },
+
+  // AI AuthoriTech
+  'Map a Workflow in Ten Minutes': {
+    title: 'A quick workflow map',
+    steps: [
+      'Pick one process with a clear start and finish, such as a new customer inquiry.',
+      'List every step in order on sticky notes or in a document.',
+      'Mark who does each step and the tool they use.',
+      'Circle the steps that are repeated, retyped, or waited on.',
+      'Those circles are your first automation candidates.',
+    ],
+    next: 'See automation services',
+  },
+  'Automate Reminders and Follow-Ups': {
+    title: 'Simple follow-ups that run themselves',
+    steps: [
+      'Appointment reminders a day before.',
+      'A thank-you and next-steps email after a purchase or meeting.',
+      'A gentle nudge when a form or invoice is not completed.',
+      'Start with one, measure replies, then add more.',
+    ],
+    next: 'See automation services',
+  },
+  'What an AI Agent Needs to Work Well': {
+    title: 'Ingredients for a useful agent',
+    steps: [
+      'A clear job with a defined finish line.',
+      'Accurate, current information to work from.',
+      'Access only to the tools it truly needs.',
+      'Limits on what it can do without approval.',
+      'A person who reviews its work and owns the results.',
+    ],
+    next: 'See AI agent services',
+  },
+  'Keep a Human in the Loop': {
+    title: 'Where people should stay involved',
+    steps: [
+      'Anything that sends money, signs, or commits your business.',
+      'Messages to customers about sensitive topics.',
+      'Decisions about people, like hiring or eligibility.',
+      'Let the agent draft, and have a person approve and send.',
+    ],
+    next: 'See AI agent services',
+  },
+  'Write a One-Page AI Use Policy': {
+    title: 'What to put on one page',
+    steps: [
+      'Which AI tools are approved for work.',
+      'What information must never be entered.',
+      'When AI output must be reviewed by a person.',
+      'How to label or disclose AI-assisted work.',
+      'Who to ask with questions.',
+    ],
+    next: 'See responsible AI services',
+  },
+  'Check AI Output Before You Use It': {
+    title: 'A quick review checklist',
+    steps: [
+      'Facts and numbers: verify against a trusted source.',
+      'Names, dates, and quotes: confirm they are real.',
+      'Tone: does it sound like your business?',
+      'Fairness: does it treat all customers and people equally?',
+      'Privacy: does it include anything that should not be shared?',
+    ],
+    next: 'See responsible AI services',
+  },
+};
+
+// New cards, added to each lounge so every topic has at least three
+// (build/patch.mjs appends window.ccsExtraCards to the lounge's own cards).
+export const EXTRA_CARDS = {
+  powder: [
+    { category: 'Skin & Body', title: 'Raw Butters for Dry Skin', body: 'Natural raw butters are rich and protective, perfect for skin that feels tight or rough. Warmed in your hands, they melt in and leave skin soft.', related: 'Body butters made with natural raw butters', cta: 'Show me the ritual' },
+    { category: 'Bath Rituals', title: 'An Herbal Bath Soak', body: 'Herbs chosen for the skin can turn a plain bath into a calming, fragrant soak. Steep them like tea so the water does the work.', related: 'Herbal bath blends', cta: 'Show me the ritual' },
+    { category: 'Bath Rituals', title: 'An Oil-Infused Moisture Bath', body: 'A spoonful of natural oil in warm bath water helps soften very dry skin while you relax.', related: 'Natural body oils', cta: 'Show me the ritual' },
+    { category: 'Hair & Scalp', title: 'A Warm Herbal Oil Scalp Treatment', body: 'Herb-infused oils massaged into the scalp before wash day help hair feel soft and the scalp feel cared for.', related: 'Herb-infused hair oil', cta: 'Show me how' },
+    { category: 'Fragrance', title: 'Essential Oils Need a Carrier', body: 'Essential oils bring natural scent and character to a blend, but they are concentrated. They are always paired with a carrier oil or butter.', related: 'Products with infused essential oils', cta: 'Show me how' },
+    { category: 'Ingredient Spotlights', title: 'How Herbs Are Infused Into Oil', body: 'Many Madam Allure products start as herbs slowly steeped in natural oils, capturing what the herbs offer for hair and skin.', related: 'Herbal oils, butters, and balms', cta: 'Learn how' },
+    { category: 'Beard & Grooming', title: 'A Five-Minute Beard Routine', body: 'A healthy-looking beard comes from a short, steady routine: clean, oil, comb, and shape. It takes about five minutes.', related: 'Beard oil and beard balm', cta: 'Show me the routine' },
+    { category: 'Beard & Grooming', title: 'Soothe the Skin Under Your Beard', body: 'Itch and flakes often start with the skin underneath, not the hair. Gentle cleansing and an herb-infused oil help keep that skin comfortable.', related: 'Herb-infused beard oil', cta: 'Show me how' },
+  ],
+  maker: [
+    { category: 'Design Process', title: 'What to Send With Your Request', body: 'A complete request gets an accurate quote faster. A few details up front save back-and-forth later.', cta: 'See the checklist' },
+    { category: 'Design Process', title: 'How Timing Works for Custom Pieces', body: 'Every custom piece moves through design, approval, making, and finishing. Knowing the steps helps you plan around a gift date or event.', cta: 'See what affects timing' },
+    { category: 'Product Care', title: 'Caring for Engraved Slate and Wood', body: 'Engraved slate coasters and wood pieces are made to last with a little simple care.', cta: 'See care tips' },
+    { category: 'Materials', title: 'Choosing Colors That Print Well', body: 'Color choices change how readable and striking a printed piece is. Contrast matters as much as the colors themselves.', cta: 'See color tips' },
+    { category: 'Materials', title: 'Indoor or Outdoor?', body: 'Where a piece will live is the biggest clue to the right material.', cta: 'Help me choose' },
+    { category: 'Lithophanes', title: 'Choosing a Lithophane Shape', body: 'The same photo can become a flat panel, a curved panel, or a glowing lamp. Each shape suits a different space.', cta: 'Compare shapes' },
+    { category: 'Digital Files', title: 'Files for Laser Cutting', body: 'Clean files make clean cuts. Knowing what to send makes laser projects faster and more accurate.', cta: 'See file tips' },
+    { category: '3D Printing', title: 'Why Size Changes the Price', body: 'Two pieces with the same design can be priced differently because of size alone.', cta: 'Learn why' },
+    { category: '3D Printing', title: 'What Are Layer Lines?', body: 'Fine horizontal lines are a natural part of 3D printing. Here is what they are and how they are kept to a minimum.', cta: 'Learn more' },
+    { category: 'Laser Design', title: 'Engraving on Different Materials', body: 'The same design looks different on wood and on slate. Each surface has its own character.', cta: 'Compare materials' },
+  ],
+  clarity: [
+    { category: 'Automation', title: 'Map a Workflow in Ten Minutes', body: 'You do not need software to find automation opportunities. A quick map of one process shows where time is lost.', cta: 'Show me how' },
+    { category: 'Automation', title: 'Automate Reminders and Follow-Ups', body: 'Reminders and follow-ups are some of the easiest, highest-value tasks to automate.', cta: 'See examples' },
+    { category: 'AI Agents', title: 'What an AI Agent Needs to Work Well', body: 'An agent is only as good as its instructions, information, and limits.', cta: 'See the essentials' },
+    { category: 'AI Agents', title: 'Keep a Human in the Loop', body: 'The safest agents draft and recommend while people approve what matters.', cta: 'See where' },
+    { category: 'Responsible AI', title: 'Write a One-Page AI Use Policy', body: 'A short, clear policy helps your whole team use AI the same safe way.', cta: 'See what to include' },
+    { category: 'Responsible AI', title: 'Check AI Output Before You Use It', body: 'A one-minute review catches most AI mistakes before they reach a customer.', cta: 'See the checklist' },
+  ],
 };

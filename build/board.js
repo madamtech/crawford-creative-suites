@@ -68,6 +68,7 @@ function placeDeskSign() {
   if (!sign || !img || !d) return;
   if (window.innerWidth <= 560) {
     ['left', 'top', 'width'].forEach((p) => sign.style.removeProperty(p));
+    sign.classList.add('pinned');
     return;
   }
   const s = scene.getBoundingClientRect();
@@ -78,6 +79,7 @@ function placeDeskSign() {
   sign.style.setProperty('left', `${ox + d.x * k}px`, 'important');
   sign.style.setProperty('top', `${oy + d.y * k}px`, 'important');
   sign.style.setProperty('width', `${d.w * k}px`, 'important');
+  sign.classList.add('pinned');      // shown only once it sits on the desk
 }
 
 let queued = false;

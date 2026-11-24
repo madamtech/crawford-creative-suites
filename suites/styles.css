@@ -355,6 +355,27 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .reception-scene .ai-grid{display:block!important;overflow-y:auto!important}
 .reception-scene .ai-grid>.guided-form{overflow:visible!important;height:auto!important;max-height:none!important;border-top:1px solid rgba(255,255,255,.18);margin-top:.5rem;padding-top:1.1rem}
 
+/* Readability (owner, Nov 23): panels use comfortable text sizes and less oversized headings. */
+@media (min-width:851px){.reception-scene .business-showroom.business-showroom{width:min(640px,46vw)!important}}
+.reception-scene .business-showroom header h2{font-size:clamp(1.6rem,2.3vw,2.2rem)!important}
+.reception-scene .business-showroom header p{font-size:.98rem!important;line-height:1.5!important}
+.reception-scene .business-showroom header small{font-size:.72rem!important}
+.reception-scene .business-showroom article h3,.reception-scene .business-showroom .service-strip h3{font-size:1.15rem!important;line-height:1.25!important}
+.reception-scene .business-showroom article p,.reception-scene .business-showroom .service-strip p,.reception-scene .business-showroom .policy-notice p,.reception-scene .business-showroom label,.reception-scene .business-showroom legend{font-size:.95rem!important;line-height:1.55!important}
+.reception-scene .business-showroom article strong{font-size:1rem!important}
+.reception-scene .business-showroom article span{font-size:.8rem}
+.reception-scene .business-showroom article{padding:1rem!important}
+.reception-scene .education-card h2{font-size:clamp(1.6rem,2.4vw,2.3rem)!important;line-height:1.1!important}
+.reception-scene .education-card>p{font-size:1rem!important;line-height:1.65!important}
+.reception-scene .education-card .related{font-size:.9rem!important}
+.reception-scene .education-card>small{font-size:.72rem!important}
+.reception-scene .category-tabs button{font-size:.82rem!important;padding:.45rem .7rem!important}
+.reception-scene .lounge-controls,.reception-scene .lounge-controls button{font-size:.85rem!important}
+.reception-scene .lounge-notice{font-size:.82rem!important;line-height:1.5!important}
+.card-guide ol{font-size:1rem!important}
+.card-guide dl{font-size:.95rem!important}
+.card-guide h3{font-size:1.4rem!important}
+
 /* Lounge cards: the button opens the card's own ritual or explainer (build/lounge.js) */
 .card-guide{margin-top:.9rem;padding:1rem 1.1rem;border-left:2px solid var(--suite-accent);background:rgba(0,0,0,.38);animation:guideIn .3s ease both}
 @keyframes guideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -379,6 +400,8 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .upgraded .elevator-panel.on-wall button:disabled{opacity:1!important;color:#fff3dd;border-color:#f0cf9a!important;box-shadow:0 0 10px rgba(240,200,140,.9)}
 
 /* Suites: name and tagline on the reception desk front; floor/suite plaque low */
+.suite-sign:not(.pinned){opacity:0!important}
+.suite-sign.pinned{transition:opacity .35s ease}
 .suite-sign{left:var(--desk-x,50%)!important;top:var(--desk-y,57%)!important;transform:translate(-50%,-50%);width:var(--sign-w,34%);max-width:none!important;text-align:center;pointer-events:none;z-index:2}
 .suite-sign h1{font-size:clamp(1.7rem,3.1vw,3.2rem)!important;margin:0 0 .45rem!important;letter-spacing:.02em!important;line-height:1!important;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.6),0 0 18px rgba(0,0,0,.55),0 0 26px color-mix(in srgb,var(--suite-accent) 45%,transparent)}
 .suite-sign p{font:italic 600 clamp(.78rem,1.05vw,1.05rem)/1.25 "Crimson Pro",Georgia,serif!important;letter-spacing:.03em!important;text-transform:none!important;margin:0!important;color:color-mix(in srgb,var(--suite-accent) 55%,#fff);text-shadow:0 1px 8px rgba(0,0,0,.9)}

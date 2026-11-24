@@ -127,6 +127,19 @@ window.ccsVoice = {
     if (key) play(key, text, { interrupt: true });
     return text;
   },
+  // Run `fn` once the current spoken line (and anything queued) has finished,
+  // plus a short pause. With sound off or nothing playing, just wait `pause` ms.
+  afterSpeech(fn, pause = 700) {
+    const busy = () => on && (current || queue.length);
+    if (!busy()) { setTimeout(fn, pause); return; }
+    const started = Date.now();
+    const tick = setInterval(() => {
+      if (!busy() || Date.now() - started > 30000) {
+        clearInterval(tick);
+        setTimeout(fn, 500);
+      }
+    }, 150);
+  },
   // Elevator: announce the floor as the car arrives, before the doors open.
   approach(floor) {
     greeted = true;
