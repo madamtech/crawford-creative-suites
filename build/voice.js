@@ -5,8 +5,10 @@
 // lines and file names. A line with no file yet stays silent: the device's
 // robotic voice is not used (set USE_DEVICE_VOICE to true to allow it).
 //
-// Sound is off until the visitor turns it on (browsers block sound until the
-// visitor taps something). The choice is remembered on their device.
+// Sound is on unless the visitor mutes it (the Sound button in the header); the
+// choice is remembered on their device. The concierge greets visitors as they
+// arrive in the lobby. If the browser blocks sound until the visitor interacts,
+// she greets them on their first tap or key press instead.
 
 const USE_DEVICE_VOICE = false;
 const AUDIO = '../audio/';
@@ -37,7 +39,7 @@ const REPLY_KEYS = [
 const FLOOR_SUITE = { 2: '217', 3: '305', 4: '412' };
 
 function stored() {
-  try { return localStorage.getItem(KEY) === 'on'; } catch { return false; }
+  try { return localStorage.getItem(KEY) !== 'off'; } catch { return true; }
 }
 let on = stored();
 let greeted = false;
@@ -45,6 +47,7 @@ let greeted = false;
 // ---------- recorded clips ----------
 let current = null;
 const queue = [];
+let blocked = false;   // the browser refused sound until the visitor interacts
 // Which clips exist (audio/clips.json, written by the build), so missing
 // lines are skipped without asking the server for them.
 let clips = null;
@@ -60,7 +63,16 @@ function playNext() {
   const done = () => { if (current === a) { current = null; playNext(); } };
   a.onended = done;
   a.onerror = () => { current = null; deviceSpeak(text); playNext(); };   // no file yet
-  a.play().catch(done);
+  a.play().catch((err) => {
+    if (err && err.name === 'NotAllowedError') {
+      // The browser wants a tap first: keep this line for the first tap.
+      current = null;
+      queue.unshift({ key, text });
+      blocked = true;
+      return;
+    }
+    done();
+  });
 }
 function play(key, text, { interrupt = false } = {}) {
   if (!on) return;
@@ -169,17 +181,23 @@ window.ccsVoice = {
   },
 };
 
-// Returning visitors who turned sound on hear the concierge on their first tap.
+// The concierge greets visitors as soon as they arrive in the lobby.
+function greetOnArrival() {
+  if (on && !greeted && document.querySelector('.lobby-scene')) window.ccsVoice.greet();
+}
+// If the browser blocked sound, the first tap or key press plays what was waiting.
 function firstTap() {
   window.removeEventListener('pointerdown', firstTap, true);
   window.removeEventListener('keydown', firstTap, true);
   setTimeout(() => {
     syncMusic();
-    if (on && !greeted && document.querySelector('.lobby-scene')) window.ccsVoice.greet();
+    if (blocked) { blocked = false; playNext(); }
+    else greetOnArrival();
   }, 150);
 }
 window.addEventListener('pointerdown', firstTap, true);
 window.addEventListener('keydown', firstTap, true);
+setTimeout(() => { greetOnArrival(); syncMusic(); }, 900);
 
 // Music follows the visitor: plays in the lobby, fades out elsewhere.
 let queued = false;

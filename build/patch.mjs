@@ -22,9 +22,9 @@ const patches = [
   ['t(`traveling`);', 't(`traveling`),window.ccsVoice.approach(e);'],
   ['z(),y(!1)', 'z(),window.ccsVoice.arrive(e),y(!1)'],
 
-  // Concierge speaks: a "Hear the concierge" button, and spoken replies.
+  // Concierge speaks on her own when the visitor arrives (build/voice.js), and replies aloud.
   ['(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),',
-   '(0,i.jsx)(`p`,{children:`Tell me what you need, or choose a suite on the board.`}),(0,i.jsx)(`button`,{type:`button`,className:`concierge-voice`,onClick:()=>{x(window.ccsVoice.setOn(!0)),window.ccsVoice.greet()},children:b?`🔊 Hear the greeting again`:`🔊 Hear the concierge`}),'],
+   '(0,i.jsx)(`p`,{children:`Tell me what you need, or choose a suite on the board.`}),'],
   ['D({217:`', 'D(window.ccsVoice.say({217:`'],
   // FAQ concierge (build/faq.js): answer common questions first, and offer a
   // button to the matching suite instead of whisking the visitor away.
