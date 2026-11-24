@@ -45,9 +45,16 @@ let greeted = false;
 // ---------- recorded clips ----------
 let current = null;
 const queue = [];
+// Which clips exist (audio/clips.json, written by the build), so missing
+// lines are skipped without asking the server for them.
+let clips = null;
+fetch(AUDIO + 'clips.json').then((r) => r.ok ? r.json() : null).then((list) => { if (list) clips = new Set(list); }).catch(() => {});
+const has = (key) => !clips || clips.has(key);
+
 function playNext() {
   if (current || !queue.length) return;
   const { key, text } = queue.shift();
+  if (!has(key)) { deviceSpeak(text); playNext(); return; }
   const a = new Audio(AUDIO + key + '.mp3');
   current = a;
   const done = () => { if (current === a) { current = null; playNext(); } };
@@ -78,7 +85,8 @@ function deviceSpeak(text) {
 }
 
 // ---------- lobby music ----------
-const music = new Audio(AUDIO + 'lobby-music.mp3');
+const music = new Audio();
+fetch(AUDIO + 'clips.json').then((r) => r.ok ? r.json() : null).then((list) => { if (!list || list.includes('lobby-music')) music.src = AUDIO + 'lobby-music.mp3'; else musicOk = false; }).catch(() => { music.src = AUDIO + 'lobby-music.mp3'; });
 music.loop = true;
 music.volume = 0;
 let musicOk = true;

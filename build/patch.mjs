@@ -24,7 +24,7 @@ const patches = [
 
   // Concierge speaks: a "Hear the concierge" button, and spoken replies.
   ['(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),',
-   '(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),(0,i.jsx)(`button`,{type:`button`,className:`concierge-voice`,onClick:()=>{x(window.ccsVoice.setOn(!0)),window.ccsVoice.greet()},children:b?`🔊 Hear the greeting again`:`🔊 Hear the concierge`}),'],
+   '(0,i.jsx)(`p`,{children:`Tell me what you need, or choose a suite on the board.`}),(0,i.jsx)(`button`,{type:`button`,className:`concierge-voice`,onClick:()=>{x(window.ccsVoice.setOn(!0)),window.ccsVoice.greet()},children:b?`🔊 Hear the greeting again`:`🔊 Hear the concierge`}),'],
   ['D({217:`', 'D(window.ccsVoice.say({217:`'],
   // The concierge finishes her answer before the visitor is taken to the elevator.
   ['}[r]),window.setTimeout(()=>V(r),700)', '}[r])),window.ccsVoice.afterSpeech(()=>V(r),700)'],
@@ -35,6 +35,12 @@ const patches = [
   // Lounges: arrow-only Previous / Next (labels kept for screen readers).
   ['(0,i.jsx)(`button`,{onClick:()=>F(e=>(e-1+W.length)%W.length),children:`← Previous`})', '(0,i.jsx)(`button`,{className:`arrow-btn`,"aria-label":`Previous card`,title:`Previous`,onClick:()=>F(e=>(e-1+W.length)%W.length),children:`←`})'],
   ['(0,i.jsx)(`button`,{onClick:()=>F(e=>(e+1)%W.length),children:`Next →`})', '(0,i.jsx)(`button`,{className:`arrow-btn`,"aria-label":`Next card`,title:`Next`,onClick:()=>F(e=>(e+1)%W.length),children:`→`})'],
+
+  // Audit (Nov 24): say the building name once in the lobby, and shorter lounge intros.
+  ['(0,i.jsx)(`span`,{children:`CRAWFORD CREATIVE SUITES DIRECTORY`})', '(0,i.jsx)(`span`,{children:`DIRECTORY`})'],
+  ['welcome:`Welcome to The Powder Room—a quiet place to explore beauty rituals, fragrance, body care, grooming, and the ingredients behind the Madam Allure experience.`', 'welcome:`Self-care rituals and tips, made for the herbs, oils, and butters we love.`'],
+  ['welcome:`Welcome to The Maker’s Lounge—where ideas, images, materials, and technology come together to create something dimensional.`', 'welcome:`Ideas and know-how for custom 3D printing and laser design.`'],
+  ['welcome:`Welcome to The AI Clarity Lounge—a practical space for separating AI facts from hype and discovering where intelligent tools can genuinely support your business.`', 'welcome:`Plain-language AI facts, myths, and first steps for your business.`'],
 
   // Lounges: extra tip cards (build/lounge-guides.js) so every topic has at least three.
   ['W=A?l[A].cards.filter', 'W=A?l[A].cards.concat(window.ccsExtraCards&&window.ccsExtraCards[A]||[]).filter'],

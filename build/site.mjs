@@ -152,6 +152,27 @@ const building = `
 @keyframes sealGlow{0%,100%{box-shadow:0 0 8px rgba(224,168,120,.45),inset 0 0 6px rgba(224,168,120,.3)}50%{box-shadow:0 0 18px rgba(236,185,140,.85),inset 0 0 10px rgba(236,185,140,.45)}}
 @media(prefers-reduced-motion:reduce){.brand-seal,.building-name>span{animation:none}}
 
+/* Audit (Nov 24) */
+/* Header: the CCS seal only; the building name is on the lobby board. */
+.building-name div{display:none!important}
+.building-name>span{display:grid!important}
+/* Lounge category tabs: same translucent glow family as the lounge buttons. */
+.reception-scene .category-tabs button{background:linear-gradient(135deg,color-mix(in srgb,var(--suite-accent) 26%,transparent),color-mix(in srgb,var(--suite-accent) 8%,transparent))!important;border:1px solid color-mix(in srgb,var(--suite-accent) 60%,transparent)!important;color:#fff!important;border-radius:999px;box-shadow:0 0 6px color-mix(in srgb,var(--suite-accent) 35%,transparent);transition:box-shadow .25s ease}
+.reception-scene .category-tabs button[aria-selected=true]{background:linear-gradient(135deg,color-mix(in srgb,var(--suite-accent) 60%,transparent),color-mix(in srgb,var(--suite-accent) 30%,transparent))!important;box-shadow:0 0 12px color-mix(in srgb,var(--suite-accent) 70%,transparent)}
+.reception-scene[data-suite="217"] .category-tabs button{color:#4a2a1a!important;background:linear-gradient(135deg,rgba(236,203,176,.42),rgba(203,150,113,.14))!important;border-color:rgba(203,150,113,.75)!important}
+.reception-scene[data-suite="217"] .category-tabs button[aria-selected=true]{background:linear-gradient(135deg,rgba(236,203,176,.75),rgba(203,150,113,.4))!important}
+@media (max-width:560px){
+  .building-header .header-actions button{font-size:.55rem!important;padding:.45rem .55rem!important}
+  .reception-scene .lounge-body .category-tabs.category-tabs{flex-wrap:nowrap!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.3rem}
+  .reception-scene .category-tabs::-webkit-scrollbar{display:none}
+  .reception-scene .category-tabs button{flex:0 0 auto;white-space:nowrap}
+}
+
+/* Lobby concierge card: see-through glass like the other panels, kept clear of the concierge's face. */
+.concierge-card{background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.03) 45%),rgba(14,13,18,.42)!important;backdrop-filter:blur(14px) saturate(1.15);-webkit-backdrop-filter:blur(14px) saturate(1.15);border:1px solid rgba(255,255,255,.22)!important;box-shadow:0 18px 45px rgba(0,0,0,.35)}
+.concierge-card p{color:rgba(255,255,255,.88)!important}
+@media (min-width:851px){.upgraded .concierge-card,.concierge-card{left:2vw!important;width:min(360px,24vw)!important;min-width:290px}}
+
 /* Lounge cards: the button opens the card's own ritual or explainer (build/lounge.js) */
 .card-guide{margin-top:.9rem;padding:1rem 1.1rem;border-left:2px solid var(--suite-accent);background:rgba(0,0,0,.38);animation:guideIn .3s ease both}
 @keyframes guideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -330,5 +351,8 @@ if (home.includes('chatgpt.site') || home.includes('assets/')) throw new Error('
 writeFileSync(here('../index.html'), home);
 
 // Favicon (same seal as the original, in rose gold).
+// List of recorded clips, so the voice player skips lines that are not recorded yet.
+{ const { readdirSync } = await import('node:fs');
+  writeFileSync(here('../audio/clips.json'), JSON.stringify(readdirSync(here('../audio')).filter((f) => f.endsWith('.mp3')).map((f) => f.slice(0, -4)).sort())); }
 writeFileSync(here('../favicon.svg'), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="9" fill="#100e0d"/><circle cx="32" cy="32" r="21" fill="none" stroke="#c98b93" stroke-width="2"/><text x="32" y="39" font-size="16" text-anchor="middle" fill="#f8f4ec" font-family="serif">CCS</text></svg>`);
 console.log('site built');
