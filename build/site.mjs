@@ -279,7 +279,7 @@ const fullSite = 'https://tanika-creative-ventures.madamallure.chatgpt.site/';
 home = home
   .split(fullSite).join('suites/')
   .replaceAll("url('assets/crawford-exterior.png')", "url('img/crawford-exterior.jpg')")
-  .replaceAll("url('assets/crawford-lobby.png')", "url('img/crawford-lobby.jpg')")
+  .replaceAll("url('assets/crawford-lobby.png')", "url('img/crawford-lobby-tv.jpg')")
   // ChatGPT's hosting injected this bot-check script; it does nothing off ChatGPT.
   .replace(/<script>\(function\(\)\{function c\(\)[\s\S]*?<\/script>/, '')
   .replace(/<link rel="icon"[^>]*>/, '<link rel="icon" href="favicon.svg">\n  <meta property="og:image" content="img/crawford-exterior.jpg">')
