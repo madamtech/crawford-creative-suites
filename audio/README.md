@@ -12,7 +12,7 @@ Make each line below with your ElevenLabs voice (or record it yourself). Save it
 | AI AuthoriTech receptionist (Floor 4) | Viktoria (trial; likely to change) | `welcome-412`, `lounge-clarity` |
 | Elevator | to be chosen | `floor-1` to `floor-4` |
 
-Use the same settings for every line of one voice so they match.
+Use the same settings for every line of one voice so they match. Type suite numbers the way they are said (two-seventeen, three-oh-five, four-twelve) so the voice does not read "two one seven".
 
 Tips: keep a short natural pause at the start and end, use the same voice and settings for every line, and keep each file under 1 MB.
 

@@ -345,6 +345,13 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .lobby-board.scaled .lobby-title h1{font-size:30.4px!important}
 @media (max-width:850px){.lobby-board{left:4%;right:4%;width:auto;top:auto;bottom:3%}.upgraded .concierge-card{top:3%!important;bottom:auto!important}}
 
+/* Elevator: four floor buttons on the car's own brass keypad (build/board.js places it) */
+.upgraded .elevator-panel.on-wall{right:auto!important;bottom:auto!important;transform:none!important;padding:0!important;gap:0!important;display:flex!important;flex-direction:column-reverse;justify-content:space-evenly;align-items:center;background:linear-gradient(180deg,rgb(52,36,22),rgb(36,25,16) 35%,rgb(25,18,11))!important;border:0!important;box-shadow:inset 0 0 6px rgba(0,0,0,.5)}
+.upgraded .elevator-panel.on-wall p{display:none}
+.upgraded .elevator-panel.on-wall button{width:52%!important;min-width:0!important;min-height:0!important;aspect-ratio:1/1;padding:0;display:grid;place-items:center;font-size:1em!important;font-family:Georgia,serif;color:#e9c79a;background:radial-gradient(circle,rgb(30,22,15) 60%,rgb(24,17,11))!important;border:1.5px solid #c9a06c!important;border-radius:50%;box-shadow:0 0 4px rgba(233,190,130,.35),inset 0 0 3px rgba(0,0,0,.6);cursor:pointer}
+.upgraded .elevator-panel.on-wall button:hover:not(:disabled){box-shadow:0 0 10px rgba(240,200,140,.8),inset 0 0 4px rgba(0,0,0,.5);color:#fff3dd}
+.upgraded .elevator-panel.on-wall button:disabled{opacity:1!important;color:#fff3dd;border-color:#f0cf9a!important;box-shadow:0 0 10px rgba(240,200,140,.9)}
+
 /* Suites: name and tagline on the reception desk front; floor/suite plaque low */
 .suite-sign{left:var(--desk-x,50%)!important;top:var(--desk-y,57%)!important;transform:translate(-50%,-50%);width:var(--sign-w,34%);max-width:none!important;text-align:center;pointer-events:none;z-index:2}
 .suite-sign h1{font-size:clamp(1.7rem,3.1vw,3.2rem)!important;margin:0 0 .45rem!important;letter-spacing:.02em!important;line-height:1!important;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.6),0 0 18px rgba(0,0,0,.55),0 0 26px color-mix(in srgb,var(--suite-accent) 45%,transparent)}
