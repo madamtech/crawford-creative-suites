@@ -16,21 +16,21 @@ export const FAQ = [
     text: 'Hello, and welcome! Ask me about any of our three suites, or tell me what you are looking for.' },
   { id: 'owner', suite: null, match: [/\b(who (owns|runs|is behind|made)|owner|founder|tanika)\b/],
     text: 'All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a maker, and an AI consultant.' },
-  { id: 'visit', suite: null, match: [/\b(address|located|location|visit in person|come by|stop by|pick ?up|storefront|in person)\b/],
-    text: 'We are an online studio, so there is no storefront, and local pickup is not offered. Products ship to you, and AI AuthoriTech services are delivered virtually.' },
+  { id: 'visit', suite: null, match: [/\b(address|located|location|visit in person|come by|stop by|storefront|in person)\b/],
+    text: 'Crawford Creative Suites is an online building, so there is no storefront to visit. You are welcome to explore all three suites right here.' },
   { id: 'hours', suite: null, match: [/\b(hours|open|close|closed|closing)\b/],
     text: 'The building is open online any time. Send a request whenever you like, and Tanika will reply by email.' },
-  { id: 'consult', suite: null, match: [/\b(consult|consultation|discovery call|strategy call|free call)\b/],
+  { id: 'consult', suite: null, desk: true, match: [/\b(consult|consultation|discovery call|strategy call|free call)\b/],
     text: 'Your first 30-minute discovery consultation is free. After that, consultation is $125 an hour, scheduled and paid in advance, and it is credited toward an ongoing engagement.' },
   { id: 'contact', suite: null, match: [/\b(contact|email|e-mail|reach|phone|call|talk to (someone|a person|tanika))\b/],
     text: 'Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madamallure@gmail.com, Allure Fusions at allurefusions@gmail.com, or AI AuthoriTech at ai.authoritech@gmail.com.' },
-  { id: 'deposit', suite: null, match: [/\b(deposit|payment|pay|paid|upfront|up front|installment)\b/],
+  { id: 'deposit', suite: null, desk: true, match: [/\b(deposit|payment|pay|paid|upfront|up front|installment)\b/],
     text: 'For products, orders of $35 or less are paid in full, and orders over $35 start with a 60 percent deposit. The balance and shipping are paid before your order ships. AI AuthoriTech deposits are set in your written proposal.' },
-  { id: 'shipping', suite: null, match: [/\b(ship|ships|shipping|deliver|delivery|mail)\b/],
+  { id: 'shipping', suite: null, desk: true, match: [/\b(ship|ships|shipping|deliver|delivery|mail|pick ?up|local)\b/],
     text: 'Yes, we ship. Shipping is added to your final invoice, and local pickup is not offered.' },
-  { id: 'timing', suite: null, match: [/\b(how long|turnaround|timeline|how soon|rush|when will|ready by)\b/],
+  { id: 'timing', suite: null, desk: true, match: [/\b(how long|turnaround|timeline|how soon|rush|when will|ready by)\b/],
     text: 'Everything is made to order, so timing depends on the project. You will get a timeline when your request is reviewed, and work begins once the payment or deposit is received.' },
-  { id: 'returns', suite: null, match: [/\b(return|returns|refund|exchange|cancel|wrong|damaged|broken)\b/],
+  { id: 'returns', suite: null, desk: true, match: [/\b(return|returns|refund|exchange|cancel|wrong|damaged|broken)\b/],
     text: 'For returns, changes, or a problem with an order, send a request to the suite you ordered from, and Tanika will help you directly.' },
 
   // ---------- Madam Allure (217) ----------
@@ -117,10 +117,13 @@ export const FAQ = [
 const norm = (s) => ' ' + s.toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim() + ' ';
 
 const SUITES = {
-  '217': { name: 'Madam Allure', floor: 2 },
-  '305': { name: 'Allure Fusions', floor: 3 },
-  '412': { name: 'AI AuthoriTech', floor: 4 },
+  '217': { name: 'Madam Allure', floor: 2, offers: 'fragrance, bath and body care, gifts, and memorial keepsakes' },
+  '305': { name: 'Allure Fusions', floor: 3, offers: '3D printing, laser engraving, screen printing, and photo lamps' },
+  '412': { name: 'AI AuthoriTech', floor: 4, offers: 'AI strategy, automation, custom AI agents, and training' },
 };
+// Lobby reply to a business question that is not about one suite (payments,
+// shipping, consultations...): she directs the visitor instead of answering.
+const DIRECT = 'Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3D printing and laser work; and AI AuthoriTech on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up.';
 const say = (key, text, queue) => {
   if (window.ccsVoice && window.ccsVoice.sayKey) window.ccsVoice.sayKey(key, text, { queue });
 };
@@ -130,18 +133,23 @@ const find = (question) => {
   return FAQ.find((f) => f.match.every((re) => re.test(q))) || null;
 };
 
-// Lobby concierge: answers building questions herself; anything about one
-// business goes to that suite's receptionist, who answers it on arrival.
+// Lobby concierge: general questions and directions only. Questions about one
+// business go to that suite's receptionist, who answers them on arrival; business
+// policies (payments, shipping, consultations...) are left to the receptionists.
 function answer(question) {
   const hit = find(question);
   if (!hit) return null;
   if (!hit.suite) {
     window.ccsPendingQuestion = null;
+    if (hit.desk) {
+      say('faq-direct', DIRECT);
+      return { id: 'direct', suite: null, text: DIRECT };
+    }
     say('faq-' + hit.id, hit.text);
     return hit;
   }
   const s = SUITES[hit.suite];
-  const text = `That is a great question for the ${s.name} receptionist in Suite ${hit.suite} on Floor ${s.floor}. Tap below, and she will answer it when you arrive.`;
+  const text = `${s.name} in Suite ${hit.suite} on Floor ${s.floor} offers ${s.offers}. Tap below, and their receptionist will answer your question when you arrive.`;
   window.ccsPendingQuestion = { suite: hit.suite, question };
   say('faq-send-' + hit.suite, text);
   return { id: 'send-' + hit.suite, suite: hit.suite, text };
