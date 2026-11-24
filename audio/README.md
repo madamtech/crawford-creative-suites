@@ -2,6 +2,8 @@
 
 Make each line below with your ElevenLabs voice (or record it yourself). Save it as an **MP3** with the **exact file name** shown, and put it in this `audio` folder. Each file starts working on its own as soon as it's in place. A line without a file stays silent; the device's robotic voice is not used.
 
+**Voice chosen (Nov 23, 2026): Tanika Real.** Use the same settings as your Nov 17 sample so every line matches: model Eleven Multilingual v2, speed 0.96, stability 50, similarity 75, style 0, speaker boost on.
+
 Tips: keep a short natural pause at the start and end, use the same voice and settings for every line, and keep each file under 1 MB.
 
 ## Lobby concierge
