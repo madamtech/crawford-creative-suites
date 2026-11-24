@@ -22,7 +22,7 @@ Tips: keep a short natural pause at the start and end, use the same voice and se
 |---|---|
 | `greeting.mp3` | Welcome to Crawford Creative Suites. How may I direct you today? Tell me what you are looking for, or choose a destination on the directory. |
 | `reply-217.mp3` | Madam Allure is the perfect destination for beauty, fragrance, self-care, memorial creations, and personalized gifts. You'll find it in Suite 217 on Floor 2. |
-| `reply-305.mp3` | Allure Fusions is the perfect destination. It is where beauty takes shape through dimensional art. You'll find it in Suite 305 on Floor 3. |
+| `reply-305.mp3` | Allure Fusions is the perfect destination. It is where bold design and beauty fuse. You'll find it in Suite 305 on Floor 3. |
 | `reply-412.mp3` | AI AuthoriTech is the right destination for AI strategy, automation, custom agents, and digital transformation. You'll find it in Suite 412 on Floor 4. |
 | `reply-unknown.mp3` | I couldn't quite place that. Try the directory, or tell me what kind of business you need. |
 
@@ -39,8 +39,8 @@ Tips: keep a short natural pause at the start and end, use the same voice and se
 
 | File name | What she says |
 |---|---|
-| `welcome-217.mp3` | Welcome to Madam Allure, an elevated experience in beauty, fragrance, and self-care. How may we help you today? |
-| `welcome-305.mp3` | Welcome to Allure Fusions, where beauty takes shape through dimensional art. How may we help you today? |
+| `welcome-217.mp3` | Welcome to Madam Allure, where beauty is crafted to captivate. How may we help you today? |
+| `welcome-305.mp3` | Welcome to Allure Fusions, where bold design and beauty fuse. How may we help you today? |
 | `welcome-412.mp3` | Welcome to AI AuthoriTech, where clarity meets capability. How may we help you today? |
 
 ## Lounges (play when a visitor walks in)

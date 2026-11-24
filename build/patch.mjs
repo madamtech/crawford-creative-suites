@@ -90,6 +90,9 @@ const patches = [
   // Owner's taglines (desk signs and suite pages).
   ['tagline:`Beauty, fragrance, self-care, and personalized design.`', 'tagline:`Beauty Crafted to Captivate.`'],
   ['tagline:`Where Beauty Takes Shape Through Dimensional Art`', 'tagline:`Where Bold Design and Beauty Fuse.`'],
+  ['welcome:`Welcome to Madam Allure—an elevated experience in beauty, fragrance, and self-care.`', 'welcome:`Welcome to Madam Allure—where beauty is crafted to captivate.`'],
+  ['welcome:`Welcome to Allure Fusions—where beauty takes shape through dimensional art.`', 'welcome:`Welcome to Allure Fusions—where bold design and beauty fuse.`'],
+  ['is the perfect destination. It is where beauty takes shape through dimensional art.', 'is the perfect destination. It is where bold design and beauty fuse.'],
 ];
 
 for (const [from, to] of patches) {
