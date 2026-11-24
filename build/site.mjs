@@ -312,6 +312,15 @@ body[data-kiosk-open] .reception-scene .reception-desk{transform:translate(-50%,
 @keyframes micPulse{50%{box-shadow:0 0 0 4px rgba(218,166,129,.25),0 0 20px rgba(255,190,150,.7)}}
 .concierge-go{display:inline-block;margin-top:.5rem;cursor:pointer;background:linear-gradient(135deg,rgba(218,166,129,.28),rgba(255,255,255,.06));border:1px solid rgba(218,166,129,.75);color:#fff3e8;padding:.5rem .8rem;font-size:.7rem;letter-spacing:.03em;box-shadow:0 0 12px rgba(255,190,150,.25)}
 .concierge-go:hover,.concierge-go:focus-visible{background:rgba(218,166,129,.32)}
+.reception-ask{position:absolute;z-index:6;left:2vw;top:3%;width:min(360px,24vw);box-sizing:border-box;padding:1rem 1.1rem;border-radius:14px;color:#fff;background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.03) 45%),rgba(14,13,18,.42);backdrop-filter:blur(14px) saturate(1.15);-webkit-backdrop-filter:blur(14px) saturate(1.15);border:1px solid rgba(255,255,255,.22);border-top:2px solid var(--suite-accent,rgba(218,166,129,.8));box-shadow:0 18px 45px rgba(0,0,0,.35);transition:opacity .3s ease}
+.reception-ask small{display:block;font-size:.62rem;letter-spacing:.18em;color:rgba(255,255,255,.7)}
+.reception-ask strong{display:block;margin:.25rem 0 .6rem;font-family:Lora,Georgia,serif;font-weight:400;font-size:1.05rem}
+.reception-ask .concierge-search{margin-top:0}
+.reception-ask .reception-answer{margin:.6rem 0 0;max-height:40vh;overflow:auto}
+/* The receptionist card sits opposite the check-in panel: Allure Fusions' panel opens on the left. */
+.reception-scene[data-suite="305"] .reception-ask{left:auto;right:2vw}
+.reception-scene:has(.lounge) .reception-ask,.reception-scene:has(.business-showroom) .reception-ask{opacity:0;pointer-events:none}
+@media (max-width:850px){.reception-ask{position:relative;left:auto;top:auto;width:auto;min-width:0;margin:12px 16px}}
 @media (max-width:900px){.header-actions button:first-child{display:inline-block!important}}
 `;
 

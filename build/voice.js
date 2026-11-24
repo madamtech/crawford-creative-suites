@@ -148,8 +148,9 @@ window.ccsVoice = {
     return text;
   },
   // FAQ answers: play audio/<key>.mp3 if it has been recorded.
-  sayKey(key, text) {
-    play(key, text, { interrupt: true });
+  // With { queue: true } it waits for the line already playing (a receptionist's welcome).
+  sayKey(key, text, { queue = false } = {}) {
+    play(key, text, { interrupt: !queue });
     return text;
   },
   // Run `fn` once the current spoken line (and anything queued) has finished,

@@ -60,12 +60,21 @@ const DESK = {
   305: { x: 953, y: 423, w: 284 },
   412: { x: 702, y: 480, w: 401 },
 };
+let watchedImg = null;
+const photoSize = new ResizeObserver(() => schedule());
 function placeDeskSign() {
   const scene = document.querySelector('.reception-scene');
   const sign = scene && scene.querySelector('.suite-sign');
   const img = scene && scene.querySelector(':scope > img');
   const d = scene && DESK[scene.dataset.suite];
   if (!sign || !img || !d) return;
+  // Re-pin whenever the photo changes size (for example while a lounge closes
+  // and the photo shrinks back), not only when the page structure changes.
+  if (watchedImg !== img) {
+    watchedImg = img;
+    photoSize.disconnect();
+    photoSize.observe(img);
+  }
   if (window.innerWidth <= 560) {
     ['left', 'top', 'width'].forEach((p) => sign.style.removeProperty(p));
     sign.classList.add('pinned');
@@ -87,7 +96,14 @@ function schedule() {
   if (queued) return;
   queued = true;
   requestAnimationFrame(() => { queued = false; place(); placeKeypad(); placeDeskSign(); });
+  // Layout can still be settling for a moment after a scene change; check again.
+  clearTimeout(settle);
+  settle = setTimeout(() => { place(); placeKeypad(); placeDeskSign(); }, 450);
 }
+let settle = null;
 window.addEventListener('resize', schedule);
+// Panels fade in and out (lounges, check-in); re-pin once they settle.
+document.addEventListener('transitionend', schedule, true);
+document.addEventListener('animationend', schedule, true);
 window.addEventListener('load', schedule);
 new MutationObserver(schedule).observe(document.documentElement, { childList: true, subtree: true });

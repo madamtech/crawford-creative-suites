@@ -116,29 +116,71 @@ export const FAQ = [
 
 const norm = (s) => ' ' + s.toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim() + ' ';
 
-function answer(question) {
+const SUITES = {
+  '217': { name: 'Madam Allure', floor: 2 },
+  '305': { name: 'Allure Fusions', floor: 3 },
+  '412': { name: 'AI AuthoriTech', floor: 4 },
+};
+const say = (key, text, queue) => {
+  if (window.ccsVoice && window.ccsVoice.sayKey) window.ccsVoice.sayKey(key, text, { queue });
+};
+const find = (question) => {
   const q = norm(question || '');
   if (q.trim().length < 2) return null;
-  const hit = FAQ.find((f) => f.match.every((re) => re.test(q)));
+  return FAQ.find((f) => f.match.every((re) => re.test(q))) || null;
+};
+
+// Lobby concierge: answers building questions herself; anything about one
+// business goes to that suite's receptionist, who answers it on arrival.
+function answer(question) {
+  const hit = find(question);
   if (!hit) return null;
-  if (window.ccsVoice && window.ccsVoice.sayKey) window.ccsVoice.sayKey('faq-' + hit.id, hit.text);
-  return hit;
+  if (!hit.suite) {
+    window.ccsPendingQuestion = null;
+    say('faq-' + hit.id, hit.text);
+    return hit;
+  }
+  const s = SUITES[hit.suite];
+  const text = `That is a great question for the ${s.name} receptionist in Suite ${hit.suite} on Floor ${s.floor}. Tap below, and she will answer it when you arrive.`;
+  window.ccsPendingQuestion = { suite: hit.suite, question };
+  say('faq-send-' + hit.suite, text);
+  return { id: 'send-' + hit.suite, suite: hit.suite, text };
 }
-window.ccsFaq = { answer, list: FAQ };
+
+// Receptionists: answer their own business's questions and building questions.
+function answerAt(suite, question) {
+  const hit = find(question);
+  if (!hit) {
+    const text = 'I do not have that answer here yet. Send us a request, and Tanika will answer you personally.';
+    say('faq-unknown-' + suite, text);
+    return text;
+  }
+  if (hit.suite && hit.suite !== suite) {
+    const s = SUITES[hit.suite];
+    const text = `${s.name} handles that, in Suite ${hit.suite} on Floor ${s.floor}. Take the elevator up, and their receptionist will help you.`;
+    say('faq-other-' + hit.suite, text);
+    return text;
+  }
+  say('faq-' + hit.id, hit.text);
+  return hit.text;
+}
+window.ccsFaq = { answer, answerAt, list: FAQ, suites: SUITES };
 
 // ---------- Speak instead of type ----------
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-function addMic() {
-  if (!Recognition) return;
-  const form = document.querySelector('.concierge-search');
-  if (!form || form.querySelector('.concierge-mic')) return;
-  const input = form.querySelector('input');
+const MIC_SVG = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8.5 21h7"/></svg>';
+function setInput(input, value) {
+  const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
+  set.call(input, value);
+  input.dispatchEvent(new Event('input', { bubbles: true }));
+}
+function makeMic(form, input, who) {
   const btn = document.createElement('button');
   btn.type = 'button';
   btn.className = 'concierge-mic';
-  btn.setAttribute('aria-label', 'Speak to the concierge');
-  btn.title = 'Speak to the concierge';
-  btn.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8.5 21h7"/></svg>';
+  btn.setAttribute('aria-label', 'Speak to the ' + who);
+  btn.title = 'Speak to the ' + who;
+  btn.innerHTML = MIC_SVG;
   let rec = null;
   btn.addEventListener('click', () => {
     if (rec) { rec.stop(); return; }
@@ -149,24 +191,70 @@ function addMic() {
     btn.classList.add('listening');
     btn.setAttribute('aria-label', 'Listening… tap to stop');
     rec.onresult = (e) => {
-      const said = e.results[0][0].transcript;
-      const set = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
-      set.call(input, said);
-      input.dispatchEvent(new Event('input', { bubbles: true }));
+      setInput(input, e.results[0][0].transcript);
       setTimeout(() => form.requestSubmit(), 50);
     };
     rec.onend = () => {
       rec = null;
       btn.classList.remove('listening');
-      btn.setAttribute('aria-label', 'Speak to the concierge');
+      btn.setAttribute('aria-label', 'Speak to the ' + who);
     };
     try { rec.start(); } catch { rec = null; btn.classList.remove('listening'); }
   });
-  form.insertBefore(btn, form.querySelector('button'));
+  return btn;
 }
+function addLobbyMic() {
+  if (!Recognition) return;
+  const form = document.querySelector('.concierge-card .concierge-search');
+  if (!form || form.querySelector('.concierge-mic')) return;
+  form.insertBefore(makeMic(form, form.querySelector('input'), 'concierge'), form.querySelector('button'));
+}
+
+// ---------- Ask the receptionist (each suite) ----------
+function addReceptionAsk() {
+  const scene = document.querySelector('.reception-scene');
+  if (!scene || !scene.dataset.suite) return;
+  const suite = scene.dataset.suite;
+  let box = scene.querySelector('.reception-ask');
+  if (box && box.dataset.suite !== suite) { box.remove(); box = null; }
+  if (!box) {
+    box = document.createElement('aside');
+    box.className = 'reception-ask';
+    box.dataset.suite = suite;
+    box.setAttribute('aria-label', 'Ask the receptionist');
+    box.innerHTML = '<small>RECEPTIONIST</small><strong>Questions? Just ask.</strong><form class="concierge-search reception-ask-form"><label class="sr-only" for="reception-query">Ask the receptionist</label>'
+      + '<input id="reception-query" autocomplete="off" placeholder="Ask about products, prices or services">'
+      + '<button>Ask</button></form><p class="concierge-reply reception-answer" aria-live="polite" hidden></p>';
+    const form = box.querySelector('form');
+    const input = box.querySelector('input');
+    const out = box.querySelector('.reception-answer');
+    if (Recognition) form.insertBefore(makeMic(form, input, 'receptionist'), form.querySelector('button'));
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const q = input.value.trim();
+      if (!q) return;
+      out.textContent = answerAt(suite, q);
+      out.hidden = false;
+    });
+    scene.appendChild(box);
+  }
+  // A question asked in the lobby is answered here on arrival, after the welcome.
+  const pending = window.ccsPendingQuestion;
+  if (pending && pending.suite === suite) {
+    window.ccsPendingQuestion = null;
+    const hit = find(pending.question);
+    if (!hit) return;
+    box.querySelector('input').value = pending.question;
+    const out = box.querySelector('.reception-answer');
+    out.textContent = hit.text;
+    out.hidden = false;
+    say('faq-' + hit.id, hit.text, true);
+  }
+}
+
 let queued = false;
 new MutationObserver(() => {
   if (queued) return;
   queued = true;
-  requestAnimationFrame(() => { queued = false; addMic(); });
-}).observe(document.documentElement, { childList: true, subtree: true });
+  requestAnimationFrame(() => { queued = false; addLobbyMic(); addReceptionAsk(); });
+}).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-suite'] });
