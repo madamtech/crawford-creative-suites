@@ -345,6 +345,32 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .lobby-board.scaled .lobby-title h1{font-size:30.4px!important}
 @media (max-width:850px){.lobby-board{left:4%;right:4%;width:auto;top:auto;bottom:3%}.upgraded .concierge-card{top:3%!important;bottom:auto!important}}
 
+/* Lobby board: directory heading centered (owner, Nov 23). Board size/position stays locked. */
+.lobby-board .screen-header{text-align:center}
+/* Header: building name only; the three focuses already appear on the lobby board */
+.building-name small{display:none!important}
+
+/* AI AuthoriTech services: list and request form scroll together as one page
+   (the form had been squeezed into a ~38px strip with its own scroll bar). */
+.reception-scene .ai-grid{display:block!important;overflow-y:auto!important}
+.reception-scene .ai-grid>.guided-form{overflow:visible!important;height:auto!important;max-height:none!important;border-top:1px solid rgba(255,255,255,.18);margin-top:.5rem;padding-top:1.1rem}
+
+/* Lounge cards: the button opens the card's own ritual or explainer (build/lounge.js) */
+.card-guide{margin-top:.9rem;padding:1rem 1.1rem;border-left:2px solid var(--suite-accent);background:rgba(0,0,0,.38);animation:guideIn .3s ease both}
+@keyframes guideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.card-guide h3{margin:0 0 .6rem;font:400 1.35rem/1.15 "Instrument Serif",Georgia,serif;color:#fff}
+.card-guide ol{margin:0;padding-left:1.25rem;color:rgba(255,255,255,.92);font-size:.86rem;line-height:1.6}
+.card-guide li{margin:.2rem 0}
+.card-guide dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:.55rem 1rem;font-size:.84rem;line-height:1.55}
+.card-guide dt{font-weight:700;color:color-mix(in srgb,var(--suite-accent) 70%,#fff)}
+.card-guide dd{margin:0;color:rgba(255,255,255,.92)}
+.card-guide .guide-note{margin:.75rem 0 0;font-size:.78rem;color:rgba(255,255,255,.8)!important;font-style:italic}
+.card-guide .guide-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.9rem}
+.reception-scene .card-guide .guide-actions button{margin:0}
+.reception-scene .card-guide [data-guide-close]{background:transparent!important;color:#fff!important;border:1px solid rgba(255,255,255,.4)!important}
+.education-card.guided>button{display:none}
+@media (max-width:560px){.card-guide dl{grid-template-columns:1fr;gap:.15rem}.card-guide dd{margin-bottom:.5rem}}
+
 /* Elevator: four floor buttons on the car's own brass keypad (build/board.js places it) */
 .upgraded .elevator-panel.on-wall{right:auto!important;bottom:auto!important;transform:none!important;padding:0!important;gap:0!important;display:flex!important;flex-direction:column-reverse;justify-content:space-evenly;align-items:center;background:linear-gradient(180deg,rgb(52,36,22),rgb(36,25,16) 35%,rgb(25,18,11))!important;border:0!important;box-shadow:inset 0 0 6px rgba(0,0,0,.5)}
 .upgraded .elevator-panel.on-wall p{display:none}

@@ -48,3 +48,63 @@ new MutationObserver(() => {
   queued = true;
   requestAnimationFrame(() => { queued = false; sync(); });
 }).observe(document.documentElement, { childList: true, subtree: true });
+
+// ---------- Card buttons open the card's own ritual or explainer ----------
+// The button first shows the guide on the card (build/lounge-guides.js); the
+// guide's own button then continues to the original destination.
+import { GUIDES } from './lounge-guides.js';
+
+let passThrough = false;
+const esc = (t) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function guideHtml(g) {
+  const body = g.compare
+    ? `<dl>${g.compare.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`
+    : `<ol>${g.steps.map((s) => `<li>${esc(s)}</li>`).join('')}</ol>`;
+  return `<h3>${esc(g.title)}</h3>${body}${g.note ? `<p class="guide-note">${esc(g.note)}</p>` : ''}`
+    + `<div class="guide-actions"><button type="button" data-guide-next>${esc(g.next)} →</button><button type="button" data-guide-close>Close</button></div>`;
+}
+
+window.addEventListener('click', (e) => {
+  if (passThrough) return;
+  const card = e.target.closest('.education-card');
+  if (!card) return;
+  const ctaBtn = card.querySelector(':scope > button');
+  if (e.target.closest('[data-guide-close]')) {
+    card.querySelector('.card-guide')?.remove();
+    card.classList.remove('guided');
+    ctaBtn?.focus();
+    return;
+  }
+  if (e.target.closest('[data-guide-next]')) {
+    passThrough = true;
+    try { ctaBtn?.click(); } finally { passThrough = false; }
+    return;
+  }
+  if (!ctaBtn || !ctaBtn.contains(e.target)) return;
+  const title = card.querySelector('h2')?.textContent.trim();
+  const g = GUIDES[title];
+  if (!g) return;                                   // no guide: keep the original route
+  e.stopPropagation();
+  e.preventDefault();
+  let box = card.querySelector('.card-guide');
+  if (!box) {
+    box = document.createElement('div');
+    box.className = 'card-guide';
+    box.setAttribute('role', 'region');
+    box.setAttribute('aria-label', g.title);
+    ctaBtn.after(box);
+  }
+  box.dataset.for = title;
+  box.innerHTML = guideHtml(g);
+  card.classList.add('guided');
+  box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}, true);
+
+// A different card (Next, Previous, Surprise Me, a category tab) clears the old guide.
+new MutationObserver(() => {
+  document.querySelectorAll('.card-guide').forEach((box) => {
+    const card = box.closest('.education-card');
+    if (card?.querySelector('h2')?.textContent.trim() !== box.dataset.for) { box.remove(); card?.classList.remove('guided'); }
+  });
+}).observe(document.documentElement, { childList: true, subtree: true, characterData: true });
