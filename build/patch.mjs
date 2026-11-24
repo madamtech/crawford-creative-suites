@@ -29,6 +29,9 @@ const patches = [
   // The concierge finishes her answer before the visitor is taken to the elevator.
   ['}[r]),window.setTimeout(()=>V(r),700)', '}[r])),window.ccsVoice.afterSpeech(()=>V(r),700)'],
 
+  // Lounges: Previous and Next are enough; no Surprise Me button.
+  ['(0,i.jsx)(`button`,{onClick:q,children:`Surprise Me`}),', ''],
+
   // Lounges: extra tip cards (build/lounge-guides.js) so every topic has at least three.
   ['W=A?l[A].cards.filter', 'W=A?l[A].cards.concat(window.ccsExtraCards&&window.ccsExtraCards[A]||[]).filter'],
   ['D(`I couldn’t quite place that—try the directory below or mention what kind of business you need.`)',

@@ -135,6 +135,14 @@ const building = `
 
 .reception-scene .scene-actions button{font-size:.85rem!important;padding:.65rem 1rem!important;letter-spacing:.06em}
 
+/* Lounge buttons: translucent gradient in the suite's own color with a soft LED glow (owner, Nov 23). */
+.reception-scene .lounge-controls button,.reception-scene .return-reception{background:linear-gradient(135deg,color-mix(in srgb,var(--suite-accent) 42%,transparent),color-mix(in srgb,var(--suite-accent) 14%,transparent))!important;border:1px solid color-mix(in srgb,var(--suite-accent) 75%,#fff)!important;color:#fff!important;font-weight:600;letter-spacing:.04em;border-radius:999px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 0 10px color-mix(in srgb,var(--suite-accent) 55%,transparent),inset 0 0 8px color-mix(in srgb,var(--suite-accent) 30%,transparent);transition:box-shadow .25s ease,transform .25s ease}
+.reception-scene .lounge-controls button:hover,.reception-scene .return-reception:hover,.reception-scene .lounge-controls button:focus-visible,.reception-scene .return-reception:focus-visible{box-shadow:0 0 18px color-mix(in srgb,var(--suite-accent) 80%,transparent),inset 0 0 10px color-mix(in srgb,var(--suite-accent) 40%,transparent);transform:translateY(-1px)}
+.reception-scene[data-suite="217"] .lounge-controls button,.reception-scene[data-suite="217"] .return-reception{color:#4a2a1a!important;background:linear-gradient(135deg,rgba(236,203,176,.55),rgba(203,150,113,.22))!important;border-color:rgba(203,150,113,.9)!important;box-shadow:0 0 12px rgba(214,160,120,.6),inset 0 0 8px rgba(255,236,214,.5)}
+.reception-scene .lounge-controls button{padding:.5rem 1.15rem!important}
+.reception-scene .return-reception{font-size:.8rem!important;padding:.45rem 1rem!important;width:auto!important;min-height:0!important;margin:.3rem 0 0 auto}
+.reception-scene .lounge-controls span{color:#fff3e6!important;font-size:.85rem!important;font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+
 /* Lounge cards: the button opens the card's own ritual or explainer (build/lounge.js) */
 .card-guide{margin-top:.9rem;padding:1rem 1.1rem;border-left:2px solid var(--suite-accent);background:rgba(0,0,0,.38);animation:guideIn .3s ease both}
 @keyframes guideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
