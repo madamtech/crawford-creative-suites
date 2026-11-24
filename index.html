@@ -66,17 +66,20 @@
     .lobby-tv .tv-cta{border:0;background:var(--tv-acc,#c69676);color:#111;padding:.6em 1em;font-size:.62em;letter-spacing:.15em;text-transform:uppercase;font-weight:700}
     .lobby-tv .tv-close{position:absolute;top:.5em;right:.6em;z-index:1;width:1.8em;height:1.8em;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.4);color:#fff;font-size:.8em;line-height:1}
     .lobby.tv-mode .preview-panel{display:none!important}
-    /* Wide screens: each suite name sits centered on its own storefront in the lobby photo. */
+    /* Wide screens: each suite name is lit lettering on the blank bronze sign band above its storefront. */
     .lobby.placed .suite-directory{display:block;margin:0;padding:0;height:0}
-    .lobby.placed .suite-entry{position:absolute;z-index:2;min-height:0;transform:translate(-50%,-100%);text-align:center;padding:.85em .9em .9em;display:block}
-    .lobby.placed .suite-entry.active{transform:translate(-50%,calc(-100% - 6px))}
-    .lobby.placed .suite-entry:before{inset:0!important;background:linear-gradient(180deg,rgba(11,9,7,.35),rgba(11,9,7,.78))!important;border:1px solid color-mix(in srgb,var(--acc) 60%,transparent)!important;border-top:2px solid var(--acc)!important;backdrop-filter:blur(3px)}
-    .lobby.placed .suite-entry h3{font-size:1.75em;margin:0 0 .3em}
-    .lobby.placed .descriptor{font-size:.6em;max-width:none;margin:0 auto}
-    .lobby.placed .hint{font-size:.58em;margin-top:.7em}
+    .lobby.placed .suite-entry{position:absolute;z-index:2;min-height:0;padding:0;display:flex;align-items:center;justify-content:center;transform:none!important;opacity:1!important;cursor:pointer}
+    .lobby.placed .suite-entry:before{display:none}
+    .lobby.placed .suite-entry h3{margin:0;font:400 1em/1 Georgia,serif;letter-spacing:.12em;text-transform:uppercase;color:color-mix(in srgb,var(--acc) 45%,#fff);text-shadow:0 0 .35em color-mix(in srgb,var(--acc) 85%,transparent),0 1px 1px rgba(0,0,0,.6);transition:text-shadow .3s ease,color .3s ease}
+    .lobby.placed .suite-entry:hover h3,.lobby.placed .suite-entry.active h3,.lobby.placed .suite-entry:focus-visible h3{color:#fff;text-shadow:0 0 .5em var(--acc),0 0 1.2em var(--acc),0 1px 1px rgba(0,0,0,.6)}
+    .lobby.placed .suite-entry .descriptor,.lobby.placed .suite-entry .hint{display:none}
+    .lobby.placed .tv-frame{display:none!important}
     .lobby.placed .lobby-intro{max-width:var(--intro-w,620px)}
     .lobby.placed .continue{position:absolute;left:50%;bottom:5%;transform:translateX(-50%);margin:0;max-width:none;z-index:2}
-    .lobby.placed .lobby h2,.lobby.placed h2{font-size:clamp(2.2rem,3.6vw,4rem)}
+    .lobby.placed{padding-top:84px}
+    .lobby.placed .lobby-intro .kicker{font-size:.55rem}
+    .lobby.placed h2{font-size:clamp(1.8rem,2.7vw,3.1rem);margin:6px 0 6px}
+    .lobby.placed .lobby-intro p{font-size:.9rem}
     /* TV frame: bronze trim matching the lobby's fluted bronze pillars and gold ceiling trim. */
     .tv-frame{position:absolute;z-index:1;display:none;pointer-events:none;box-sizing:border-box;border-style:solid;border-image:linear-gradient(135deg,#4c3526 0%,#b58667 18%,#e7cebe 32%,#966c50 50%,#ddbba4 68%,#77553e 84%,#4c3526 100%) 1;box-shadow:0 14px 34px rgba(0,0,0,.45),inset 0 0 0 1px rgba(244, 233, 225,.35)}
     .tv-frame:after{content:"";position:absolute;inset:-1px;outline:1px solid rgba(39, 26, 17,.55);outline-offset:0}
@@ -117,7 +120,7 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
     function walkIn(done){const r=hero.getBoundingClientRect(),cs=getComputedStyle(hero),px=parseFloat(cs.backgroundPositionX)/100||.5,py=parseFloat(cs.backgroundPositionY)/100||.5;const k=Math.max(r.width/DOOR.w,r.height/DOOR.h),ox=(r.width-DOOR.w*k)*px,oy=(r.height-DOOR.h*k)*py;const w=document.createElement('div');w.className='walk';w.setAttribute('aria-hidden','true');w.innerHTML='<div class="walk-view"></div><div class="glass"></div><div class="warm"></div>';const v=w.firstChild;v.style.backgroundPosition=cs.backgroundPosition;v.style.transformOrigin=(ox+DOOR.cx*k)+'px '+(oy+DOOR.cy*k)+'px';hero.classList.add('walking');hero.appendChild(w);setTimeout(()=>{done();setTimeout(()=>{w.remove();hero.classList.remove('walking')},900)},2750)}
     function revealLobby(animated){if(animated&&!reduced){walkIn(()=>{lobby.classList.add('visible','walked');placeSuites();lobby.scrollIntoView({behavior:'auto'})})}else{lobby.classList.add('visible');placeSuites();lobby.scrollIntoView({behavior:reduced?'auto':'smooth'})}}
     // Lobby TV: where the LED TV sits in img/crawford-lobby.jpg (photo pixels). Set from the image.
-    const TV={w:1672,h:941,left:600,top:97,right:1096,bottom:320};
+    const TV={w:1672,h:941,left:595,top:89,right:1077,bottom:267};
     const ACC={madam:'#cb9671',fusions:'#6c9dff',ai:'#21b8b0'};
     let tv=null,tvSuite=null;
     function tvFits(){return TV.right>TV.left&&window.innerWidth>900}
@@ -126,8 +129,8 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
     window.addEventListener('resize',()=>{if(!tv)return;if(tvFits())placeTv();else{tv.classList.remove('on');lobby.classList.remove('tv-mode');if(tvSuite)selectSuite(tvSuite)}});
     // Storefront centers in img/crawford-lobby-tv.jpg (photo pixels). Names sit on the glass,
     // bottoms at y 600, just above the concierge desk (which starts at x 1487 on the right).
-    const STORES={fusions:{x:288},madam:{x:851},ai:{x:1330}},STORE_W=290,STORE_BOTTOM=600;
-    function placeSuites(){const on=tvFits();lobby.classList.toggle('placed',on);document.querySelectorAll('.suite-entry').forEach(el=>{if(!on){['left','top','width','fontSize'].forEach(p=>el.style[p]='');return}const r=lobby.getBoundingClientRect(),k=Math.max(r.width/TV.w,r.height/TV.h),ox=(r.width-TV.w*k)/2,oy=(r.height-TV.h*k)/2,st=STORES[el.dataset.suite];Object.assign(el.style,{left:ox+st.x*k+'px',top:oy+STORE_BOTTOM*k+'px',width:STORE_W*k+'px',fontSize:(16*k)+'px'})});if(on){const r=lobby.getBoundingClientRect(),k=Math.max(r.width/TV.w,r.height/TV.h),ox=(r.width-TV.w*k)/2,oy=(r.height-TV.h*k)/2;let fr=lobby.querySelector('.tv-frame');if(!fr){fr=document.createElement('div');fr.className='tv-frame';fr.setAttribute('aria-hidden','true');lobby.appendChild(fr)}const pad=18;Object.assign(fr.style,{left:ox+(TV.left-pad)*k+'px',top:oy+(TV.top-pad)*k+'px',width:(TV.right-TV.left+2*pad)*k+'px',height:(TV.bottom-TV.top+2*pad)*k+'px',borderWidth:Math.max(5,15*k)+'px'});lobby.style.setProperty('--intro-w',Math.max(260,ox+TV.left*k-60-parseFloat(getComputedStyle(lobby).paddingLeft))+'px')}}
+    const STORES={fusions:[62,297,541,345],madam:[590,297,1085,345],ai:[1133,297,1615,345]};
+    function placeSuites(){const on=tvFits();lobby.classList.toggle('placed',on);const r=lobby.getBoundingClientRect(),k=Math.max(r.width/TV.w,r.height/TV.h),ox=(r.width-TV.w*k)/2,oy=(r.height-TV.h*k)/2;document.querySelectorAll('.suite-entry').forEach(el=>{if(!on){['left','top','width','height','fontSize'].forEach(p=>el.style[p]='');return}const [x0,y0,x1,y1]=STORES[el.dataset.suite];Object.assign(el.style,{left:ox+x0*k+'px',top:oy+y0*k+'px',width:(x1-x0)*k+'px',height:(y1-y0)*k+'px',fontSize:((y1-y0)*k*0.5)+'px'})});if(on)lobby.style.setProperty('--intro-w',Math.max(260,ox+TV.left*k-60-parseFloat(getComputedStyle(lobby).paddingLeft))+'px')}
     window.addEventListener('resize',placeSuites);
     function selectSuite(id){const data=suites[id];document.querySelectorAll('.suite-entry').forEach(el=>{const active=el.dataset.suite===id;el.classList.toggle('active',active);el.classList.toggle('softened',!active);el.setAttribute('aria-expanded',String(active))});document.getElementById('previewSuite').textContent=data.name;document.getElementById('previewName').textContent=data.name;document.getElementById('previewDescription').textContent=data.description;document.getElementById('previewAboutTitle').textContent=`About ${data.name}`;document.getElementById('previewAbout').textContent=data.about;{const t=document.getElementById('previewTagline');t.textContent=data.tagline;if(data.taglineSub){const sub=document.createElement('span');sub.className='tagline-sub';sub.textContent=data.taglineSub;t.appendChild(sub)}}document.getElementById('previewServices').innerHTML=data.services.map(s=>`<span class="service">${s}</span>`).join('');document.getElementById('previewCta').textContent=`Preview ${data.name}`;{const pp=document.getElementById('previewPanel');pp.dataset.suite=id;pp.classList.add('visible')}if(tvFits())showOnTv(id)}
     document.getElementById('enterBtn').addEventListener('click',()=>revealLobby(true));document.getElementById('navBusinesses').addEventListener('click',()=>revealLobby(false));document.querySelectorAll('.suite-entry').forEach(el=>el.addEventListener('click',()=>selectSuite(el.dataset.suite)));document.getElementById('continueBtn').addEventListener('click',()=>{finalSection.classList.add('visible');finalSection.scrollIntoView({behavior:reduced?'auto':'smooth'})});document.getElementById('previewCta').addEventListener('click',()=>{finalSection.classList.add('visible');finalSection.scrollIntoView({behavior:reduced?'auto':'smooth'})});document.getElementById('returnBtn').addEventListener('click',()=>{finalSection.classList.remove('visible');lobby.classList.remove('visible');document.querySelectorAll('.suite-entry').forEach(el=>{el.classList.remove('active','softened');el.setAttribute('aria-expanded','false')});document.getElementById('previewPanel').classList.remove('visible');hero.scrollIntoView({behavior:reduced?'auto':'smooth'})});
