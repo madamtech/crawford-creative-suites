@@ -321,5 +321,5 @@ if (home.includes('chatgpt.site') || home.includes('assets/')) throw new Error('
 writeFileSync(here('../index.html'), home);
 
 // Favicon (same seal as the original, in rose gold).
-writeFileSync(here('../favicon.svg'), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="9" fill="#100e0d"/><circle cx="32" cy="32" r="21" fill="none" stroke="#c98b93" stroke-width="2"/><text x="32" y="39" font-size="20" text-anchor="middle" fill="#f8f4ec" font-family="serif">CC</text></svg>`);
+writeFileSync(here('../favicon.svg'), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="9" fill="#100e0d"/><circle cx="32" cy="32" r="21" fill="none" stroke="#c98b93" stroke-width="2"/><text x="32" y="39" font-size="16" text-anchor="middle" fill="#f8f4ec" font-family="serif">CCS</text></svg>`);
 console.log('site built');
