@@ -58,3 +58,7 @@ Tips: keep a short natural pause at the start and end, use the same voice and se
 | `lobby-music.mp3` | Your Suno track. It loops softly in the lobby only and fades out when the visitor takes the elevator. An instrumental with a smooth loop works best; keep it under about 4 MB. |
 
 If you want different words, change them in your recording. To change the on-screen text too, tell Claude which lines changed.
+
+## Lobby concierge answers (FAQ)
+
+The concierge answers common questions from `build/faq.js`. Each answer plays `faq-<id>.mp3` (Veda Sky, speed 1.08) once it is recorded; until then the answer shows on screen only. The full list, with sample questions, is in OneDrive › Work Notes › Concierge Answers - review.

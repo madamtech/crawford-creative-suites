@@ -548,4 +548,11 @@ body[data-kiosk-open] .reception-scene .reception-desk{transform:translate(-50%,
 /* Concierge voice and the sound switch (also shown on phones) */
 .concierge-voice{display:inline-block;margin-top:.6rem;cursor:pointer;background:rgba(255,255,255,.06);border:1px solid rgba(218,166,129,.6);color:#f4e6da;padding:.45rem .75rem;font-size:.68rem;letter-spacing:.04em}
 .concierge-voice:hover,.concierge-voice:focus-visible{background:rgba(218,166,129,.18)}
+.concierge-search:has(.concierge-mic){grid-template-columns:minmax(0,1fr) auto auto}
+.concierge-search .concierge-mic{display:grid;place-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(218,166,129,.6);color:#f0c9ad;padding:.45rem .6rem;line-height:1}
+.concierge-search .concierge-mic:hover,.concierge-search .concierge-mic:focus-visible{background:rgba(218,166,129,.18)}
+.concierge-search .concierge-mic.listening{background:rgba(218,166,129,.3);box-shadow:0 0 0 2px rgba(218,166,129,.5),0 0 14px rgba(255,190,150,.55);animation:micPulse 1.2s ease-in-out infinite}
+@keyframes micPulse{50%{box-shadow:0 0 0 4px rgba(218,166,129,.25),0 0 20px rgba(255,190,150,.7)}}
+.concierge-go{display:inline-block;margin-top:.5rem;cursor:pointer;background:linear-gradient(135deg,rgba(218,166,129,.28),rgba(255,255,255,.06));border:1px solid rgba(218,166,129,.75);color:#fff3e8;padding:.5rem .8rem;font-size:.7rem;letter-spacing:.03em;box-shadow:0 0 12px rgba(255,190,150,.25)}
+.concierge-go:hover,.concierge-go:focus-visible{background:rgba(218,166,129,.32)}
 @media (max-width:900px){.header-actions button:first-child{display:inline-block!important}}

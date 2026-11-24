@@ -2,6 +2,7 @@ import { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
 import './send.js';
 import './voice.js';
+import './faq.js';
 import './kiosk.js';
 import './board.js';
 import './lounge.js';

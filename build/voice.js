@@ -135,6 +135,11 @@ window.ccsVoice = {
     if (key) play(key, text, { interrupt: true });
     return text;
   },
+  // FAQ answers: play audio/<key>.mp3 if it has been recorded.
+  sayKey(key, text) {
+    play(key, text, { interrupt: true });
+    return text;
+  },
   // Run `fn` once the current spoken line (and anything queued) has finished,
   // plus a short pause. With sound off or nothing playing, just wait `pause` ms.
   afterSpeech(fn, pause = 700) {

@@ -26,6 +26,10 @@ const patches = [
   ['(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),',
    '(0,i.jsx)(`p`,{children:`Tell me what you need, or choose a suite on the board.`}),(0,i.jsx)(`button`,{type:`button`,className:`concierge-voice`,onClick:()=>{x(window.ccsVoice.setOn(!0)),window.ccsVoice.greet()},children:b?`🔊 Hear the greeting again`:`🔊 Hear the concierge`}),'],
   ['D({217:`', 'D(window.ccsVoice.say({217:`'],
+  // FAQ concierge (build/faq.js): answer common questions first, and offer a
+  // button to the matching suite instead of whisking the visitor away.
+  ['H=e=>{e.preventDefault();let t=w.trim(),', 'H=e=>{e.preventDefault();let t=w.trim();window.ccsFaqGo=null;{let f=window.ccsFaq&&window.ccsFaq.answer(t);if(f){window.ccsFaqGo=f.suite;D(f.text);return}}let '],
+  ['E&&(0,i.jsx)(`p`,{className:`concierge-reply`,"aria-live":`polite`,children:E})', 'E&&(0,i.jsx)(`p`,{className:`concierge-reply`,"aria-live":`polite`,children:E}),E&&window.ccsFaqGo&&c[window.ccsFaqGo]&&(0,i.jsx)(`button`,{type:`button`,className:`concierge-go`,onClick:()=>{let s=window.ccsFaqGo;window.ccsFaqGo=null;V(s)},children:`Take me to `+c[window.ccsFaqGo].name+` →`})'],
   // The concierge finishes her answer before the visitor is taken to the elevator.
   ['}[r]),window.setTimeout(()=>V(r),700)', '}[r])),window.ccsVoice.afterSpeech(()=>V(r),700)'],
 
