@@ -30,10 +30,10 @@ Tips: keep a short natural pause at the start and end, use the same voice and se
 
 | File name | What it says |
 |---|---|
-| `floor-1.mp3` | Floor 1. Main lobby. |
-| `floor-2.mp3` | Floor 2. Suite 217. Madam Allure. |
-| `floor-3.mp3` | Floor 3. Suite 305. Allure Fusions. |
-| `floor-4.mp3` | Floor 4. Suite 412. AI AuthoriTech. |
+| `floor-1.mp3` | Welcome to the main lobby. (after the ding, as the doors open) |
+| `floor-2.mp3` | Welcome to Madam Allure. |
+| `floor-3.mp3` | Welcome to Allure Fusions. |
+| `floor-4.mp3` | Welcome to AI AuthoriTech. |
 
 ## Receptionists (play when the elevator doors open)
 

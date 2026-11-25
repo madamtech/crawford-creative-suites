@@ -18,10 +18,11 @@ const MUSIC_VOLUME = 0.16;   // lobby music stays soft under the voices
 const LINES = {
   greeting: 'Welcome to Crawford Creative Suites. How may I direct you today? Tell me what you are looking for, or choose a destination on the directory.',
   'reply-unknown': 'I couldn’t quite place that. Try the directory, or tell me what kind of business you need.',
-  'floor-1': 'Floor 1. Main lobby.',
-  'floor-2': 'Floor 2. Suite 217. Madam Allure.',
-  'floor-3': 'Floor 3. Suite 305. Allure Fusions.',
-  'floor-4': 'Floor 4. Suite 412. AI AuthoriTech.',
+  // Elevator voice, after the ding as the doors open (Nov 25: owner's wording).
+  'floor-1': 'Welcome to the main lobby.',
+  'floor-2': 'Welcome to Madam Allure.',
+  'floor-3': 'Welcome to Allure Fusions.',
+  'floor-4': 'Welcome to AI AuthoriTech.',
   'welcome-217': 'Welcome to Madam Allure, where beauty is crafted to captivate. How may we help you today?',
   'welcome-305': 'Welcome to Allure Fusions, where bold design and beauty fuse. How may we help you today?',
   'welcome-412': 'Welcome to AI AuthoriTech, where clarity meets capability. How may we help you today?',
@@ -166,15 +167,18 @@ window.ccsVoice = {
       }
     }, 150);
   },
-  // Elevator: announce the floor as the car arrives, before the doors open.
-  approach(floor) {
+  // Elevator: the car is moving. Quiet until it arrives.
+  approach() {
     greeted = true;
-    play('floor-' + floor, LINES['floor-' + floor], { interrupt: true });
   },
-  // Doors open: the receptionist greets the visitor.
+  // Arrival: after the ding (about 0.75 s), as the doors open, the elevator voice
+  // welcomes the visitor to that floor's business; the receptionist follows.
   arrive(floor) {
     const suite = FLOOR_SUITE[floor];
-    if (suite) play('welcome-' + suite, LINES['welcome-' + suite]);
+    setTimeout(() => {
+      play('floor-' + floor, LINES['floor-' + floor], { interrupt: true });
+      if (suite) play('welcome-' + suite, LINES['welcome-' + suite]);
+    }, 800);
   },
   // Walking into a lounge.
   lounge(id) {
