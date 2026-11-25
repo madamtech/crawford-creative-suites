@@ -11,6 +11,9 @@
 // she greets them on their first tap or key press instead.
 
 const USE_DEVICE_VOICE = false;
+// Nov 25 (owner's choice): until the voices are recorded, the elevator's
+// "Welcome to ..." and the receptionist's welcome use the device voice.
+const DEVICE_VOICE_FOR = /^(floor-|welcome-)/;
 const AUDIO = '../audio/';
 const KEY = 'ccs-sound';
 const MUSIC_VOLUME = 0.16;   // lobby music stays soft under the voices
@@ -39,6 +42,26 @@ const REPLY_KEYS = [
 ];
 const FLOOR_SUITE = { 2: '217', 3: '305', 4: '412' };
 
+// The elevator's welcome also shows on screen as the doors open, on a bronze
+// plate like the building's canopy sign (shown even with sound off, and while
+// the elevator voice is not recorded yet).
+function showArrival(text) {
+  if (!text) return;
+  let el = document.querySelector('.elevator-arrival');
+  if (!el) {
+    el = document.createElement('div');
+    el.className = 'elevator-arrival';
+    el.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(el);
+  }
+  el.textContent = text.replace(/\.$/, '');
+  el.classList.remove('show');
+  void el.offsetWidth;
+  el.classList.add('show');
+  clearTimeout(showArrival.t);
+  showArrival.t = setTimeout(() => el.classList.remove('show'), 3200);
+}
+
 function stored() {
   try { return localStorage.getItem(KEY) !== 'off'; } catch { return true; }
 }
@@ -58,12 +81,12 @@ const has = (key) => !clips || clips.has(key);
 function playNext() {
   if (current || !queue.length) return;
   const { key, text } = queue.shift();
-  if (!has(key)) { deviceSpeak(text); playNext(); return; }
+  if (!has(key)) { deviceSpeak(text, key); playNext(); return; }
   const a = new Audio(AUDIO + key + '.mp3');
   current = a;
   const done = () => { if (current === a) { current = null; playNext(); } };
   a.onended = done;
-  a.onerror = () => { current = null; deviceSpeak(text); playNext(); };   // no file yet
+  a.onerror = () => { current = null; deviceSpeak(text, key); playNext(); };   // no file yet
   a.play().catch((err) => {
     if (err && err.name === 'NotAllowedError') {
       // The browser wants a tap first: keep this line for the first tap.
@@ -88,12 +111,13 @@ function play(key, text, { interrupt = false } = {}) {
 
 // ---------- device voice (off by default) ----------
 const PREFERRED = ['Aria', 'Jenny', 'Natural', 'Samantha', 'Google US English', 'Zira'];
-function deviceSpeak(text) {
-  if (!USE_DEVICE_VOICE || !on || !text || !window.speechSynthesis) return;
+function deviceSpeak(text, key = '') {
+  if (!(USE_DEVICE_VOICE || DEVICE_VOICE_FOR.test(key)) || !on || !text || !window.speechSynthesis) return;
   const u = new SpeechSynthesisUtterance(text);
   const voices = speechSynthesis.getVoices().filter((v) => /^en/i.test(v.lang));
   u.voice = PREFERRED.map((n) => voices.find((v) => v.name.includes(n))).find(Boolean) || voices[0] || null;
   u.rate = 0.97;
+  if (key.startsWith('floor-')) { u.rate = 0.92; u.pitch = 0.9; }   // the elevator sounds a little different from the receptionist
   speechSynthesis.speak(u);
 }
 
@@ -176,6 +200,7 @@ window.ccsVoice = {
   arrive(floor) {
     const suite = FLOOR_SUITE[floor];
     setTimeout(() => {
+      showArrival(LINES['floor-' + floor]);
       play('floor-' + floor, LINES['floor-' + floor], { interrupt: true });
       if (suite) play('welcome-' + suite, LINES['welcome-' + suite]);
     }, 800);

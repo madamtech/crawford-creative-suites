@@ -33,6 +33,12 @@ const patches = [
   // The concierge finishes her answer before the visitor is taken to the elevator.
   ['}[r]),window.setTimeout(()=>V(r),700)', '}[r])),window.ccsVoice.afterSpeech(()=>V(r),700)'],
 
+  // Lounge cards: clearer button wording (build/lounge.js, ccsCta).
+  ['children:[G.cta,` →`]', 'children:[window.ccsCta?window.ccsCta(G):G.cta,` →`]'],
+  // Elevator: only the current floor's key lights up (all keys are switched off
+  // while the car moves, and switched-off keys used to look lit).
+  ['children:t},t))]}),e===`traveling`', '"data-current":t===g?``:void 0,"aria-current":t===g?`true`:void 0,children:t},t))]}),e===`traveling`'],
+
   // Lounges: Previous and Next are enough; no Surprise Me button.
   ['(0,i.jsx)(`button`,{onClick:q,children:`Surprise Me`}),', ''],
 

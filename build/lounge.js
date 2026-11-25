@@ -54,6 +54,32 @@ new MutationObserver(() => {
 // guide's own button then continues to the original destination.
 import { GUIDES, EXTRA_CARDS } from './lounge-guides.js';
 window.ccsExtraCards = EXTRA_CARDS;
+// The card's own button says what it does ("Show me the ritual"), not "Explore".
+window.ccsCta = (card) => (GUIDES[card.title] && GUIDES[card.title].cta) || card.cta;
+
+// The guide's second button opens the price list at the products it is about
+// (for example Beard Oil and Beard Balm, near the end of M'BELLISH) instead of
+// the top of the list, and briefly highlights them.
+function jumpTo(names) {
+  if (!names || !names.length) return;
+  const want = new Set(names);
+  let tries = 0;
+  const find = () => {
+    const list = document.querySelector('.reception-scene .catalog-scroll');
+    const cards = list ? [...list.querySelectorAll('.product-card')].filter((c) => want.has(c.querySelector('h4')?.textContent.trim())) : [];
+    if (!cards.length) { if (++tries < 40) setTimeout(find, 50); return; }
+    const section = cards[0].closest('.catalog-section');
+    // Land on the first product, with its collection's name pinned above it.
+    const head = section && section.firstElementChild;
+    const top = cards[0].getBoundingClientRect().top - list.getBoundingClientRect().top + list.scrollTop;
+    list.scrollTo({ top: Math.max(0, top - (head ? head.offsetHeight + 24 : 24)), behavior: 'smooth' });
+    cards.forEach((c) => c.classList.add('jump-hit'));
+    setTimeout(() => cards.forEach((c) => c.classList.remove('jump-hit')), 6000);
+    cards[0].setAttribute('tabindex', '-1');
+    cards[0].focus({ preventScroll: true });
+  };
+  setTimeout(find, 60);
+}
 
 let passThrough = false;
 const esc = (t) => t.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -80,6 +106,7 @@ window.addEventListener('click', (e) => {
   if (e.target.closest('[data-guide-next]')) {
     const g = GUIDES[card.querySelector('h2')?.textContent.trim()];
     window.ccsLoungeGo = g && g.to || null;   // which page the button opens
+    jumpTo(g && g.show);
     passThrough = true;
     try { ctaBtn?.click(); } finally { passThrough = false; }
     return;

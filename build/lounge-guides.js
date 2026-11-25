@@ -2,6 +2,9 @@
 // itself, shown right on the card. A second button then goes on to the
 // products, project form, or consultation (the button's original route).
 // Keyed by card title. General education only; no prices or medical claims.
+// show: product names the second button jumps to in the price list (Nov 25:
+// owner asked that visitors land on the products, not the top of the list).
+// cta: the card's own button wording (replaces "Explore ...").
 
 export const GUIDES = {
   // ---------- Madam Allure: The Powder Room ----------
@@ -14,7 +17,9 @@ export const GUIDES = {
       'Smooth it over arms, legs, and shoulders using long, upward strokes. Add a little more only where skin feels dry.',
       'Give it a minute to absorb before dressing.',
     ],
-    next: 'See the dry body oils',
+    next: "See the dry body oils & prices",
+    show: ["Dry Body Oil — Women", "Dry Body Oil — Men", "Dry Body Oil — Unisex"],
+    cta: "Show me the ritual",
   },
   'Body Oil or Fragrance Oil?': {
     title: 'Find your fragrance ritual',
@@ -24,7 +29,9 @@ export const GUIDES = {
       'Want both? Apply body oil first, then a light touch of the matching fragrance oil on pulse points.',
       'Layer the same scent family so the two blend instead of compete.',
     ],
-    next: 'See fragrance options',
+    next: "See fragrance & body oils",
+    show: ["Women Fragrance Oil", "Men Fragrance Oil", "Unisex Fragrance Oil", "Dry Body Oil — Women", "Dry Body Oil — Men", "Dry Body Oil — Unisex"],
+    cta: "Find my fragrance ritual",
   },
   'A Better Bath-Tea Ritual': {
     title: 'A relaxing bath-tea ritual',
@@ -35,7 +42,9 @@ export const GUIDES = {
       'Rinse, pat dry, and finish with body oil or shea butter while skin is still damp.',
       'Stop using it if any irritation occurs.',
     ],
-    next: 'See bath rituals',
+    next: "See Bath Tea & price",
+    show: ["Bath Tea"],
+    cta: "Show me the ritual",
   },
   'Hyaluronic Acid and Hydration': {
     title: 'Where a hydrating serum fits',
@@ -45,7 +54,9 @@ export const GUIDES = {
       'Follow right away with moisturizer to help hold the hydration in.',
       'In the morning, finish with sunscreen.',
     ],
-    next: 'See facial care',
+    next: "See the Hydrating Facial Serum",
+    show: ["Hydrating Facial Serum"],
+    cta: "Show me where it fits",
   },
   'Niacinamide in a Simple Routine': {
     title: 'Build a simple ritual',
@@ -55,7 +66,9 @@ export const GUIDES = {
       'Add only one new product at a time, and give it a couple of weeks before adding another.',
       'Patch-test new products and keep the routine short.',
     ],
-    next: 'See facial care',
+    next: "See the facial serums",
+    show: ["Facial Serum", "Hydrating Facial Serum"],
+    cta: "Build a simple ritual",
   },
   'African Black Soap Care': {
     title: 'Using African black soap gently',
@@ -65,7 +78,9 @@ export const GUIDES = {
       'Start with a few times a week and see how your skin feels.',
       'Follow with moisture, such as body oil or whipped shea butter.',
     ],
-    next: 'See cleansing care',
+    next: "See African Black Soap & prices",
+    show: ["African Black Soap", "African Black Soap Shampoo Bar"],
+    cta: "Show me how",
   },
   'Shea Butter for Skin and Hair': {
     title: 'Ways to use whipped shea butter',
@@ -75,7 +90,9 @@ export const GUIDES = {
       'Night ritual: apply to hands and feet before bed.',
       'Start small; a little goes a long way.',
     ],
-    next: 'See shea butter',
+    next: "See Whipped Shea Butter & price",
+    show: ["Whipped Shea Butter"],
+    cta: "Show me how",
   },
   'Botanical Oil Care': {
     title: 'A botanical oil routine',
@@ -85,7 +102,9 @@ export const GUIDES = {
       'Beard: work a few drops through the beard and onto the skin underneath.',
       'Use a light hand and adjust to how your hair and skin respond.',
     ],
-    next: 'See botanical care',
+    next: "See the botanical oils & prices",
+    show: ["Hair Growth Oil", "Beard Oil", "Beard Balm", "Facial Serum"],
+    cta: "Show me how",
   },
   'Beard Oil Versus Beard Balm': {
     title: 'Choosing oil or balm',
@@ -95,7 +114,9 @@ export const GUIDES = {
       'Many men use both: oil first for the skin, then balm to style.',
       'Comb or brush through to spread it evenly.',
     ],
-    next: 'See grooming',
+    next: "See Beard Oil & Beard Balm",
+    show: ["Beard Oil", "Beard Balm"],
+    cta: "Compare oil and balm",
   },
   'Fragrance Sensitivity': {
     title: 'If you are sensitive to fragrance',
@@ -105,7 +126,9 @@ export const GUIDES = {
       'Apply fragrance to clothing or hair ends rather than skin if skin reacts.',
       'Stop using a product that causes irritation, and ask a professional about allergies.',
     ],
-    next: 'See fragrance options',
+    next: "See the fragrance oils",
+    show: ["Women Fragrance Oil", "Men Fragrance Oil", "Unisex Fragrance Oil"],
+    cta: "Show me how",
   },
 
   // ---------- Allure Fusions: The Maker's Lounge ----------
@@ -402,7 +425,8 @@ export const GUIDES = {
       'For extra-dry hands or feet, apply at night and slip on cotton gloves or socks.',
       'A little goes a long way; add more only where skin still feels tight.',
     ],
-    next: 'See body butters',
+    next: "See Whipped Shea Butter & price",
+    show: ["Whipped Shea Butter"],
   },
   'An Herbal Bath Soak': {
     title: 'Steep a bath like a cup of tea',
@@ -414,7 +438,8 @@ export const GUIDES = {
       'Rinse, pat dry, and seal in moisture with a natural body oil.',
       'Stop using it if any irritation occurs.',
     ],
-    next: 'See bath rituals',
+    next: "See Bath Tea & price",
+    show: ["Bath Tea"],
   },
   'An Oil-Infused Moisture Bath': {
     title: 'A bath for very dry skin',
@@ -425,7 +450,8 @@ export const GUIDES = {
       'Step out carefully: oil makes the tub slippery.',
       'Pat dry gently instead of rubbing, so a light layer of oil stays on the skin.',
     ],
-    next: 'See bath rituals',
+    next: "See the bath products & prices",
+    show: ["Bath Salt", "Bath Truffles", "Foaming Bath Butter"],
   },
   'A Warm Herbal Oil Scalp Treatment': {
     title: 'A pre-wash herbal oil treatment',
@@ -436,7 +462,8 @@ export const GUIDES = {
       'Smooth what is left over the ends, then cover with a shower cap for 20 to 30 minutes.',
       'Shampoo and condition as usual.',
     ],
-    next: 'See hair care',
+    next: "See Hair Growth Oil & price",
+    show: ["Hair Growth Oil"],
   },
   'Essential Oils Need a Carrier': {
     title: 'Using essential oils safely',
@@ -447,7 +474,8 @@ export const GUIDES = {
       'Some citrus essential oils can make skin more sensitive to the sun; apply them where clothing will cover.',
       'Store blends in dark bottles, away from heat and light.',
     ],
-    next: 'See fragrance options',
+    next: "See the fragrance oils",
+    show: ["Women Fragrance Oil", "Men Fragrance Oil", "Unisex Fragrance Oil"],
   },
   'How Herbs Are Infused Into Oil': {
     title: 'From herb to oil',
@@ -458,7 +486,8 @@ export const GUIDES = {
       'The infused oil becomes the base for hair oils, body oils, butters, and balms.',
       'Keep infused products cool and out of direct sun so they stay fresh.',
     ],
-    next: 'See products made with herbal oils',
+    next: "See the herbal oils & balm",
+    show: ["Hair Growth Oil", "Beard Oil", "Beard Balm"],
   },
   'A Five-Minute Beard Routine': {
     title: 'A quick daily beard routine',
@@ -469,7 +498,8 @@ export const GUIDES = {
       'Comb or brush from the roots down.',
       'For longer beards, finish with a little butter-based beard balm to soften and shape.',
     ],
-    next: 'See grooming',
+    next: "See Beard Oil & Beard Balm",
+    show: ["Beard Oil", "Beard Balm"],
   },
   'Soothe the Skin Under Your Beard': {
     title: 'Care for the skin, not just the hair',
@@ -480,7 +510,8 @@ export const GUIDES = {
       'Brush daily to lift flakes and spread the oil.',
       'See a professional if itching or irritation continues.',
     ],
-    next: 'See grooming',
+    next: "See Beard Oil & Beard Balm",
+    show: ["Beard Oil", "Beard Balm"],
   },
 
   // Allure Fusions
