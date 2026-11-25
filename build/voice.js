@@ -22,7 +22,7 @@ const LINES = {
   greeting: 'Welcome to Crawford Creative Suites. How may I direct you today? Tell me what you are looking for, or choose a destination on the directory.',
   'reply-unknown': 'I couldn’t quite place that. Try the directory, or tell me what kind of business you need.',
   // Elevator voice, after the ding as the doors open (Nov 25: owner's wording).
-  'floor-1': 'Welcome to the main lobby.',
+  // No elevator welcome for the lobby: the concierge greets visitors there (owner, Nov 25).
   'floor-2': 'Welcome to Madam Allure.',
   'floor-3': 'Welcome to Allure Fusions.',
   'floor-4': 'Welcome to AI AuthoriTech.',
@@ -201,7 +201,7 @@ window.ccsVoice = {
     const suite = FLOOR_SUITE[floor];
     setTimeout(() => {
       showArrival(LINES['floor-' + floor]);
-      play('floor-' + floor, LINES['floor-' + floor], { interrupt: true });
+      if (LINES['floor-' + floor]) play('floor-' + floor, LINES['floor-' + floor], { interrupt: true });
       if (suite) play('welcome-' + suite, LINES['welcome-' + suite]);
     }, 800);
   },

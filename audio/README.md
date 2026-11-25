@@ -10,7 +10,7 @@ Make each line below with your ElevenLabs voice (or record it yourself). Save it
 | Madam Allure receptionist (Floor 2) | Niki (trial; likely to change) | `welcome-217`, `lounge-powder` |
 | Allure Fusions receptionist (Floor 3) | Julie (trial; likely to change) | `welcome-305`, `lounge-maker` |
 | AI AuthoriTech receptionist (Floor 4) | Viktoria (trial; likely to change) | `welcome-412`, `lounge-clarity` |
-| Elevator | to be chosen | `floor-1` to `floor-4` |
+| Elevator | to be chosen | `floor-2` to `floor-4` |
 
 Use the same settings for every line of one voice so they match. Type suite numbers the way they are said (two-seventeen, three-oh-five, four-twelve) so the voice does not read "two one seven".
 
@@ -30,7 +30,6 @@ Tips: keep a short natural pause at the start and end, use the same voice and se
 
 | File name | What it says |
 |---|---|
-| `floor-1.mp3` | Welcome to the main lobby. (after the ding, as the doors open) |
 | `floor-2.mp3` | Welcome to Madam Allure. |
 | `floor-3.mp3` | Welcome to Allure Fusions. |
 | `floor-4.mp3` | Welcome to AI AuthoriTech. |
