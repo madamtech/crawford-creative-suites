@@ -38,9 +38,9 @@ Tips: keep a short natural pause at the start and end, use the same voice and se
 
 | File name | What she says |
 |---|---|
-| `welcome-217.mp3` | Welcome to Madam Allure, where beauty is crafted to captivate. How may we help you today? |
-| `welcome-305.mp3` | Welcome to Allure Fusions, where bold design and beauty fuse. How may we help you today? |
-| `welcome-412.mp3` | Welcome to AI AuthoriTech, where clarity meets capability. How may we help you today? |
+| `welcome-217.mp3` | Hello, and thank you for stopping by. Here, beauty is crafted to captivate. How may I help you today? |
+| `welcome-305.mp3` | Hello, and thank you for stopping by. Here, bold design and beauty fuse. How may I help you today? |
+| `welcome-412.mp3` | Hello, and thank you for stopping by. Here, clarity meets capability. How may I help you today? |
 
 ## Lounges (play when a visitor walks in)
 

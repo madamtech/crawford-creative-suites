@@ -26,9 +26,10 @@ const LINES = {
   'floor-2': 'Welcome to Madam Allure.',
   'floor-3': 'Welcome to Allure Fusions.',
   'floor-4': 'Welcome to AI AuthoriTech.',
-  'welcome-217': 'Welcome to Madam Allure, where beauty is crafted to captivate. How may we help you today?',
-  'welcome-305': 'Welcome to Allure Fusions, where bold design and beauty fuse. How may we help you today?',
-  'welcome-412': 'Welcome to AI AuthoriTech, where clarity meets capability. How may we help you today?',
+  // Receptionists don't repeat "Welcome to ...": the elevator just said it (owner, Nov 25).
+  'welcome-217': 'Hello, and thank you for stopping by. Here, beauty is crafted to captivate. How may I help you today?',
+  'welcome-305': 'Hello, and thank you for stopping by. Here, bold design and beauty fuse. How may I help you today?',
+  'welcome-412': 'Hello, and thank you for stopping by. Here, clarity meets capability. How may I help you today?',
   'lounge-powder': 'Welcome to the Powder Room, a quiet place to explore beauty rituals, fragrance, and self-care.',
   'lounge-maker': "Welcome to the Maker's Lounge, where ideas, materials, and technology come together.",
   'lounge-clarity': 'Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype.',
