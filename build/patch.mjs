@@ -8,9 +8,9 @@ const patches = [
   // Scene images now live in /img and are referenced relative to /suites/.
   ['src:`/main-lobby.png`', 'src:`../img/main-lobby.jpg`'],
   ['src:`/elevator.png`', 'src:`../img/elevator.jpg`'],
-  ['image:`/madam-allure-rose-gold.png`', 'image:`../img/madam-allure.jpg`'],
-  ['image:`/allure-fusions-gallery.png`', 'image:`../img/allure-fusions.jpg`'],
-  ['image:`/reception-303.jpg`', 'image:`../img/ai-authoritech.jpg`'],
+  ['image:`/madam-allure-rose-gold.png`', 'image:`../img/madam-allure-desk.jpg`'],
+  ['image:`/allure-fusions-gallery.png`', 'image:`../img/allure-fusions-desk.jpg`'],
+  ['image:`/reception-303.jpg`', 'image:`../img/ai-authoritech-desk.jpg`'],
 
   // Sound (chime, concierge voice, floor announcements) is off until the visitor
   // turns it on; the choice is remembered on their device (build/voice.js).
