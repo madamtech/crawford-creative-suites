@@ -1,0 +1,4 @@
+# Hidden from search engines until the owner says the site is ready.
+# To unhide: delete this file and the robots meta tag in src/ccs-preview.html and build/site.mjs.
+User-agent: *
+Disallow: /

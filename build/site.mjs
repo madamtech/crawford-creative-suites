@@ -331,6 +331,7 @@ writeFileSync(here('../suites/index.html'), `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <title>Crawford Creative Suites</title>
 <meta name="description" content="Explore Crawford Creative Suites—an immersive virtual business property featuring Madam Allure, Allure Fusions, and AI AuthoriTech.">
 <meta property="og:title" content="Crawford Creative Suites">
