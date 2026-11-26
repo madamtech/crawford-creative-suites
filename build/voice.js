@@ -45,35 +45,6 @@ const REPLY_KEYS = [
 ];
 const FLOOR_SUITE = { 2: '217', 3: '305', 4: '412' };
 
-// The elevator's welcome also shows on screen as the doors open, on a bronze
-// plate like the building's canopy sign (shown even with sound off, and while
-// the elevator voice is not recorded yet).
-function showArrival(text) {
-  if (!text) return;
-  let el = document.querySelector('.elevator-arrival');
-  if (!el) {
-    el = document.createElement('div');
-    el.className = 'elevator-arrival';
-    el.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(el);
-  }
-  el.textContent = text.replace(/\.$/, '');
-  el.classList.remove('show');
-  void el.offsetWidth;
-  el.classList.add('show');
-  clearTimeout(showArrival.t);
-  const hide = () => {
-    clearTimeout(showArrival.t);
-    el.classList.remove('show');
-    window.removeEventListener('pointerdown', hide, true);
-    window.removeEventListener('keydown', hide, true);
-  };
-  showArrival.t = setTimeout(hide, 2500);
-  // Owner, Nov 25: it must not linger while the visitor uses the menu.
-  window.addEventListener('pointerdown', hide, true);
-  window.addEventListener('keydown', hide, true);
-}
-
 function stored() {
   try { return localStorage.getItem(KEY) !== 'off'; } catch { return true; }
 }
@@ -204,21 +175,24 @@ window.ccsVoice = {
     }, 150);
   },
   // Elevator: the car is moving. Quiet until it arrives.
-  approach() {
+  // Owner, Nov 25: the elevator says "Welcome to <business>." while the car is
+  // still moving, before the doors open (no on-screen sign).
+  approach(floor) {
     greeted = true;
+    const line = LINES['floor-' + floor];
+    if (line) setTimeout(() => play('floor-' + floor, line, { interrupt: true }), 250);
   },
-  // Arrival: after the ding (about 0.75 s), as the doors open, the elevator voice
-  // welcomes the visitor to that floor's business; the receptionist follows.
+  // Arrival: after the ding, as the doors open, the receptionist asks how she
+  // can help (unless the concierge already sent the visitor up).
   arrive(floor) {
     const suite = FLOOR_SUITE[floor];
     // Sent up by the concierge (a question or a "take me to" from the lobby)?
     const routed = suite && window.ccsRouted === suite;
     window.ccsRouted = null;
     setTimeout(() => {
-      showArrival(LINES['floor-' + floor]);
-      // Keep a lobby question's answer (queued on arrival) to play after the welcome.
-      const answer = queue.filter((q) => q.key.startsWith('faq-'));
-      if (LINES['floor-' + floor]) play('floor-' + floor, LINES['floor-' + floor], { interrupt: true });
+      // The receptionist speaks first; a lobby question's answer (queued on arrival) follows.
+      const answer = [];
+      for (let k = queue.length - 1; k >= 0; k--) if (queue[k].key.startsWith('faq-')) answer.unshift(...queue.splice(k, 1));
       if (suite && !routed) play('welcome-' + suite, LINES['welcome-' + suite]);
       answer.forEach((q) => play(q.key, q.text));
     }, 800);
