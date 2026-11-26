@@ -87,6 +87,10 @@ const patches = [
   ['mailto:hello@aiauthoritytech.com?subject=${encodeURIComponent(`Madam Allure',
    'mailto:madamallure@gmail.com?subject=${encodeURIComponent(`Madam Allure'],
 
+  // Nov 25 (owner): each product's button opens that product on the Madam Allure
+  // shop website in a new tab (the email link did nothing without a mail app).
+  ['children:`Ask about this item ↗`})', 'children:e.url?`View & buy on our shop ↗`:`Ask about this item ↗`,...(e.url?{className:`shop-link`,href:e.url,target:`_blank`,rel:`noopener`}:{})})'],
+
   // Forms: route to the right business inbox, with a copy-to-clipboard fallback.
   ['window.location.href=`mailto:hello@aiauthoritytech.com?subject=${encodeURIComponent(e)}&body=${encodeURIComponent(r)}`',
    'window.ccsSendRequest(e,r)'],
