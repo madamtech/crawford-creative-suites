@@ -62,7 +62,16 @@ function showArrival(text) {
   void el.offsetWidth;
   el.classList.add('show');
   clearTimeout(showArrival.t);
-  showArrival.t = setTimeout(() => el.classList.remove('show'), 3200);
+  const hide = () => {
+    clearTimeout(showArrival.t);
+    el.classList.remove('show');
+    window.removeEventListener('pointerdown', hide, true);
+    window.removeEventListener('keydown', hide, true);
+  };
+  showArrival.t = setTimeout(hide, 2500);
+  // Owner, Nov 25: it must not linger while the visitor uses the menu.
+  window.addEventListener('pointerdown', hide, true);
+  window.addEventListener('keydown', hide, true);
 }
 
 function stored() {
