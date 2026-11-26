@@ -26,10 +26,12 @@ const LINES = {
   'floor-2': 'Welcome to Madam Allure.',
   'floor-3': 'Welcome to Allure Fusions.',
   'floor-4': 'Welcome to AI AuthoriTech.',
-  // Receptionists don't repeat "Welcome to ...": the elevator just said it (owner, Nov 25).
-  'welcome-217': 'Hello, and thank you for stopping by. Here, beauty is crafted to captivate. How may I help you today?',
-  'welcome-305': 'Hello, and thank you for stopping by. Here, bold design and beauty fuse. How may I help you today?',
-  'welcome-412': 'Hello, and thank you for stopping by. Here, clarity meets capability. How may I help you today?',
+  // Owner, Nov 25: the elevator says "Welcome to <business>." and the receptionist
+  // only adds "How may I help you today?" (skipped when the concierge already
+  // sent the visitor up with a question; it shows on the check-in screen).
+  'welcome-217': 'How may I help you today?',
+  'welcome-305': 'How may I help you today?',
+  'welcome-412': 'How may I help you today?',
   'lounge-powder': 'Welcome to the Powder Room, a quiet place to explore beauty rituals, fragrance, and self-care.',
   'lounge-maker': "Welcome to the Maker's Lounge, where ideas, materials, and technology come together.",
   'lounge-clarity': 'Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype.',
@@ -200,10 +202,16 @@ window.ccsVoice = {
   // welcomes the visitor to that floor's business; the receptionist follows.
   arrive(floor) {
     const suite = FLOOR_SUITE[floor];
+    // Sent up by the concierge (a question or a "take me to" from the lobby)?
+    const routed = suite && window.ccsRouted === suite;
+    window.ccsRouted = null;
     setTimeout(() => {
       showArrival(LINES['floor-' + floor]);
+      // Keep a lobby question's answer (queued on arrival) to play after the welcome.
+      const answer = queue.filter((q) => q.key.startsWith('faq-'));
       if (LINES['floor-' + floor]) play('floor-' + floor, LINES['floor-' + floor], { interrupt: true });
-      if (suite) play('welcome-' + suite, LINES['welcome-' + suite]);
+      if (suite && !routed) play('welcome-' + suite, LINES['welcome-' + suite]);
+      answer.forEach((q) => play(q.key, q.text));
     }, 800);
   },
   // Walking into a lounge.

@@ -29,9 +29,9 @@ const patches = [
   // FAQ concierge (build/faq.js): answer common questions first, and offer a
   // button to the matching suite instead of whisking the visitor away.
   ['H=e=>{e.preventDefault();let t=w.trim(),', 'H=e=>{e.preventDefault();let t=w.trim();window.ccsFaqGo=null;{let f=window.ccsFaq&&window.ccsFaq.answer(t);if(f){window.ccsFaqGo=f.suite;D(f.text);return}}let '],
-  ['E&&(0,i.jsx)(`p`,{className:`concierge-reply`,"aria-live":`polite`,children:E})', 'E&&(0,i.jsx)(`p`,{className:`concierge-reply`,"aria-live":`polite`,children:E}),E&&window.ccsFaqGo&&c[window.ccsFaqGo]&&(0,i.jsx)(`button`,{type:`button`,className:`concierge-go`,onClick:()=>{let s=window.ccsFaqGo;window.ccsFaqGo=null;V(s)},children:`Take me to `+c[window.ccsFaqGo].name+` →`})'],
+  ['E&&(0,i.jsx)(`p`,{className:`concierge-reply`,"aria-live":`polite`,children:E})', 'E&&(0,i.jsx)(`p`,{className:`concierge-reply`,"aria-live":`polite`,children:E}),E&&window.ccsFaqGo&&c[window.ccsFaqGo]&&(0,i.jsx)(`button`,{type:`button`,className:`concierge-go`,onClick:()=>{let s=window.ccsFaqGo;window.ccsFaqGo=null;window.ccsRouted=s;V(s)},children:`Take me to `+c[window.ccsFaqGo].name+` →`})'],
   // The concierge finishes her answer before the visitor is taken to the elevator.
-  ['}[r]),window.setTimeout(()=>V(r),700)', '}[r])),window.ccsVoice.afterSpeech(()=>V(r),700)'],
+  ['}[r]),window.setTimeout(()=>V(r),700)', '}[r])),(window.ccsRouted=r,window.ccsVoice.afterSpeech(()=>V(r),700))'],
 
   // Lounge cards: clearer button wording (build/lounge.js, ccsCta).
   ['children:[G.cta,` →`]', 'children:[window.ccsCta?window.ccsCta(G):G.cta,` →`]'],
