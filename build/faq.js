@@ -246,16 +246,24 @@ function addReceptionAsk() {
     });
     scene.appendChild(box);
   }
-  // A question asked in the lobby is answered here on arrival, after the welcome.
+  // A question asked in the lobby is answered on arrival in this Receptionist
+  // box (owner, Nov 25), labeled as the visitor's lobby question; the answer is
+  // read after the welcome.
   const pending = window.ccsPendingQuestion;
   if (pending && pending.suite === suite) {
     window.ccsPendingQuestion = null;
     const hit = find(pending.question);
     if (!hit) return;
-    box.querySelector('input').value = pending.question;
-    const out = box.querySelector('.reception-answer');
-    out.textContent = hit.text;
-    out.hidden = false;
+    box.querySelector('.lobby-question')?.remove();
+    const q = document.createElement('div');
+    q.className = 'lobby-question';
+    q.setAttribute('aria-live', 'polite');
+    q.innerHTML = '<small>YOUR QUESTION FROM THE LOBBY</small><p class="lq-q"></p><p class="lq-a"></p>';
+    q.querySelector('.lq-q').textContent = '“' + pending.question + '”';
+    q.querySelector('.lq-a').textContent = hit.text;
+    box.querySelector('form').after(q);
+    // A new question typed here replaces the lobby one.
+    box.querySelector('form').addEventListener('submit', () => q.remove(), { once: true });
     say('faq-' + hit.id, hit.text, true);
   }
 }

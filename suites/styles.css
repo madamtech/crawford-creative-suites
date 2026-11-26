@@ -465,6 +465,10 @@ body[data-kiosk-open] .reception-scene[data-kiosk-inview][data-kiosk-below] .rec
 .upgraded .elevator-panel>button[data-current]{color:#2a1a12!important;text-shadow:0 1px 0 rgba(255,235,220,.5)}
 .upgraded .elevator-panel>button[data-current]:before{background:linear-gradient(135deg,#f6d2bf,#d99b84 50%,#b9755f);border-color:#f6d2bf;box-shadow:0 0 14px rgba(232,170,140,.85),inset 0 1px 0 rgba(255,255,255,.5)}
 .upgraded .elevator-panel.on-wall>button{width:56%!important}
+.lobby-question{margin:.3em 0 .8em;padding:.55em .75em;border-left:2px solid var(--suite-accent,#c49e84);background:rgba(255,255,255,.06);border-radius:4px;font:400 .78rem/1.55 Lora,Georgia,serif;color:#c7c0b8}
+.lobby-question small{display:block;font:600 .55rem/1.4 "Crimson Pro",Georgia,serif;letter-spacing:.16em;color:#c49e84}
+.lobby-question .lq-q{margin:.3em 0 .35em;font-style:italic;color:#eee6dd}
+.lobby-question .lq-a{margin:0}
 .upgraded .catalog-scroll>.catalog-section>div:first-child{position:sticky;top:-1px;z-index:2;background:linear-gradient(180deg,#2a1e16 85%,rgba(42,30,22,0));padding-top:.4em;padding-bottom:.6em}
 .product-card.jump-hit{outline:2px solid #d99b84;outline-offset:3px;box-shadow:0 0 0 6px rgba(217,155,132,.18),0 8px 24px rgba(0,0,0,.25);transition:outline-color 1s ease,box-shadow 1s ease}
 @media (max-width:850px){.upgraded .elevator-panel:not(.on-wall)>button{min-width:56px!important;min-height:56px!important;font-size:1.15rem!important}}
