@@ -131,8 +131,8 @@
   "lines": [
    {
     "key": "welcome-217",
-    "text": "How may I help you?",
-    "say": "How may I help you?",
+    "text": "Welcome to Madam Allure. Please check in.",
+    "say": "Welcome to Madam Allure. Please check in.",
     "recorded": false
    },
    {
@@ -371,8 +371,8 @@
   "lines": [
    {
     "key": "welcome-305",
-    "text": "How may I help you?",
-    "say": "How may I help you?",
+    "text": "Welcome to Allure Fusions. Please check in.",
+    "say": "Welcome to Allure Fusions. Please check in.",
     "recorded": false
    },
    {
@@ -587,8 +587,8 @@
   "lines": [
    {
     "key": "welcome-412",
-    "text": "How may I help you?",
-    "say": "How may I help you?",
+    "text": "Welcome to AI AuthoriTech. Please check in.",
+    "say": "Welcome to A-I Awthor-ih-tek. Please check in.",
     "recorded": false
    },
    {

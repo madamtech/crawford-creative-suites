@@ -36,12 +36,12 @@ const LINES = {
   'floor-2': 'Floor two. Madam Allure.',
   'floor-3': 'Floor three. Allure Fusions.',
   'floor-4': 'Floor four. AI AuthoriTech.',
-  // Owner, Nov 27: after the elevator's "Floor two. Madam Allure." the receptionist only
-  // says "How may I help you?" If the lobby concierge already sent a question up, she
+  // Owner, Nov 27: with no question sent up, the receptionist only welcomes the visitor and
+  // points to the Check in tablet. If the lobby concierge already sent a question up, she
   // says it arrived instead, then reads the answer (also shown on screen for sound off).
-  'welcome-217': 'How may I help you?',
-  'welcome-305': 'How may I help you?',
-  'welcome-412': 'How may I help you?',
+  'welcome-217': 'Welcome to Madam Allure. Please check in.',
+  'welcome-305': 'Welcome to Allure Fusions. Please check in.',
+  'welcome-412': 'Welcome to AI AuthoriTech. Please check in.',
   'sent-217': 'Your question came up from the lobby, and I have your answer right here.',
   'sent-305': 'Your question came up from the lobby, and I have your answer right here.',
   'sent-412': 'Your question came up from the lobby, and I have your answer right here.',

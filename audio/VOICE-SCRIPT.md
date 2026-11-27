@@ -45,7 +45,7 @@ Voice: Kai - Real AI Receptionist (chosen Nov 27)
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
-| `welcome-217.mp3` | How may I help you? | How may I help you? |  |
+| `welcome-217.mp3` | Welcome to Madam Allure. Please check in. | Welcome to Madam Allure. Please check in. |  |
 | `sent-217.mp3` | Your question came up from the lobby, and I have your answer right here. | Your question came up from the lobby, and I have your answer right here. |  |
 | `lounge-powder.mp3` | Welcome to the Powder Room, a quiet place to explore beauty rituals, fragrance, and self-care. | Welcome to the Powder Room, a quiet place to explore beauty rituals, fragrance, and self-care. |  |
 | `r217-memorial-order.mp3` | Tap Request a memorial piece in the catalog and share the names, dates, and colors. You will get a quote after review. | Tap Request a memorial piece in the catalog and share the names, dates, and colors. You will get a quote after review. |  |
@@ -91,7 +91,7 @@ Voice: Maya - Receptionist & Customer Service (chosen Nov 27)
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
-| `welcome-305.mp3` | How may I help you? | How may I help you? |  |
+| `welcome-305.mp3` | Welcome to Allure Fusions. Please check in. | Welcome to Allure Fusions. Please check in. |  |
 | `sent-305.mp3` | Your question came up from the lobby, and I have your answer right here. | Your question came up from the lobby, and I have your answer right here. |  |
 | `lounge-maker.mp3` | Welcome to the Maker's Lounge, where ideas, materials, and technology come together. | Welcome to the Maker's Lounge, where ideas, materials, and technology come together. |  |
 | `r305-how-order.mp3` | Tap Build My Project, describe your idea, and add your artwork. We review it and send a quote, and production starts once the deposit is paid. | Tap Build My Project, describe your idea, and add your artwork. We review it and send a quote, and production starts once the deposit is paid. |  |
@@ -133,7 +133,7 @@ Voice: Tiffany - Warm, Conversational Narrator (chosen Nov 27)
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
-| `welcome-412.mp3` | How may I help you? | How may I help you? |  |
+| `welcome-412.mp3` | Welcome to AI AuthoriTech. Please check in. | Welcome to A-I Awthor-ih-tek. Please check in. |  |
 | `sent-412.mp3` | Your question came up from the lobby, and I have your answer right here. | Your question came up from the lobby, and I have your answer right here. |  |
 | `lounge-clarity.mp3` | Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype. | Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype. |  |
 | `r412-process.mp3` | It starts with a free 30-minute discovery call. You then get a written proposal with scope, timeline, and price, and work begins once you accept it. | It starts with a free 30-minute discovery call. You then get a written proposal with scope, timeline, and price, and work begins once you accept it. |  |
