@@ -411,11 +411,11 @@ home = home
   .replace(/<script>\(function\(\)\{function c\(\)[\s\S]*?<\/script>/, '')
   .replace(/<link rel="icon"[^>]*>/, '<link rel="icon" href="favicon.svg">\n  <meta property="og:image" content="img/crawford-exterior.jpg">')
   // Log In sits beside "Enter the suites" in the welcome box (owner, Nov 27: not floating in
-  // the photo's top corner). "Log In" for visitors, "My Projects" once signed in.
+  // the photo's top corner). "Log In" for visitors, "My Orders" once signed in.
   // Shown only once the backend is set up (suites/backend-config.js).
   .replace('<div class="actions"><button class="btn btn-primary" id="enterBtn">Enter the suites</button></div>',
     '<div class="actions"><button class="btn btn-primary" id="enterBtn">Enter the suites</button><a class="btn btn-ghost arrival-login" href="suites/#login" hidden>Log In</a></div>'
-    + '<script src="suites/backend-config.js"></script><script>(function(){var c=window.CCS_BACKEND||{};if(c.url&&c.anonKey){var a=document.querySelector(".arrival-login");a.hidden=false;try{if(localStorage.getItem("ccs_session")){a.textContent="My Projects";a.href="suites/#projects"}}catch(e){}}})()</script>')
+    + '<script src="suites/backend-config.js"></script><script>(function(){var c=window.CCS_BACKEND||{};if(c.url&&c.anonKey){var a=document.querySelector(".arrival-login");a.hidden=false;try{if(localStorage.getItem("ccs_session")){a.textContent="My Orders";a.href="suites/#projects"}}catch(e){}}})()</script>')
   .replace(/<style>([\s\S]*?)<\/style>/, (m, css) => `<style>${recolor(css)}\n    .descriptor{color:#fbeee9}.note{color:#b9aca3}${extras}
     .arrival-login[hidden]{display:none}</style>`);
 if (home.includes('chatgpt.site') || home.includes('assets/')) throw new Error('arrival page still points at ChatGPT');

@@ -61,9 +61,9 @@ const busy = (btn, on, label) => { btn.disabled = on; if (label) btn.textContent
 
 // ---------- Client Login ----------
 function showLogin(message) {
-  const b = openPanel('Client Login', 'MY PROJECTS');
+  const b = openPanel('Client Login', 'MY ORDERS');
   const form = h('form', { class: 'ccs-form' },
-    h('p', { text: 'No password needed. Enter the email you used for your request, and we will email you a secure sign-in link.' }),
+    h('p', { text: 'No password needed. Enter the email you used for your order or request, and we will email you a secure sign-in link.' }),
     h('label', {}, 'Email', h('input', { name: 'email', type: 'email', autocomplete: 'email', required: true, value: api.currentEmail() || '' })),
     h('button', { class: 'ccs-primary', type: 'submit', text: 'Email me a sign-in link' }));
   const out = h('div');
@@ -73,7 +73,7 @@ function showLogin(message) {
     busy(btn, true, 'Sending…');
     try {
       await api.sendMagicLink(form.email.value.trim());
-      out.replaceChildren(note(`Check ${form.email.value.trim()} for an email from Crawford Creative Suites, and tap the link to open My Projects. It can take a minute to arrive.`, 'ok'),
+      out.replaceChildren(note(`Check ${form.email.value.trim()} for an email from Crawford Creative Suites, and tap the link to open My Orders. It can take a minute to arrive.`, 'ok'),
         previewMailboxLink());
       busy(btn, false, 'Send it again');
     } catch (err) {
@@ -115,7 +115,7 @@ const statusPill = (s) => h('span', { class: 'ccs-pill', 'data-status': s, text:
 
 // ---------- My Projects ----------
 async function showProjects(flash) {
-  const b = openPanel('My Projects', 'CLIENT LOGIN');
+  const b = openPanel('Your orders & projects', 'MY ORDERS');
   b.append(note('Loading your projects…'));
   let data;
   try { data = await api.rpc('my_projects'); } catch (err) {
@@ -129,7 +129,7 @@ async function showProjects(flash) {
   b.append(bar);
   if (flash) b.append(note(flash, 'ok'));
   if (!data.projects.length) {
-    b.append(h('div', { class: 'ccs-empty' }, h('p', { text: 'There are no projects under this email yet.' }),
+    b.append(h('div', { class: 'ccs-empty' }, h('p', { text: 'There are no orders or projects under this email yet.' }),
       h('p', { text: 'Requests sent from Allure Fusions, AI AuthoriTech or Madam Allure appear here once they are received.' })));
   }
   for (const p of data.projects) b.append(projectCard(p));
@@ -229,7 +229,7 @@ async function showAdmin(flash) {
   const tabs = [['overview', 'Overview'], ['allure_fusions', 'Allure Fusions'], ['ai_authoritech', 'AI AuthoriTech'], ['madam_allure', 'Madam Allure Orders'], ['leads', 'Leads']];
   const nav = h('nav', { class: 'ccs-tabs', role: 'tablist' }, tabs.map(([k, label]) => h('button', {
     type: 'button', role: 'tab', 'aria-selected': String(adminState.tab === k), onclick: () => { adminState.tab = k; adminState.status = ''; showAdmin(); }, text: label })));
-  const top = h('div', { class: 'ccs-bar' }, h('button', { type: 'button', onclick: () => showProjects(), text: '← My Projects' }),
+  const top = h('div', { class: 'ccs-bar' }, h('button', { type: 'button', onclick: () => showProjects(), text: '← My Orders' }),
     h('button', { type: 'button', onclick: () => showAdmin(), text: 'Refresh' }));
   b.replaceChildren(top, nav);
   if (flash) b.append(note(flash, 'ok'));
@@ -397,10 +397,10 @@ function sentNotice({ working, error, number, email, failed = [] }) {
   else {
     box.append(h('strong', { text: 'Request received' }),
       h('p', { text: number ? `Thank you! Your request number is ${number}. We will reply by email.` : 'Thank you! We will reply by email.' }),
-      failed.length ? h('p', { text: `${failed.join(', ')} did not upload. You can add it from My Projects after you sign in.` }) : '');
+      failed.length ? h('p', { text: `${failed.join(', ')} did not upload. You can add it from My Orders after you sign in.` }) : '');
     const actions = h('div');
     if (api.signedIn() && api.currentEmail() === String(email || '').toLowerCase()) {
-      actions.append(h('button', { type: 'button', 'data-copy': '', onclick: () => { box.remove(); open('projects'); }, text: 'Open My Projects' }));
+      actions.append(h('button', { type: 'button', 'data-copy': '', onclick: () => { box.remove(); open('projects'); }, text: 'Open My Orders' }));
     } else if (email) {
       actions.append(h('button', { type: 'button', 'data-copy': '', text: 'Follow it online: email me a sign-in link', onclick: async (e) => {
         busy(e.target, true, 'Sending…');
@@ -491,7 +491,7 @@ export function open(view) {
 }
 
 function syncLoginButtons() {
-  const label = api.signedIn() ? 'My Projects' : 'Log In';
+  const label = api.signedIn() ? 'My Orders' : 'Log In';
   document.querySelectorAll('[data-client-login]').forEach((b) => { if (b.textContent !== label) b.textContent = label; });
 }
 

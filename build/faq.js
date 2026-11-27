@@ -17,7 +17,7 @@ export const FAQ = [
   // "Check my order": only once Log In is switched on (suites/backend-config.js).
   { id: 'myorder', suite: null, when: () => !!(window.ccsPortal && window.ccsPortal.ready()),
     match: [/\b(my (order|project|request)s?|order status|project status|track(ing)?|check on|where is my|sign in|log ?in|client login|account)\b/],
-    text: 'You can follow every order and project in My Projects. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed.' },
+    text: 'You can follow every order and project in My Orders. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed.' },
   { id: 'owner', suite: null, match: [/\b(who (owns|runs|is behind|made)|owner|founder|tanika)\b/],
     text: 'All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a maker, and an AI consultant.' },
   { id: 'visit', suite: null, match: [/\b(address|located|location|visit in person|come by|stop by|storefront|in person)\b/],
