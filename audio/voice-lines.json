@@ -107,20 +107,20 @@
   "lines": [
    {
     "key": "floor-2",
-    "text": "Welcome to Madam Allure.",
-    "say": "Welcome to Madam Allure.",
+    "text": "Floor two. Madam Allure.",
+    "say": "Floor two. Madam Allure.",
     "recorded": false
    },
    {
     "key": "floor-3",
-    "text": "Welcome to Allure Fusions.",
-    "say": "Welcome to Allure Fusions.",
+    "text": "Floor three. Allure Fusions.",
+    "say": "Floor three. Allure Fusions.",
     "recorded": false
    },
    {
     "key": "floor-4",
-    "text": "Welcome to AI AuthoriTech.",
-    "say": "Welcome to AI AuthoriTech.",
+    "text": "Floor four. AI AuthoriTech.",
+    "say": "Floor four. AI AuthoriTech.",
     "recorded": false
    }
   ]

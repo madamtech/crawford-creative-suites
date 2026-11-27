@@ -31,9 +31,11 @@ const LINES = {
   'reply-unknown': 'I couldn’t quite place that. Try the directory, or tell me what kind of business you need.',
   // Elevator voice, after the ding as the doors open (Nov 25: owner's wording).
   // No elevator welcome for the lobby: the concierge greets visitors there (owner, Nov 25).
-  'floor-2': 'Welcome to Madam Allure.',
-  'floor-3': 'Welcome to Allure Fusions.',
-  'floor-4': 'Welcome to AI AuthoriTech.',
+  // Nov 27 (owner): the elevator voice (Blake Harlow, male) announces only the floor and
+  // the business, short enough to finish as the doors open; the receptionist welcomes them.
+  'floor-2': 'Floor two. Madam Allure.',
+  'floor-3': 'Floor three. Allure Fusions.',
+  'floor-4': 'Floor four. AI AuthoriTech.',
   // Owner, Nov 25: the elevator says "Welcome to <business>." and the receptionist
   // only adds "How may I help you today?" (skipped when the concierge already
   // sent the visitor up with a question; it shows on the check-in screen).

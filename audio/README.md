@@ -30,9 +30,9 @@ Tips: keep a short natural pause at the start and end, use the same voice and se
 
 | File name | What it says |
 |---|---|
-| `floor-2.mp3` | Welcome to Madam Allure. |
-| `floor-3.mp3` | Welcome to Allure Fusions. |
-| `floor-4.mp3` | Welcome to AI AuthoriTech. |
+| `floor-2.mp3` | Floor two. Madam Allure. |
+| `floor-3.mp3` | Floor three. Allure Fusions. |
+| `floor-4.mp3` | Floor four. AI AuthoriTech. |
 
 ## Receptionists (play when the elevator doors open)
 

@@ -35,9 +35,9 @@ Voice: Blake Harlow (chosen Nov 27). Floor announcements only.
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
-| `floor-2.mp3` | Welcome to Madam Allure. | Welcome to Madam Allure. |  |
-| `floor-3.mp3` | Welcome to Allure Fusions. | Welcome to Allure Fusions. |  |
-| `floor-4.mp3` | Welcome to AI AuthoriTech. | Welcome to AI AuthoriTech. |  |
+| `floor-2.mp3` | Floor two. Madam Allure. | Floor two. Madam Allure. |  |
+| `floor-3.mp3` | Floor three. Allure Fusions. | Floor three. Allure Fusions. |  |
+| `floor-4.mp3` | Floor four. AI AuthoriTech. | Floor four. AI AuthoriTech. |  |
 
 ## Madam Allure receptionist (Floor 2, Suite 217)
 
