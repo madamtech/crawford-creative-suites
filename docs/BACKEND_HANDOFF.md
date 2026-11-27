@@ -160,6 +160,8 @@ Deploy still needs a browser step as `allurefusionsfirm@gmail.com` (Peyton, bloc
 
 ## Database setup — Supabase is confirmed (2026-11-27)
 
+Supabase: fresh project named Crawford Creative Suites under the Ai AuthoriTech organization; the lead and Skool tables are to be created — do not assume an existing schema.
+
 **Decision:** Supabase (Postgres + Auth + Storage + Edge Functions) is the system of record. Keep the Sheets tracker as a **synced operator view** for now. Peyton syncs Supabase → Sheets.
 
 **CLAUDE** sets up the project schema, RLS, Auth, and Edge Functions for form intake and webhooks. **TANIKA** creates the Supabase account/project and enters keys as secrets: the **anon key** may be in the frontend; the **service role key must never be in the repo or the GitHub Pages bundle**.
