@@ -30,7 +30,9 @@ const spoken = (t) => String(t)
   .replace(/\b3D\b/g, '3-D').replace(/\bLMS\b/g, 'L-M-S').replace(/\bNFC\b/g, 'N-F-C').replace(/\bPLA\b/g, 'P-L-A').replace(/\bPETG\b/g, 'P-E-T-G')
   .replace(/\bJPG\b/g, 'J-peg').replace(/\bPNG\b/g, 'P-N-G').replace(/\bPDF\b/g, 'P-D-F').replace(/\bSVG\b/g, 'S-V-G').replace(/\bDXF\b/g, 'D-X-F')
   .replace(/\bSTL\b/g, 'S-T-L').replace(/\b3MF\b/g, '3-M-F').replace(/\bMB\b/g, 'megabytes').replace(/madamallure@gmail\.com/g, 'madam allure at gmail dot com')
-  .replace(/allurefusionsfirm@gmail\.com/g, 'allure fusions firm at gmail dot com').replace(/ai\.authoritech@gmail\.com/g, 'A-I dot authoritech at gmail dot com');
+  .replace(/allurefusionsfirm@gmail\.com/g, 'allure fusions firm at gmail dot com').replace(/ai\.authoritech@gmail\.com/g, 'A-I dot Awthor-ih-tek at gmail dot com')
+  // Owner-approved pronunciation (Nov 27): "AI AuthoriTech" is typed as "A-I Awthor-ih-tek".
+  .replace(/\bAI AuthoriTech\b/g, 'A-I Awthor-ih-tek').replace(/\bAuthoriTech\b/g, 'Awthor-ih-tek');
 
 const lobbyGeneral = FAQ.filter((f) => !f.suite && !f.deskOnly && !f.desk);
 const DIRECT = 'Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3D printing and laser work; and AI AuthoriTech on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up.';

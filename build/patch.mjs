@@ -23,6 +23,10 @@ const patches = [
   // then the receptionist greets the visitor once the doors have opened.
   ['t(`traveling`);', 't(`traveling`),window.ccsVoice.approach(e);'],
   ['z(),y(!1)', 'z(),window.ccsVoice.arrive(e),y(!1)'],
+  // Owner, Nov 27: the doors open (chime) only after the floor announcement has finished,
+  // so the ride lasts as long as "Floor two. Madam Allure." takes to say.
+  ['window.setTimeout(()=>{if(e===1)C(`Floor 1. Main Lobby.`)', 'window.setTimeout(()=>window.ccsVoice.afterSpeech(()=>{if(e===1)C(`Floor 1. Main Lobby.`)'],
+  ['window.ccsVoice.arrive(e),y(!1)},n?350:1500)', 'window.ccsVoice.arrive(e),y(!1)},0,300),n?350:1500)'],
 
   // Concierge speaks on her own when the visitor arrives (build/voice.js), and replies aloud.
   ['(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),',
