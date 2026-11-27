@@ -68,7 +68,7 @@ export async function sendMagicLink(email) {
   });
   if (!res.ok) {
     const b = await res.json().catch(() => ({}));
-    throw new Error(res.status === 429 ? 'Too many sign-in emails were requested. Please wait a minute and try again.' : (b.msg || b.error_description || 'Could not send the sign-in link'));
+    throw new Error(res.status === 429 ? 'Our sign-in emails are busy right now. Please try again a little later, or use "Check one order without signing in" below.' : (b.msg || b.error_description || 'Could not send the sign-in link'));
   }
 }
 
