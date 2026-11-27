@@ -246,6 +246,34 @@ const otherText = (other) => {
   const s = SUITES[other];
   return `${s.name} handles that, in Suite ${other} on Floor ${s.floor}. Take the elevator there, and their receptionist will help you.`;
 };
+// Owner, Nov 27: a little sales nudge after a receptionist answers a question.
+// Each nudge is its own recording (r<suite>-nudge-<n>.mp3), so answers never
+// need re-recording. They rotate, and are skipped where a pitch would feel off.
+const NUDGES = {
+  '217': [
+    'You deserve a little pampering. Send a request, and Tanika will make yours fresh to order.',
+    'Thinking of someone special? Any of these can become a gift. Just mention it in your request.',
+    'Would you like to try it? Send a request, and we will get your order started.',
+  ],
+  '305': [
+    'Have an idea in mind? Send a request with a photo or sketch, and we will quote it for you.',
+    'Custom pieces make unforgettable gifts. Send a request, and we will bring your idea to life.',
+    'Ready to start? Send a request with your details and date, and we will take it from there.',
+  ],
+  '412': [
+    'Curious where AI fits your business? Your first 30-minute discovery consultation is free.',
+    'Tell us one task that eats up your week, and we will show you how it could run on its own.',
+    'Ready for the next step? Request your free discovery call, and we will map out your first win.',
+  ],
+};
+const NO_NUDGE = /^(hello|myorder|contact|returns|owner|visit|hours)$/;
+const nudgeTurn = {};
+function nudgeFor(suite, id) {
+  const list = NUDGES[suite];
+  if (!list || NO_NUDGE.test(id)) return null;
+  const n = nudgeTurn[suite] = ((nudgeTurn[suite] ?? -1) + 1) % list.length;
+  return { key: `r${suite}-nudge-${n + 1}`, text: list[n] };
+}
 function answerAt(suite, question) {
   const hit = find(question, suite);
   if (!hit) {
@@ -258,7 +286,10 @@ function answerAt(suite, question) {
     return text;
   }
   say(deskKey(suite, hit.id), hit.text);
-  return hit.text;
+  const nudge = nudgeFor(suite, hit.id);
+  if (!nudge) return hit.text;
+  say(nudge.key, nudge.text, true);
+  return hit.text + ' ' + nudge.text;
 }
 
 // Every line each receptionist can say (for the recording script and Notion).
@@ -268,6 +299,7 @@ function deskLines(suite) {
   const lines = [...own, ...general].map((f) => ({ key: deskKey(suite, f.id), id: f.id, text: f.text, match: f.match.map(String) }));
   for (const other of Object.keys(SUITES)) if (other !== suite) lines.push({ key: deskKey(suite, 'to-' + other), id: 'to-' + other, text: otherText(other), match: [] });
   lines.push({ key: deskKey(suite, 'unknown'), id: 'unknown', text: UNKNOWN, match: [] });
+  (NUDGES[suite] || []).forEach((text, i) => lines.push({ key: `r${suite}-nudge-${i + 1}`, id: 'nudge-' + (i + 1), text, match: [] }));
   return lines;
 }
 window.ccsFaq = { answer, answerAt, list: FAQ, suites: SUITES, deskLines };
@@ -358,11 +390,13 @@ function addReceptionAsk() {
     q.setAttribute('aria-live', 'polite');
     q.innerHTML = '<small>YOUR QUESTION FROM THE LOBBY</small><p class="lq-q"></p><p class="lq-a"></p>';
     q.querySelector('.lq-q').textContent = '“' + pending.question + '”';
-    q.querySelector('.lq-a').textContent = hit.text;
+    const nudge = hit.suite === suite || !hit.suite ? nudgeFor(suite, hit.id) : null;
+    q.querySelector('.lq-a').textContent = hit.text + (nudge ? ' ' + nudge.text : '');
     box.querySelector('form').after(q);
     // A new question typed here replaces the lobby one.
     box.querySelector('form').addEventListener('submit', () => q.remove(), { once: true });
     say(deskKey(suite, hit.id), hit.text, true);
+    if (nudge) say(nudge.key, nudge.text, true);
   }
 }
 

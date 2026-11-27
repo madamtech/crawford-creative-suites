@@ -362,6 +362,24 @@
     "text": "I do not have that answer here yet. Send us a request, and Tanika will answer you personally.",
     "say": "I do not have that answer here yet. Send us a request, and Tanika will answer you personally.",
     "recorded": false
+   },
+   {
+    "key": "r217-nudge-1",
+    "text": "You deserve a little pampering. Send a request, and Tanika will make yours fresh to order.",
+    "say": "You deserve a little pampering. Send a request, and Tanika will make yours fresh to order.",
+    "recorded": false
+   },
+   {
+    "key": "r217-nudge-2",
+    "text": "Thinking of someone special? Any of these can become a gift. Just mention it in your request.",
+    "say": "Thinking of someone special? Any of these can become a gift. Just mention it in your request.",
+    "recorded": false
+   },
+   {
+    "key": "r217-nudge-3",
+    "text": "Would you like to try it? Send a request, and we will get your order started.",
+    "say": "Would you like to try it? Send a request, and we will get your order started.",
+    "recorded": false
    }
   ]
  },
@@ -578,6 +596,24 @@
     "text": "I do not have that answer here yet. Send us a request, and Tanika will answer you personally.",
     "say": "I do not have that answer here yet. Send us a request, and Tanika will answer you personally.",
     "recorded": false
+   },
+   {
+    "key": "r305-nudge-1",
+    "text": "Have an idea in mind? Send a request with a photo or sketch, and we will quote it for you.",
+    "say": "Have an idea in mind? Send a request with a photo or sketch, and we will quote it for you.",
+    "recorded": false
+   },
+   {
+    "key": "r305-nudge-2",
+    "text": "Custom pieces make unforgettable gifts. Send a request, and we will bring your idea to life.",
+    "say": "Custom pieces make unforgettable gifts. Send a request, and we will bring your idea to life.",
+    "recorded": false
+   },
+   {
+    "key": "r305-nudge-3",
+    "text": "Ready to start? Send a request with your details and date, and we will take it from there.",
+    "say": "Ready to start? Send a request with your details and date, and we will take it from there.",
+    "recorded": false
    }
   ]
  },
@@ -775,6 +811,24 @@
     "key": "r412-unknown",
     "text": "I do not have that answer here yet. Send us a request, and Tanika will answer you personally.",
     "say": "I do not have that answer here yet. Send us a request, and Tanika will answer you personally.",
+    "recorded": false
+   },
+   {
+    "key": "r412-nudge-1",
+    "text": "Curious where AI fits your business? Your first 30-minute discovery consultation is free.",
+    "say": "Curious where AI fits your business? Your first 30-minute discovery consultation is free.",
+    "recorded": false
+   },
+   {
+    "key": "r412-nudge-2",
+    "text": "Tell us one task that eats up your week, and we will show you how it could run on its own.",
+    "say": "Tell us one task that eats up your week, and we will show you how it could run on its own.",
+    "recorded": false
+   },
+   {
+    "key": "r412-nudge-3",
+    "text": "Ready for the next step? Request your free discovery call, and we will map out your first win.",
+    "say": "Ready for the next step? Request your free discovery call, and we will map out your first win.",
     "recorded": false
    }
   ]

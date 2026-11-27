@@ -2,7 +2,7 @@
 
 Generated 2026-11-27 by `node build/voice-script.mjs` from the site's answer lists. Do not edit by hand; change `build/faq.js` or `build/voice.js` and run it again.
 
-**125 lines.** Save each as an MP3 with the exact file name into `audio/`. A line works on the site as soon as its file is there. "Type this" spells out numbers and short forms so the voice reads them naturally; the site shows the "On screen" text.
+**134 lines.** Save each as an MP3 with the exact file name into `audio/`. A line works on the site as soon as its file is there. "Type this" spells out numbers and short forms so the voice reads them naturally; the site shows the "On screen" text.
 
 Elevator chime: `audio/elevator-chime.mp3` (Nov 27 modern bell; options in OneDrive Work Notes > Elevator chime options). To use an ElevenLabs sound effect instead, prompt: "soft modern luxury elevator arrival chime, two gentle glassy bell tones rising, clean, warm, 2 seconds, no voice".
 
@@ -84,6 +84,9 @@ Voice: Kai - Real AI Receptionist (chosen Nov 27)
 | `r217-to-305.mp3` | Allure Fusions handles that, in Suite 305 on Floor 3. Take the elevator there, and their receptionist will help you. | Allure Fusions handles that, in Suite three-oh-five on Floor 3. Take the elevator there, and their receptionist will help you. |  |
 | `r217-to-412.mp3` | AI AuthoriTech handles that, in Suite 412 on Floor 4. Take the elevator there, and their receptionist will help you. | A-I Awthor-ih-tek handles that, in Suite four-twelve on Floor 4. Take the elevator there, and their receptionist will help you. |  |
 | `r217-unknown.mp3` | I do not have that answer here yet. Send us a request, and Tanika will answer you personally. | I do not have that answer here yet. Send us a request, and Tanika will answer you personally. |  |
+| `r217-nudge-1.mp3` | You deserve a little pampering. Send a request, and Tanika will make yours fresh to order. | You deserve a little pampering. Send a request, and Tanika will make yours fresh to order. |  |
+| `r217-nudge-2.mp3` | Thinking of someone special? Any of these can become a gift. Just mention it in your request. | Thinking of someone special? Any of these can become a gift. Just mention it in your request. |  |
+| `r217-nudge-3.mp3` | Would you like to try it? Send a request, and we will get your order started. | Would you like to try it? Send a request, and we will get your order started. |  |
 
 ## Allure Fusions receptionist (Floor 3, Suite 305)
 
@@ -126,6 +129,9 @@ Voice: Maya - Receptionist & Customer Service (chosen Nov 27)
 | `r305-to-217.mp3` | Madam Allure handles that, in Suite 217 on Floor 2. Take the elevator there, and their receptionist will help you. | Madam Allure handles that, in Suite two-seventeen on Floor 2. Take the elevator there, and their receptionist will help you. |  |
 | `r305-to-412.mp3` | AI AuthoriTech handles that, in Suite 412 on Floor 4. Take the elevator there, and their receptionist will help you. | A-I Awthor-ih-tek handles that, in Suite four-twelve on Floor 4. Take the elevator there, and their receptionist will help you. |  |
 | `r305-unknown.mp3` | I do not have that answer here yet. Send us a request, and Tanika will answer you personally. | I do not have that answer here yet. Send us a request, and Tanika will answer you personally. |  |
+| `r305-nudge-1.mp3` | Have an idea in mind? Send a request with a photo or sketch, and we will quote it for you. | Have an idea in mind? Send a request with a photo or sketch, and we will quote it for you. |  |
+| `r305-nudge-2.mp3` | Custom pieces make unforgettable gifts. Send a request, and we will bring your idea to life. | Custom pieces make unforgettable gifts. Send a request, and we will bring your idea to life. |  |
+| `r305-nudge-3.mp3` | Ready to start? Send a request with your details and date, and we will take it from there. | Ready to start? Send a request with your details and date, and we will take it from there. |  |
 
 ## AI AuthoriTech receptionist (Floor 4, Suite 412)
 
@@ -165,4 +171,7 @@ Voice: Tiffany - Warm, Conversational Narrator (chosen Nov 27)
 | `r412-to-217.mp3` | Madam Allure handles that, in Suite 217 on Floor 2. Take the elevator there, and their receptionist will help you. | Madam Allure handles that, in Suite two-seventeen on Floor 2. Take the elevator there, and their receptionist will help you. |  |
 | `r412-to-305.mp3` | Allure Fusions handles that, in Suite 305 on Floor 3. Take the elevator there, and their receptionist will help you. | Allure Fusions handles that, in Suite three-oh-five on Floor 3. Take the elevator there, and their receptionist will help you. |  |
 | `r412-unknown.mp3` | I do not have that answer here yet. Send us a request, and Tanika will answer you personally. | I do not have that answer here yet. Send us a request, and Tanika will answer you personally. |  |
+| `r412-nudge-1.mp3` | Curious where AI fits your business? Your first 30-minute discovery consultation is free. | Curious where AI fits your business? Your first 30-minute discovery consultation is free. |  |
+| `r412-nudge-2.mp3` | Tell us one task that eats up your week, and we will show you how it could run on its own. | Tell us one task that eats up your week, and we will show you how it could run on its own. |  |
+| `r412-nudge-3.mp3` | Ready for the next step? Request your free discovery call, and we will map out your first win. | Ready for the next step? Request your free discovery call, and we will map out your first win. |  |
 
