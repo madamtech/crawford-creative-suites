@@ -151,12 +151,14 @@ function projectCard(p) {
     p.due_date ? h('p', { class: 'ccs-meta', text: `${p.business === 'madam_allure' ? 'Needed by' : 'Due'} ${day(p.due_date)}` }) : '',
     h('p', { class: 'ccs-meta', text: `Sent ${day(p.created_at)} · last update ${day(p.last_status_change)}` }));
 
-  if (p.can_pay) {
+  if (p.can_pay && window.CCS_BACKEND?.paymentProvider) {
     const due = Math.max(Number(p.deposit_required ?? p.quote) - Number(p.amount_paid), 0);
     const pay = h('div', { class: 'ccs-actions' });
     if (due > 0 && due < Number(p.balance)) pay.append(h('button', { type: 'button', class: 'ccs-primary', onclick: (e) => checkout(e.target, p.number, 'deposit'), text: `Pay deposit ${money(due)}` }));
     pay.append(h('button', { type: 'button', class: due > 0 && due < Number(p.balance) ? '' : 'ccs-primary', onclick: (e) => checkout(e.target, p.number, 'balance'), text: `Pay ${Number(p.amount_paid) > 0 ? 'balance' : 'in full'} ${money(p.balance)}` }));
     card.append(pay);
+  } else if (p.can_pay) {
+    card.append(h('p', { class: 'ccs-meta', text: "We'll send your invoice (card via Wave or PayPal)." }));
   }
   if (p.events.length) {
     card.append(h('details', { class: 'ccs-history' }, h('summary', { text: 'History' }),
@@ -324,7 +326,7 @@ function adminDetail(p) {
   const payForm = h('form', { class: 'ccs-form ccs-pair3' },
     h('label', {}, 'Amount received', h('input', { name: 'amount', type: 'number', min: '0.01', step: '0.01', required: true })),
     h('label', {}, 'Type', h('select', { name: 'kind' }, [['deposit', 'Deposit'], ['balance', 'Balance'], ['full', 'Paid in full'], ['refund', 'Refund']].map(([v, t]) => h('option', { value: v, text: t })))),
-    h('label', {}, 'Note', h('input', { name: 'note', placeholder: 'Cash, Zelle, Ueni…' })),
+    h('label', {}, 'Note', h('input', { name: 'note', placeholder: 'Wave invoice, PayPal invoice, cash…' })),
     h('button', { type: 'submit', text: 'Record payment' }));
   payForm.onsubmit = async (e) => {
     e.preventDefault();
