@@ -1,0 +1,38 @@
+# Supabase CLI settings for the Crawford Creative Suites project.
+# Only what this build needs; everything else uses the CLI defaults.
+# Link it with:  supabase link --project-ref <your project ref>
+
+project_id = "crawford-creative-suites"
+
+[auth]
+site_url = "https://madamtech.github.io/crawford-creative-suites/suites/"
+additional_redirect_urls = [
+  "https://madamtech.github.io/crawford-creative-suites/suites/",
+  "http://127.0.0.1:4180/suites/",
+  "http://127.0.0.1:4173/suites/",
+]
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+enable_confirmations = false
+# Magic links only; no passwords are ever asked for on the site.
+
+# The browser calls these Functions with the public (anon / publishable) key, or with
+# the signed-in user's token. They check the caller themselves, so the gateway JWT
+# check is off. payments-webhook and dispatch-events are server-to-server and check
+# their own signature or secret.
+[functions.intake]
+verify_jwt = false
+
+[functions.order-status]
+verify_jwt = false
+
+[functions.checkout]
+verify_jwt = false
+
+[functions.payments-webhook]
+verify_jwt = false
+
+[functions.dispatch-events]
+verify_jwt = false

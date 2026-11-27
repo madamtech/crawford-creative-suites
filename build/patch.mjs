@@ -4,7 +4,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 let src = readFileSync(new URL('../src/ccs-app.js', import.meta.url), 'utf8');
 
-const CONTACT_FIELDS = '(0,i.jsxs)(`div`,{className:`field-pair`,children:[(0,i.jsxs)(`label`,{children:[`Name`,(0,i.jsx)(`input`,{name:`Name`,type:`text`,autoComplete:`name`,required:!0})]}),(0,i.jsxs)(`label`,{children:[`Email`,(0,i.jsx)(`input`,{name:`Email`,type:`email`,autoComplete:`email`,required:!0})]})]}),(0,i.jsxs)(`label`,{children:[`Phone (optional)`,(0,i.jsx)(`input`,{name:`Phone`,type:`tel`,autoComplete:`tel`})]}),';
+const CONTACT_FIELDS = '(0,i.jsxs)(`div`,{className:`field-pair`,children:[(0,i.jsxs)(`label`,{children:[`Name`,(0,i.jsx)(`input`,{name:`Name`,type:`text`,autoComplete:`name`,required:!0})]}),(0,i.jsxs)(`label`,{children:[`Email`,(0,i.jsx)(`input`,{name:`Email`,type:`email`,autoComplete:`email`,required:!0})]})]}),(0,i.jsxs)(`label`,{children:[`Phone (optional)`,(0,i.jsx)(`input`,{name:`Phone`,type:`tel`,autoComplete:`tel`})]}),(0,i.jsx)(`input`,{name:`_hp`,className:`ccs-hp`,tabIndex:-1,autoComplete:`off`,"aria-hidden":`true`}),';
 
 const patches = [
   // Scene images now live in /img and are referenced relative to /suites/.
@@ -31,7 +31,7 @@ const patches = [
   // FAQ concierge (build/faq.js): answer common questions first, and offer a
   // button to the matching suite instead of whisking the visitor away.
   ['H=e=>{e.preventDefault();let t=w.trim(),', 'H=e=>{e.preventDefault();let t=w.trim();window.ccsFaqGo=null;{let f=window.ccsFaq&&window.ccsFaq.answer(t);if(f){window.ccsFaqGo=f.suite;D(f.text);return}}let '],
-  ['E&&(0,i.jsx)(`p`,{className:`concierge-reply`,"aria-live":`polite`,children:E})', 'E&&(0,i.jsx)(`p`,{className:`concierge-reply`,"aria-live":`polite`,children:E}),E&&window.ccsFaqGo&&c[window.ccsFaqGo]&&(0,i.jsx)(`button`,{type:`button`,className:`concierge-go`,onClick:()=>{let s=window.ccsFaqGo;window.ccsFaqGo=null;window.ccsRouted=s;V(s)},children:`Take me to `+c[window.ccsFaqGo].name+` →`})'],
+  ['E&&(0,i.jsx)(`p`,{className:`concierge-reply`,"aria-live":`polite`,children:E})', 'E&&(0,i.jsx)(`p`,{className:`concierge-reply`,"aria-live":`polite`,children:E}),E&&window.ccsFaqGo&&c[window.ccsFaqGo]&&(0,i.jsx)(`button`,{type:`button`,className:`concierge-go`,onClick:()=>{let s=window.ccsFaqGo;window.ccsFaqGo=null;window.ccsRouted=s;V(s)},children:`Take me to `+c[window.ccsFaqGo].name+` →`}),E&&window.ccsPortal&&window.ccsPortal.ready()&&(0,i.jsxs)(`p`,{className:`concierge-extra`,children:[(0,i.jsx)(`button`,{type:`button`,onClick:()=>window.ccsPortal.lead(``,`Lobby concierge`),children:`Leave my details`}),(0,i.jsx)(`button`,{type:`button`,onClick:()=>window.ccsPortal.open(`projects`),children:`Check my order`})]})'],
   // The concierge finishes her answer before the visitor is taken to the elevator.
   ['}[r]),window.setTimeout(()=>V(r),700)', '}[r])),(window.ccsRouted=r,window.ccsVoice.afterSpeech(()=>V(r),700))'],
 
@@ -61,7 +61,8 @@ const patches = [
 
   // A way back out to the entrance page (the arrival site with the three businesses).
   ['(0,i.jsx)(`button`,{onClick:()=>t(`elevator`),children:`Elevator`})',
-   '(0,i.jsx)(`button`,{onClick:()=>t(`elevator`),children:`Elevator`}),(0,i.jsx)(`a`,{className:`entrance-link`,href:`../`,children:`Entrance`})'],
+   '(0,i.jsx)(`button`,{onClick:()=>t(`elevator`),children:`Elevator`}),(0,i.jsx)(`a`,{className:`entrance-link`,href:`../`,children:`Entrance`}),window.ccsPortal&&window.ccsPortal.ready()&&(0,i.jsx)(`button`,{type:`button`,className:`client-login`,"data-client-login":``,onClick:()=>window.ccsPortal.open(),children:`Log In`})'],
+  // (Log In, Nov 27: build/portal.js; shown only once suites/backend-config.js has the Supabase URL.)
 
   // Madam Allure's lounge, The Powder Room (owner's lounge plan): a reception
   // button, and its card buttons lead to the product catalog.
@@ -82,6 +83,10 @@ const patches = [
   ['(0,i.jsxs)(`div`,{className:`suite-sign`,children:[(0,i.jsxs)(`small`,{children:[`FLOOR `,R.floor,` · SUITE `,n]}),(0,i.jsx)(`h1`,{children:R.name}),(0,i.jsx)(`p`,{children:R.tagline})]}),',
    '(0,i.jsxs)(`div`,{className:`suite-sign`,children:[(0,i.jsx)(`h1`,{children:(0,i.jsx)(`img`,{className:`suite-logo`,src:{217:`../img/madam-allure-signature.png`,305:`../img/allure-fusions-title.png`,412:`../img/ai-authoritech-title.png`}[n],alt:R.name})}),(0,i.jsx)(`p`,{children:R.tagline})]}),(0,i.jsxs)(`div`,{className:`suite-plaque`,children:[`FLOOR `,R.floor,` · SUITE `,n]}),'],
 
+  // Custom and memorial gifts: a request form (build/portal.js), saved online or emailed.
+  ['(0,i.jsx)(`p`,{children:s[e].subtitle})]}),e===`gifts`?',
+   '(0,i.jsx)(`p`,{children:s[e].subtitle}),(e===`gifts`||e===`memorials`)&&(0,i.jsx)(`button`,{type:`button`,className:`ma-request-btn`,onClick:()=>window.ccsMaRequest(e===`memorials`?`memorial`:`custom`),children:e===`memorials`?`Request a memorial piece →`:`Request a custom gift →`})]}),e===`gifts`?'],
+
   // Memorial gifts: drop the "Gallery Image Coming Soon" placeholder boxes.
   ['(0,i.jsx)(`span`,{children:`Gallery Image Coming Soon`}),', ''],
 
@@ -98,14 +103,14 @@ const patches = [
 
   // Forms: route to the right business inbox, with a copy-to-clipboard fallback.
   ['window.location.href=`mailto:hello@aiauthoritytech.com?subject=${encodeURIComponent(e)}&body=${encodeURIComponent(r)}`',
-   'window.ccsSendRequest(e,r)'],
+   'window.ccsSendRequest(e,r,t)'],
   ['children:`Prepare email request`', 'children:`Send my project request`'],
   ['children:`Prepare consultation email`', 'children:`Send my consultation request`'],
 
-  // Upload: say plainly how to send files instead of mentioning unfinished storage.
-  ['`Secure upload — JPG, PNG, PDF, SVG, DXF, STL, or 3MF`', '`Artwork and model files`'],
-  ['`Secure private upload is awaiting Supabase Storage configuration. Do not send confidential files here yet.`',
-   '`Online upload is not available yet. After you send this request, reply to our email with your JPG, PNG, PDF, SVG, DXF, STL, or 3MF files attached.`'],
+  // Upload: private Supabase Storage upload once the backend is set up (build/portal.js);
+  // until then, say plainly how to send files instead of mentioning unfinished storage.
+  ['(0,i.jsxs)(`label`,{className:`disabled-upload`,children:[`Secure upload — JPG, PNG, PDF, SVG, DXF, STL, or 3MF`,(0,i.jsx)(`input`,{type:`file`,accept:`.jpg,.jpeg,.png,.pdf,.svg,.dxf,.stl,.3mf`,disabled:!0}),(0,i.jsx)(`small`,{children:`Secure private upload is awaiting Supabase Storage configuration. Do not send confidential files here yet.`})]})',
+   '(0,i.jsxs)(`label`,{className:window.ccsUploadsReady()?`file-upload`:`disabled-upload`,children:[`Artwork and model files`,(0,i.jsx)(`input`,{type:`file`,name:`_files`,multiple:!0,accept:`.jpg,.jpeg,.png,.pdf,.svg,.dxf,.stl,.3mf`,disabled:!window.ccsUploadsReady()}),(0,i.jsx)(`small`,{children:window.ccsUploadsReady()?`JPG, PNG, PDF, SVG, DXF, STL, or 3MF, up to 25 MB each. Files are stored privately; only you and Allure Fusions can open them.`:`Online upload is not available yet. After you send this request, reply to our email with your JPG, PNG, PDF, SVG, DXF, STL, or 3MF files attached.`})]})'],
   // AI Clarity Lounge: short button text.
   ['cta:`See Human-Centered AI Services`', 'cta:`See AI Services`'],
   // Owner's taglines (desk signs and suite pages).

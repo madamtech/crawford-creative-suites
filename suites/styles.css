@@ -609,3 +609,105 @@ body[data-kiosk-open] .reception-scene .reception-desk{transform:translate(-50%,
 .reception-scene:has(.lounge) .reception-ask,.reception-scene:has(.business-showroom) .reception-ask{opacity:0;pointer-events:none}
 @media (max-width:850px){.reception-ask{position:relative;left:auto;top:auto;width:auto;min-width:0;margin:12px 16px}}
 @media (max-width:900px){.header-actions button:first-child{display:inline-block!important}}
+/* Client Login, My Projects, Admin Office and request forms (build/portal.js).
+   Same frosted glass, rose gold and portal fonts as the suite panels. */
+.header-actions .client-login{letter-spacing:.08em;text-transform:uppercase;font-size:.62rem;padding:.6rem .8rem;border:1px solid rgba(218,166,129,.75);background:rgba(218,166,129,.14);color:#fff3e8;cursor:pointer}
+.header-actions .client-login:hover,.header-actions .client-login:focus-visible{background:rgba(218,166,129,.3)}
+@media (max-width:560px){.header-actions .client-login{padding:.55rem;font-size:.5rem}}
+.ccs-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0!important}
+.ccs-turnstile{position:fixed;z-index:2147483600;left:50%;top:50%;transform:translate(-50%,-50%)}
+
+.ccs-portal{position:fixed;inset:0;z-index:2147483100;display:flex;justify-content:flex-end;background:rgba(6,5,8,.55);font:15px/1.55 Lora,Georgia,serif;color:#f6efe9}
+.ccs-portal-sheet{width:min(560px,100%);height:100%;overflow:auto;box-sizing:border-box;padding:22px clamp(16px,3vw,28px) 40px;background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.02) 45%),rgba(16,14,18,.86);backdrop-filter:blur(18px) saturate(1.15);-webkit-backdrop-filter:blur(18px) saturate(1.15);border-left:2px solid #cb9671;box-shadow:-20px 0 60px rgba(0,0,0,.45);animation:ccsIn .35s cubic-bezier(.2,.8,.2,1) both}
+.ccs-portal-sheet.wide{width:min(1040px,100%)}
+@keyframes ccsIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.ccs-portal-sheet{animation:none}}
+.ccs-portal header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px solid rgba(255,255,255,.16);padding-bottom:12px;margin-bottom:16px}
+.ccs-portal header small{display:block;font:italic 600 .72rem "Crimson Pro",Georgia,serif;letter-spacing:.16em;color:#eccbb0}
+.ccs-portal h2{margin:.15rem 0 0;font:400 2rem/1.1 "Instrument Serif",Georgia,serif}
+.ccs-portal h3{font:400 1.35rem "Instrument Serif",Georgia,serif;margin:1.2rem 0 .4rem}
+.ccs-portal h4{font:italic 600 .95rem "Crimson Pro",Georgia,serif;letter-spacing:.06em;margin:1rem 0 .3rem;color:#eccbb0}
+.ccs-x{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;width:38px;height:38px;font-size:1.4rem;line-height:1;cursor:pointer;border-radius:50%}
+.ccs-portal button,.ccs-sent button{cursor:pointer;padding:9px 14px;border:1px solid #cb9671;background:rgba(255,255,255,.04);color:#fff;font:600 .78rem Arial,Helvetica,sans-serif;letter-spacing:.03em}
+.ccs-portal button:hover,.ccs-portal button:focus-visible{background:rgba(218,166,129,.2)}
+.ccs-portal button:disabled{opacity:.6;cursor:default}
+.ccs-portal .ccs-primary{background:linear-gradient(135deg,#eccbb0,#b9805d);color:#21150d;border-color:#daa681}
+.ccs-portal .ccs-link,.ccs-lounge-lead .ccs-link{background:none;border:0;padding:0;color:#9fe3dc;text-decoration:underline;font:inherit;cursor:pointer}
+.ccs-portal a{color:#9fe3dc}
+.ccs-form{display:flex;flex-direction:column;gap:.8rem}
+.ccs-form>p{margin:0;color:#e9dfd8}
+.ccs-form label{display:flex;flex-direction:column;gap:.35rem;font:600 .74rem Arial,Helvetica,sans-serif;letter-spacing:.03em;color:#e4dce4}
+.ccs-form label.check{flex-direction:row;align-items:flex-start;gap:.5rem;font-weight:400;line-height:1.45}
+.ccs-form input,.ccs-form select,.ccs-form textarea,.ccs-filter input,.ccs-filter select{color:#fff;width:100%;box-sizing:border-box;font:15px Lora,Georgia,serif;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.28);padding:.65rem .7rem}
+.ccs-form input[type=checkbox]{width:auto;margin-top:.2rem}
+.ccs-form select option{color:#111}
+.ccs-pair{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.ccs-pair3{display:grid;grid-template-columns:1fr 1fr 1.4fr auto;gap:.6rem;align-items:end}
+@media (max-width:620px){.ccs-pair,.ccs-pair3{grid-template-columns:1fr}}
+.ccs-note{margin:.6rem 0;padding:.6rem .8rem;border-left:3px solid rgba(255,255,255,.4);background:rgba(255,255,255,.05);font-size:.9rem}
+.ccs-note.ok{border-color:#21b8b0}
+.ccs-note.err{border-color:#e07a6a}
+.ccs-preview{font-size:.8rem;color:#cfc3ba}
+.ccs-lookup{margin-top:1.6rem;border-top:1px solid rgba(255,255,255,.14);padding-top:1rem}
+.ccs-lookup summary,.ccs-history summary{cursor:pointer;color:#eccbb0;font:italic 600 .95rem "Crimson Pro",Georgia,serif}
+.ccs-lookup form{margin-top:.8rem}
+.ccs-status-card{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-top:.8rem;padding:.7rem;border:1px solid rgba(255,255,255,.2);border-radius:10px}
+.ccs-bar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:1rem}
+.ccs-bar span{flex:1 1 200px;color:#cfc3ba;font-size:.85rem}
+.ccs-pill{display:inline-block;padding:.18rem .55rem;border-radius:999px;font:700 .66rem Arial,Helvetica,sans-serif;letter-spacing:.05em;text-transform:uppercase;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.08);white-space:nowrap}
+.ccs-pill[data-status="New Request"],.ccs-pill[data-status="New"],.ccs-pill[data-status="Pending Review"]{border-color:#eccbb0;color:#f6dcc8}
+.ccs-pill[data-status="Deposit Paid"],.ccs-pill[data-status="In Production"],.ccs-pill[data-status="Active"],.ccs-pill[data-status="Ready"]{border-color:#21b8b0;color:#aef0ea}
+.ccs-pill[data-status="Completed"],.ccs-pill[data-status="Shipped"]{border-color:#7fa3ff;color:#c9d7ff}
+.ccs-pill[data-status="On Hold"],.ccs-pill[data-status="Cancelled"],.ccs-pill[data-status="Declined"]{opacity:.7}
+.ccs-card{border:1px solid rgba(255,255,255,.18);border-left:3px solid var(--biz,#cb9671);border-radius:12px;padding:14px 16px;margin:0 0 14px;background:rgba(0,0,0,.24)}
+.ccs-card header{display:flex;justify-content:space-between;align-items:center;gap:8px;border:0;padding:0;margin:0}
+.ccs-card header small{font-style:normal;color:color-mix(in srgb,var(--biz) 65%,#fff)}
+.ccs-card h3{margin:.35rem 0 .25rem}
+.ccs-pay{margin:.2rem 0;font-weight:600}
+.ccs-meta{margin:.15rem 0;color:#bfb3aa;font-size:.82rem}
+.ccs-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin:.7rem 0}
+.ccs-history{margin:.6rem 0}
+.ccs-history ol{margin:.4rem 0 0;padding-left:1.1rem;font-size:.85rem}
+.ccs-history ol span{color:#bfb3aa}
+.ccs-history dl{display:grid;grid-template-columns:minmax(120px,max-content) 1fr;gap:.25rem .8rem;font-size:.85rem;margin:.5rem 0}
+.ccs-history dt{color:#bfb3aa}.ccs-history dd{margin:0;white-space:pre-wrap}
+.ccs-files{margin-top:.7rem;padding-top:.6rem;border-top:1px dashed rgba(255,255,255,.18)}
+.ccs-files ul{list-style:none;padding:0;margin:.35rem 0}
+.ccs-files li{margin:.2rem 0}.ccs-files small{color:#bfb3aa}
+.ccs-upload{display:flex;flex-direction:column;gap:.3rem;font:600 .74rem Arial,Helvetica,sans-serif;color:#e4dce4}
+.ccs-upload input{font-size:.8rem;color:#ddd}
+.ccs-links{display:flex;flex-direction:column;gap:.4rem;margin-top:1.4rem;padding:12px 14px;border:1px solid rgba(255,255,255,.18);border-radius:12px}
+.ccs-empty{padding:1rem;border:1px dashed rgba(255,255,255,.25);border-radius:12px;color:#e0d6cf}
+.ccs-tabs{display:flex;flex-wrap:wrap;gap:.35rem;margin:0 0 1rem}
+.ccs-tabs button[aria-selected=true]{background:linear-gradient(135deg,#eccbb0,#b9805d);color:#21150d}
+.ccs-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:.6rem;margin-bottom:1rem}
+.ccs-tile{padding:12px;border:1px solid rgba(255,255,255,.2);border-top:2px solid #21b8b0;border-radius:10px;background:rgba(0,0,0,.25)}
+.ccs-tile strong{display:block;font:400 1.7rem "Instrument Serif",Georgia,serif}
+.ccs-tile span{font-size:.75rem;color:#cfc3ba;letter-spacing:.05em;text-transform:uppercase}
+.ccs-tile.warn{border-top-color:#e07a6a}
+.ccs-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:.4rem 0 1rem;display:block;overflow-x:auto}
+.ccs-table th,.ccs-table td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid rgba(255,255,255,.12);vertical-align:top}
+.ccs-table th{font:italic 600 .8rem "Crimson Pro",Georgia,serif;color:#eccbb0;letter-spacing:.05em}
+.ccs-filter{display:grid;grid-template-columns:200px 1fr;gap:.6rem;margin-bottom:.8rem}
+.ccs-filter label{display:flex;flex-direction:column;gap:.3rem;font:600 .72rem Arial,Helvetica,sans-serif}
+@media (max-width:620px){.ccs-filter{grid-template-columns:1fr}}
+.ccs-row{border:1px solid rgba(255,255,255,.16);border-left:3px solid var(--biz,#cb9671);border-radius:10px;margin:0 0 .5rem;background:rgba(0,0,0,.22)}
+.ccs-row.overdue{border-right:3px solid #e07a6a}
+.ccs-row>summary{display:grid;grid-template-columns:86px minmax(90px,1fr) minmax(110px,1.4fr) auto minmax(90px,auto) minmax(90px,auto);gap:.6rem;align-items:center;padding:.6rem .8rem;cursor:pointer;font-size:.86rem;list-style:none}
+.ccs-row>summary::-webkit-details-marker{display:none}
+.ccs-row .n{font-weight:700}.ccs-row .due{color:#cfc3ba;font-size:.78rem}.ccs-row.overdue .due{color:#f2a597}
+@media (max-width:760px){.ccs-row>summary{grid-template-columns:1fr auto}.ccs-row .what,.ccs-row .m{grid-column:1/-1}}
+.ccs-detail{padding:.2rem .9rem 1rem;border-top:1px solid rgba(255,255,255,.12)}
+.ccs-details{white-space:pre-wrap;font-size:.88rem;color:#e6dcd5}
+.ccs-edit{margin:.6rem 0}
+.ccs-sent .ccs-note{color:#fff}
+.ma-request-btn{display:inline-block;margin-top:.6rem;cursor:pointer;padding:.55rem .9rem;border:1px solid var(--suite-accent,#cb9671);background:rgba(203,150,113,.16);color:#fff3e8;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}
+.ma-request-btn:hover,.ma-request-btn:focus-visible{background:rgba(203,150,113,.32)}
+.concierge-extra{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0 0}
+.concierge-extra button{cursor:pointer;background:none;border:1px solid rgba(255,255,255,.3);color:#f4e6da;padding:.35rem .6rem;font-size:.66rem;letter-spacing:.03em}
+.concierge-extra button:hover,.concierge-extra button:focus-visible{border-color:#daa681}
+.ccs-lounge-lead{margin:.8rem 0 0;font-size:.82rem;color:rgba(255,255,255,.85)}
+.guided-form .file-upload{display:flex;flex-direction:column;gap:.35rem}
+.guided-form .file-upload small{color:rgba(255,255,255,.75)}
+body[data-portal-open]{overflow:hidden}
+.ccs-row>summary .ccs-pill{justify-self:start}

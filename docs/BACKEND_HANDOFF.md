@@ -298,3 +298,28 @@ Skool’s official automation options are limited. Plan on **Zapier or Make**, S
 | Budget range, Shipping address | their own columns |
 | (set by backend) | Source = Website — Build My Project |
 | (set by backend) | Status = New Request, or Pending Review for rush / review-needed |
+
+---
+
+## Claude build status (2026-11-27, Claude)
+
+All of Claude's items in this handoff are built and tested locally. **Nothing is pushed or published** (waiting for Tanika's preview and yes). The Supabase project has no keys yet, so `suites/backend-config.js` is empty and the live site would behave exactly as it does today.
+
+| Item | Status | Where |
+| --- | --- | --- |
+| Schema: clients, user_roles, leads, orders (AFF-#### from 0002), ai_intake (AIA-####), madam_allure_orders (MA-####), status_events, files, payments, event_outbox | Done | `supabase/migrations/` |
+| RLS: clients read only their own rows, admin reads and edits all, no browser writes except through functions | Done | `20261127090100_rls_and_grants.sql` |
+| Magic-link Auth, roles client / member / admin, sign-in links the client row by email | Done | migrations + `build/backend.js` |
+| Storage: private `order-files` bucket, per-record folders, signed URLs, 25 MB, JPG PNG PDF SVG DXF STL 3MF | Done | `20261127090200_storage.sql` |
+| Edge Functions: `intake`, `order-status`, `checkout`, `payments-webhook` (Stripe and GHL), `dispatch-events` | Done | `supabase/functions/` |
+| Forms auto-route: Build My Project, AI intake, new Madam Allure custom / memorial request; mailto kept as fallback | Done | `build/send.js`, `build/portal.js` |
+| Log In beside "Enter the suites" on the Arrival page (owner moved it there, Nov 27) and in the building header; it reads My Projects once signed in; My Projects; Admin Office with Madam Allure Orders and Leads | Done | `build/portal.js`, `build/site.mjs`, `build/patch.mjs` |
+| File uploads replace the disabled placeholder (only once the backend is configured) | Done | `build/patch.mjs` |
+| Concierge "check my order" answer and Leave my details / Check my order buttons; lounge "Leave your details" link | Done | `build/faq.js`, `build/portal.js` |
+| Payments behind Tanika's choice (`PAYMENT_PROVIDER` = stripe or ghl) | Done (needs her account) | `checkout`, `payments-webhook` |
+| Skool / GHL event contract | Done | `docs/EVENT_CONTRACT.md` |
+| Tests: 28 passing against real Postgres with dummy data; local preview with a stand-in backend | Done | `npm run test:backend`, `npm run preview:backend` |
+
+**Testing note:** no Supabase project or test project with keys existed, so tests ran on real Postgres (PGlite) with stand-ins for Supabase's auth and storage schemas, and the Edge Function handlers ran in Node against a local stand-in of the Supabase APIs. A smoke test on the real project is still needed after Tanika creates it (steps in `docs/BACKEND_SETUP.md`).
+
+**Next:** Tanika: create the project and keys, choose Stripe or GHL Payments. Peyton: follow `docs/BACKEND_SETUP.md` steps 2 to 8 (redirect URLs, secrets, deploy, Sheets sync, GHL workflows, Ueni email sync into `madam_allure_orders`).

@@ -1,5 +1,6 @@
 import { createElement } from 'react';
 import { createRoot } from 'react-dom/client';
+import './portal.js';
 import './send.js';
 import './voice.js';
 import './faq.js';

@@ -1,6 +1,9 @@
 // Sends form requests to the right business inbox without any paid form service.
-// Opens the visitor's email app with everything filled in, copies the request
-// to the clipboard, and shows the address in case no email app is set up.
+// When the backend is set up (suites/backend-config.js), the request is saved
+// online first (build/portal.js) and gets a number. If that is not set up or
+// fails, it opens the visitor's email app with everything filled in, copies the
+// request to the clipboard, and shows the address in case no email app is set up.
+import { submitRequest } from './portal.js';
 const INBOX = {
   'Allure Fusions': 'allurefusionsfirm@gmail.com',
   'AI AuthoriTech': 'ai.authoritech@gmail.com',
@@ -15,7 +18,7 @@ function inboxFor(subject) {
 function cleanBody(body) {
   return String(body)
     .split('\n')
-    .filter((line) => !/^Phone:\s*$/.test(line))
+    .filter((line) => !/^Phone:\s*$/.test(line) && !/^_/.test(line))
     .join('\n')
     .trim();
 }
@@ -46,7 +49,10 @@ function copy(text) {
   try { navigator.clipboard?.writeText(text); } catch { /* clipboard blocked; address is still shown */ }
 }
 
-window.ccsSendRequest = (subject, body) => {
+window.ccsSendRequest = async (subject, body, form) => {
+  try {
+    if (await submitRequest(subject, form)) return;
+  } catch { /* fall through to email */ }
   const text = cleanBody(body);
   const to = inboxFor(subject);
   copy(`${subject}\n\n${text}`);

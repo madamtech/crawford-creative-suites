@@ -1,0 +1,5 @@
+{
+  "private": true,
+  "type": "module",
+  "description": "Marks the Edge Function .ts files as ES modules so the local tests and preview server can run them in Node. Supabase (Deno) ignores this."
+}
