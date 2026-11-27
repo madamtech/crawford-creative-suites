@@ -61,3 +61,10 @@ If you want different words, change them in your recording. To change the on-scr
 ## Lobby concierge answers (FAQ)
 
 The concierge answers common questions from `build/faq.js`. Each answer plays `faq-<id>.mp3` (Veda Sky, speed 1.08) once it is recorded; until then the answer shows on screen only. The full list, with sample questions, is in OneDrive › Work Notes › Concierge Answers - review.
+
+## Nov 27, 2026: full recording script and receptionist answers
+
+- **Every line, grouped by voice, with its file name:** `audio/VOICE-SCRIPT.md` (122 lines). It is generated from the site's answer lists with `node build/voice-script.mjs`, so never edit it by hand. A copy with Copy buttons is in OneDrive › Work Notes › ElevenLabs Voice Script.html.
+- **Receptionists now have their own answer lists and their own recordings:** files are named `r217-…`, `r305-…`, `r412-…` (for example `r305-small-prints.mp3`), so each answer plays in that receptionist's voice. The answer list is also in Notion: Agent Handoff Hub › Receptionist Knowledge Base.
+- **Elevator chime:** `elevator-chime.mp3`, a softer modern bell (option A). Options A, B and C are in OneDrive › Work Notes › Elevator chime options. Replace this file to change the sound.
+- **Local preview only:** on 127.0.0.1 every line that is not recorded yet is read by the computer's voice, so the whole flow can be heard before recording. The live site stays silent for unrecorded lines (except the elevator and receptionist welcome, as before).

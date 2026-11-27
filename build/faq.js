@@ -16,7 +16,7 @@ export const FAQ = [
     text: 'Hello, and welcome! Ask me about any of our three suites, or tell me what you are looking for.' },
   // "Check my order": only once Log In is switched on (suites/backend-config.js).
   { id: 'myorder', suite: null, when: () => !!(window.ccsPortal && window.ccsPortal.ready()),
-    match: [/(my (order|project|request)s?|order status|project status|track(ing)?|check on|where is my|sign in|log ?in|client login|account)/],
+    match: [/\b(my (order|project|request)s?|order status|project status|track(ing)?|check on|where is my|sign in|log ?in|client login|account)\b/],
     text: 'You can follow every order and project in My Projects. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed.' },
   { id: 'owner', suite: null, match: [/\b(who (owns|runs|is behind|made)|owner|founder|tanika)\b/],
     text: 'All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a maker, and an AI consultant.' },
@@ -38,16 +38,38 @@ export const FAQ = [
     text: 'For returns, changes, or a problem with an order, send a request to the suite you ordered from, and Tanika will help you directly.' },
 
   // ---------- Madam Allure (217) ----------
+  // Receptionist knowledge base (Nov 27): short answers for each suite's own desk.
+  // deskOnly entries are answered only by that suite's receptionist, never in the lobby.
+  { id: 'memorial-order', suite: '217', deskOnly: true, match: [/\b(memorial|funeral|repast|homegoing)\b/, /\b(order|request|how|need|make|get)\b/],
+    text: 'Tap Request a memorial piece in the catalog and share the names, dates, and colors. You will get a quote after review.' },
+  { id: 'how-buy', suite: '217', match: [/\b(buy|order|purchase|checkout|check out|cart|shop online)\b/],
+    text: 'Open Browse products and pricing, then tap a product to buy it on the Madam Allure shop. Payment is handled there securely.' },
+  { id: 'hair-oil', suite: '217', match: [/\b(hair growth|growth oil)\b/],
+    text: 'Hair Growth Oil is $10 for 2 ounces, $18 for 4, $26 for 6, and $35 for 8 ounces.' },
+  { id: 'face', suite: '217', match: [/\b(face|facial|serum|serums)\b/],
+    text: 'Facial serum is $8 for 2 ounces, $16 for 6, and $22 for 8. The hydrating facial serum is $9.' },
+  { id: 'shea', suite: '217', match: [/\b(shea|body butter|whipped butter)\b/],
+    text: 'Whipped shea butter is $9 for 4 ounces, $15 for 6, $21 for 8, and $28 for 16, for skin and hair.' },
+  { id: 'home-scent', suite: '217', match: [/\b(room spray|linen spray|aroma beads?|home fragrance|air freshener|car scent)\b/],
+    text: 'For the home there is room and linen spray from $8, and aroma beads for $5 in your choice of fragrance.' },
+  { id: 'custom-gift', suite: '217', match: [/\b(custom gifts?|personali[sz]ed|party favors?|favors for|event gifts?|bulk gifts?)\b/],
+    text: 'Yes, Madam Allure makes custom and personalized gifts. Tap Request a custom gift in the catalog, and you will get a quote after review.' },
+  { id: 'wine-glass', suite: '217', match: [/\b(wine glass|wine glasses|bling\w*|rhinestone)\b/],
+    text: 'The blinged wine glass is $35, made with custom glitter and rhinestones and sealed with epoxy.' },
+  { id: 'deposit-217', suite: '217', deskOnly: true, match: [/\b(deposit|payment|pay|paid|upfront|up front|installment)\b/],
+    text: 'Shop products are paid at checkout. Custom and memorial pieces are quoted first: $35 or less is paid in full, and larger orders start with a 60 percent deposit.' },
+  { id: 'contact-217', suite: '217', deskOnly: true, match: [/\b(contact|email|e-mail|reach|phone|call|talk to (someone|a person|tanika))\b/],
+    text: 'Send a request here, or email Madam Allure at madamallure@gmail.com.' },
   { id: 'memorial', suite: '217', match: [/\b(memorial|funeral|repast|in loving memory|passed away|celebration of life|homegoing)\b/],
     text: 'Madam Allure creates memorial keepsakes: ribbons, plaques, fans, fan whiteboards, and towels. Allure Fusions can also make a memorial photo lamp from a favorite picture.' },
   { id: 'makeup', suite: '217', match: [/\b(makeup|make-up|make up artist|mua|cosmetolog\w*|hair ?style|stylist|lashes)\b/],
     text: 'Tanika is a licensed cosmetologist and makeup artist. To ask about makeup or styling for an event, send a request to Madam Allure.' },
   { id: 'gift-sets', suite: '217', match: [/\b(gift set|gift sets|gift box|bridal|bridesmaid|wedding gift|corporate|wellness box|gentleman|welcome home|wine glass|gift)\b/],
-    text: 'Madam Allure gift sets include the Bridal Celebration Set and Corporate Wellness Box for $55, the Gentleman’s Set for $45, and the Welcome Home Set and Blinged Wine Glass for $35 each. Custom gifts are welcome too.' },
+    text: 'Gift sets: the Bridal Celebration Set and Corporate Wellness Box are $55, the Gentleman’s Set $45, and the Welcome Home Set $35. Custom gifts are welcome too.' },
   { id: 'fragrance-price', suite: '217', match: [/\b(fragrance|perfume|roll-?on|cologne|scent)s?\b/, PRICE],
     text: 'Enticed by Madam Allure roll-on fragrance oils are $9 to $10 for 10 milliliters, in a moisturizing coconut-oil base with no alcohol.' },
   { id: 'fragrance', suite: '217', match: [/\b(fragrance|perfume|roll-?on|cologne|scent|smell)s?\b/],
-    text: 'Enticed by Madam Allure offers roll-on fragrance oils for women, men, and gender-neutral scents, plus matching dry body oils. For the home there is room and linen spray and aroma beads.' },
+    text: 'Enticed by Madam Allure has roll-on fragrance oils for women, men, and unisex, plus matching dry body oils.' },
   { id: 'body-oil', suite: '217', match: [/\b(body oil|dry oil|dry body)\b/],
     text: 'Dry body oils are $14 to $16 for 4 ounces. They are lightweight, absorb quickly, and pair with your fragrance.' },
   { id: 'beard', suite: '217', match: [/\b(beard|mustache|facial hair|grooming)\b/],
@@ -66,6 +88,20 @@ export const FAQ = [
     text: 'Madam Allure products are built on herbs chosen for hair and skin, natural oils, infused essential oils, and natural raw butters.' },
 
   // ---------- Allure Fusions (305) ----------
+  { id: 'how-order-305', suite: '305', match: [/\b(how (do|can) i (order|start)|place an order|get a quote|request a quote|quote)\b/],
+    text: 'Tap Build My Project, describe your idea, and add your artwork. We review it and send a quote, and production starts once the deposit is paid.' },
+  { id: 'small-prints', suite: '305', match: [/\b(bookmarks?|keychains?|key chains?|name tags?|ornaments?|napkin rings?|puzzle box(es)?)\b/],
+    text: 'Bookmarks are $5 to $12, keychains and name tags $6 to $14, ornaments $8 to $18, and puzzle boxes $20 to $35. Personalized costs a little more.' },
+  { id: 'bulk-305', suite: '305', match: [/\b(bulk|wholesale|large order|big order|quantity|quantities|for (a|my) (team|school|event|class))\b/],
+    text: 'Yes, Allure Fusions takes bulk and event orders. Put the quantity on your request, and your quote will reflect it.' },
+  { id: 'rush-305', suite: '305', deskOnly: true, match: [/\b(rush|asap|urgent|tomorrow|by friday|this week|quickly|fast)\b/],
+    text: 'Rush requests are welcome. Choose rush on the form, and we confirm the date during review, before you pay.' },
+  { id: 'upload-305', suite: '305', deskOnly: true, match: [/\b(upload|attach|send (my|the) (file|files|art|artwork|logo|photo))\b/],
+    text: 'Attach your JPG, PNG, PDF, SVG, DXF, STL, or 3MF files on the Build My Project form, up to 25 MB each. They stay private.' },
+  { id: 'contact-305', suite: '305', deskOnly: true, match: [/\b(contact|email|e-mail|reach|phone|call|talk to (someone|a person|tanika))\b/],
+    text: 'Send a request with Build My Project, or email Allure Fusions at allurefusionsfirm@gmail.com.' },
+  { id: 'deposit-305', suite: '305', deskOnly: true, match: [/\b(deposit|payment|pay|paid|upfront|up front|installment)\b/],
+    text: 'Orders of $35 or less are paid in full. Larger orders start with a 60 percent deposit, and the balance and shipping are paid before it ships.' },
   { id: 'lithophane', suite: '305', match: [/\b(lithophane|lithophanes|photo lamp|picture lamp|memory lamp|lamp|lamps)\b/],
     text: 'A lithophane is a 3D printed panel that reveals your photo when it is lit from behind. Photo lamps are $45 to $85, depending on size and the number of panels.' },
   { id: 'photos', suite: '305', match: [/\b(photo|photos|picture|pictures|image)\b/, /\b(quality|best|good|which|send|resolution|blurry)\b/],
@@ -92,6 +128,22 @@ export const FAQ = [
     text: '3D printed pieces start at $5 for bookmarks, with vases at $20 to $40 and photo lamps at $45 to $85. Custom projects are quoted after review.' },
 
   // ---------- AI AuthoriTech (412) ----------
+  { id: 'process-412', suite: '412', match: [/\b(how does (it|this) work|the process|what happens next|next steps?|proposal)\b/],
+    text: 'It starts with a free 30-minute discovery call. You then get a written proposal with scope, timeline, and price, and work begins once you accept it.' },
+  { id: 'implement-412', suite: '412', match: [/\b(implement\w*|build it|set (it|this) up|done for you|hands-on)\b/],
+    text: 'Workflow implementation is quoted per project. AI AuthoriTech designs and builds the connected workflows with you.' },
+  { id: 'small-biz-412', suite: '412', match: [/\b(small business|solo|solopreneur|one person|just me|too small)\b/],
+    text: 'AI AuthoriTech works with solo owners and small teams as well as larger ones. We start with what takes most of your time.' },
+  { id: 'book-412', suite: '412', deskOnly: true, match: [/\b(book|schedule|appointment|meeting|call|consult\w*)\b/],
+    text: 'Tap Request an AI readiness conversation and share a little about your business. We will reply to set up your free 30-minute discovery call.' },
+  { id: 'deposit-412', suite: '412', deskOnly: true, match: [/\b(deposit|payment|pay|paid|upfront|up front|installment)\b/],
+    text: 'Deposits are set in your written proposal, and the balance is due before final handoff.' },
+  { id: 'shipping-412', suite: '412', deskOnly: true, match: [/\b(ship|ships|shipping|deliver|delivery|in person|on site|onsite)\b/],
+    text: 'Everything is delivered virtually, so nothing ships. Documents, tools, and training are shared digitally.' },
+  { id: 'contact-412', suite: '412', deskOnly: true, match: [/\b(contact|email|e-mail|reach|phone|talk to (someone|a person|tanika))\b/],
+    text: 'Request an AI readiness conversation here, or email AI AuthoriTech at ai.authoritech@gmail.com.' },
+  { id: 'timing-412', suite: '412', deskOnly: true, match: [/\b(how long|turnaround|timeline|how soon|when will|ready by|how fast)\b/],
+    text: 'Timelines depend on the scope. Yours is set in your written proposal, after the free discovery call.' },
   { id: 'replace', suite: '412', match: [/\b(replace|take (my|our) jobs?|take over)\b/],
     text: 'AI works best as a tool that supports people. Human judgment, accountability, and relationships stay essential, and AI AuthoriTech designs around that.' },
   { id: 'audit', suite: '412', match: [/\b(audit|readiness|assessment|ready for ai)\b/],
@@ -131,11 +183,17 @@ const DIRECT = 'Each business handles that with you directly, so their reception
 const say = (key, text, queue) => {
   if (window.ccsVoice && window.ccsVoice.sayKey) window.ccsVoice.sayKey(key, text, { queue });
 };
-const find = (question) => {
+// With a suite, that receptionist's own answers come first (including her
+// deskOnly ones); the lobby never uses deskOnly answers.
+const find = (question, suite) => {
   const q = norm(question || '');
   if (q.trim().length < 2) return null;
-  return FAQ.find((f) => (!f.when || f.when()) && f.match.every((re) => re.test(q))) || null;
+  const ok = (f) => (!f.when || f.when()) && f.match.every((re) => re.test(q));
+  return (suite && FAQ.find((f) => f.suite === suite && ok(f)))
+    || FAQ.find((f) => !f.deskOnly && ok(f)) || null;
 };
+// Each receptionist has her own voice, so her recordings are r<suite>-<answer id>.
+const deskKey = (suite, id) => `r${suite}-${String(id).replace('-' + suite, '')}`;
 
 // Lobby concierge: general questions and directions only. Questions about one
 // business go to that suite's receptionist, who answers them on arrival; business
@@ -160,23 +218,36 @@ function answer(question) {
 }
 
 // Receptionists: answer their own business's questions and building questions.
+const UNKNOWN = 'I do not have that answer here yet. Send us a request, and Tanika will answer you personally.';
+const otherText = (other) => {
+  const s = SUITES[other];
+  return `${s.name} handles that, in Suite ${other} on Floor ${s.floor}. Take the elevator there, and their receptionist will help you.`;
+};
 function answerAt(suite, question) {
-  const hit = find(question);
+  const hit = find(question, suite);
   if (!hit) {
-    const text = 'I do not have that answer here yet. Send us a request, and Tanika will answer you personally.';
-    say('faq-unknown-' + suite, text);
-    return text;
+    say(deskKey(suite, 'unknown'), UNKNOWN);
+    return UNKNOWN;
   }
   if (hit.suite && hit.suite !== suite) {
-    const s = SUITES[hit.suite];
-    const text = `${s.name} handles that, in Suite ${hit.suite} on Floor ${s.floor}. Take the elevator up, and their receptionist will help you.`;
-    say('faq-other-' + hit.suite, text);
+    const text = otherText(hit.suite);
+    say(deskKey(suite, 'to-' + hit.suite), text);
     return text;
   }
-  say('faq-' + hit.id, hit.text);
+  say(deskKey(suite, hit.id), hit.text);
   return hit.text;
 }
-window.ccsFaq = { answer, answerAt, list: FAQ, suites: SUITES };
+
+// Every line each receptionist can say (for the recording script and Notion).
+function deskLines(suite) {
+  const own = FAQ.filter((f) => f.suite === suite);
+  const general = FAQ.filter((f) => !f.suite && !f.deskOnly && !own.some((o) => o.id.startsWith(f.id + '-')));
+  const lines = [...own, ...general].map((f) => ({ key: deskKey(suite, f.id), id: f.id, text: f.text, match: f.match.map(String) }));
+  for (const other of Object.keys(SUITES)) if (other !== suite) lines.push({ key: deskKey(suite, 'to-' + other), id: 'to-' + other, text: otherText(other), match: [] });
+  lines.push({ key: deskKey(suite, 'unknown'), id: 'unknown', text: UNKNOWN, match: [] });
+  return lines;
+}
+window.ccsFaq = { answer, answerAt, list: FAQ, suites: SUITES, deskLines };
 
 // ---------- Speak instead of type ----------
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -256,7 +327,7 @@ function addReceptionAsk() {
   const pending = window.ccsPendingQuestion;
   if (pending && pending.suite === suite) {
     window.ccsPendingQuestion = null;
-    const hit = find(pending.question);
+    const hit = find(pending.question, suite);
     if (!hit) return;
     box.querySelector('.lobby-question')?.remove();
     const q = document.createElement('div');
@@ -268,7 +339,7 @@ function addReceptionAsk() {
     box.querySelector('form').after(q);
     // A new question typed here replaces the lobby one.
     box.querySelector('form').addEventListener('submit', () => q.remove(), { once: true });
-    say('faq-' + hit.id, hit.text, true);
+    say(deskKey(suite, hit.id), hit.text, true);
   }
 }
 

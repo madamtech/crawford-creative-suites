@@ -10,7 +10,9 @@
 // arrive in the lobby. If the browser blocks sound until the visitor interacts,
 // she greets them on their first tap or key press instead.
 
-const USE_DEVICE_VOICE = false;
+// In the local preview (127.0.0.1 / localhost) every unrecorded line is read by the
+// device voice, so the owner can hear the whole flow before recording (Nov 27).
+const USE_DEVICE_VOICE = /^(127\.0\.0\.1|localhost)$/.test(location.hostname);
 // Nov 25 (owner's choice): until the voices are recorded, the elevator's
 // "Welcome to ..." and the receptionist's welcome use the device voice.
 const DEVICE_VOICE_FOR = /^(floor-|welcome-)/;
@@ -192,10 +194,18 @@ window.ccsVoice = {
     setTimeout(() => {
       // The receptionist speaks first; a lobby question's answer (queued on arrival) follows.
       const answer = [];
-      for (let k = queue.length - 1; k >= 0; k--) if (queue[k].key.startsWith('faq-')) answer.unshift(...queue.splice(k, 1));
+      for (let k = queue.length - 1; k >= 0; k--) if (/^(faq-|r\d{3}-)/.test(queue[k].key)) answer.unshift(...queue.splice(k, 1));
       if (suite && !routed) play('welcome-' + suite, LINES['welcome-' + suite]);
       answer.forEach((q) => play(q.key, q.text));
     }, 800);
+  },
+  // Elevator arrival chime: audio/elevator-chime.mp3 (swap the file to change the
+  // sound; Nov 27 options are in OneDrive Work Notes > Elevator chime options).
+  chime() {
+    if (!on) return;
+    const a = new Audio(AUDIO + 'elevator-chime.mp3');
+    a.volume = 0.55;
+    a.play().catch(() => {});
   },
   // Walking into a lounge.
   lounge(id) {

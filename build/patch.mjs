@@ -37,6 +37,10 @@ const patches = [
 
   // Lounge cards: clearer button wording (build/lounge.js, ccsCta).
   ['children:[G.cta,` →`]', 'children:[window.ccsCta?window.ccsCta(G):G.cta,` →`]'],
+  // Elevator chime (Nov 27, owner): a softer, modern bell from audio/elevator-chime.mp3
+  // (build/voice.js) instead of two plain beeps.
+  ['z=()=>{if(!b)return;let e=window.AudioContext||window.webkitAudioContext;if(!e)return;let t=new e,n=t.createGain();n.connect(t.destination),n.gain.setValueAtTime(1e-4,t.currentTime),n.gain.exponentialRampToValueAtTime(.12,t.currentTime+.03),n.gain.exponentialRampToValueAtTime(1e-4,t.currentTime+.75),[659.25,783.99].forEach((e,r)=>{let i=t.createOscillator();i.frequency.value=e,i.connect(n),i.start(t.currentTime+r*.18),i.stop(t.currentTime+.35+r*.18)}),window.setTimeout(()=>t.close(),900)}',
+   'z=()=>{if(!b)return;window.ccsVoice.chime()}'],
   // Elevator: only the current floor's key lights up (all keys are switched off
   // while the car moves, and switched-off keys used to look lit).
   ['children:t},t))]}),e===`traveling`', '"data-current":t===g?``:void 0,"aria-current":t===g?`true`:void 0,children:t},t))]}),e===`traveling`'],
