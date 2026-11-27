@@ -83,9 +83,9 @@ const patches = [
   ['(0,i.jsxs)(`div`,{className:`suite-sign`,children:[(0,i.jsxs)(`small`,{children:[`FLOOR `,R.floor,` · SUITE `,n]}),(0,i.jsx)(`h1`,{children:R.name}),(0,i.jsx)(`p`,{children:R.tagline})]}),',
    '(0,i.jsxs)(`div`,{className:`suite-sign`,children:[(0,i.jsx)(`h1`,{children:(0,i.jsx)(`img`,{className:`suite-logo`,src:{217:`../img/madam-allure-signature.png`,305:`../img/allure-fusions-title.png`,412:`../img/ai-authoritech-title.png`}[n],alt:R.name})}),(0,i.jsx)(`p`,{children:R.tagline})]}),(0,i.jsxs)(`div`,{className:`suite-plaque`,children:[`FLOOR `,R.floor,` · SUITE `,n]}),'],
 
-  // Custom and memorial gifts: a request form (build/portal.js), saved online or emailed.
+  // Custom and memorial gifts: a request form (build/portal.js), shown once the backend is set up.
   ['(0,i.jsx)(`p`,{children:s[e].subtitle})]}),e===`gifts`?',
-   '(0,i.jsx)(`p`,{children:s[e].subtitle}),(e===`gifts`||e===`memorials`)&&(0,i.jsx)(`button`,{type:`button`,className:`ma-request-btn`,onClick:()=>window.ccsMaRequest(e===`memorials`?`memorial`:`custom`),children:e===`memorials`?`Request a memorial piece →`:`Request a custom gift →`})]}),e===`gifts`?'],
+   '(0,i.jsx)(`p`,{children:s[e].subtitle}),window.ccsPortal&&window.ccsPortal.ready()&&(e===`gifts`||e===`memorials`)&&(0,i.jsx)(`button`,{type:`button`,className:`ma-request-btn`,onClick:()=>window.ccsMaRequest(e===`memorials`?`memorial`:`custom`),children:e===`memorials`?`Request a memorial piece →`:`Request a custom gift →`})]}),e===`gifts`?'],
 
   // Memorial gifts: drop the "Gallery Image Coming Soon" placeholder boxes.
   ['(0,i.jsx)(`span`,{children:`Gallery Image Coming Soon`}),', ''],

@@ -14,13 +14,10 @@ export const FAQ = [
   // ---------- Building and policies ----------
   { id: 'hello', suite: null, match: [/^\s*(hi|hello|hey|good (morning|afternoon|evening))\b[^?]{0,20}$/],
     text: 'Hello, and welcome! Ask me about any of our three suites, or tell me what you are looking for.' },
-  // "Check my order": Client Login when the backend is live, otherwise the suite's request form.
-  { id: 'myorder', suite: null, match: [/(my (order|project|request)s?|order status|project status|track(ing)?|check on|where is my|sign in|log ?in|client login|account)/],
-    get text() {
-      return window.ccsPortal && window.ccsPortal.ready()
-        ? 'You can follow every order and project in My Projects. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed.'
-        : 'To check on an order, reply to the email you received from the suite, or send a request to that suite, and Tanika will update you directly.';
-    } },
+  // "Check my order": only once Log In is switched on (suites/backend-config.js).
+  { id: 'myorder', suite: null, when: () => !!(window.ccsPortal && window.ccsPortal.ready()),
+    match: [/(my (order|project|request)s?|order status|project status|track(ing)?|check on|where is my|sign in|log ?in|client login|account)/],
+    text: 'You can follow every order and project in My Projects. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed.' },
   { id: 'owner', suite: null, match: [/\b(who (owns|runs|is behind|made)|owner|founder|tanika)\b/],
     text: 'All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a maker, and an AI consultant.' },
   { id: 'visit', suite: null, match: [/\b(address|located|location|visit in person|come by|stop by|storefront|in person)\b/],
@@ -137,7 +134,7 @@ const say = (key, text, queue) => {
 const find = (question) => {
   const q = norm(question || '');
   if (q.trim().length < 2) return null;
-  return FAQ.find((f) => f.match.every((re) => re.test(q))) || null;
+  return FAQ.find((f) => (!f.when || f.when()) && f.match.every((re) => re.test(q))) || null;
 };
 
 // Lobby concierge: general questions and directions only. Questions about one
