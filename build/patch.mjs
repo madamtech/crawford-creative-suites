@@ -63,9 +63,11 @@ const patches = [
   ['D(`I couldn’t quite place that—try the directory below or mention what kind of business you need.`)',
    'D(window.ccsVoice.say(`I couldn’t quite place that. Try the directory, or tell me what kind of business you need.`))'],
 
-  // A way back out to the entrance page (the arrival site with the three businesses).
+  // Header (owner, Nov 27): no Elevator button (each suite has "Take elevator to another floor").
+  // In the main lobby: Entrance, back out to the arrival page. Everywhere else in the
+  // building: Lobby, an elevator ride down to the main lobby (no second greeting).
   ['(0,i.jsx)(`button`,{onClick:()=>t(`elevator`),children:`Elevator`})',
-   '(0,i.jsx)(`button`,{onClick:()=>t(`elevator`),children:`Elevator`}),(0,i.jsx)(`a`,{className:`entrance-link`,href:`../`,children:`Entrance`}),window.ccsPortal&&window.ccsPortal.ready()&&(0,i.jsx)(`button`,{type:`button`,className:`client-login`,"data-client-login":``,onClick:()=>window.ccsPortal.open(),children:`Log In`})'],
+   'e===`lobby`?(0,i.jsx)(`a`,{className:`entrance-link`,href:`../`,children:`Entrance`}):(0,i.jsx)(`button`,{type:`button`,className:`lobby-link`,disabled:e===`traveling`,onClick:()=>B(1),children:`Lobby`}),window.ccsPortal&&window.ccsPortal.ready()&&(0,i.jsx)(`button`,{type:`button`,className:`client-login`,"data-client-login":``,onClick:()=>window.ccsPortal.open(),children:`Log In`})'],
   // (Log In, Nov 27: build/portal.js; shown only once suites/backend-config.js has the Supabase URL.)
 
   // Madam Allure's lounge, The Powder Room (owner's lounge plan): a reception

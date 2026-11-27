@@ -13,9 +13,15 @@
 // In the local preview (127.0.0.1 / localhost) every unrecorded line is read by the
 // device voice, so the owner can hear the whole flow before recording (Nov 27).
 const USE_DEVICE_VOICE = /^(127\.0\.0\.1|localhost)$/.test(location.hostname);
-// Nov 25 (owner's choice): until the voices are recorded, the elevator's
-// "Welcome to ..." and the receptionist's welcome use the device voice.
-const DEVICE_VOICE_FOR = /^(floor-|welcome-)/;
+// Nov 27 (owner): on the live site, unrecorded lines stay silent; the device voice
+// sounded wrong for the receptionists. (Nov 25 it read the elevator and receptionist
+// welcomes.) The local preview above still reads every line so she can hear the flow.
+const DEVICE_VOICE_FOR = /(?!)/;
+// Pause between the elevator's floor announcement and the receptionist's welcome (owner, Nov 27: it was too quick).
+const ARRIVAL_PAUSE = 1300;
+// Visitors who arrive straight into Log In, My Orders or the Admin Office (including
+// a returning sign-in link) are not greeted again by the lobby concierge (owner, Nov 27).
+const STARTED_IN_PANEL = /access_token|^#(login|projects|admin)/.test(location.hash);
 const AUDIO = '../audio/';
 const KEY = 'ccs-sound';
 const MUSIC_VOLUME = 0.16;   // lobby music stays soft under the voices
@@ -165,14 +171,14 @@ window.ccsVoice = {
   },
   // Run `fn` once the current spoken line (and anything queued) has finished,
   // plus a short pause. With sound off or nothing playing, just wait `pause` ms.
-  afterSpeech(fn, pause = 700) {
-    const busy = () => on && (current || queue.length);
+  afterSpeech(fn, pause = 700, settle = 500) {
+    const busy = () => on && (current || queue.length || (window.speechSynthesis && speechSynthesis.speaking));
     if (!busy()) { setTimeout(fn, pause); return; }
     const started = Date.now();
     const tick = setInterval(() => {
       if (!busy() || Date.now() - started > 30000) {
         clearInterval(tick);
-        setTimeout(fn, 500);
+        setTimeout(fn, settle);
       }
     }, 150);
   },
@@ -191,13 +197,14 @@ window.ccsVoice = {
     // Sent up by the concierge (a question or a "take me to" from the lobby)?
     const routed = suite && window.ccsRouted === suite;
     window.ccsRouted = null;
-    setTimeout(() => {
+    // Let the elevator finish "Welcome to ..." and leave a breath before the receptionist speaks.
+    window.ccsVoice.afterSpeech(() => {
       // The receptionist speaks first; a lobby question's answer (queued on arrival) follows.
       const answer = [];
       for (let k = queue.length - 1; k >= 0; k--) if (/^(faq-|r\d{3}-)/.test(queue[k].key)) answer.unshift(...queue.splice(k, 1));
       if (suite && !routed) play('welcome-' + suite, LINES['welcome-' + suite]);
       answer.forEach((q) => play(q.key, q.text));
-    }, 800);
+    }, ARRIVAL_PAUSE, ARRIVAL_PAUSE);
   },
   // Elevator arrival chime: audio/elevator-chime.mp3 (swap the file to change the
   // sound; Nov 27 options are in OneDrive Work Notes > Elevator chime options).
@@ -215,6 +222,7 @@ window.ccsVoice = {
 
 // The concierge greets visitors as soon as they arrive in the lobby.
 function greetOnArrival() {
+  if (STARTED_IN_PANEL || document.body.hasAttribute('data-portal-open')) { greeted = true; return; }
   if (on && !greeted && document.querySelector('.lobby-scene')) window.ccsVoice.greet();
 }
 // If the browser blocked sound, the first tap or key press plays what was waiting.

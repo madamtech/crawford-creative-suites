@@ -170,7 +170,28 @@ export const FAQ = [
     text: 'Prices are listed inside each suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will give you the price.' },
 ];
 
-const norm = (s) => ' ' + s.toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim() + ' ';
+// Spoken and typed questions are written differently ("self care", "selfcare", "self-care"),
+// so common compound words are joined the same way before matching (owner, Nov 27).
+const norm = (s) => ' ' + s.toLowerCase().replace(/[’‘]/g, "'").replace(/\s+/g, ' ').trim()
+  .replace(/\bself[\s-]*care\b/g, 'self-care').replace(/\bskin[\s-]*care\b/g, 'skincare')
+  .replace(/\bbody[\s-]*care\b/g, 'body care').replace(/\b3[\s-]*d\b/g, '3d').replace(/\bchat[\s-]*gpt\b/g, 'chatgpt')
+  .replace(/\ba\.\s?i\.?(?=\s|$)/g, 'ai') + ' ';
+
+// Lobby fallback (owner, Nov 27): when no answer matches, the concierge still recognizes
+// which business a question belongs to, gives that suite's short description, and the
+// receptionist answers when the visitor arrives. Checked in this order.
+const SUITE_WORDS = [
+  ['305', /\b(3d|print|prints|printing|printed|printer|laser|engrav\w*|acrylic|wood|wooden|keychains?|signs?|signage|tumblers?|shirts?|t-shirts?|screen print\w*|sublimat\w*|vinyl|decals?|lamps?|lithophanes?|models?|prototypes?|badges?|coasters?|ornaments?|figurines?|clipboards?|cake toppers?|promo\w*|branded merch\w*)\b/],
+  ['412', /\b(ai|artificial intelligence|automat\w*|chatbots?|chatgpt|agents?|audits?|workflows?|consult\w*|strategy|portals?|dashboards?|crm|gohighlevel|digital|tech)\b/],
+  ['217', /\b(beauty|self-care|skincare|skin|body care|body|bath|lotions?|butters?|oils?|serums?|scrubs?|soaps?|hair|beard|fragrances?|perfumes?|colognes?|scents?|candles?|wax melts?|aroma\w*|room spray|linen spray|makeup|lip\w*|spa|relax\w*|pamper\w*|gifts?|gift sets?|memorial\w*|funeral|repast|homegoing|ribbons?|towels?|fans?|plaques?|keepsakes?|bridal|wedding|baby shower)\b/],
+];
+const suiteFor = (question) => {
+  const q = norm(question || '');
+  const desk = FAQ.find((f) => f.suite && f.match.every((re) => re.test(q)));
+  if (desk) return desk.suite;
+  const hit = SUITE_WORDS.find(([, re]) => re.test(q));
+  return hit ? hit[0] : null;
+};
 
 const SUITES = {
   '217': { name: 'Madam Allure', floor: 2, offers: 'fragrance, bath and body care, gifts, and memorial keepsakes' },
@@ -199,7 +220,9 @@ const deskKey = (suite, id) => `r${suite}-${String(id).replace('-' + suite, '')}
 // business go to that suite's receptionist, who answers them on arrival; business
 // policies (payments, shipping, consultations...) are left to the receptionists.
 function answer(question) {
-  const hit = find(question);
+  const found = find(question);
+  const fallback = !found && suiteFor(question);
+  const hit = found || (fallback ? { suite: fallback } : null);
   if (!hit) return null;
   if (!hit.suite) {
     window.ccsPendingQuestion = null;

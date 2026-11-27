@@ -366,6 +366,8 @@ body[data-kiosk-open] .reception-scene .reception-desk{transform:translate(-50%,
 .reception-scene:has(.lounge) .reception-ask,.reception-scene:has(.business-showroom) .reception-ask{opacity:0;pointer-events:none}
 @media (max-width:850px){.reception-ask{position:relative;left:auto;top:auto;width:auto;min-width:0;margin:12px 16px}}
 @media (max-width:900px){.header-actions button:first-child{display:inline-block!important}}
+/* Phones (Nov 27): the floor button stays clear of the Check in tablet in the corner. */
+@media (max-width:600px){.reception-scene .scene-actions{padding-right:150px!important}.reception-scene .scene-actions button{white-space:normal;text-align:left}}
 `;
 
 // ---------- building page ----------
