@@ -2,7 +2,7 @@
 
 Generated 2026-11-27 by `node build/voice-script.mjs` from the site's answer lists. Do not edit by hand; change `build/faq.js` or `build/voice.js` and run it again.
 
-**122 lines.** Save each as an MP3 with the exact file name into `audio/`. A line works on the site as soon as its file is there. "Type this" spells out numbers and short forms so the voice reads them naturally; the site shows the "On screen" text.
+**125 lines.** Save each as an MP3 with the exact file name into `audio/`. A line works on the site as soon as its file is there. "Type this" spells out numbers and short forms so the voice reads them naturally; the site shows the "On screen" text.
 
 Elevator chime: `audio/elevator-chime.mp3` (Nov 27 modern bell; options in OneDrive Work Notes > Elevator chime options). To use an ElevenLabs sound effect instead, prompt: "soft modern luxury elevator arrival chime, two gentle glassy bell tones rising, clean, warm, 2 seconds, no voice".
 
@@ -45,7 +45,8 @@ Voice: Kai - Real AI Receptionist (chosen Nov 27)
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
-| `welcome-217.mp3` | How may I help you today? | How may I help you today? |  |
+| `welcome-217.mp3` | How may I help you? | How may I help you? |  |
+| `sent-217.mp3` | Your question came up from the lobby, and I have your answer right here. | Your question came up from the lobby, and I have your answer right here. |  |
 | `lounge-powder.mp3` | Welcome to the Powder Room, a quiet place to explore beauty rituals, fragrance, and self-care. | Welcome to the Powder Room, a quiet place to explore beauty rituals, fragrance, and self-care. |  |
 | `r217-memorial-order.mp3` | Tap Request a memorial piece in the catalog and share the names, dates, and colors. You will get a quote after review. | Tap Request a memorial piece in the catalog and share the names, dates, and colors. You will get a quote after review. |  |
 | `r217-how-buy.mp3` | Open Browse products and pricing, then tap a product to buy it on the Madam Allure shop. Payment is handled there securely. | Open Browse products and pricing, then tap a product to buy it on the Madam Allure shop. Payment is handled there securely. |  |
@@ -90,7 +91,8 @@ Voice: Maya - Receptionist & Customer Service (chosen Nov 27)
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
-| `welcome-305.mp3` | How may I help you today? | How may I help you today? |  |
+| `welcome-305.mp3` | How may I help you? | How may I help you? |  |
+| `sent-305.mp3` | Your question came up from the lobby, and I have your answer right here. | Your question came up from the lobby, and I have your answer right here. |  |
 | `lounge-maker.mp3` | Welcome to the Maker's Lounge, where ideas, materials, and technology come together. | Welcome to the Maker's Lounge, where ideas, materials, and technology come together. |  |
 | `r305-how-order.mp3` | Tap Build My Project, describe your idea, and add your artwork. We review it and send a quote, and production starts once the deposit is paid. | Tap Build My Project, describe your idea, and add your artwork. We review it and send a quote, and production starts once the deposit is paid. |  |
 | `r305-small-prints.mp3` | Bookmarks are $5 to $12, keychains and name tags $6 to $14, ornaments $8 to $18, and puzzle boxes $20 to $35. Personalized costs a little more. | Bookmarks are $5 to $12, keychains and name tags $6 to $14, ornaments $8 to $18, and puzzle boxes $20 to $35. Personalized costs a little more. |  |
@@ -131,7 +133,8 @@ Voice: Tiffany - Warm, Conversational Narrator (chosen Nov 27)
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
-| `welcome-412.mp3` | How may I help you today? | How may I help you today? |  |
+| `welcome-412.mp3` | How may I help you? | How may I help you? |  |
+| `sent-412.mp3` | Your question came up from the lobby, and I have your answer right here. | Your question came up from the lobby, and I have your answer right here. |  |
 | `lounge-clarity.mp3` | Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype. | Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype. |  |
 | `r412-process.mp3` | It starts with a free 30-minute discovery call. You then get a written proposal with scope, timeline, and price, and work begins once you accept it. | It starts with a free 30-minute discovery call. You then get a written proposal with scope, timeline, and price, and work begins once you accept it. |  |
 | `r412-implement.mp3` | Workflow implementation is quoted per project. AI AuthoriTech designs and builds the connected workflows with you. | Workflow implementation is quoted per project. A-I Awthor-ih-tek designs and builds the connected workflows with you. |  |

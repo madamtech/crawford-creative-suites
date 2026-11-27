@@ -36,12 +36,15 @@ const LINES = {
   'floor-2': 'Floor two. Madam Allure.',
   'floor-3': 'Floor three. Allure Fusions.',
   'floor-4': 'Floor four. AI AuthoriTech.',
-  // Owner, Nov 25: the elevator says "Welcome to <business>." and the receptionist
-  // only adds "How may I help you today?" (skipped when the concierge already
-  // sent the visitor up with a question; it shows on the check-in screen).
-  'welcome-217': 'How may I help you today?',
-  'welcome-305': 'How may I help you today?',
-  'welcome-412': 'How may I help you today?',
+  // Owner, Nov 27: after the elevator's "Floor two. Madam Allure." the receptionist only
+  // says "How may I help you?" If the lobby concierge already sent a question up, she
+  // says it arrived instead, then reads the answer (also shown on screen for sound off).
+  'welcome-217': 'How may I help you?',
+  'welcome-305': 'How may I help you?',
+  'welcome-412': 'How may I help you?',
+  'sent-217': 'Your question came up from the lobby, and I have your answer right here.',
+  'sent-305': 'Your question came up from the lobby, and I have your answer right here.',
+  'sent-412': 'Your question came up from the lobby, and I have your answer right here.',
   'lounge-powder': 'Welcome to the Powder Room, a quiet place to explore beauty rituals, fragrance, and self-care.',
   'lounge-maker': "Welcome to the Maker's Lounge, where ideas, materials, and technology come together.",
   'lounge-clarity': 'Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype.',
@@ -91,8 +94,14 @@ function playNext() {
     done();
   });
 }
+// During an elevator ride, answers to a lobby question are held until the doors open
+// and the receptionist has said the question came up (owner, Nov 27).
+let holding = false;
+const held = [];
+const ANSWER_KEY = /^(faq-|r\d{3}-)/;
 function play(key, text, { interrupt = false } = {}) {
   if (!on) return;
+  if (holding && ANSWER_KEY.test(key)) { held.push({ key, text }); return; }
   if (interrupt) {
     queue.length = 0;
     if (current) { current.pause(); current = null; }
@@ -189,6 +198,7 @@ window.ccsVoice = {
   // still moving, before the doors open (no on-screen sign).
   approach(floor) {
     greeted = true;
+    holding = true;
     const line = LINES['floor-' + floor];
     if (line) setTimeout(() => play('floor-' + floor, line, { interrupt: true }), 250);
   },
@@ -201,12 +211,16 @@ window.ccsVoice = {
     window.ccsRouted = null;
     // Let the elevator finish "Welcome to ..." and leave a breath before the receptionist speaks.
     window.ccsVoice.afterSpeech(() => {
-      // The receptionist speaks first; a lobby question's answer (queued on arrival) follows.
-      const answer = [];
-      for (let k = queue.length - 1; k >= 0; k--) if (/^(faq-|r\d{3}-)/.test(queue[k].key)) answer.unshift(...queue.splice(k, 1));
-      if (suite && !routed) play('welcome-' + suite, LINES['welcome-' + suite]);
+      // A lobby question's answer arrived during the ride: "Your question came up..." then the answer.
+      // Otherwise: "How may I help you?" (also after a plain "take me there").
+      holding = false;
+      const answer = held.splice(0);
+      for (let k = queue.length - 1; k >= 0; k--) if (ANSWER_KEY.test(queue[k].key)) answer.unshift(...queue.splice(k, 1));
+      if (suite && answer.length) play('sent-' + suite, LINES['sent-' + suite]);
+      else if (suite) play('welcome-' + suite, LINES['welcome-' + suite]);
       answer.forEach((q) => play(q.key, q.text));
     }, ARRIVAL_PAUSE, ARRIVAL_PAUSE);
+    void routed;
   },
   // Elevator arrival chime: audio/elevator-chime.mp3 (swap the file to change the
   // sound; Nov 27 options are in OneDrive Work Notes > Elevator chime options).

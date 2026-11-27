@@ -131,8 +131,14 @@
   "lines": [
    {
     "key": "welcome-217",
-    "text": "How may I help you today?",
-    "say": "How may I help you today?",
+    "text": "How may I help you?",
+    "say": "How may I help you?",
+    "recorded": false
+   },
+   {
+    "key": "sent-217",
+    "text": "Your question came up from the lobby, and I have your answer right here.",
+    "say": "Your question came up from the lobby, and I have your answer right here.",
     "recorded": false
    },
    {
@@ -365,8 +371,14 @@
   "lines": [
    {
     "key": "welcome-305",
-    "text": "How may I help you today?",
-    "say": "How may I help you today?",
+    "text": "How may I help you?",
+    "say": "How may I help you?",
+    "recorded": false
+   },
+   {
+    "key": "sent-305",
+    "text": "Your question came up from the lobby, and I have your answer right here.",
+    "say": "Your question came up from the lobby, and I have your answer right here.",
     "recorded": false
    },
    {
@@ -575,8 +587,14 @@
   "lines": [
    {
     "key": "welcome-412",
-    "text": "How may I help you today?",
-    "say": "How may I help you today?",
+    "text": "How may I help you?",
+    "say": "How may I help you?",
+    "recorded": false
+   },
+   {
+    "key": "sent-412",
+    "text": "Your question came up from the lobby, and I have your answer right here.",
+    "say": "Your question came up from the lobby, and I have your answer right here.",
     "recorded": false
    },
    {

@@ -49,7 +49,7 @@ const groups = [
   // Receptionist voices chosen by Tanika, Nov 27, 2026 (saved under My Voices in ElevenLabs).
   ...[['217', 'powder', 'Kai - Real AI Receptionist (chosen Nov 27)'], ['305', 'maker', 'Maya - Receptionist & Customer Service (chosen Nov 27)'], ['412', 'clarity', 'Tiffany - Warm, Conversational Narrator (chosen Nov 27)']].map(([s, lounge, voice]) => ({
     who: `${SUITES[s].name} receptionist (Floor ${SUITES[s].floor}, Suite ${s})`, voice,
-    lines: [{ key: 'welcome-' + s, text: LINES['welcome-' + s] }, { key: 'lounge-' + lounge, text: LINES['lounge-' + lounge] }, ...deskLines(s).map((l) => ({ key: l.key, text: l.text }))],
+    lines: [{ key: 'welcome-' + s, text: LINES['welcome-' + s] }, { key: 'sent-' + s, text: LINES['sent-' + s] }, { key: 'lounge-' + lounge, text: LINES['lounge-' + lounge] }, ...deskLines(s).map((l) => ({ key: l.key, text: l.text }))],
   })),
 ];
 
