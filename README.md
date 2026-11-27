@@ -24,7 +24,7 @@ npm run build
 Visitors' email apps open with the request filled in. The request is also copied to the clipboard, so it isn't lost if they have no email app.
 
 - Madam Allure: madamallure@gmail.com
-- Allure Fusions: allurefusions@gmail.com
+- Allure Fusions: allurefusionsfirm@gmail.com
 - AI AuthoriTech: ai.authoritech@gmail.com
 
 Change these in `build/send.js` and `build/patch.mjs`.

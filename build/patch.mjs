@@ -4,6 +4,8 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 let src = readFileSync(new URL('../src/ccs-app.js', import.meta.url), 'utf8');
 
+const CONTACT_FIELDS = '(0,i.jsxs)(`div`,{className:`field-pair`,children:[(0,i.jsxs)(`label`,{children:[`Name`,(0,i.jsx)(`input`,{name:`Name`,type:`text`,autoComplete:`name`,required:!0})]}),(0,i.jsxs)(`label`,{children:[`Email`,(0,i.jsx)(`input`,{name:`Email`,type:`email`,autoComplete:`email`,required:!0})]})]}),(0,i.jsxs)(`label`,{children:[`Phone (optional)`,(0,i.jsx)(`input`,{name:`Phone`,type:`tel`,autoComplete:`tel`})]}),';
+
 const patches = [
   // Scene images now live in /img and are referenced relative to /suites/.
   ['src:`/main-lobby.png`', 'src:`../img/main-lobby.jpg`'],
@@ -83,13 +85,16 @@ const patches = [
   // Memorial gifts: drop the "Gallery Image Coming Soon" placeholder boxes.
   ['(0,i.jsx)(`span`,{children:`Gallery Image Coming Soon`}),', ''],
 
-  // Madam Allure product questions go to the Madam Allure inbox.
-  ['mailto:hello@aiauthoritytech.com?subject=${encodeURIComponent(`Madam Allure',
-   'mailto:madamallure@gmail.com?subject=${encodeURIComponent(`Madam Allure'],
+  // Madam Allure: shop products open the Ueni store; items without a shop link
+  // open a short request form (name, email, optional phone) before emailing.
+  ['(0,i.jsx)(`a`,{href:`mailto:hello@aiauthoritytech.com?subject=${encodeURIComponent(`Madam Allure — ${e.name}`)}&body=${encodeURIComponent(`I am interested in ${e.name} (${e.price}). Please contact me about options.`)}`,children:`Ask about this item ↗`})',
+   '(0,i.jsx)(e.url?`a`:`button`,{...(e.url?{className:`shop-link`,href:e.url,target:`_blank`,rel:`noopener`}:{type:`button`,onClick:()=>window.ccsAskAbout(e.name,e.price)}),children:e.url?`View & buy on our shop ↗`:`Ask about this item ↗`})'],
 
-  // Nov 25 (owner): each product's button opens that product on the Madam Allure
-  // shop website in a new tab (the email link did nothing without a mail app).
-  ['children:`Ask about this item ↗`})', 'children:e.url?`View & buy on our shop ↗`:`Ask about this item ↗`,...(e.url?{className:`shop-link`,href:e.url,target:`_blank`,rel:`noopener`}:{})})'],
+  // Name, Email, and optional Phone at the top of both request forms.
+  [',onSubmit:e=>{e.preventDefault(),Y(`Allure Fusions — Build My Project`,e.currentTarget)},children:[',
+   ',onSubmit:e=>{e.preventDefault(),Y(`Allure Fusions — Build My Project`,e.currentTarget)},children:[' + CONTACT_FIELDS],
+  [',onSubmit:e=>{e.preventDefault(),Y(`AI AuthoriTech — Readiness Conversation`,e.currentTarget)},children:[(0,i.jsx)(`h3`,{children:`Request an AI readiness conversation`}),',
+   ',onSubmit:e=>{e.preventDefault(),Y(`AI AuthoriTech — Readiness Conversation`,e.currentTarget)},children:[(0,i.jsx)(`h3`,{children:`Request an AI readiness conversation`}),' + CONTACT_FIELDS],
 
   // Forms: route to the right business inbox, with a copy-to-clipboard fallback.
   ['window.location.href=`mailto:hello@aiauthoritytech.com?subject=${encodeURIComponent(e)}&body=${encodeURIComponent(r)}`',

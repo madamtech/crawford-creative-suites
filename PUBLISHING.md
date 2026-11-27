@@ -14,7 +14,7 @@ Follow these steps in order for every new site, portal, database or inventory, a
 - Prices: the latest price list file in the shared notes folder (now `madam-allure-price-list.html` / `.pdf`). No other source.
 - Taglines, business names and contact inboxes:
   - Madam Allure: madamallure@gmail.com
-  - Allure Fusions: allurefusions@gmail.com
+  - Allure Fusions: allurefusionsfirm@gmail.com
   - AI AuthoriTech: ai.authoritech@gmail.com
 - If two sources disagree, ask the owner before building. Don't pick one quietly.
 

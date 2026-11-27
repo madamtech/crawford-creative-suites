@@ -23,7 +23,7 @@ export const FAQ = [
   { id: 'consult', suite: null, desk: true, match: [/\b(consult|consultation|discovery call|strategy call|free call)\b/],
     text: 'Your first 30-minute discovery consultation is free. After that, consultation is $125 an hour, scheduled and paid in advance, and it is credited toward an ongoing engagement.' },
   { id: 'contact', suite: null, match: [/\b(contact|email|e-mail|reach|phone|call|talk to (someone|a person|tanika))\b/],
-    text: 'Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madamallure@gmail.com, Allure Fusions at allurefusions@gmail.com, or AI AuthoriTech at ai.authoritech@gmail.com.' },
+    text: 'Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madamallure@gmail.com, Allure Fusions at allurefusionsfirm@gmail.com, or AI AuthoriTech at ai.authoritech@gmail.com.' },
   { id: 'deposit', suite: null, desk: true, match: [/\b(deposit|payment|pay|paid|upfront|up front|installment)\b/],
     text: 'For products, orders of $35 or less are paid in full, and orders over $35 start with a 60 percent deposit. The balance and shipping are paid before your order ships. AI AuthoriTech deposits are set in your written proposal.' },
   { id: 'shipping', suite: null, desk: true, match: [/\b(ship|ships|shipping|deliver|delivery|mail|pick ?up|local)\b/],

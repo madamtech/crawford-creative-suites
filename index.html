@@ -148,6 +148,16 @@ body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .ccs-sent div{display:flex;gap:8px;flex-wrap:wrap}
 .ccs-sent button{cursor:pointer;padding:9px 14px;border:1px solid #cb9671;background:transparent;color:#fff;font-size:.8rem}
 .ccs-sent button[data-copy]{background:linear-gradient(135deg,#eccbb0,#b9805d);color:#21150d;border-color:#daa681;font-weight:700}
+.ccs-ask{position:fixed;z-index:2147483000;left:50%;top:50%;transform:translate(-50%,-50%);width:min(440px,calc(100% - 32px));padding:20px;background:rgba(12,11,14,.97);color:#fff;border:1px solid rgba(255,255,255,.25);border-top:3px solid #cb9671;box-shadow:0 20px 60px rgba(0,0,0,.6);font:14px/1.5 Arial,Helvetica,sans-serif}
+.ccs-ask strong{display:block;font:400 1.15rem Georgia,serif;margin-bottom:6px}
+.ccs-ask p{margin:0 0 14px;color:#e6dcd6}
+.ccs-ask label{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.85rem;font-size:.75rem;color:#e4dee8}
+.ccs-ask .field-pair{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.ccs-ask input{color:#fff;width:100%;font:inherit;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.28);padding:.72rem}
+.ccs-ask form>div:last-child{display:flex;gap:8px;flex-wrap:wrap;margin-top:.4rem}
+.ccs-ask button{cursor:pointer;padding:9px 14px;border:1px solid #cb9671;background:transparent;color:#fff;font-size:.8rem}
+.ccs-ask button[type=submit]{background:linear-gradient(135deg,#eccbb0,#b9805d);color:#21150d;border-color:#daa681;font-weight:700}
+@media (max-width:560px){.ccs-ask .field-pair{grid-template-columns:1fr}}
 </style>
 </head>
 <body>

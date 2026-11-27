@@ -2,3 +2,5 @@
 # To unhide: delete this file and the robots meta tag in src/ccs-preview.html and build/site.mjs.
 User-agent: *
 Disallow: /
+# Source files used only to build the site; not a public page.
+Disallow: /src/
