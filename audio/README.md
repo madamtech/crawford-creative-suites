@@ -2,15 +2,15 @@
 
 Make each line below with your ElevenLabs voice (or record it yourself). Save it as an **MP3** with the **exact file name** shown, and put it in this `audio` folder. Each file starts working on its own as soon as it's in place. A line without a file stays silent; the device's robotic voice is not used.
 
-**Voices (Nov 23, 2026):** each person in the building has her own voice.
+**Voices (chosen by Tanika; receptionists and elevator Nov 27, 2026):** each person in the building has her own voice, saved under My Voices in ElevenLabs. The full line list for every voice is in `VOICE-SCRIPT.md`.
 
 | Who | Voice | Lines |
 |---|---|---|
-| Lobby concierge (Floor 1) | **Veda Sky** (Expressive Customer Service), chosen by Tanika. Speed 1.08 for the four replies (her greeting is her own download), stability 50, similarity 75, style 0 | `greeting`, `reply-217`, `reply-305`, `reply-412`, `reply-unknown` |
-| Madam Allure receptionist (Floor 2) | Niki (trial; likely to change) | `welcome-217`, `lounge-powder` |
-| Allure Fusions receptionist (Floor 3) | Julie (trial; likely to change) | `welcome-305`, `lounge-maker` |
-| AI AuthoriTech receptionist (Floor 4) | Viktoria (trial; likely to change) | `welcome-412`, `lounge-clarity` |
-| Elevator | to be chosen | `floor-2` to `floor-4` |
+| Lobby concierge (Floor 1) | **Veda Sky** (Expressive Customer Service). Speed 1.08 for the four replies (her greeting is her own download), stability 50, similarity 75, style 0 | `greeting`, `reply-*`, `faq-*` |
+| Madam Allure receptionist (Floor 2) | **Kai** (Real AI Receptionist), the softest voice, for beauty and self-care | `welcome-217`, `lounge-powder`, `r217-*` |
+| Allure Fusions receptionist (Floor 3) | **Maya** (Receptionist & Customer Service) | `welcome-305`, `lounge-maker`, `r305-*` |
+| AI AuthoriTech receptionist (Floor 4) | **Tiffany** (Warm, Conversational Narrator) | `welcome-412`, `lounge-clarity`, `r412-*` |
+| Elevator | **Blake Harlow**, floor announcements only | `floor-2` to `floor-4` |
 
 Use the same settings for every line of one voice so they match. Type suite numbers the way they are said (two-seventeen, three-oh-five, four-twelve) so the voice does not read "two one seven".
 

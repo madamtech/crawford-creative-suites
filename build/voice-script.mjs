@@ -43,9 +43,10 @@ const groups = [
     { key: 'faq-direct', text: DIRECT },
     ...Object.keys(SUITES).map((s) => ({ key: 'faq-send-' + s, text: sendText(s) })),
   ] },
-  { who: 'Elevator', voice: 'To choose together (different from the three receptionists).', lines: ['floor-2', 'floor-3', 'floor-4'].map((k) => ({ key: k, text: LINES[k] })) },
-  ...[['217', 'powder'], ['305', 'maker'], ['412', 'clarity']].map(([s, lounge]) => ({
-    who: `${SUITES[s].name} receptionist (Floor ${SUITES[s].floor}, Suite ${s})`, voice: 'To choose together.',
+  { who: 'Elevator', voice: 'Blake Harlow (chosen Nov 27). Floor announcements only.', lines: ['floor-2', 'floor-3', 'floor-4'].map((k) => ({ key: k, text: LINES[k] })) },
+  // Receptionist voices chosen by Tanika, Nov 27, 2026 (saved under My Voices in ElevenLabs).
+  ...[['217', 'powder', 'Kai - Real AI Receptionist (chosen Nov 27)'], ['305', 'maker', 'Maya - Receptionist & Customer Service (chosen Nov 27)'], ['412', 'clarity', 'Tiffany - Warm, Conversational Narrator (chosen Nov 27)']].map(([s, lounge, voice]) => ({
+    who: `${SUITES[s].name} receptionist (Floor ${SUITES[s].floor}, Suite ${s})`, voice,
     lines: [{ key: 'welcome-' + s, text: LINES['welcome-' + s] }, { key: 'lounge-' + lounge, text: LINES['lounge-' + lounge] }, ...deskLines(s).map((l) => ({ key: l.key, text: l.text }))],
   })),
 ];

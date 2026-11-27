@@ -103,7 +103,7 @@
  },
  {
   "who": "Elevator",
-  "voice": "To choose together (different from the three receptionists).",
+  "voice": "Blake Harlow (chosen Nov 27). Floor announcements only.",
   "lines": [
    {
     "key": "floor-2",
@@ -127,7 +127,7 @@
  },
  {
   "who": "Madam Allure receptionist (Floor 2, Suite 217)",
-  "voice": "To choose together.",
+  "voice": "Kai - Real AI Receptionist (chosen Nov 27)",
   "lines": [
    {
     "key": "welcome-217",
@@ -361,7 +361,7 @@
  },
  {
   "who": "Allure Fusions receptionist (Floor 3, Suite 305)",
-  "voice": "To choose together.",
+  "voice": "Maya - Receptionist & Customer Service (chosen Nov 27)",
   "lines": [
    {
     "key": "welcome-305",
@@ -571,7 +571,7 @@
  },
  {
   "who": "AI AuthoriTech receptionist (Floor 4, Suite 412)",
-  "voice": "To choose together.",
+  "voice": "Tiffany - Warm, Conversational Narrator (chosen Nov 27)",
   "lines": [
    {
     "key": "welcome-412",

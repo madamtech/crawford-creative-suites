@@ -31,7 +31,7 @@ Voice: Veda Sky (chosen). Speed 1.08, stability 50, similarity 75, style 0.
 
 ## Elevator
 
-Voice: To choose together (different from the three receptionists).
+Voice: Blake Harlow (chosen Nov 27). Floor announcements only.
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
@@ -41,7 +41,7 @@ Voice: To choose together (different from the three receptionists).
 
 ## Madam Allure receptionist (Floor 2, Suite 217)
 
-Voice: To choose together.
+Voice: Kai - Real AI Receptionist (chosen Nov 27)
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
@@ -86,7 +86,7 @@ Voice: To choose together.
 
 ## Allure Fusions receptionist (Floor 3, Suite 305)
 
-Voice: To choose together.
+Voice: Maya - Receptionist & Customer Service (chosen Nov 27)
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
@@ -127,7 +127,7 @@ Voice: To choose together.
 
 ## AI AuthoriTech receptionist (Floor 4, Suite 412)
 
-Voice: To choose together.
+Voice: Tiffany - Warm, Conversational Narrator (chosen Nov 27)
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
