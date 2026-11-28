@@ -70,6 +70,22 @@ Tanika taps **Send Skool invite** on a record in the Admin Office. The client is
 
 GHL: add the `skool-member` tag and run the Skool invite (Zapier or Make, or send the invite link). Only this event sends an invite; there is no bulk send.
 
+## quote.approved, invoice.ready, attention.needed (added Nov 28, Peyton; see docs/WAVE_INVOICING.md)
+
+All three business-tagged like the others and delivered to the same single GHL webhook (top-level `business`, `business_label`, `tags`).
+
+```json
+{ "type": "quote.approved", "data": { "entity_type": "order", "number": "AFF-0007", "business": "allure_fusions", "quote": "90", "approved_at": "...", "is_test": false } }
+{ "type": "invoice.ready", "data": { "invoice_number": "2184", "number": "AIA-0002", "business": "ai_authoritech", "tags": ["ai-authoritech", "invoice-ready"],
+  "amount": 500, "due_date": "2026-12-28", "view_url": "https://next.waveapps.com/...", "name": "Casey Morgan", "email": "casey@example.test" } }
+{ "type": "attention.needed", "data": { "recipient": "admin", "business": "ai_authoritech", "tags": ["ai-authoritech", "needs-attention"],
+  "message": "Invoice #2184 for AI AuthoriTech came in (order AIA-0002). Missing: customer phone.", "missing": ["customer phone"],
+  "number": "AIA-0002", "invoice_number": "2184", "notify_email": "set by dispatch-events", "where": "Admin Office, Needs attention" } }
+```
+
+GHL: `invoice.ready` -> tell the customer an invoice is waiting (link `view_url`, also in My Projects); the customer is NOT emailed by Wave for Allure Fusions or AI AuthoriTech.
+`attention.needed` -> internal notification to `notify_email` only.
+
 ## Pulling instead of pushing
 
 If Make or Zapier should pull instead, call the database function `claim_events(p_limit)` and then `mark_event(p_id, p_ok, p_error)` with the service role (server side only).

@@ -102,3 +102,23 @@
 .guided-form .file-upload small{color:rgba(255,255,255,.75)}
 body[data-portal-open]{overflow:hidden}
 .ccs-row>summary .ccs-pill{justify-self:start}
+
+/* invoices (Wave), missing-information list */
+.ccs-invoices{margin:.5rem 0;display:grid;gap:.4rem}
+.ccs-invoice{display:flex;justify-content:space-between;align-items:center;gap:.6rem;padding:.55rem .7rem;border:1px solid rgba(255,255,255,.16);border-radius:10px;background:rgba(0,0,0,.2)}
+.ccs-invoice .n{font-weight:700}
+.ccs-invoice[data-state="Paid"]{border-color:#21b8b0}
+.ccs-invoice[data-state="Overdue"]{border-color:#e07a6a}
+.ccs-btn{display:inline-block;padding:.5rem .8rem;border:1px solid rgba(255,255,255,.4);border-radius:8px;color:#fff;text-decoration:none;font:700 .78rem Arial,Helvetica,sans-serif;white-space:nowrap}
+.ccs-btn.ccs-primary{background:#cb9671;border-color:#cb9671;color:#1b1410}
+.ccs-test{color:#f6dcc8;font:700 .62rem Arial,Helvetica,sans-serif;letter-spacing:.06em}
+.ccs-attention{display:grid;gap:.45rem;margin:.4rem 0 1rem}
+.ccs-attn{display:flex;justify-content:space-between;align-items:center;gap:.7rem;padding:.6rem .75rem;border:1px solid rgba(255,255,255,.18);border-left:3px solid var(--biz,#e07a6a);border-radius:10px;background:rgba(224,122,106,.08)}
+.ccs-attn button{white-space:nowrap}
+.ccs-check{display:flex;align-items:center;gap:.4rem;margin:.2rem 0 .8rem;font-size:.85rem}
+.ccs-linkform{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+.ccs-linkform input{flex:1 1 180px;color:#fff;box-sizing:border-box;font:15px Lora,Georgia,serif;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.28);padding:.55rem .65rem}
+@media (max-width:620px){.ccs-invoice,.ccs-attn{flex-direction:column;align-items:flex-start}}
+.ccs-past{color:#aef0ea;font:700 .62rem Arial,Helvetica,sans-serif;letter-spacing:.06em}
+.ccs-checks{display:flex;flex-wrap:wrap;gap:.2rem 1.2rem;margin:.2rem 0 .8rem}
+.ccs-checks .ccs-check{margin:0}
