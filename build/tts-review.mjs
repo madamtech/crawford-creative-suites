@@ -12,6 +12,7 @@
 // Options: --only key1,key2  record just those lines;  --force  re-record files already in review.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const args = process.argv.slice(2);
 const opt = (name) => { const i = args.indexOf('--' + name); return i >= 0 ? args[i + 1] : null; };
@@ -46,7 +47,7 @@ const models = await (await api('/v1/models')).json();
 const model = models.find((m) => /v4/i.test(m.name) && m.can_do_text_to_speech) || models.find((m) => m.model_id === 'eleven_multilingual_v2');
 console.log(`Voice: ${voice.name}  |  Model: ${model.name}  |  ${lines.length} lines`);
 
-const outDir = join(here('../audio-review/').pathname.replace(/^\/([A-Za-z]:)/, '$1'), suite);
+const outDir = join(fileURLToPath(here('../audio-review/')), suite);
 mkdirSync(outDir, { recursive: true });
 let n = 0;
 for (const l of lines) {
