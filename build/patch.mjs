@@ -30,6 +30,7 @@ const patches = [
   // Owner, Nov 27: the floor and suite show once, in the top bar, worded like the old
   // bottom plaque (which is now hidden in build/site.mjs).
   ['reception`?`Suite ${n} · Floor ${R.floor}`', 'reception`?`Floor ${R.floor} · Suite ${n}`'],
+  ['lobby`?`Main Lobby · Floor 1`', 'lobby`?`Floor 1 · Main Lobby`'],
   // Owner, Nov 27: the Allure Fusions lounge is the Designer Lounge (not the Maker's Lounge).
   ['maker:{title:`The Maker’s Lounge`', 'maker:{title:`The Designer Lounge`'],
   ['children:[`Visit The Maker’s Lounge `', 'children:[`Visit The Designer Lounge `'],

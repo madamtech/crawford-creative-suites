@@ -368,15 +368,19 @@ body[data-kiosk-open] .reception-scene .reception-desk{transform:translate(-50%,
 @media (max-width:900px){.header-actions button:first-child{display:inline-block!important}}
 /* Phones (Nov 27): the floor button stays clear of the Check in tablet in the corner. */
 @media (max-width:600px){.reception-scene .scene-actions{padding-right:150px!important}.reception-scene .scene-actions button{white-space:normal;text-align:left}}
-/* Owner, Nov 27: floor and suite show once, at the top, in the suite's signature trim
+/* Owner, Nov 27-28: floor and suite show once, at the top, in the suite's signature trim
+   (rose gold in the lobby and elevator)
    (the old bottom plaque). The bottom keeps only the elevator button. */
 .suite-plaque{display:none!important}
-.experience:has(.reception-scene) .building-header .location{--plaque:#cb9671;display:flex!important;justify-self:center;padding:.45rem .9rem;background:rgba(10,9,12,.82);border:1px solid var(--plaque);color:var(--plaque);letter-spacing:.22em;font-size:.6rem;white-space:nowrap}
+.experience .building-header .location{--plaque:#cb9671;display:flex!important;justify-self:center;padding:.45rem .9rem;background:rgba(10,9,12,.82);border:1px solid var(--plaque);color:var(--plaque);letter-spacing:.22em;font-size:.6rem;white-space:nowrap}
 .experience:has(.reception-scene[data-suite="305"]) .building-header .location{--plaque:#6c9dff}
 .experience:has(.reception-scene[data-suite="412"]) .building-header .location{--plaque:#21b8b0}
-.experience:has(.reception-scene) .building-header .location i{display:none}
-@media (max-width:850px){.experience:has(.reception-scene) .building-header{grid-template-columns:auto 1fr auto}.experience:has(.reception-scene) .building-header .location{font-size:.52rem;letter-spacing:.14em;padding:.35rem .55rem}}
-@media (max-width:480px){.experience:has(.reception-scene) .building-name small{display:none}}
+.experience .building-header .location i{display:none}
+/* Owner, Nov 28: the elevators are beside the lobby board, so its rows have no arrows.
+   Board size and position stay locked (build/board.js REF); only the arrow is hidden. */
+.lobby-board button > i[aria-hidden]{display:none!important}
+@media (max-width:850px){.experience .building-header{grid-template-columns:auto 1fr auto}.experience .building-header .location{font-size:.52rem;letter-spacing:.14em;padding:.35rem .55rem}}
+@media (max-width:480px){.experience .building-name small{display:none}}
 `;
 
 // ---------- building page ----------

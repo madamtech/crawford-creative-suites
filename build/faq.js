@@ -179,18 +179,34 @@ const norm = (s) => ' ' + s.toLowerCase().replace(/[’‘]/g, "'").replace(/\s+
 
 // Lobby fallback (owner, Nov 27): when no answer matches, the concierge still recognizes
 // which business a question belongs to, gives that suite's short description, and the
-// receptionist answers when the visitor arrives. Checked in this order.
+// receptionist answers when the visitor arrives.
+// Owner, Nov 28: every word on the lobby board and the entrance cards counts, plus related
+// words (products, services, materials). Each business's words are counted and the business
+// with the most matches wins, so "personalized keychain" goes to Allure Fusions while
+// "personalized gift" goes to Madam Allure. On a tie, the first business listed here wins.
 const SUITE_WORDS = [
-  ['305', /\b(3d|print|prints|printing|printed|printer|laser|engrav\w*|acrylic|wood|wooden|keychains?|signs?|signage|tumblers?|shirts?|t-shirts?|screen print\w*|sublimat\w*|vinyl|decals?|lamps?|lithophanes?|models?|prototypes?|badges?|coasters?|ornaments?|figurines?|clipboards?|cake toppers?|promo\w*|branded merch\w*)\b/],
-  ['412', /\b(ai|artificial intelligence|automat\w*|chatbots?|chatgpt|agents?|audits?|workflows?|consult\w*|strategy|portals?|dashboards?|crm|gohighlevel|digital|tech)\b/],
-  ['217', /\b(beauty|self-care|skincare|skin|body care|body|bath|lotions?|butters?|oils?|serums?|scrubs?|soaps?|hair|beard|fragrances?|perfumes?|colognes?|scents?|candles?|wax melts?|aroma\w*|room spray|linen spray|makeup|lip\w*|spa|relax\w*|pamper\w*|gifts?|gift sets?|memorial\w*|funeral|repast|homegoing|ribbons?|towels?|fans?|plaques?|keepsakes?|bridal|wedding|baby shower)\b/],
+  // Board: "3D printing, laser engraving & dimensional art". Entrance: "3D Printing + Laser Design + Dimensional Art".
+  ['305', /\b(3d|print|prints|printing|printed|printer|printers|laser\w*|engrav\w*|cut|cuts|cutting|design|designs|designer|designers|designed|dimensional|art|artwork|artist\w*|fabricat\w*|maker\w*|creations?|custom (?:projects?|pieces?|signs?)|build my project|acrylic|wood|wooden|slate|keychains?|key chains?|name tags?|dog tags?|tags?|signs?|signage|tumblers?|shirts?|t-shirts?|tees?|apparel|screen print\w*|sublimat\w*|vinyl|decals?|stickers?|lamps?|lithophanes?|photo lamps?|picture lamps?|night lights?|models?|prototypes?|figurines?|sculptures?|statues?|vases?|planters?|bookmarks?|puzzles?|puzzle boxes?|ornaments?|christmas ornaments?|coasters?|napkin rings?|favors?|party favors?|event favors?|badges?|badge reels?|clipboards?|pens?|notebook covers?|awards?|trophies|trophy|mascots?|cheer|school|schools|teams?|organizations?|nfc|stl|3mf|svg|dxf|pla|petg|filament|resin|cake toppers?|promo\w*|branded merch\w*|merch\w*|bulk orders?)\b/g],
+  // Board: "AI strategy, agents & automation". Entrance: "AI Strategy + Automation + Intelligent Business Systems".
+  ['412', /\b(ai|artificial intelligence|intelligent|intelligence|machine learning|automat\w*|chatbots?|chat bots?|chatgpt|gpt|claude|gemini|copilot|agents?|assistants?|audits?|readiness|workflows?|processes|consult\w*|strategy|strategic|business systems?|systems?|software|tech|technology|digital|transformation|portals?|dashboards?|command centers?|crm|gohighlevel|ghl|zapier|n8n|integrations?|apis?|data|knowledge base|lms|learning systems?|e-?learning|training|upskill\w*|prompts?|prompting|lead intake|customer support|implementation|efficiency|productivity|save time)\b/g],
+  // Board: "Beauty, fragrance & personalized gifts". Entrance: "Beauty + Fragrance + Personalized Gifting".
+  ['217', /\b(beauty|beautiful|self-care|skincare|skin|face|facial|body care|body|bath|bathing|lotions?|moisturiz\w*|hydrat\w*|butters?|shea|whipped|oils?|serums?|scrubs?|exfoliat\w*|soaps?|black soap|shampoo\w*|hair|hair growth|scalp|beard|grooming|fragrances?|fragrance oils?|perfumes?|colognes?|scents?|scented|smell\w*|roll-?ons?|enticed|candles?|wax melts?|aroma\w*|home fragrance|room spray|linen spray|truffles?|bath tea|bath salts?|makeup|make-up|cosmetolog\w*|lip\w*|spa|relax\w*|pamper\w*|wellness|natural|botanical|herbal|herbs|gifts?|gifting|gift sets?|gift box\w*|personali[sz]ed|personali[sz]ation|memorial\w*|funeral|repast|homegoing|celebration of life|in loving memory|ribbons?|towels?|fans?|plaques?|whiteboards?|keepsakes?|bridal|bride|bridesmaids?|wedding|baby shower|wife|girlfriend|mom|mother|mother's day|valentine'?s?|anniversary|gentleman|men's set|corporate wellness|welcome home|wine glass\w*|bling\w*|rhinestones?|glitter)\b/g],
 ];
+// Describing words (personalized, custom, gift, design) count half, so a product name decides:
+// "personalized keychain" is Allure Fusions, "personalized fragrance" is Madam Allure.
+const SOFT = /^(personali[sz]ed|personali[sz]ation|gifts?|gifting|design|designs|designed|custom (?:projects?|pieces?|signs?))$/;
+const suiteCounts = (q) => Object.fromEntries(SUITE_WORDS.map(([suite, re]) => [suite, (q.match(re) || []).reduce((n, w) => n + (SOFT.test(w) ? 0.5 : 1), 0)]));
 const suiteFor = (question) => {
   const q = norm(question || '');
+  const counts = suiteCounts(q);
   const desk = FAQ.find((f) => f.suite && f.match.every((re) => re.test(q)));
-  if (desk) return desk.suite;
-  const hit = SUITE_WORDS.find(([, re]) => re.test(q));
-  return hit ? hit[0] : null;
+  // A specific answer wins unless another business's words clearly outnumber its own.
+  if (desk && !(Math.max(...Object.values(counts)) > (counts[desk.suite] || 0))) return desk.suite;
+  let best = null, bestCount = 0;
+  for (const [suite] of SUITE_WORDS) {
+    if (counts[suite] > bestCount) { best = suite; bestCount = counts[suite]; }
+  }
+  return best;
 };
 
 const SUITES = {
@@ -227,7 +243,14 @@ const deskKey = (suite, id) => `r${suite}-${String(id).replace('-' + suite, '')}
 // business go to that suite's receptionist, who answers them on arrival; business
 // policies (payments, shipping, consultations...) are left to the receptionists.
 function answer(question) {
-  const found = find(question);
+  let found = find(question);
+  // Lobby (owner, Nov 28): a business-specific answer only wins when its business also has
+  // the most matching words; otherwise the visitor is sent to the business the words point to.
+  if (found && found.suite) {
+    const counts = suiteCounts(norm(question || ''));
+    const top = Object.keys(counts).find((s) => counts[s] === Math.max(...Object.values(counts)));
+    if (counts[top] > (counts[found.suite] || 0)) found = { suite: top };
+  }
   const fallback = !found && suiteFor(question);
   const hit = found || (fallback ? { suite: fallback } : null);
   if (!hit) return null;
