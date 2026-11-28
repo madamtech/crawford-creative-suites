@@ -205,7 +205,7 @@
     "key": "r217-memorial",
     "text": "Madam Allure creates memorial keepsakes: ribbons, plaques, fans, fan whiteboards, and towels. Allure Fusions can also make a memorial lithophane lamp from a favorite picture.",
     "say": "Madam Allure creates memorial keepsakes: ribbons, plaques, fans, fan whiteboards, and towels. Allure Fusions can also make a memorial lithophane lamp from a favorite picture.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-makeup",
@@ -241,7 +241,7 @@
     "key": "r217-beard",
     "text": "For beards there is beard oil and beard balm, made with natural butters and oils. The Powder Room on Floor 2 has a five-minute beard routine.",
     "say": "For beards there is beard oil and beard balm, made with natural butters and oils. The Powder Room on Floor 2 has a five-minute beard routine.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-hair",
@@ -253,13 +253,13 @@
     "key": "r217-soap",
     "text": "Handmade soaps include turmeric, turmeric with ginger or kaolin clay, Yoni Rose, and African black soap.",
     "say": "Handmade soaps include turmeric, turmeric with ginger or kaolin clay, Yoni Rose, and African black soap.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-bath",
     "text": "For the bath there are bath truffles, bath tea, bath salt, body scrubs, and foaming bath butter.",
     "say": "For the bath there are bath truffles, bath tea, bath salt, body scrubs, and foaming bath butter.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-skin",
@@ -271,79 +271,79 @@
     "key": "r217-sensitive",
     "text": "Every product lists its ingredients so you can check them first. Patch-test anything new, and talk with your doctor about allergies or medical concerns.",
     "say": "Every product lists its ingredients so you can check them first. Patch-test anything new, and talk with your doctor about allergies or medical concerns.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-ingredients",
     "text": "Madam Allure products are built on herbs chosen for hair and skin, natural oils, infused essential oils, and natural raw butters.",
     "say": "Madam Allure products are built on herbs chosen for hair and skin, natural oils, infused essential oils, and natural raw butters.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-hello",
     "text": "Hello, and welcome! Ask me about any of our three suites, or tell me what you are looking for.",
     "say": "Hello, and welcome! Ask me about any of our three suites, or tell me what you are looking for.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-myorder",
     "text": "You can follow every order and project in My Orders. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed.",
     "say": "You can follow every order and project in My Orders. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-owner",
     "text": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.",
     "say": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-visit",
     "text": "Crawford Creative Suites is an online building, so there is no storefront to visit. You are welcome to explore all three suites right here.",
     "say": "Crawford Creative Suites is an online building, so there is no storefront to visit. You are welcome to explore all three suites right here.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-hours",
     "text": "The building is open online any time. Send a request whenever you like, and Tanika will reply by email.",
     "say": "The building is open online any time. Send a request whenever you like, and Tanika will reply by email.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-consult",
     "text": "Your first 30-minute discovery consultation is free. After that, consultations are scheduled and paid in advance, and they are credited toward an ongoing engagement.",
     "say": "Your first 30-minute discovery consultation is free. After that, consultations are scheduled and paid in advance, and they are credited toward an ongoing engagement.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-shipping",
     "text": "Yes, we ship. Shipping is added to your final invoice, and local pickup is not offered.",
     "say": "Yes, we ship. Shipping is added to your final invoice, and local pickup is not offered.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-timing",
     "text": "Everything is made to order, so timing depends on the project. You will get a timeline when your request is reviewed, and work begins once the payment or deposit is received.",
     "say": "Everything is made to order, so timing depends on the project. You will get a timeline when your request is reviewed, and work begins once the payment or deposit is received.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-returns",
     "text": "For returns, changes, or a problem with an order, send a request to the suite you ordered from, and Tanika will help you directly.",
     "say": "For returns, changes, or a problem with an order, send a request to the suite you ordered from, and Tanika will help you directly.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-prices",
     "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one.",
     "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-to-305",
     "text": "Allure Fusions handles that, in Suite 305 on Floor 3. Take the elevator there, and their receptionist will help you.",
     "say": "Allure Fusions handles that, in Suite three-oh-five on Floor 3. Take the elevator there, and their receptionist will help you.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-to-412",
