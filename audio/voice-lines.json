@@ -739,7 +739,7 @@
     "key": "r412-virtual",
     "text": "Yes, our services are delivered virtually, and documents, tools, and training materials are shared digitally.",
     "say": "Yes, our services are delivered virtually, and documents, tools, and training materials are shared digitally.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-hello",
@@ -823,7 +823,7 @@
     "key": "r412-nudge-3",
     "text": "Ready for the next step? Review our price list, then request your free discovery call.",
     "say": "Ready for the next step? Review our price list, then request your free discovery call.",
-    "recorded": false
+    "recorded": true
    }
   ]
  }
