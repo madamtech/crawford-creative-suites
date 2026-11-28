@@ -536,6 +536,7 @@ if (api.ready()) {
     else if (location.hash === '#admin') open('admin');
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else setTimeout(start, 0);
-  new MutationObserver(() => { syncLoginButtons(); decorateLounges(); }).observe(document.documentElement, { childList: true, subtree: true });
+  // Owner, Nov 28: no "Leave your details" line in the lounges (it lives with the lobby concierge).
+  new MutationObserver(() => { syncLoginButtons(); }).observe(document.documentElement, { childList: true, subtree: true });
   window.addEventListener('ccs-auth', syncLoginButtons);
 }
