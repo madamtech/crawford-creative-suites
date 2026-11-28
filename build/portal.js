@@ -125,6 +125,8 @@ async function showProjects(flash) {
     if (/sign in/i.test(err.message) || err.status === 401) return showLogin('Your sign-in has expired. Ask for a new link.');
     b.replaceChildren(note(err.message, 'err')); return;
   }
+  let invoices = [];
+  try { invoices = (await api.rpc('my_invoices')) || []; } catch { /* invoices are extra: never block My Projects */ }
   b.replaceChildren();
   const bar = h('div', { class: 'ccs-bar' }, h('span', { text: `Signed in as ${data.email}` }),
     data.is_admin ? h('button', { type: 'button', class: 'ccs-primary', onclick: () => showAdmin(), text: 'Admin Office' }) : '',
@@ -135,7 +137,11 @@ async function showProjects(flash) {
     b.append(h('div', { class: 'ccs-empty' }, h('p', { text: 'There are no orders or projects under this email yet.' }),
       h('p', { text: 'Requests sent from Allure Fusions, AI AuthoriTech or Madam Allure appear here once they are received.' })));
   }
-  for (const p of data.projects) b.append(projectCard(p));
+  for (const p of data.projects) b.append(projectCard(p, invoices.filter((i) => i.entity_type === p.entity_type && i.entity_id === p.id)));
+  const loose = invoices.filter((i) => !data.projects.some((p) => p.entity_type === i.entity_type && p.id === i.entity_id));
+  if (loose.length) {
+    b.append(h('article', { class: 'ccs-card' }, h('header', {}, h('small', { text: 'INVOICES' })), h('h3', { text: 'Other invoices for you' }), invoiceBox(loose, true)));
+  }
   b.append(linksBox());
 }
 
@@ -146,11 +152,33 @@ function paymentLine(p) {
   return parts.filter(Boolean).join(' · ');
 }
 
-function projectCard(p) {
+// ---------- invoices (from Wave) ----------
+const INV_STATE = { SAVED: 'Unpaid', SENT: 'Unpaid', VIEWED: 'Unpaid', UNPAID: 'Unpaid', PARTIAL: 'Partly paid', PAID: 'Paid', OVERPAID: 'Paid', OVERDUE: 'Overdue' };
+const INV_KIND = { full: 'Full invoice', deposit: 'Deposit', balance: 'Balance' };
+const invPaid = (i) => i.status === 'PAID' || i.status === 'OVERPAID';
+
+function invoiceBox(list, showBiz) {
+  const box = h('div', { class: 'ccs-invoices' }, list.length > 1 || !showBiz ? h('strong', { text: list.length > 1 ? 'Invoices' : 'Invoice' }) : '');
+  for (const i of list) {
+    const owed = invPaid(i) ? 0 : Math.max(Number(i.amount_due ?? i.amount) , 0);
+    box.append(h('div', { class: 'ccs-invoice', 'data-state': INV_STATE[i.status] || '' },
+      h('div', {},
+        h('span', { class: 'n', text: `Invoice #${i.invoice_number || ''}` }),
+        i.kind ? h('small', { text: ` · ${INV_KIND[i.kind]}` }) : '',
+        showBiz ? h('small', { text: ` · ${BUSINESS[i.business] || ''}` }) : '',
+        i.test ? h('small', { class: 'ccs-test', text: ' · TEST' }) : '',
+        h('div', { class: 'ccs-meta', text: [money(i.amount), INV_STATE[i.status] || i.status, !invPaid(i) && owed && Number(i.amount_paid) > 0 ? `${money(owed)} left` : '', i.due_date && !invPaid(i) ? `due ${day(i.due_date)}` : ''].filter(Boolean).join(' · ') })),
+      h('a', { class: invPaid(i) ? 'ccs-btn' : 'ccs-btn ccs-primary', href: i.view_url, target: '_blank', rel: 'noopener', text: invPaid(i) ? 'View receipt' : 'View & pay' })));
+  }
+  return box;
+}
+
+function projectCard(p, invoices = []) {
   const card = h('article', { class: 'ccs-card', style: `--biz:${ACCENT[p.business]}` },
     h('header', {}, h('small', { text: `${BUSINESS[p.business]} · ${p.number}` }), statusPill(p.status)),
     h('h3', { text: p.title }),
     h('p', { class: 'ccs-pay', text: paymentLine(p) }),
+    invoices.length ? invoiceBox(invoices, false) : '',
     p.due_date ? h('p', { class: 'ccs-meta', text: `${p.business === 'madam_allure' ? 'Needed by' : 'Due'} ${day(p.due_date)}` }) : '',
     h('p', { class: 'ccs-meta', text: `Sent ${day(p.created_at)} · last update ${day(p.last_status_change)}` }));
 
@@ -160,7 +188,7 @@ function projectCard(p) {
     if (due > 0 && due < Number(p.balance)) pay.append(h('button', { type: 'button', class: 'ccs-primary', onclick: (e) => checkout(e.target, p.number, 'deposit'), text: `Pay deposit ${money(due)}` }));
     pay.append(h('button', { type: 'button', class: due > 0 && due < Number(p.balance) ? '' : 'ccs-primary', onclick: (e) => checkout(e.target, p.number, 'balance'), text: `Pay ${Number(p.amount_paid) > 0 ? 'balance' : 'in full'} ${money(p.balance)}` }));
     card.append(pay);
-  } else if (p.can_pay) {
+  } else if (p.can_pay && !invoices.length) {
     card.append(h('p', { class: 'ccs-meta', text: "We'll send your invoice (card via Wave or PayPal)." }));
   }
   if (p.events.length) {
@@ -221,7 +249,7 @@ function linksBox() {
 }
 
 // ---------- Admin Office ----------
-let adminState = { tab: 'overview', status: '', q: '' };
+let adminState = { tab: 'overview', status: '', q: '', iq: '', ibiz: '', iunmatched: false };
 async function showAdmin(flash) {
   // Already in the Admin Office (changing tabs, Refresh)? Keep the current page on screen
   // until the new one is ready, instead of flashing "Loading…".
@@ -241,19 +269,24 @@ async function showAdmin(flash) {
     b = fresh();
     panel.querySelector('.ccs-portal-sheet').scrollTop = scroll;
   }
-  const tabs = [['overview', 'Overview'], ['allure_fusions', 'Allure Fusions'], ['ai_authoritech', 'AI AuthoriTech'], ['madam_allure', 'Madam Allure Orders'], ['leads', 'Leads']];
+  let att = [], inv = { invoices: [], unmatched: 0 };
+  try { att = (await api.rpc('admin_attention')) || []; } catch { /* older database: no attention list yet */ }
+  try { inv = (await api.rpc('admin_invoices')) || inv; } catch { /* older database: no invoices yet */ }
+  const tabs = [['overview', att.length ? `Overview (${att.length})` : 'Overview'], ['allure_fusions', 'Allure Fusions'], ['ai_authoritech', 'AI AuthoriTech'], ['madam_allure', 'Madam Allure Orders'],
+    ['invoices', inv.unmatched ? `Invoices (${inv.unmatched} to link)` : 'Invoices'], ['leads', 'Leads']];
   const nav = h('nav', { class: 'ccs-tabs', role: 'tablist' }, tabs.map(([k, label]) => h('button', {
     type: 'button', role: 'tab', 'aria-selected': String(adminState.tab === k), onclick: () => { adminState.tab = k; adminState.status = ''; showAdmin(); }, text: label })));
   const top = h('div', { class: 'ccs-bar' }, h('button', { type: 'button', onclick: () => showProjects(), text: '← My Orders' }),
     h('button', { type: 'button', onclick: () => showAdmin(), text: 'Refresh' }));
   b.replaceChildren(top, nav);
   if (flash) b.append(note(flash, 'ok'));
-  if (adminState.tab === 'overview') return b.append(overview(d));
+  if (adminState.tab === 'overview') return b.append(overview(d, att));
+  if (adminState.tab === 'invoices') return b.append(invoicesAdmin(inv.invoices, d.projects));
   if (adminState.tab === 'leads') return b.append(leadsList(d.leads));
   b.append(projectList(d.projects.filter((p) => p.business === adminState.tab)));
 }
 
-function overview(d) {
+function overview(d, att = []) {
   const t = d.totals;
   const tile = (n, label, warn) => h('div', { class: `ccs-tile${warn ? ' warn' : ''}` }, h('strong', { text: n }), h('span', { text: label }));
   const wrap = h('div', {},
@@ -268,8 +301,80 @@ function overview(d) {
       return h('tr', {}, h('td', { text: BUSINESS[k] }), h('td', { text: open }), h('td', { text: money(paid) || '$0' }), h('td', { text: money(owed) || '$0' }));
     })));
   const newest = d.projects.filter((p) => ['New Request', 'New', 'Pending Review'].includes(p.status) || p.overdue);
-  wrap.append(byBiz, h('h3', { text: 'Needs attention' }), newest.length ? projectList(newest, true) : note('Nothing new or overdue.'),
+  wrap.append(byBiz, h('h3', { text: 'Needs attention' }), attentionList(att), newest.length ? projectList(newest, true) : note('Nothing new or overdue.'),
     h('p', { class: 'ccs-meta', text: `${d.outbox_pending} event(s) waiting to send to GHL.` }));
+  return wrap;
+}
+
+// Missing information on orders and invoices. Items clear by themselves once the information is filled in.
+function attentionList(items) {
+  if (!items.length) return h('p', { class: 'ccs-meta', text: 'No missing information on any order or invoice.' });
+  const open = (a) => {
+    if (a.invoice_id) { adminState.tab = 'invoices'; adminState.iq = a.invoice_number || ''; adminState.ibiz = ''; adminState.iunmatched = false; }
+    else { adminState.tab = a.business; adminState.q = a.number || ''; adminState.status = ''; }
+    showAdmin();
+  };
+  return h('div', { class: 'ccs-attention' }, items.map((a) => h('div', { class: 'ccs-attn', style: `--biz:${ACCENT[a.business]}` },
+    h('div', {}, h('span', { text: a.message }), a.is_test ? h('small', { class: 'ccs-test', text: ' TEST' }) : '',
+      h('div', { class: 'ccs-meta', text: `Since ${when(a.created_at)}` })),
+    h('button', { type: 'button', onclick: () => open(a), text: a.invoice_id ? 'Open invoice' : `Open ${a.number || 'order'}` }))));
+}
+
+// Invoices per business, with an Unmatched filter and a way to link one to an order.
+function invoicesAdmin(rows, projects) {
+  const wrap = h('div');
+  const biz = h('select', { onchange: (e) => { adminState.ibiz = e.target.value; render(); } }, h('option', { value: '', text: 'All businesses' }),
+    Object.entries(BUSINESS).map(([k, v]) => h('option', { value: k, text: v, selected: adminState.ibiz === k ? 'selected' : null })));
+  const un = h('input', { type: 'checkbox', checked: adminState.iunmatched ? 'checked' : null, onchange: (e) => { adminState.iunmatched = e.target.checked; render(); } });
+  const q = h('input', { type: 'search', value: adminState.iq, placeholder: 'Invoice #, customer or order', oninput: (e) => { adminState.iq = e.target.value; render(); } });
+  wrap.append(h('div', { class: 'ccs-filter' }, h('label', {}, 'Business', biz), h('label', {}, 'Search', q)),
+    h('label', { class: 'ccs-check' }, un, ' Unmatched only (not linked to an order)'));
+  const list = h('div', { class: 'ccs-rows' });
+  wrap.append(list);
+  function linkForm(i) {
+    const id = `ccs-ord-${i.id}`;
+    const form = h('form', { class: 'ccs-linkform' },
+      h('input', { name: 'n', list: id, placeholder: 'Order number', required: true, 'aria-label': `Order number for invoice ${i.invoice_number}` }),
+      h('datalist', { id }, projects.filter((p) => p.business === i.business).map((p) => h('option', { value: p.number, label: `${p.name} · ${p.title}` }))),
+      h('button', { type: 'submit', text: 'Link' }));
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      try { await api.rpc('wave_link_invoice', { p_invoice: i.id, p_number: form.n.value }); showAdmin(`Invoice #${i.invoice_number} linked to ${String(form.n.value).toUpperCase()}.`); }
+      catch (err) { form.append(note(err.message, 'err')); }
+    };
+    return form;
+  }
+  function row(i) {
+    const linked = !!i.entity_id;
+    const d = h('details', { class: 'ccs-row', style: `--biz:${ACCENT[i.business]}` });
+    d.append(h('summary', {},
+      h('span', { class: 'n', text: `#${i.invoice_number || ''}` }), h('span', { class: 'who', text: i.customer_name || i.customer_email || '(no customer)' }),
+      h('span', { class: 'what', text: linked ? `${i.order_number}${i.kind ? ` · ${INV_KIND[i.kind]}` : ''}` : 'Not linked to an order' }),
+      h('span', { class: 'ccs-pill', 'data-status': linked ? 'Active' : 'New Request', text: INV_STATE[i.status] || i.status || '' }),
+      h('span', { class: 'm', text: `${money(i.amount_paid) || '$0'} of ${money(i.amount)}` }), h('span', { class: 'due', text: i.due_date ? day(i.due_date) : '' })));
+    const det = h('div', { class: 'ccs-detail' },
+      h('p', { class: 'ccs-meta', text: [BUSINESS[i.business], i.customer_email, i.po_number ? `PO ${i.po_number}` : '', i.imported ? 'found in Wave' : 'created here',
+        linked ? `linked by ${String(i.matched_by || '').replace('_', ' ')}` : '', i.test ? 'TEST' : ''].filter(Boolean).join(' · ') }),
+      i.items_summary ? h('p', { class: 'ccs-details', text: i.items_summary }) : '',
+      i.last_error ? note(i.last_error, 'err') : '',
+      h('div', { class: 'ccs-actions' }, h('a', { class: 'ccs-btn', href: i.view_url, target: '_blank', rel: 'noopener', text: 'Open in Wave ↗' })));
+    if (!linked) det.append(h('h4', { text: 'Link to an order' }), linkForm(i));
+    else {
+      det.append(h('button', { type: 'button', text: 'Unlink', onclick: async () => {
+        try { await api.rpc('wave_link_invoice', { p_invoice: i.id, p_number: '' }); showAdmin(`Invoice #${i.invoice_number} unlinked.`); }
+        catch (err) { det.append(note(err.message, 'err')); }
+      } }));
+    }
+    d.append(det);
+    return d;
+  }
+  function render() {
+    const t = adminState.iq.toLowerCase();
+    const shown = rows.filter((i) => (!adminState.ibiz || i.business === adminState.ibiz) && (!adminState.iunmatched || !i.entity_id)
+      && (!t || [i.invoice_number, i.customer_name, i.customer_email, i.order_number, i.po_number].some((x) => String(x || '').toLowerCase().includes(t))));
+    list.replaceChildren(...(shown.length ? shown.map(row) : [note(rows.length ? 'No invoices match.' : 'No invoices yet. Invoices created in Wave appear here within 15 minutes.')]));
+  }
+  render();
   return wrap;
 }
 

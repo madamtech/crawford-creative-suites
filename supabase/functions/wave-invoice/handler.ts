@@ -16,7 +16,7 @@ const M_CUSTOMER = `mutation ($input: CustomerCreateInput!) { customerCreate(inp
   didSucceed inputErrors { code message path } customer { id } } }`;
 const M_INVOICE = `mutation ($input: InvoiceCreateInput!) { invoiceCreate(input: $input) {
   didSucceed inputErrors { code message path }
-  invoice { id invoiceNumber viewUrl status total { value } } } }`;
+  invoice { id invoiceNumber viewUrl status invoiceDate dueDate total { value } } } }`;
 const M_APPROVE = `mutation ($input: InvoiceApproveInput!) { invoiceApprove(input: $input) {
   didSucceed inputErrors { code message path } invoice { id status } } }`;
 const M_SEND = `mutation ($input: InvoiceSendInput!) { invoiceSend(input: $input) {
@@ -67,7 +67,10 @@ async function invoiceOne(env: Env, rt: Runtime, plan: any): Promise<Record<stri
     invoiceId = inv.id;
     await rpc(env, 'wave_update', { p_id: rid, p: {
       wave_customer_id: customerId, wave_invoice_id: inv.id, wave_invoice_number: inv.invoiceNumber,
-      wave_view_url: inv.viewUrl, wave_status: inv.status,
+      wave_view_url: inv.viewUrl, wave_status: inv.status, po_number: plan.number,
+      customer_name: plan.customer.name, customer_email: plan.customer.email,
+      items_summary: next.lines.map((l: any) => String(l.description)).join('; ').slice(0, 400),
+      invoice_date: inv.invoiceDate, due_date: inv.dueDate,
     } });
 
     const approved = (await wave(env, key, M_APPROVE, { input: { invoiceId: inv.id } })).invoiceApprove;
@@ -77,7 +80,7 @@ async function invoiceOne(env: Env, rt: Runtime, plan: any): Promise<Record<stri
 
     const out = { ...base, ok: true, wave_invoice_number: inv.invoiceNumber, wave_total: inv.total?.value, sent: false };
     if (!biz?.emailSendEnabled) {
-      await rpc(env, 'wave_update', { p_id: rid, p: { last_error: `Invoice email is off in Wave for ${b.label}; invoice approved but not sent` } });
+      await rpc(env, 'wave_update', { p_id: rid, p: { email_blocked: true, last_error: `Invoice email is off in Wave for ${b.label}; invoice approved but not sent. The customer is told through an invoice.ready notification and My Projects.` } });
       return { ...out, note: 'email sending is off for this Wave business' };
     }
 
@@ -104,11 +107,37 @@ async function invoiceOne(env: Env, rt: Runtime, plan: any): Promise<Record<stri
   }
 }
 
+// TEST MODE ONLY: make a clearly labeled test invoice directly in Wave, the way Tanika might by hand
+// (no portal order needed), so the import can be tested. Never emailed; example-domain customers only.
+async function testInvoice(env: Env, rt: Runtime, t: any): Promise<Record<string, unknown>> {
+  if (!rt.test_mode) throw new HttpError(403, 'Test invoices are only made in test mode');
+  const key = String(t.business || '');
+  const b = business(key);
+  const email = String(t.customer_email || '').toLowerCase();
+  if (!/@example\.(com|test|org)$/.test(email)) throw new HttpError(400, 'Test invoices use an example.com / example.test customer only');
+  const amount = Number(t.amount);
+  if (!(amount > 0 && amount < 1000)) throw new HttpError(400, 'Bad amount');
+  const customerId = await findOrCreateCustomer(env, key, String(t.customer_name || 'TEST customer'), email);
+  const created = (await wave(env, key, M_INVOICE, { input: {
+    businessId: b.businessId, customerId, status: 'DRAFT',
+    poNumber: t.po_number ? String(t.po_number) : undefined,
+    items: [{ productId: b.productId, description: String(t.description || 'TEST invoice (made by hand in Wave)').slice(0, 250), quantity: '1', unitPrice: String(amount) }],
+    memo: 'TEST MODE: test invoice. Not a real bill.',
+  } })).invoiceCreate;
+  const cErr = inputErrors(created);
+  if (cErr) throw new Error(`invoiceCreate: ${cErr}`);
+  const approved = (await wave(env, key, M_APPROVE, { input: { invoiceId: created.invoice.id } })).invoiceApprove;
+  const aErr = inputErrors(approved);
+  if (aErr) throw new Error(`invoiceApprove: ${aErr}`);
+  return { ok: true, business: key, wave_invoice_number: created.invoice.invoiceNumber, status: approved.invoice.status, total: created.invoice.total?.value, po_number: t.po_number || null, emailed: false };
+}
+
 export async function handle(req: Request, env: Env): Promise<Response> {
   if (req.method !== 'POST') return json({ ok: false, error: 'Use POST' }, 405);
   try {
     const rt = await cronAuth(req, env);
     const body = await readJson(req);
+    if (body.test_invoice) return json({ ok: true, test_mode: rt.test_mode, result: await testInvoice(env, rt, body.test_invoice) }, 200);
     let targets: Array<{ entity_type: string; entity_id: string }> = [];
     if (body.entity_type && body.entity_id) targets = [{ entity_type: body.entity_type, entity_id: body.entity_id }];
     else if (body.sweep) targets = (await rpc(env, 'wave_pending', {})) || [];
