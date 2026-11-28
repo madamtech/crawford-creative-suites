@@ -37,13 +37,18 @@ const patches = [
   // Owner, Nov 27: Allure Fusions calls them lithophane lamps, never photo lamps.
   ['description:`Original-design photo lamps priced by', 'description:`Original-design lithophane lamps priced by'],
   ['related:`Photo lamps, memorial lamps, artist-i', 'related:`Lithophane lamps, memorial lamps, artist-i'],
+  // Owner, Nov 28: the lobby board shows only the floor number and the business name
+  // (the descriptions were already on the entrance screen). Size/position stay locked.
+  ['(0,i.jsx)(`span`,{className:`suite-no`,children:e})', '(0,i.jsxs)(`span`,{className:`suite-no`,children:[(0,i.jsx)(`em`,{children:`FLOOR`}),c[e].floor]})'],
   // Owner, Nov 28: it is laser printing, never "laser work" (3D printing and laser printing).
   ['title:`Preparing Artwork for Laser Work`', 'title:`Preparing Artwork for Laser Printing`'],
   ['description:`Custom laser work for signage and gifting.`', 'description:`Custom laser printing for signage and gifting.`'],
 
   // Concierge speaks on her own when the visitor arrives (build/voice.js), and replies aloud.
   ['(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),',
-   '(0,i.jsx)(`p`,{children:`Tell me what you need, or choose a suite on the board.`}),'],
+   '(0,i.jsx)(`p`,{children:`How may I direct you?`}),'],
+  // Owner, Nov 28: the lobby concierge simply says "Welcome to Crawford Creative Suites. How may I direct you?"
+  ['(0,i.jsx)(`strong`,{children:`Welcome, how may I direct you?`})', '(0,i.jsx)(`strong`,{children:`Welcome to Crawford Creative Suites.`})'],
   ['D({217:`', 'D(window.ccsVoice.say({217:`'],
   // FAQ concierge (build/faq.js): answer common questions first. Owner, Nov 28: when the
   // question belongs to one business, the concierge reads its description and then the

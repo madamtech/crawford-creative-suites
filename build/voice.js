@@ -27,7 +27,7 @@ const KEY = 'ccs-sound';
 const MUSIC_VOLUME = 0.16;   // lobby music stays soft under the voices
 
 const LINES = {
-  greeting: 'Welcome to Crawford Creative Suites. How may I direct you today? Tell me what you are looking for, or choose a destination on the directory.',
+  greeting: 'Welcome to Crawford Creative Suites. How may I direct you?', // owner, Nov 28
   'reply-unknown': 'I couldn’t quite place that. Try the directory, or tell me what kind of business you need.',
   // Elevator voice, after the ding as the doors open (Nov 25: owner's wording).
   // No elevator welcome for the lobby: the concierge greets visitors there (owner, Nov 25).

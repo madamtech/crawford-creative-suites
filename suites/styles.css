@@ -622,6 +622,11 @@ body[data-kiosk-open] .reception-scene .reception-desk{transform:translate(-50%,
 /* Owner, Nov 28: the elevators are beside the lobby board, so its rows have no arrows.
    Board size and position stay locked (build/board.js REF); only the arrow is hidden. */
 .lobby-board button > i[aria-hidden]{display:none!important}
+/* Owner, Nov 28: board shows floor number and business name only; no tagline or descriptions. */
+.lobby-board .lobby-title > span{display:none!important}
+.lobby-board button small{display:none!important}
+.lobby-board .suite-no{display:flex;flex-direction:column;align-items:center;line-height:1}
+.lobby-board .suite-no em{font:600 .42em Arial,Helvetica,sans-serif;font-style:normal;letter-spacing:.18em;opacity:.75;margin-bottom:.25em}
 @media (max-width:850px){.experience .building-header{grid-template-columns:auto 1fr auto}.experience .building-header .location{font-size:.52rem;letter-spacing:.14em;padding:.35rem .55rem}}
 @media (max-width:480px){.experience .building-name small{display:none}}
 /* Client Login, My Projects, Admin Office and request forms (build/portal.js).

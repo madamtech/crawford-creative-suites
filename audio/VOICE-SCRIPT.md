@@ -12,7 +12,7 @@ Voice: Veda Sky (chosen). Speed 1.08, stability 50, similarity 75, style 0.
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
-| `greeting.mp3` | Welcome to Crawford Creative Suites. How may I direct you today? Tell me what you are looking for, or choose a destination on the directory. | Welcome to Crawford Creative Suites. How may I direct you today? Tell me what you are looking for, or choose a destination on the directory. | yes |
+| `greeting.mp3` | Welcome to Crawford Creative Suites. How may I direct you? | Welcome to Crawford Creative Suites. How may I direct you? | yes |
 | `reply-217.mp3` | Madam Allure is the perfect destination for beauty, fragrance, self-care, memorial creations, and personalized gifts. You'll find it in Suite 217 on Floor 2. | Madam Allure is the perfect destination for beauty, fragrance, self-care, memorial creations, and personalized gifts. You'll find it in Suite two-seventeen on Floor 2. | yes |
 | `reply-305.mp3` | Allure Fusions is the perfect destination. It is where bold design and beauty fuse. You'll find it in Suite 305 on Floor 3. | Allure Fusions is the perfect destination. It is where bold design and beauty fuse. You'll find it in Suite three-oh-five on Floor 3. | yes |
 | `reply-412.mp3` | AI AuthoriTech is the right destination for AI strategy, automation, custom agents, and digital transformation. You'll find it in Suite 412 on Floor 4. | AI Uhthora-tek is the right destination for AI strategy, automation, custom agents, and digital transformation. You'll find it in Suite four-twelve on Floor 4. | yes |

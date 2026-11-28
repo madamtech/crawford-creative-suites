@@ -5,8 +5,8 @@
   "lines": [
    {
     "key": "greeting",
-    "text": "Welcome to Crawford Creative Suites. How may I direct you today? Tell me what you are looking for, or choose a destination on the directory.",
-    "say": "Welcome to Crawford Creative Suites. How may I direct you today? Tell me what you are looking for, or choose a destination on the directory.",
+    "text": "Welcome to Crawford Creative Suites. How may I direct you?",
+    "say": "Welcome to Crawford Creative Suites. How may I direct you?",
     "recorded": true
    },
    {
