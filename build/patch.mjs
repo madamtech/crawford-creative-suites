@@ -45,9 +45,11 @@ const patches = [
   ['(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),',
    '(0,i.jsx)(`p`,{children:`Tell me what you need, or choose a suite on the board.`}),'],
   ['D({217:`', 'D(window.ccsVoice.say({217:`'],
-  // FAQ concierge (build/faq.js): answer common questions first, and offer a
-  // button to the matching suite instead of whisking the visitor away.
-  ['H=e=>{e.preventDefault();let t=w.trim(),', 'H=e=>{e.preventDefault();let t=w.trim();window.ccsFaqGo=null;{let f=window.ccsFaq&&window.ccsFaq.answer(t);if(f){window.ccsFaqGo=f.suite;D(f.text);return}}let '],
+  // FAQ concierge (build/faq.js): answer common questions first. Owner, Nov 28: when the
+  // question belongs to one business, the concierge reads its description and then the
+  // visitor rides up automatically, only after she has finished speaking (with sound off,
+  // after time to read the text). No "Take me to" button.
+  ['H=e=>{e.preventDefault();let t=w.trim(),', 'H=e=>{e.preventDefault();let t=w.trim();window.ccsFaqGo=null;{let f=window.ccsFaq&&window.ccsFaq.answer(t);if(f){D(f.text);if(f.suite&&c[f.suite]){let s=f.suite;window.ccsRouted=s;window.ccsVoice.afterSpeech(()=>V(s),window.ccsVoice.isOn()?900:Math.min(9000,2500+f.text.length*35),900)}return}}let '],
   ['E&&(0,i.jsx)(`p`,{className:`concierge-reply`,"aria-live":`polite`,children:E})', 'E&&(0,i.jsx)(`p`,{className:`concierge-reply`,"aria-live":`polite`,children:E}),E&&window.ccsFaqGo&&c[window.ccsFaqGo]&&(0,i.jsx)(`button`,{type:`button`,className:`concierge-go`,onClick:()=>{let s=window.ccsFaqGo;window.ccsFaqGo=null;window.ccsRouted=s;V(s)},children:`Take me to `+c[window.ccsFaqGo].name+` →`}),E&&window.ccsPortal&&window.ccsPortal.ready()&&(0,i.jsxs)(`p`,{className:`concierge-extra`,children:[(0,i.jsx)(`button`,{type:`button`,onClick:()=>window.ccsPortal.lead(``,`Lobby concierge`),children:`Leave my details`}),(0,i.jsx)(`button`,{type:`button`,onClick:()=>window.ccsPortal.open(`projects`),children:`Check my order`})]})'],
   // The concierge finishes her answer before the visitor is taken to the elevator.
   ['}[r]),window.setTimeout(()=>V(r),700)', '}[r])),(window.ccsRouted=r,window.ccsVoice.afterSpeech(()=>V(r),700))'],

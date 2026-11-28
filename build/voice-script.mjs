@@ -30,7 +30,7 @@ const spoken = (t) => String(t)
   .replace(/\b3D\b/g, '3-D').replace(/\bLMS\b/g, 'L-M-S').replace(/\bNFC\b/g, 'N-F-C').replace(/\bPLA\b/g, 'P-L-A').replace(/\bPETG\b/g, 'P-E-T-G')
   .replace(/\bJPG\b/g, 'J-peg').replace(/\bPNG\b/g, 'P-N-G').replace(/\bPDF\b/g, 'P-D-F').replace(/\bSVG\b/g, 'S-V-G').replace(/\bDXF\b/g, 'D-X-F')
   .replace(/\bSTL\b/g, 'S-T-L').replace(/\b3MF\b/g, '3-M-F').replace(/\bMB\b/g, 'megabytes').replace(/madamallure@gmail\.com/g, 'madam allure at gmail dot com')
-  .replace(/allurefusionsfirm@gmail\.com/g, 'allure fusions firm at gmail dot com').replace(/ai\.authoritech@gmail\.com/g, 'A-I dot Uhthora-tek at gmail dot com')
+  .replace(/allurefusionsfirm@gmail\.com/g, 'allure fusions firm at gmail dot com').replace(/email us at ai\.authoritech@gmail\.com/g, 'email us at the address on your screen').replace(/ai\.authoritech@gmail\.com/g, 'A-I dot Uhthora-tek at gmail dot com')
   // Owner pronunciation (Nov 28): "AuthoriTech" has no pause after "Uh"; her spelling is "AI Uhthora-tek".
   .replace(/\bAI AuthoriTech\b/g, 'AI Uhthora-tek').replace(/\bAuthoriTech\b/g, 'Uhthora-tek');
 

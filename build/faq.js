@@ -131,9 +131,9 @@ export const FAQ = [
   { id: 'process-412', suite: '412', match: [/\b(how does (it|this) work|the process|what happens next|next steps?|proposal)\b/],
     text: 'It starts with a free 30-minute discovery call. You then get a written proposal with scope, timeline, and price, and work begins once you accept it.' },
   { id: 'implement-412', suite: '412', match: [/\b(implement\w*|build it|set (it|this) up|done for you|hands-on)\b/],
-    text: 'Workflow implementation is quoted per project. AI AuthoriTech designs and builds the connected workflows with you.' },
+    text: 'Workflow implementation is quoted per project. We design and build the connected workflows with you.' },
   { id: 'small-biz-412', suite: '412', match: [/\b(small business|solo|solopreneur|one person|just me|too small)\b/],
-    text: 'AI AuthoriTech works with solo owners and small teams as well as larger ones. We start with what takes most of your time.' },
+    text: 'We work with solo owners and small teams as well as larger ones, and we start with what takes most of your time.' },
   { id: 'book-412', suite: '412', deskOnly: true, match: [/\b(book|schedule|appointment|meeting|call|consult\w*)\b/],
     text: 'Tap Request an AI readiness conversation and share a little about your business. We will reply to set up your free 30-minute discovery call.' },
   { id: 'deposit-412', suite: '412', deskOnly: true, match: [/\b(deposit|payment|pay|paid|upfront|up front|installment)\b/],
@@ -141,11 +141,11 @@ export const FAQ = [
   { id: 'shipping-412', suite: '412', deskOnly: true, match: [/\b(ship|ships|shipping|deliver|delivery|in person|on site|onsite)\b/],
     text: 'Everything is delivered virtually, so nothing ships. Documents, tools, and training are shared digitally.' },
   { id: 'contact-412', suite: '412', deskOnly: true, match: [/\b(contact|email|e-mail|reach|phone|talk to (someone|a person|tanika))\b/],
-    text: 'Request an AI readiness conversation here, or email AI AuthoriTech at ai.authoritech@gmail.com.' },
+    text: 'Request an AI readiness conversation here, or email us at ai.authoritech@gmail.com.' },
   { id: 'timing-412', suite: '412', deskOnly: true, match: [/\b(how long|turnaround|timeline|how soon|when will|ready by|how fast)\b/],
     text: 'Timelines depend on the scope. Yours is set in your written proposal, after the free discovery call.' },
   { id: 'replace', suite: '412', match: [/\b(replace|take (my|our) jobs?|take over)\b/],
-    text: 'AI works best as a tool that supports people. Human judgment, accountability, and relationships stay essential, and AI AuthoriTech designs around that.' },
+    text: 'AI works best as a tool that supports people. Human judgment, accountability, and relationships stay essential, and we design around that.' },
   { id: 'audit', suite: '412', match: [/\b(audit|readiness|assessment|ready for ai)\b/],
     text: 'The AI Readiness Audit looks at your workflows, tools, data, and risks to find your best opportunities for AI.' },
   { id: 'start', suite: '412', match: [/\b(where (do|should) (i|we) start|get started|getting started|new to ai|beginner|first step)\b/],
@@ -155,15 +155,15 @@ export const FAQ = [
   { id: 'automation', suite: '412', match: [/\b(automat\w*|workflow|workflows|n8n|zapier|make\.com|repetitive)\b/],
     text: 'An automation strategy gives you a practical roadmap. Building connected workflows is quoted per project.' },
   { id: 'portal', suite: '412', match: [/\b(portal|portals|command center|command centers|dashboard|dashboards)\b/],
-    text: 'AI AuthoriTech builds custom portals and business command centers that bring your tools and information into one place. Each one is quoted per project.' },
+    text: 'We build custom portals and business command centers that bring your tools and information into one place. Each one is quoted per project.' },
   { id: 'lms', suite: '412', match: [/\b(lms|learning management|docebo|netexam|workday|certification|certifications|learning systems?)\b/],
     text: 'Learning systems consulting covers LMS administration, reporting, certification workflows, and integrations.' },
   { id: 'training', suite: '412', match: [/\b(training|train|workshop|workshops|teach|class|classes)\b/],
     text: 'Team AI training offers practical, role-focused sessions that help your team use AI responsibly and confidently.' },
   { id: 'privacy', suite: '412', match: [/\b(safe|safety|privacy|private|secure|security|confidential|data)\b/],
-    text: 'Keep confidential or customer information out of AI tools unless your organization has approved them. AI AuthoriTech helps set those rules as part of responsible AI planning.' },
+    text: 'Keep confidential or customer information out of AI tools unless your organization has approved them. We help set those rules as part of responsible AI planning.' },
   { id: 'virtual', suite: '412', match: [/\b(virtual|virtually|remote|remotely|zoom|online)\b/],
-    text: 'Yes, AI AuthoriTech services are delivered virtually, and documents, tools, and training materials are shared digitally.' },
+    text: 'Yes, our services are delivered virtually, and documents, tools, and training materials are shared digitally.' },
 
   // ---------- General prices (last) ----------
   { id: 'prices', suite: null, match: [PRICE],
@@ -268,15 +268,18 @@ function answer(question) {
   const overview = OVERVIEW[hit.suite];
   window.ccsPendingQuestion = { suite: hit.suite, question };
   say('reply-' + hit.suite, overview);
-  say('lobby-send-tail', SEND_TAIL, true);
-  return { id: 'send-' + hit.suite, suite: hit.suite, text: overview + ' ' + SEND_TAIL };
+  // Owner, Nov 28: the visitor now rides up automatically after the description, so the
+  // "Tap below..." line (lobby-send-tail) is no longer said or shown.
+  return { id: 'send-' + hit.suite, suite: hit.suite, text: overview };
 }
 
 // Receptionists: answer their own business's questions and building questions.
 const UNKNOWN = 'I do not have that answer here yet. Send us a request, and Tanika will answer you personally.';
 const otherText = (other) => {
   const s = SUITES[other];
-  return `${s.name} handles that, in Suite ${other} on Floor ${s.floor}. Take the elevator there, and their receptionist will help you.`;
+  // Owner, Nov 28: the AI AuthoriTech name is said only in the lobby.
+  const who = other === '412' ? 'Our AI strategy and automation suite' : s.name;
+  return `${who} handles that, in Suite ${other} on Floor ${s.floor}. Take the elevator there, and their receptionist will help you.`;
 };
 // Owner, Nov 27: a little sales nudge after a receptionist answers a question.
 // Each nudge is its own recording (r<suite>-nudge-<n>.mp3), so answers never
@@ -293,9 +296,9 @@ const NUDGES = {
     'Ready to start? Check the Allure Fusions price list, then send a request with your details and date.',
   ],
   '412': [
-    'Curious where AI fits your business? Your first 30-minute discovery consultation is free, and the AI AuthoriTech price list shows every service.',
+    'Curious where AI fits your business? Your first 30-minute discovery consultation is free, and our price list shows every service.',
     'Tell us one task that eats up your week. The price list has the details, and a free discovery call shows how it could run on its own.',
-    'Ready for the next step? Review the AI AuthoriTech price list, then request your free discovery call.',
+    'Ready for the next step? Review our price list, then request your free discovery call.',
   ],
 };
 const NO_NUDGE = /^(hello|myorder|contact|returns|owner|visit|hours)$/;

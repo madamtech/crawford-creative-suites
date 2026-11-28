@@ -347,8 +347,8 @@
    },
    {
     "key": "r217-to-412",
-    "text": "AI AuthoriTech handles that, in Suite 412 on Floor 4. Take the elevator there, and their receptionist will help you.",
-    "say": "AI Uhthora-tek handles that, in Suite four-twelve on Floor 4. Take the elevator there, and their receptionist will help you.",
+    "text": "Our AI strategy and automation suite handles that, in Suite 412 on Floor 4. Take the elevator there, and their receptionist will help you.",
+    "say": "Our AI strategy and automation suite handles that, in Suite four-twelve on Floor 4. Take the elevator there, and their receptionist will help you.",
     "recorded": false
    },
    {
@@ -581,8 +581,8 @@
    },
    {
     "key": "r305-to-412",
-    "text": "AI AuthoriTech handles that, in Suite 412 on Floor 4. Take the elevator there, and their receptionist will help you.",
-    "say": "AI Uhthora-tek handles that, in Suite four-twelve on Floor 4. Take the elevator there, and their receptionist will help you.",
+    "text": "Our AI strategy and automation suite handles that, in Suite 412 on Floor 4. Take the elevator there, and their receptionist will help you.",
+    "say": "Our AI strategy and automation suite handles that, in Suite four-twelve on Floor 4. Take the elevator there, and their receptionist will help you.",
     "recorded": false
    },
    {
@@ -617,8 +617,8 @@
   "lines": [
    {
     "key": "welcome-412",
-    "text": "Welcome to AI AuthoriTech. Please check in.",
-    "say": "Welcome to AI Uhthora-tek. Please check in.",
+    "text": "Welcome to Suite 412. Please check in.",
+    "say": "Welcome to Suite four-twelve. Please check in.",
     "recorded": true
    },
    {
@@ -641,14 +641,14 @@
    },
    {
     "key": "r412-implement",
-    "text": "Workflow implementation is quoted per project. AI AuthoriTech designs and builds the connected workflows with you.",
-    "say": "Workflow implementation is quoted per project. AI Uhthora-tek designs and builds the connected workflows with you.",
+    "text": "Workflow implementation is quoted per project. We design and build the connected workflows with you.",
+    "say": "Workflow implementation is quoted per project. We design and build the connected workflows with you.",
     "recorded": false
    },
    {
     "key": "r412-small-biz",
-    "text": "AI AuthoriTech works with solo owners and small teams as well as larger ones. We start with what takes most of your time.",
-    "say": "AI Uhthora-tek works with solo owners and small teams as well as larger ones. We start with what takes most of your time.",
+    "text": "We work with solo owners and small teams as well as larger ones, and we start with what takes most of your time.",
+    "say": "We work with solo owners and small teams as well as larger ones, and we start with what takes most of your time.",
     "recorded": false
    },
    {
@@ -671,8 +671,8 @@
    },
    {
     "key": "r412-contact",
-    "text": "Request an AI readiness conversation here, or email AI AuthoriTech at ai.authoritech@gmail.com.",
-    "say": "Request an AI readiness conversation here, or email AI Uhthora-tek at A-I dot Uhthora-tek at gmail dot com.",
+    "text": "Request an AI readiness conversation here, or email us at ai.authoritech@gmail.com.",
+    "say": "Request an AI readiness conversation here, or email us at the address on your screen.",
     "recorded": false
    },
    {
@@ -683,8 +683,8 @@
    },
    {
     "key": "r412-replace",
-    "text": "AI works best as a tool that supports people. Human judgment, accountability, and relationships stay essential, and AI AuthoriTech designs around that.",
-    "say": "AI works best as a tool that supports people. Human judgment, accountability, and relationships stay essential, and AI Uhthora-tek designs around that.",
+    "text": "AI works best as a tool that supports people. Human judgment, accountability, and relationships stay essential, and we design around that.",
+    "say": "AI works best as a tool that supports people. Human judgment, accountability, and relationships stay essential, and we design around that.",
     "recorded": false
    },
    {
@@ -713,8 +713,8 @@
    },
    {
     "key": "r412-portal",
-    "text": "AI AuthoriTech builds custom portals and business command centers that bring your tools and information into one place. Each one is quoted per project.",
-    "say": "AI Uhthora-tek builds custom portals and business command centers that bring your tools and information into one place. Each one is quoted per project.",
+    "text": "We build custom portals and business command centers that bring your tools and information into one place. Each one is quoted per project.",
+    "say": "We build custom portals and business command centers that bring your tools and information into one place. Each one is quoted per project.",
     "recorded": false
    },
    {
@@ -731,14 +731,14 @@
    },
    {
     "key": "r412-privacy",
-    "text": "Keep confidential or customer information out of AI tools unless your organization has approved them. AI AuthoriTech helps set those rules as part of responsible AI planning.",
-    "say": "Keep confidential or customer information out of AI tools unless your organization has approved them. AI Uhthora-tek helps set those rules as part of responsible AI planning.",
+    "text": "Keep confidential or customer information out of AI tools unless your organization has approved them. We help set those rules as part of responsible AI planning.",
+    "say": "Keep confidential or customer information out of AI tools unless your organization has approved them. We help set those rules as part of responsible AI planning.",
     "recorded": false
    },
    {
     "key": "r412-virtual",
-    "text": "Yes, AI AuthoriTech services are delivered virtually, and documents, tools, and training materials are shared digitally.",
-    "say": "Yes, AI Uhthora-tek services are delivered virtually, and documents, tools, and training materials are shared digitally.",
+    "text": "Yes, our services are delivered virtually, and documents, tools, and training materials are shared digitally.",
+    "say": "Yes, our services are delivered virtually, and documents, tools, and training materials are shared digitally.",
     "recorded": false
    },
    {
@@ -809,8 +809,8 @@
    },
    {
     "key": "r412-nudge-1",
-    "text": "Curious where AI fits your business? Your first 30-minute discovery consultation is free, and the AI AuthoriTech price list shows every service.",
-    "say": "Curious where AI fits your business? Your first 30-minute discovery consultation is free, and the AI Uhthora-tek price list shows every service.",
+    "text": "Curious where AI fits your business? Your first 30-minute discovery consultation is free, and our price list shows every service.",
+    "say": "Curious where AI fits your business? Your first 30-minute discovery consultation is free, and our price list shows every service.",
     "recorded": false
    },
    {
@@ -821,8 +821,8 @@
    },
    {
     "key": "r412-nudge-3",
-    "text": "Ready for the next step? Review the AI AuthoriTech price list, then request your free discovery call.",
-    "say": "Ready for the next step? Review the AI Uhthora-tek price list, then request your free discovery call.",
+    "text": "Ready for the next step? Review our price list, then request your free discovery call.",
+    "say": "Ready for the next step? Review our price list, then request your free discovery call.",
     "recorded": false
    }
   ]
