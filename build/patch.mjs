@@ -43,9 +43,9 @@ const patches = [
 
   // Concierge speaks on her own when the visitor arrives (build/voice.js), and replies aloud.
   ['(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),',
-   '(0,i.jsx)(`p`,{children:`How may I direct you?`}),'],
-  // Owner, Nov 28: the lobby concierge simply says "Welcome to Crawford Creative Suites. How may I direct you?"
-  ['(0,i.jsx)(`strong`,{children:`Welcome, how may I direct you?`})', '(0,i.jsx)(`strong`,{children:`Welcome to Crawford Creative Suites.`})'],
+   ''],
+  // Owner, Nov 28: the concierge box says only "How may I direct you?" (the welcome is on the digital board); her spoken greeting is "Welcome to Crawford Creative Suites. How may I direct you?"
+  ['(0,i.jsx)(`strong`,{children:`Welcome, how may I direct you?`})', '(0,i.jsx)(`strong`,{children:`How may I direct you?`})'],
   ['D({217:`', 'D(window.ccsVoice.say({217:`'],
   // FAQ concierge (build/faq.js): answer common questions first. Owner, Nov 28: when the
   // question belongs to one business, the concierge reads its description and then the
