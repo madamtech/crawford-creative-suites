@@ -49,7 +49,7 @@ const LINES = {
   'sent-305': 'Your question came up from the lobby, and I have your answer right here.',
   'sent-412': 'Your question came up from the lobby, and I have your answer right here.',
   'lounge-powder': 'Welcome to the Powder Room, a quiet place to explore beauty rituals, fragrance, and self-care.',
-  'lounge-maker': "Welcome to the Maker's Lounge, where ideas, materials, and technology come together.",
+  'lounge-maker': 'Welcome to the Designer Lounge, where ideas, materials, and technology come together.',
   'lounge-clarity': 'Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype.',
 };
 // Concierge answers (text shown on screen) -> their recording.

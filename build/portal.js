@@ -516,7 +516,7 @@ function decorateLounges() {
   if (!lounge || lounge.querySelector('.ccs-lounge-lead')) return;
   const suite = lounge.closest('[data-suite]')?.dataset.suite;
   const interest = { 217: 'madam_allure', 305: 'allure_fusions', 412: 'ai_authoritech' }[suite] || '';
-  const where = { 217: 'The Powder Room', 305: "The Maker's Lounge", 412: 'The AI Clarity Lounge' }[suite] || 'Lounge';
+  const where = { 217: 'The Powder Room', 305: 'The Designer Lounge', 412: 'The AI Clarity Lounge' }[suite] || 'Lounge';
   lounge.append(h('p', { class: 'ccs-lounge-lead' }, 'Not ready to start a project? ',
     h('button', { type: 'button', class: 'ccs-link', onclick: () => lead(interest, where), text: 'Leave your details' })));
 }

@@ -19,7 +19,7 @@ export const FAQ = [
     match: [/\b(my (order|project|request)s?|order status|project status|track(ing)?|check on|where is my|sign in|log ?in|client login|account)\b/],
     text: 'You can follow every order and project in My Orders. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed.' },
   { id: 'owner', suite: null, match: [/\b(who (owns|runs|is behind|made)|owner|founder|tanika)\b/],
-    text: 'All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a maker, and an AI consultant.' },
+    text: 'All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.' },
   { id: 'visit', suite: null, match: [/\b(address|located|location|visit in person|come by|stop by|storefront|in person)\b/],
     text: 'Crawford Creative Suites is an online building, so there is no storefront to visit. You are welcome to explore all three suites right here.' },
   { id: 'hours', suite: null, match: [/\b(hours|open|close|closed|closing)\b/],

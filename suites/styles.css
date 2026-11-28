@@ -514,7 +514,7 @@ body[data-kiosk-open] .reception-scene[data-kiosk-inview][data-kiosk-below] .rec
 .reception-scene[data-suite="217"] .guided-form>button,.reception-scene[data-suite="217"] .education-card button{color:#22150c;background:linear-gradient(125deg,#eccbb0,#b9805d 55%,#efd3bb);border-color:#cb9671}
 
 /* Lounges: walk past reception into the back room before the tips appear.
-   AI Clarity Lounge = glass meeting room (Floor 4); Maker's Lounge = studio with the 3D printer (Floor 3). */
+   AI Clarity Lounge = glass meeting room (Floor 4); Designer Lounge = studio with the 3D printer (Floor 3). */
 .reception-scene>img{transition:transform 1.5s cubic-bezier(.45,.05,.3,1),filter 1.5s ease;transform-origin:var(--room,50% 40%)}
 .reception-scene[data-suite="412"]{--room:96% 30%}
 .reception-scene[data-suite="305"]{--room:90% 20%}

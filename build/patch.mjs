@@ -30,6 +30,9 @@ const patches = [
   // Owner, Nov 27: the floor and suite show once, in the top bar, worded like the old
   // bottom plaque (which is now hidden in build/site.mjs).
   ['reception`?`Suite ${n} · Floor ${R.floor}`', 'reception`?`Floor ${R.floor} · Suite ${n}`'],
+  // Owner, Nov 27: the Allure Fusions lounge is the Designer Lounge (not the Maker's Lounge).
+  ['maker:{title:`The Maker’s Lounge`', 'maker:{title:`The Designer Lounge`'],
+  ['children:[`Visit The Maker’s Lounge `', 'children:[`Visit The Designer Lounge `'],
   // Owner, Nov 27: Allure Fusions calls them lithophane lamps, never photo lamps.
   ['description:`Original-design photo lamps priced by', 'description:`Original-design lithophane lamps priced by'],
   ['related:`Photo lamps, memorial lamps, artist-i', 'related:`Lithophane lamps, memorial lamps, artist-i'],

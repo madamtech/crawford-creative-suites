@@ -47,7 +47,7 @@ Tips: keep a short natural pause at the start and end, use the same voice and se
 | File name | What she says |
 |---|---|
 | `lounge-powder.mp3` | Welcome to the Powder Room, a quiet place to explore beauty rituals, fragrance, and self-care. |
-| `lounge-maker.mp3` | Welcome to the Maker's Lounge, where ideas, materials, and technology come together. |
+| `lounge-maker.mp3` | Welcome to the Designer Lounge, where ideas, materials, and technology come together. |
 | `lounge-clarity.mp3` | Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype. |
 
 ## Lobby music

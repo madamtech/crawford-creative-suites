@@ -47,8 +47,8 @@
    },
    {
     "key": "faq-owner",
-    "text": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a maker, and an AI consultant.",
-    "say": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a maker, and an AI consultant.",
+    "text": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.",
+    "say": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.",
     "recorded": false
    },
    {
@@ -293,8 +293,8 @@
    },
    {
     "key": "r217-owner",
-    "text": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a maker, and an AI consultant.",
-    "say": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a maker, and an AI consultant.",
+    "text": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.",
+    "say": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.",
     "recorded": false
    },
    {
@@ -395,9 +395,9 @@
    },
    {
     "key": "lounge-maker",
-    "text": "Welcome to the Maker's Lounge, where ideas, materials, and technology come together.",
-    "say": "Welcome to the Maker's Lounge, where ideas, materials, and technology come together.",
-    "recorded": true
+    "text": "Welcome to the Designer Lounge, where ideas, materials, and technology come together.",
+    "say": "Welcome to the Designer Lounge, where ideas, materials, and technology come together.",
+    "recorded": false
    },
    {
     "key": "r305-how-order",
@@ -409,37 +409,37 @@
     "key": "r305-small-prints",
     "text": "Allure Fusions prints bookmarks, keychains, name tags, ornaments, and puzzle boxes, and any of them can be personalized.",
     "say": "Allure Fusions prints bookmarks, keychains, name tags, ornaments, and puzzle boxes, and any of them can be personalized.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-bulk",
     "text": "Yes, Allure Fusions takes bulk and event orders. Put the quantity on your request, and your quote will reflect it.",
     "say": "Yes, Allure Fusions takes bulk and event orders. Put the quantity on your request, and your quote will reflect it.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-rush",
     "text": "Rush requests are welcome. Choose rush on the form, and we confirm the date during review, before you pay.",
     "say": "Rush requests are welcome. Choose rush on the form, and we confirm the date during review, before you pay.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-upload",
     "text": "Attach your JPG, PNG, PDF, SVG, DXF, STL, or 3MF files on the Build My Project form, up to 25 MB each. They stay private.",
     "say": "Attach your J-peg, P-N-G, P-D-F, S-V-G, D-X-F, S-T-L, or 3-M-F files on the Build My Project form, up to 25 megabytes each. They stay private.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-contact",
     "text": "Send a request with Build My Project, or email Allure Fusions at allurefusionsfirm@gmail.com.",
     "say": "Send a request with Build My Project, or email Allure Fusions at allure fusions firm at gmail dot com.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-deposit",
     "text": "Orders of $35 or less are paid in full. Larger orders start with a 60 percent deposit, and the balance and shipping are paid before it ships.",
     "say": "Orders of $35 or less are paid in full. Larger orders start with a 60 percent deposit, and the balance and shipping are paid before it ships.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-lithophane",
@@ -451,121 +451,121 @@
     "key": "r305-photos",
     "text": "Clear photos with good lighting, visible faces, and strong contrast give the best results. Dark, blurry, or small images may need extra preparation.",
     "say": "Clear photos with good lighting, visible faces, and strong contrast give the best results. Dark, blurry, or small images may need extra preparation.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-screen",
     "text": "Yes, Allure Fusions offers screen printing. Send a request with your design, the items, and the quantity for a quote.",
     "say": "Yes, Allure Fusions offers screen printing. Send a request with your design, the items, and the quantity for a quote.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-school",
     "text": "Allure Fusions makes School and Organization Sets in your colors and mascot: badge reels, cheer accessories, pens, notebook covers, clipboards, NFC tags, lamps, and awards.",
     "say": "Allure Fusions makes School and Organization Sets in your colors and mascot: badge reels, cheer accessories, pens, notebook covers, clipboards, N-F-C tags, lamps, and awards.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-laser",
     "text": "Allure Fusions offers laser engraving and cutting: slate coaster sets, engraved tags, ornaments, and custom signs and gifts.",
     "say": "Allure Fusions offers laser engraving and cutting: slate coaster sets, engraved tags, ornaments, and custom signs and gifts.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-nfc",
     "text": "An NFC tag links a physical piece to something online. A tap of a phone can open music, a memorial page, a website, or contact details.",
     "say": "An N-F-C tag links a physical piece to something online. A tap of a phone can open music, a memorial page, a website, or contact details.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-files",
     "text": "If you have your own 3D printer, you can order a digital design file instead of a finished piece. Ask for a file-only quote.",
     "say": "If you have your own 3-D printer, you can order a digital design file instead of a finished piece. Ask for a file-only quote.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-artwork",
     "text": "Clean, high-contrast artwork works best. SVG or DXF files are ideal, and a clear PNG, JPG, or PDF can work for many projects.",
     "say": "Clean, high-contrast artwork works best. S-V-G or D-X-F files are ideal, and a clear P-N-G, J-peg, or P-D-F can work for many projects.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-material",
     "text": "PLA is great for colorful, detailed decor. PETG is tougher and handles moisture and moderate heat better. Allure Fusions will help you choose for your project.",
     "say": "P-L-A is great for colorful, detailed decor. P-E-T-G is tougher and handles moisture and moderate heat better. Allure Fusions will help you choose for your project.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-favors",
     "text": "Allure Fusions makes event favors and ornaments for parties, showers, and celebrations. For bulk orders, send a request with your quantity and date for a quote.",
     "say": "Allure Fusions makes event favors and ornaments for parties, showers, and celebrations. For bulk orders, send a request with your quantity and date for a quote.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-care",
     "text": "Dust printed pieces with a soft, dry or slightly damp cloth. Keep them away from hot cars, direct heat, and long hours of strong sun.",
     "say": "Dust printed pieces with a soft, dry or slightly damp cloth. Keep them away from hot cars, direct heat, and long hours of strong sun.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-print-price",
     "text": "3D printed pieces range from bookmarks to vases and lithophane lamps. Current prices are on the Allure Fusions price list, and custom projects are quoted after review.",
     "say": "3-D printed pieces range from bookmarks to vases and lithophane lamps. Current prices are on the Allure Fusions price list, and custom projects are quoted after review.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-hello",
     "text": "Hello, and welcome! Ask me about any of our three suites, or tell me what you are looking for.",
     "say": "Hello, and welcome! Ask me about any of our three suites, or tell me what you are looking for.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-myorder",
     "text": "You can follow every order and project in My Orders. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed.",
     "say": "You can follow every order and project in My Orders. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-owner",
-    "text": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a maker, and an AI consultant.",
-    "say": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a maker, and an AI consultant.",
+    "text": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.",
+    "say": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.",
     "recorded": false
    },
    {
     "key": "r305-visit",
     "text": "Crawford Creative Suites is an online building, so there is no storefront to visit. You are welcome to explore all three suites right here.",
     "say": "Crawford Creative Suites is an online building, so there is no storefront to visit. You are welcome to explore all three suites right here.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-hours",
     "text": "The building is open online any time. Send a request whenever you like, and Tanika will reply by email.",
     "say": "The building is open online any time. Send a request whenever you like, and Tanika will reply by email.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-consult",
     "text": "Your first 30-minute discovery consultation is free. After that, consultations are scheduled and paid in advance, and they are credited toward an ongoing engagement.",
     "say": "Your first 30-minute discovery consultation is free. After that, consultations are scheduled and paid in advance, and they are credited toward an ongoing engagement.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-shipping",
     "text": "Yes, we ship. Shipping is added to your final invoice, and local pickup is not offered.",
     "say": "Yes, we ship. Shipping is added to your final invoice, and local pickup is not offered.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-timing",
     "text": "Everything is made to order, so timing depends on the project. You will get a timeline when your request is reviewed, and work begins once the payment or deposit is received.",
     "say": "Everything is made to order, so timing depends on the project. You will get a timeline when your request is reviewed, and work begins once the payment or deposit is received.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-returns",
     "text": "For returns, changes, or a problem with an order, send a request to the suite you ordered from, and Tanika will help you directly.",
     "say": "For returns, changes, or a problem with an order, send a request to the suite you ordered from, and Tanika will help you directly.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-prices",
@@ -755,8 +755,8 @@
    },
    {
     "key": "r412-owner",
-    "text": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a maker, and an AI consultant.",
-    "say": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a maker, and an AI consultant.",
+    "text": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.",
+    "say": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.",
     "recorded": false
    },
    {
