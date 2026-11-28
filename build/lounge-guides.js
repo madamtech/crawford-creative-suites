@@ -278,7 +278,7 @@ export const GUIDES = {
     to: 'services',
     next: 'See laser products & pricing',
   },
-  'Preparing Artwork for Laser Work': {
+  'Preparing Artwork for Laser Printing': {
     title: 'Getting artwork ready',
     steps: [
       'Best: vector files (SVG, PDF, AI, or EPS) with clean lines.',
@@ -585,7 +585,7 @@ export const GUIDES = {
     next: 'See lithophane lamps & pricing',
   },
   'Files for Laser Cutting': {
-    title: 'Files that work for laser work',
+    title: 'Files that work for laser printing',
     steps: [
       'SVG, PDF, AI, or EPS vector files give the cleanest cuts and lines.',
       'Convert text to outlines, or send the font name.',

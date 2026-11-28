@@ -24,8 +24,8 @@
    {
     "key": "reply-412",
     "text": "AI AuthoriTech is the right destination for AI strategy, automation, custom agents, and digital transformation. You'll find it in Suite 412 on Floor 4.",
-    "say": "A-I uh-thor-a-tek is the right destination for AI strategy, automation, custom agents, and digital transformation. You'll find it in Suite four-twelve on Floor 4.",
-    "recorded": false
+    "say": "AI Uhthora-tek is the right destination for AI strategy, automation, custom agents, and digital transformation. You'll find it in Suite four-twelve on Floor 4.",
+    "recorded": true
    },
    {
     "key": "reply-unknown",
@@ -66,8 +66,8 @@
    {
     "key": "faq-contact",
     "text": "Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madamallure@gmail.com, Allure Fusions at allurefusionsfirm@gmail.com, or AI AuthoriTech at ai.authoritech@gmail.com.",
-    "say": "Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madam allure at gmail dot com, Allure Fusions at allure fusions firm at gmail dot com, or A-I uh-thor-a-tek at A-I dot uh-thor-a-tek at gmail dot com.",
-    "recorded": false
+    "say": "Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madam allure at gmail dot com, Allure Fusions at allure fusions firm at gmail dot com, or AI Uhthora-tek at A-I dot Uhthora-tek at gmail dot com.",
+    "recorded": true
    },
    {
     "key": "faq-prices",
@@ -77,9 +77,9 @@
    },
    {
     "key": "faq-direct",
-    "text": "Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3D printing and laser work; and AI AuthoriTech on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up.",
-    "say": "Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3-D printing and laser work; and A-I uh-thor-a-tek on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up.",
-    "recorded": false
+    "text": "Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3D printing and laser printing; and AI AuthoriTech on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up.",
+    "say": "Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3-D printing and laser printing; and AI Uhthora-tek on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up.",
+    "recorded": true
    },
    {
     "key": "lobby-send-tail",
@@ -114,7 +114,7 @@
    {
     "key": "floor-4",
     "text": "Floor four. AI AuthoriTech.",
-    "say": "Floor four. A-I uh-thor-a-tek.",
+    "say": "Floor four. AI Uhthora-tek.",
     "recorded": false
    }
   ]
@@ -348,7 +348,7 @@
    {
     "key": "r217-to-412",
     "text": "AI AuthoriTech handles that, in Suite 412 on Floor 4. Take the elevator there, and their receptionist will help you.",
-    "say": "A-I uh-thor-a-tek handles that, in Suite four-twelve on Floor 4. Take the elevator there, and their receptionist will help you.",
+    "say": "AI Uhthora-tek handles that, in Suite four-twelve on Floor 4. Take the elevator there, and their receptionist will help you.",
     "recorded": false
    },
    {
@@ -582,7 +582,7 @@
    {
     "key": "r305-to-412",
     "text": "AI AuthoriTech handles that, in Suite 412 on Floor 4. Take the elevator there, and their receptionist will help you.",
-    "say": "A-I uh-thor-a-tek handles that, in Suite four-twelve on Floor 4. Take the elevator there, and their receptionist will help you.",
+    "say": "AI Uhthora-tek handles that, in Suite four-twelve on Floor 4. Take the elevator there, and their receptionist will help you.",
     "recorded": false
    },
    {
@@ -618,7 +618,7 @@
    {
     "key": "welcome-412",
     "text": "Welcome to AI AuthoriTech. Please check in.",
-    "say": "Welcome to A-I uh-thor-a-tek. Please check in.",
+    "say": "Welcome to AI Uhthora-tek. Please check in.",
     "recorded": true
    },
    {
@@ -642,13 +642,13 @@
    {
     "key": "r412-implement",
     "text": "Workflow implementation is quoted per project. AI AuthoriTech designs and builds the connected workflows with you.",
-    "say": "Workflow implementation is quoted per project. A-I uh-thor-a-tek designs and builds the connected workflows with you.",
+    "say": "Workflow implementation is quoted per project. AI Uhthora-tek designs and builds the connected workflows with you.",
     "recorded": false
    },
    {
     "key": "r412-small-biz",
     "text": "AI AuthoriTech works with solo owners and small teams as well as larger ones. We start with what takes most of your time.",
-    "say": "A-I uh-thor-a-tek works with solo owners and small teams as well as larger ones. We start with what takes most of your time.",
+    "say": "AI Uhthora-tek works with solo owners and small teams as well as larger ones. We start with what takes most of your time.",
     "recorded": false
    },
    {
@@ -672,7 +672,7 @@
    {
     "key": "r412-contact",
     "text": "Request an AI readiness conversation here, or email AI AuthoriTech at ai.authoritech@gmail.com.",
-    "say": "Request an AI readiness conversation here, or email A-I uh-thor-a-tek at A-I dot uh-thor-a-tek at gmail dot com.",
+    "say": "Request an AI readiness conversation here, or email AI Uhthora-tek at A-I dot Uhthora-tek at gmail dot com.",
     "recorded": false
    },
    {
@@ -684,7 +684,7 @@
    {
     "key": "r412-replace",
     "text": "AI works best as a tool that supports people. Human judgment, accountability, and relationships stay essential, and AI AuthoriTech designs around that.",
-    "say": "AI works best as a tool that supports people. Human judgment, accountability, and relationships stay essential, and A-I uh-thor-a-tek designs around that.",
+    "say": "AI works best as a tool that supports people. Human judgment, accountability, and relationships stay essential, and AI Uhthora-tek designs around that.",
     "recorded": false
    },
    {
@@ -714,7 +714,7 @@
    {
     "key": "r412-portal",
     "text": "AI AuthoriTech builds custom portals and business command centers that bring your tools and information into one place. Each one is quoted per project.",
-    "say": "A-I uh-thor-a-tek builds custom portals and business command centers that bring your tools and information into one place. Each one is quoted per project.",
+    "say": "AI Uhthora-tek builds custom portals and business command centers that bring your tools and information into one place. Each one is quoted per project.",
     "recorded": false
    },
    {
@@ -732,13 +732,13 @@
    {
     "key": "r412-privacy",
     "text": "Keep confidential or customer information out of AI tools unless your organization has approved them. AI AuthoriTech helps set those rules as part of responsible AI planning.",
-    "say": "Keep confidential or customer information out of AI tools unless your organization has approved them. A-I uh-thor-a-tek helps set those rules as part of responsible AI planning.",
+    "say": "Keep confidential or customer information out of AI tools unless your organization has approved them. AI Uhthora-tek helps set those rules as part of responsible AI planning.",
     "recorded": false
    },
    {
     "key": "r412-virtual",
     "text": "Yes, AI AuthoriTech services are delivered virtually, and documents, tools, and training materials are shared digitally.",
-    "say": "Yes, A-I uh-thor-a-tek services are delivered virtually, and documents, tools, and training materials are shared digitally.",
+    "say": "Yes, AI Uhthora-tek services are delivered virtually, and documents, tools, and training materials are shared digitally.",
     "recorded": false
    },
    {
@@ -810,7 +810,7 @@
    {
     "key": "r412-nudge-1",
     "text": "Curious where AI fits your business? Your first 30-minute discovery consultation is free, and the AI AuthoriTech price list shows every service.",
-    "say": "Curious where AI fits your business? Your first 30-minute discovery consultation is free, and the A-I uh-thor-a-tek price list shows every service.",
+    "say": "Curious where AI fits your business? Your first 30-minute discovery consultation is free, and the AI Uhthora-tek price list shows every service.",
     "recorded": false
    },
    {
@@ -822,7 +822,7 @@
    {
     "key": "r412-nudge-3",
     "text": "Ready for the next step? Review the AI AuthoriTech price list, then request your free discovery call.",
-    "say": "Ready for the next step? Review the A-I uh-thor-a-tek price list, then request your free discovery call.",
+    "say": "Ready for the next step? Review the AI Uhthora-tek price list, then request your free discovery call.",
     "recorded": false
    }
   ]

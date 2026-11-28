@@ -20,7 +20,7 @@ export const FAQ = [
     text: 'You can follow every order and project in My Orders. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed.' },
   { id: 'owner', suite: null, match: [/\b(who (owns|runs|is behind|made)|owner|founder|tanika)\b/],
     text: 'All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.' },
-  { id: 'visit', suite: null, match: [/\b(address|located|location|visit in person|come by|stop by|storefront|in person)\b/],
+  { id: 'visit', suite: null, match: [/\b((?<!e-?mail )address|located|location|visit in person|come by|stop by|storefront|in person)\b/],
     text: 'Crawford Creative Suites is an online building, so there is no storefront to visit. You are welcome to explore all three suites right here.' },
   { id: 'hours', suite: null, match: [/\b(hours|open|close|closed|closing)\b/],
     text: 'The building is open online any time. Send a request whenever you like, and Tanika will reply by email.' },
@@ -200,7 +200,7 @@ const SUITES = {
 };
 // Lobby reply to a business question that is not about one suite (payments,
 // shipping, consultations...): she directs the visitor instead of answering.
-const DIRECT = 'Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3D printing and laser work; and AI AuthoriTech on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up.';
+const DIRECT = 'Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3D printing and laser printing; and AI AuthoriTech on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up.';
 // The concierge's recorded suite descriptions (audio/reply-<suite>.mp3, Veda Sky).
 const OVERVIEW = {
   '217': 'Madam Allure is the perfect destination for beauty, fragrance, self-care, memorial creations, and personalized gifts. You’ll find it in Suite 217 on Floor 2.',
