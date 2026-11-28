@@ -445,7 +445,7 @@
     "key": "r305-lithophane",
     "text": "A lithophane is a 3D printed panel that reveals your photo when it is lit from behind. Lithophane lamps come in several sizes and panel counts.",
     "say": "A lithophane is a 3-D printed panel that reveals your photo when it is lit from behind. Lithophane lamps come in several sizes and panel counts.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-photos",
