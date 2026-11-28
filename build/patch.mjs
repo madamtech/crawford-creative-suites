@@ -37,9 +37,6 @@ const patches = [
   // Owner, Nov 27: Allure Fusions calls them lithophane lamps, never photo lamps.
   ['description:`Original-design photo lamps priced by', 'description:`Original-design lithophane lamps priced by'],
   ['related:`Photo lamps, memorial lamps, artist-i', 'related:`Lithophane lamps, memorial lamps, artist-i'],
-  // Owner, Nov 28: the lobby board shows only the floor number and the business name
-  // (the descriptions were already on the entrance screen). Size/position stay locked.
-  ['(0,i.jsx)(`span`,{className:`suite-no`,children:e})', '(0,i.jsxs)(`span`,{className:`suite-no`,children:[(0,i.jsx)(`em`,{children:`FLOOR`}),c[e].floor]})'],
   // Owner, Nov 28: it is laser printing, never "laser work" (3D printing and laser printing).
   ['title:`Preparing Artwork for Laser Work`', 'title:`Preparing Artwork for Laser Printing`'],
   ['description:`Custom laser work for signage and gifting.`', 'description:`Custom laser printing for signage and gifting.`'],
