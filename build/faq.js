@@ -25,7 +25,7 @@ export const FAQ = [
   { id: 'hours', suite: null, match: [/\b(hours|open|close|closed|closing)\b/],
     text: 'The building is open online any time. Send a request whenever you like, and Tanika will reply by email.' },
   { id: 'consult', suite: null, desk: true, match: [/\b(consult|consultation|discovery call|strategy call|free call)\b/],
-    text: 'Your first 30-minute discovery consultation is free. After that, consultation is $125 an hour, scheduled and paid in advance, and it is credited toward an ongoing engagement.' },
+    text: 'Your first 30-minute discovery consultation is free. After that, consultations are scheduled and paid in advance, and they are credited toward an ongoing engagement.' },
   { id: 'contact', suite: null, match: [/\b(contact|email|e-mail|reach|phone|call|talk to (someone|a person|tanika))\b/],
     text: 'Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madamallure@gmail.com, Allure Fusions at allurefusionsfirm@gmail.com, or AI AuthoriTech at ai.authoritech@gmail.com.' },
   { id: 'deposit', suite: null, desk: true, match: [/\b(deposit|payment|pay|paid|upfront|up front|installment)\b/],
@@ -45,17 +45,17 @@ export const FAQ = [
   { id: 'how-buy', suite: '217', match: [/\b(buy|order|purchase|checkout|check out|cart|shop online)\b/],
     text: 'Open Browse products and pricing, then tap a product to buy it on the Madam Allure shop. Payment is handled there securely.' },
   { id: 'hair-oil', suite: '217', match: [/\b(hair growth|growth oil)\b/],
-    text: 'Hair Growth Oil is $10 for 2 ounces, $18 for 4, $26 for 6, and $35 for 8 ounces.' },
+    text: 'Hair Growth Oil is a botanical blend of herbs and natural oils, made for scalp and hair care. It comes in several sizes.' },
   { id: 'face', suite: '217', match: [/\b(face|facial|serum|serums)\b/],
-    text: 'Facial serum is $8 for 2 ounces, $16 for 6, and $22 for 8. The hydrating facial serum is $9.' },
+    text: 'Madam Allure makes facial serums for daily skin care, including a hydrating facial serum, in several sizes.' },
   { id: 'shea', suite: '217', match: [/\b(shea|body butter|whipped butter)\b/],
-    text: 'Whipped shea butter is $9 for 4 ounces, $15 for 6, $21 for 8, and $28 for 16, for skin and hair.' },
+    text: 'Whipped shea butter is a rich, fluffy moisturizer for both skin and hair, made in several sizes.' },
   { id: 'home-scent', suite: '217', match: [/\b(room spray|linen spray|aroma beads?|home fragrance|air freshener|car scent)\b/],
-    text: 'For the home there is room and linen spray from $8, and aroma beads for $5 in your choice of fragrance.' },
+    text: 'For the home there is room and linen spray and aroma beads, made in your choice of fragrance.' },
   { id: 'custom-gift', suite: '217', match: [/\b(custom gifts?|personali[sz]ed|party favors?|favors for|event gifts?|bulk gifts?)\b/],
     text: 'Yes, Madam Allure makes custom and personalized gifts. Tap Request a custom gift in the catalog, and you will get a quote after review.' },
   { id: 'wine-glass', suite: '217', match: [/\b(wine glass|wine glasses|bling\w*|rhinestone)\b/],
-    text: 'The blinged wine glass is $35, made with custom glitter and rhinestones and sealed with epoxy.' },
+    text: 'The blinged wine glass is made with custom glitter and rhinestones and sealed with epoxy, so it lasts as beautifully as it looks.' },
   { id: 'deposit-217', suite: '217', deskOnly: true, match: [/\b(deposit|payment|pay|paid|upfront|up front|installment)\b/],
     text: 'Shop products are paid at checkout. Custom and memorial pieces are quoted first: $35 or less is paid in full, and larger orders start with a 60 percent deposit.' },
   { id: 'contact-217', suite: '217', deskOnly: true, match: [/\b(contact|email|e-mail|reach|phone|call|talk to (someone|a person|tanika))\b/],
@@ -65,23 +65,23 @@ export const FAQ = [
   { id: 'makeup', suite: '217', match: [/\b(makeup|make-up|make up artist|mua|cosmetolog\w*|hair ?style|stylist|lashes)\b/],
     text: 'Tanika is a licensed cosmetologist and makeup artist. To ask about makeup or styling for an event, send a request to Madam Allure.' },
   { id: 'gift-sets', suite: '217', match: [/\b(gift set|gift sets|gift box|bridal|bridesmaid|wedding gift|corporate|wellness box|gentleman|welcome home|wine glass|gift)\b/],
-    text: 'Gift sets: the Bridal Celebration Set and Corporate Wellness Box are $55, the Gentleman’s Set $45, and the Welcome Home Set $35. Custom gifts are welcome too.' },
+    text: 'Gift sets include the Bridal Celebration Set, the Corporate Wellness Box, the Gentleman’s Set, and the Welcome Home Set. Custom gifts are welcome too.' },
   { id: 'fragrance-price', suite: '217', match: [/\b(fragrance|perfume|roll-?on|cologne|scent)s?\b/, PRICE],
-    text: 'Enticed by Madam Allure roll-on fragrance oils are $9 to $10 for 10 milliliters, in a moisturizing coconut-oil base with no alcohol.' },
+    text: 'Enticed by Madam Allure roll-on fragrance oils come in a moisturizing coconut-oil base with no alcohol. Current prices are on the Madam Allure price list.' },
   { id: 'fragrance', suite: '217', match: [/\b(fragrance|perfume|roll-?on|cologne|scent|smell)s?\b/],
     text: 'Enticed by Madam Allure has roll-on fragrance oils for women, men, and unisex, plus matching dry body oils.' },
   { id: 'body-oil', suite: '217', match: [/\b(body oil|dry oil|dry body)\b/],
-    text: 'Dry body oils are $14 to $16 for 4 ounces. They are lightweight, absorb quickly, and pair with your fragrance.' },
+    text: 'Dry body oils are lightweight, absorb quickly, and pair beautifully with your fragrance.' },
   { id: 'beard', suite: '217', match: [/\b(beard|mustache|facial hair|grooming)\b/],
-    text: 'For beards there is beard oil, from $10, and beard balm, from $10, made with natural butters and oils. The Powder Room on Floor 2 has a five-minute beard routine.' },
+    text: 'For beards there is beard oil and beard balm, made with natural butters and oils. The Powder Room on Floor 2 has a five-minute beard routine.' },
   { id: 'hair', suite: '217', match: [/\b(hair|scalp|shampoo|edges)\b/],
-    text: 'For hair, Madam Allure makes a botanical hair oil from $10, an African black soap shampoo bar for $12, and whipped shea butter from $9 for skin and hair.' },
+    text: 'For hair, Madam Allure makes a botanical hair oil, an African black soap shampoo bar, and whipped shea butter for skin and hair.' },
   { id: 'soap', suite: '217', match: [/\b(soap|soaps|cleanser|black soap)\b/],
-    text: 'Handmade soaps are $8 for turmeric, $10 for turmeric with ginger or kaolin clay, $13 for Yoni Rose, and $14 for African black soap.' },
+    text: 'Handmade soaps include turmeric, turmeric with ginger or kaolin clay, Yoni Rose, and African black soap.' },
   { id: 'bath', suite: '217', match: [/\b(bath|soak|truffle|truffles|bath tea|bath salt|salts|scrub|scrubs)\b/],
-    text: 'For the bath there are bath truffles from $14, bath tea from $9, bath salt for $10, body scrubs for $16, and foaming bath butter for $24.' },
+    text: 'For the bath there are bath truffles, bath tea, bath salt, body scrubs, and foaming bath butter.' },
   { id: 'skin', suite: '217', match: [/\b(skin|skincare|dry|moisturi[sz]e|moisturizer|shea|butter|serum|face|facial)\b/],
-    text: 'For dry skin, try whipped shea butter from $9, a dry body oil from $14, or a facial serum from $8. The Powder Room on Floor 2 has easy at-home rituals.' },
+    text: 'For dry skin, try whipped shea butter, a dry body oil, or a facial serum. The Powder Room on Floor 2 has easy at-home rituals.' },
   { id: 'sensitive', suite: '217', match: [/\b(allerg\w*|sensitive|reaction|irritat\w*|pregnan\w*|eczema|rash|medical)\b/],
     text: 'Every product lists its ingredients so you can check them first. Patch-test anything new, and talk with your doctor about allergies or medical concerns.' },
   { id: 'ingredients', suite: '217', match: [/\b(ingredient|ingredients|natural|herb|herbs|herbal|essential oil|essential oils|made with|chemicals)\b/],
@@ -91,7 +91,7 @@ export const FAQ = [
   { id: 'how-order-305', suite: '305', match: [/\b(how (do|can) i (order|start)|place an order|get a quote|request a quote|quote)\b/],
     text: 'Tap Build My Project, describe your idea, and add your artwork. We review it and send a quote, and production starts once the deposit is paid.' },
   { id: 'small-prints', suite: '305', match: [/\b(bookmarks?|keychains?|key chains?|name tags?|ornaments?|napkin rings?|puzzle box(es)?)\b/],
-    text: 'Bookmarks are $5 to $12, keychains and name tags $6 to $14, ornaments $8 to $18, and puzzle boxes $20 to $35. Personalized costs a little more.' },
+    text: 'Allure Fusions prints bookmarks, keychains, name tags, ornaments, and puzzle boxes, and any of them can be personalized.' },
   { id: 'bulk-305', suite: '305', match: [/\b(bulk|wholesale|large order|big order|quantity|quantities|for (a|my) (team|school|event|class))\b/],
     text: 'Yes, Allure Fusions takes bulk and event orders. Put the quantity on your request, and your quote will reflect it.' },
   { id: 'rush-305', suite: '305', deskOnly: true, match: [/\b(rush|asap|urgent|tomorrow|by friday|this week|quickly|fast)\b/],
@@ -103,7 +103,7 @@ export const FAQ = [
   { id: 'deposit-305', suite: '305', deskOnly: true, match: [/\b(deposit|payment|pay|paid|upfront|up front|installment)\b/],
     text: 'Orders of $35 or less are paid in full. Larger orders start with a 60 percent deposit, and the balance and shipping are paid before it ships.' },
   { id: 'lithophane', suite: '305', match: [/\b(lithophane|lithophanes|photo lamp|picture lamp|memory lamp|lamp|lamps)\b/],
-    text: 'A lithophane is a 3D printed panel that reveals your photo when it is lit from behind. Photo lamps are $45 to $85, depending on size and the number of panels.' },
+    text: 'A lithophane is a 3D printed panel that reveals your photo when it is lit from behind. Photo lamps come in several sizes and panel counts.' },
   { id: 'photos', suite: '305', match: [/\b(photo|photos|picture|pictures|image)\b/, /\b(quality|best|good|which|send|resolution|blurry)\b/],
     text: 'Clear photos with good lighting, visible faces, and strong contrast give the best results. Dark, blurry, or small images may need extra preparation.' },
   { id: 'screen', suite: '305', match: [/\b(screen print\w*|t-?shirts?|shirts?|apparel|hoodies?|tees)\b/],
@@ -111,7 +111,7 @@ export const FAQ = [
   { id: 'school', suite: '305', match: [/\b(school|team|teams|organization|organizations|church|club|cheer|spirit|teacher|mascot|sorority|fraternity)\b/],
     text: 'Allure Fusions makes School and Organization Sets in your colors and mascot: badge reels, cheer accessories, pens, notebook covers, clipboards, NFC tags, lamps, and awards.' },
   { id: 'laser', suite: '305', match: [/\b(laser|engrave|engraved|engraving|engravings|cutting|slate|coasters?)\b/],
-    text: 'Allure Fusions offers laser engraving and cutting: slate coaster sets of four for $20 to $30, engraved tags from $8, ornaments from $10, and custom signs and gifts from $18.' },
+    text: 'Allure Fusions offers laser engraving and cutting: slate coaster sets, engraved tags, ornaments, and custom signs and gifts.' },
   { id: 'nfc', suite: '305', match: [/\b(nfc|tap tag|tap to)\b/],
     text: 'An NFC tag links a physical piece to something online. A tap of a phone can open music, a memorial page, a website, or contact details.' },
   { id: 'files', suite: '305', match: [/\b(stl|3mf|file only|design file|my own printer|digital file)\b/],
@@ -121,11 +121,11 @@ export const FAQ = [
   { id: 'material', suite: '305', match: [/\b(pla|petg|filament|material|materials|plastic)\b/],
     text: 'PLA is great for colorful, detailed decor. PETG is tougher and handles moisture and moderate heat better. Allure Fusions will help you choose for your project.' },
   { id: 'favors', suite: '305', match: [/\b(favor|favors|party|parties|event|events|bulk|wholesale|baby shower|birthday|ornament|ornaments)\b/],
-    text: 'Event favors are $6 to $15 each, and ornaments are $8 to $18. For bulk orders, send a request with your quantity and date for a quote.' },
+    text: 'Allure Fusions makes event favors and ornaments for parties, showers, and celebrations. For bulk orders, send a request with your quantity and date for a quote.' },
   { id: 'care', suite: '305', match: [/\b(clean|cleaning|care for|hot car|sunlight|melt|melting|heat)\b/],
     text: 'Dust printed pieces with a soft, dry or slightly damp cloth. Keep them away from hot cars, direct heat, and long hours of strong sun.' },
   { id: 'print-price', suite: '305', match: [/\b(3d|print|printed|printing)\b/, PRICE],
-    text: '3D printed pieces start at $5 for bookmarks, with vases at $20 to $40 and photo lamps at $45 to $85. Custom projects are quoted after review.' },
+    text: '3D printed pieces range from bookmarks to vases and photo lamps. Current prices are on the Allure Fusions price list, and custom projects are quoted after review.' },
 
   // ---------- AI AuthoriTech (412) ----------
   { id: 'process-412', suite: '412', match: [/\b(how does (it|this) work|the process|what happens next|next steps?|proposal)\b/],
@@ -147,19 +147,19 @@ export const FAQ = [
   { id: 'replace', suite: '412', match: [/\b(replace|take (my|our) jobs?|take over)\b/],
     text: 'AI works best as a tool that supports people. Human judgment, accountability, and relationships stay essential, and AI AuthoriTech designs around that.' },
   { id: 'audit', suite: '412', match: [/\b(audit|readiness|assessment|ready for ai)\b/],
-    text: 'The AI Readiness Audit starts at $350. It looks at your workflows, tools, data, and risks to find your best opportunities for AI.' },
+    text: 'The AI Readiness Audit looks at your workflows, tools, data, and risks to find your best opportunities for AI.' },
   { id: 'start', suite: '412', match: [/\b(where (do|should) (i|we) start|get started|getting started|new to ai|beginner|first step)\b/],
-    text: 'Start with a free 30-minute discovery consultation. From there, an AI Readiness Audit, starting at $350, shows where AI can help most.' },
+    text: 'Start with a free 30-minute discovery consultation. From there, an AI Readiness Audit shows where AI can help most.' },
   { id: 'agent', suite: '412', match: [/\b(chatbot|chat bot|agent|agents|assistant|assistants|bot|bots|gpt)\b/],
-    text: 'Custom AI agents start at $1,500. They can handle customer support, internal knowledge, lead intake, or guided services.' },
+    text: 'Custom AI agents can handle customer support, internal knowledge, lead intake, or guided services.' },
   { id: 'automation', suite: '412', match: [/\b(automat\w*|workflow|workflows|n8n|zapier|make\.com|repetitive)\b/],
-    text: 'An automation strategy starts at $750 and gives you a practical roadmap. Building connected workflows is quoted per project.' },
+    text: 'An automation strategy gives you a practical roadmap. Building connected workflows is quoted per project.' },
   { id: 'portal', suite: '412', match: [/\b(portal|portals|command center|command centers|dashboard|dashboards)\b/],
     text: 'AI AuthoriTech builds custom portals and business command centers that bring your tools and information into one place. Each one is quoted per project.' },
   { id: 'lms', suite: '412', match: [/\b(lms|learning management|docebo|netexam|workday|certification|certifications|learning systems?)\b/],
-    text: 'Learning systems consulting starts at $125 an hour, covering LMS administration, reporting, certification workflows, and integrations.' },
+    text: 'Learning systems consulting covers LMS administration, reporting, certification workflows, and integrations.' },
   { id: 'training', suite: '412', match: [/\b(training|train|workshop|workshops|teach|class|classes)\b/],
-    text: 'Team AI training starts at $500, with practical, role-focused sessions that help your team use AI responsibly and confidently.' },
+    text: 'Team AI training offers practical, role-focused sessions that help your team use AI responsibly and confidently.' },
   { id: 'privacy', suite: '412', match: [/\b(safe|safety|privacy|private|secure|security|confidential|data)\b/],
     text: 'Keep confidential or customer information out of AI tools unless your organization has approved them. AI AuthoriTech helps set those rules as part of responsible AI planning.' },
   { id: 'virtual', suite: '412', match: [/\b(virtual|virtually|remote|remotely|zoom|online)\b/],
@@ -167,7 +167,7 @@ export const FAQ = [
 
   // ---------- General prices (last) ----------
   { id: 'prices', suite: null, match: [PRICE],
-    text: 'Prices are listed inside each suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will give you the price.' },
+    text: 'Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.' },
 ];
 
 // Spoken and typed questions are written differently ("self care", "selfcare", "self-care"),
@@ -201,6 +201,13 @@ const SUITES = {
 // Lobby reply to a business question that is not about one suite (payments,
 // shipping, consultations...): she directs the visitor instead of answering.
 const DIRECT = 'Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3D printing and laser work; and AI AuthoriTech on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up.';
+// The concierge's recorded suite descriptions (audio/reply-<suite>.mp3, Veda Sky).
+const OVERVIEW = {
+  '217': 'Madam Allure is the perfect destination for beauty, fragrance, self-care, memorial creations, and personalized gifts. You’ll find it in Suite 217 on Floor 2.',
+  '305': 'Allure Fusions is the perfect destination. It is where bold design and beauty fuse. You’ll find it in Suite 305 on Floor 3.',
+  '412': 'AI AuthoriTech is the right destination for AI strategy, automation, custom agents, and digital transformation. You’ll find it in Suite 412 on Floor 4.',
+};
+const SEND_TAIL = 'Tap below, and their receptionist will answer your question when you arrive.';
 const say = (key, text, queue) => {
   if (window.ccsVoice && window.ccsVoice.sayKey) window.ccsVoice.sayKey(key, text, { queue });
 };
@@ -233,11 +240,13 @@ function answer(question) {
     say('faq-' + hit.id, hit.text);
     return hit;
   }
-  const s = SUITES[hit.suite];
-  const text = `${s.name} in Suite ${hit.suite} on Floor ${s.floor} offers ${s.offers}. Tap below, and their receptionist will answer your question when you arrive.`;
+  // Owner, Nov 27: the concierge reads the suite overview aloud. She uses her
+  // recorded suite descriptions (reply-<suite>.mp3), then one shared line.
+  const overview = OVERVIEW[hit.suite];
   window.ccsPendingQuestion = { suite: hit.suite, question };
-  say('faq-send-' + hit.suite, text);
-  return { id: 'send-' + hit.suite, suite: hit.suite, text };
+  say('reply-' + hit.suite, overview);
+  say('lobby-send-tail', SEND_TAIL, true);
+  return { id: 'send-' + hit.suite, suite: hit.suite, text: overview + ' ' + SEND_TAIL };
 }
 
 // Receptionists: answer their own business's questions and building questions.
@@ -251,19 +260,19 @@ const otherText = (other) => {
 // need re-recording. They rotate, and are skipped where a pitch would feel off.
 const NUDGES = {
   '217': [
-    'You deserve a little pampering. Send a request, and Tanika will make yours fresh to order.',
-    'Thinking of someone special? Any of these can become a gift. Just mention it in your request.',
-    'Would you like to try it? Send a request, and we will get your order started.',
+    'Every size and price is on the Madam Allure price list. When you are ready, send a request, and Tanika will make yours fresh to order.',
+    'Thinking of someone special? Any of these can become a gift. The price list has the details; just mention the gift in your request.',
+    'Would you like to try it? Check the Madam Allure price list, then send a request to get your order started.',
   ],
   '305': [
-    'Have an idea in mind? Send a request with a photo or sketch, and we will quote it for you.',
-    'Custom pieces make unforgettable gifts. Send a request, and we will bring your idea to life.',
-    'Ready to start? Send a request with your details and date, and we will take it from there.',
+    'Have an idea in mind? The Allure Fusions price list has starting prices, and a request with a photo or sketch gets you a quote.',
+    'Custom pieces make unforgettable gifts. See the Allure Fusions price list, then send a request, and we will bring your idea to life.',
+    'Ready to start? Check the Allure Fusions price list, then send a request with your details and date.',
   ],
   '412': [
-    'Curious where AI fits your business? Your first 30-minute discovery consultation is free.',
-    'Tell us one task that eats up your week, and we will show you how it could run on its own.',
-    'Ready for the next step? Request your free discovery call, and we will map out your first win.',
+    'Curious where AI fits your business? Your first 30-minute discovery consultation is free, and the AI AuthoriTech price list shows every service.',
+    'Tell us one task that eats up your week. The price list has the details, and a free discovery call shows how it could run on its own.',
+    'Ready for the next step? Review the AI AuthoriTech price list, then request your free discovery call.',
   ],
 };
 const NO_NUDGE = /^(hello|myorder|contact|returns|owner|visit|hours)$/;
@@ -277,6 +286,13 @@ function nudgeFor(suite, id) {
 function answerAt(suite, question) {
   const hit = find(question, suite);
   if (!hit) {
+    // Something another business does (for example 3D printing asked at Madam Allure)?
+    const other = suiteFor(question);
+    if (other && other !== suite) {
+      const text = otherText(other);
+      say(deskKey(suite, 'to-' + other), text);
+      return text;
+    }
     say(deskKey(suite, 'unknown'), UNKNOWN);
     return UNKNOWN;
   }
@@ -302,7 +318,7 @@ function deskLines(suite) {
   (NUDGES[suite] || []).forEach((text, i) => lines.push({ key: `r${suite}-nudge-${i + 1}`, id: 'nudge-' + (i + 1), text, match: [] }));
   return lines;
 }
-window.ccsFaq = { answer, answerAt, list: FAQ, suites: SUITES, deskLines };
+window.ccsFaq = { answer, answerAt, list: FAQ, suites: SUITES, deskLines, sendTail: SEND_TAIL };
 
 // ---------- Speak instead of type ----------
 const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;

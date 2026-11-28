@@ -30,6 +30,9 @@ function h(tag, attrs = {}, ...kids) {
 // ---------- panel shell ----------
 let panel, body, lastFocus;
 function openPanel(title, eyebrow) {
+  // Owner, Nov 27: switching pages inside an open panel must not replay the slide-in
+  // (it faded from transparent and showed the receptionist in between pages).
+  const switching = !!panel;
   if (!panel) {
     lastFocus = document.activeElement;
     panel = h('div', { class: 'ccs-portal', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': 'ccs-portal-title' });
@@ -39,7 +42,7 @@ function openPanel(title, eyebrow) {
     document.body.dataset.portalOpen = '';
   }
   panel.replaceChildren();
-  const sheet = h('section', { class: 'ccs-portal-sheet' });
+  const sheet = h('section', { class: switching ? 'ccs-portal-sheet stay' : 'ccs-portal-sheet' });
   const head = h('header', {},
     h('div', {}, h('small', { text: eyebrow || 'CRAWFORD CREATIVE SUITES' }), h('h2', { id: 'ccs-portal-title', text: title })),
     h('button', { type: 'button', class: 'ccs-x', 'aria-label': 'Close', onclick: closePanel, text: '×' }));
@@ -220,13 +223,23 @@ function linksBox() {
 // ---------- Admin Office ----------
 let adminState = { tab: 'overview', status: '', q: '' };
 async function showAdmin(flash) {
-  const b = openPanel('Admin Office', 'PRIVATE · ADMIN ONLY');
-  panel.querySelector('.ccs-portal-sheet').classList.add('wide');
-  b.append(note('Loading…'));
+  // Already in the Admin Office (changing tabs, Refresh)? Keep the current page on screen
+  // until the new one is ready, instead of flashing "Loading…".
+  const inAdmin = panel && panel.querySelector('#ccs-portal-title')?.textContent === 'Admin Office';
+  const fresh = () => { const body = openPanel('Admin Office', 'PRIVATE · ADMIN ONLY'); panel.querySelector('.ccs-portal-sheet').classList.add('wide'); return body; };
+  let b = inAdmin ? null : fresh();
+  if (b) b.append(note('Loading…'));
+  else panel.querySelector('.ccs-portal-sheet').setAttribute('aria-busy', 'true');
   let d;
   try { d = await api.rpc('admin_overview'); } catch (err) {
+    b = b || fresh();
     b.replaceChildren(note(err.status === 403 || /admin only/.test(err.message) ? 'The Admin Office is only for Crawford Creative Suites staff.' : err.message, 'err'));
     return;
+  }
+  if (!b) {
+    const scroll = panel.querySelector('.ccs-portal-sheet').scrollTop;
+    b = fresh();
+    panel.querySelector('.ccs-portal-sheet').scrollTop = scroll;
   }
   const tabs = [['overview', 'Overview'], ['allure_fusions', 'Allure Fusions'], ['ai_authoritech', 'AI AuthoriTech'], ['madam_allure', 'Madam Allure Orders'], ['leads', 'Leads']];
   const nav = h('nav', { class: 'ccs-tabs', role: 'tablist' }, tabs.map(([k, label]) => h('button', {

@@ -19,7 +19,7 @@ globalThis.requestAnimationFrame = () => {};
 const tmp = mkdtempSync(join(tmpdir(), 'ccs-'));
 writeFileSync(join(tmp, 'faq.mjs'), readFileSync(here('./faq.js'), 'utf8'));
 await import(pathToFileURL(join(tmp, 'faq.mjs')).href);
-const { list: FAQ, suites: SUITES, deskLines } = window.ccsFaq;
+const { list: FAQ, suites: SUITES, deskLines, sendTail } = window.ccsFaq;
 const voiceSrc = readFileSync(here('./voice.js'), 'utf8');
 const LINES = Function(`return ${voiceSrc.slice(voiceSrc.indexOf('const LINES = {') + 'const LINES = '.length, voiceSrc.indexOf('};', voiceSrc.indexOf('const LINES = {')) + 1)}`)();
 const recorded = new Set(JSON.parse(readFileSync(here('../audio/clips.json'), 'utf8')));
@@ -43,9 +43,9 @@ const groups = [
     ...['greeting', 'reply-217', 'reply-305', 'reply-412', 'reply-unknown'].map((k) => ({ key: k, text: LINES[k] || readmeText(k) })),
     ...lobbyGeneral.map((f) => ({ key: 'faq-' + f.id, text: f.text })),
     { key: 'faq-direct', text: DIRECT },
-    ...Object.keys(SUITES).map((s) => ({ key: 'faq-send-' + s, text: sendText(s) })),
+    { key: 'lobby-send-tail', text: sendTail },
   ] },
-  { who: 'Elevator', voice: 'Blake Harlow (chosen Nov 27). Floor announcements only.', lines: ['floor-2', 'floor-3', 'floor-4'].map((k) => ({ key: k, text: LINES[k] })) },
+  { who: 'Elevator', voice: 'Blake Harlow (chosen Nov 27). Floor announcements only.', lines: ['floor-1', 'floor-2', 'floor-3', 'floor-4'].map((k) => ({ key: k, text: LINES[k] })) },
   // Receptionist voices chosen by Tanika, Nov 27, 2026 (saved under My Voices in ElevenLabs).
   ...[['217', 'powder', 'Kai - Real AI Receptionist (chosen Nov 27)'], ['305', 'maker', 'Maya - Receptionist & Customer Service (chosen Nov 27)'], ['412', 'clarity', 'Tiffany - Warm, Conversational Narrator (chosen Nov 27)']].map(([s, lounge, voice]) => ({
     who: `${SUITES[s].name} receptionist (Floor ${SUITES[s].floor}, Suite ${s})`, voice,

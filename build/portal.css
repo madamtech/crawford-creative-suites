@@ -11,6 +11,7 @@
 .ccs-portal-sheet.wide{width:min(1040px,100%)}
 @keyframes ccsIn{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.ccs-portal-sheet{animation:none}}
+.ccs-portal-sheet.stay{animation:none}
 .ccs-portal header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px solid rgba(255,255,255,.16);padding-bottom:12px;margin-bottom:16px}
 .ccs-portal header small{display:block;font:italic 600 .72rem "Crimson Pro",Georgia,serif;letter-spacing:.16em;color:#eccbb0}
 .ccs-portal h2{margin:.15rem 0 0;font:400 2rem/1.1 "Instrument Serif",Georgia,serif}
@@ -82,10 +83,11 @@
 @media (max-width:620px){.ccs-filter{grid-template-columns:1fr}}
 .ccs-row{border:1px solid rgba(255,255,255,.16);border-left:3px solid var(--biz,#cb9671);border-radius:10px;margin:0 0 .5rem;background:rgba(0,0,0,.22)}
 .ccs-row.overdue{border-right:3px solid #e07a6a}
-.ccs-row>summary{display:grid;grid-template-columns:86px minmax(90px,1fr) minmax(110px,1.4fr) auto minmax(90px,auto) minmax(90px,auto);gap:.6rem;align-items:center;padding:.6rem .8rem;cursor:pointer;font-size:.86rem;list-style:none}
+.ccs-row>summary{display:grid;grid-template-columns:86px minmax(0,1fr) minmax(0,1.4fr) 132px 112px 168px;gap:.6rem;align-items:center;padding:.6rem .8rem;cursor:pointer;font-size:.86rem;list-style:none}
+.ccs-row .who,.ccs-row .what{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ccs-row>summary .ccs-pill{justify-self:start;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ccs-row .m,.ccs-row .due{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
 .ccs-row>summary::-webkit-details-marker{display:none}
 .ccs-row .n{font-weight:700}.ccs-row .due{color:#cfc3ba;font-size:.78rem}.ccs-row.overdue .due{color:#f2a597}
-@media (max-width:760px){.ccs-row>summary{grid-template-columns:1fr auto}.ccs-row .what,.ccs-row .m{grid-column:1/-1}}
+@media (max-width:760px){.ccs-row>summary{grid-template-columns:1fr auto}.ccs-row .what,.ccs-row .m{grid-column:1/-1}.ccs-row .m,.ccs-row .due{text-align:left}}
 .ccs-detail{padding:.2rem .9rem 1rem;border-top:1px solid rgba(255,255,255,.12)}
 .ccs-details{white-space:pre-wrap;font-size:.88rem;color:#e6dcd5}
 .ccs-edit{margin:.6rem 0}

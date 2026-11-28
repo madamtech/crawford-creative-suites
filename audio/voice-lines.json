@@ -71,8 +71,8 @@
    },
    {
     "key": "faq-prices",
-    "text": "Prices are listed inside each suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will give you the price.",
-    "say": "Prices are listed inside each suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will give you the price.",
+    "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
+    "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
     "recorded": false
    },
    {
@@ -82,21 +82,9 @@
     "recorded": false
    },
    {
-    "key": "faq-send-217",
-    "text": "Madam Allure in Suite 217 on Floor 2 offers fragrance, bath and body care, gifts, and memorial keepsakes. Tap below, and their receptionist will answer your question when you arrive.",
-    "say": "Madam Allure in Suite two-seventeen on Floor 2 offers fragrance, bath and body care, gifts, and memorial keepsakes. Tap below, and their receptionist will answer your question when you arrive.",
-    "recorded": false
-   },
-   {
-    "key": "faq-send-305",
-    "text": "Allure Fusions in Suite 305 on Floor 3 offers 3D printing, laser engraving, screen printing, and photo lamps. Tap below, and their receptionist will answer your question when you arrive.",
-    "say": "Allure Fusions in Suite three-oh-five on Floor 3 offers 3-D printing, laser engraving, screen printing, and photo lamps. Tap below, and their receptionist will answer your question when you arrive.",
-    "recorded": false
-   },
-   {
-    "key": "faq-send-412",
-    "text": "AI AuthoriTech in Suite 412 on Floor 4 offers AI strategy, automation, custom AI agents, and training. Tap below, and their receptionist will answer your question when you arrive.",
-    "say": "A-I Awthor-ih-tek in Suite four-twelve on Floor 4 offers AI strategy, automation, custom AI agents, and training. Tap below, and their receptionist will answer your question when you arrive.",
+    "key": "lobby-send-tail",
+    "text": "Tap below, and their receptionist will answer your question when you arrive.",
+    "say": "Tap below, and their receptionist will answer your question when you arrive.",
     "recorded": false
    }
   ]
@@ -105,6 +93,12 @@
   "who": "Elevator",
   "voice": "Blake Harlow (chosen Nov 27). Floor announcements only.",
   "lines": [
+   {
+    "key": "floor-1",
+    "text": "Floor one. Main Lobby.",
+    "say": "Floor one. Main Lobby.",
+    "recorded": false
+   },
    {
     "key": "floor-2",
     "text": "Floor two. Madam Allure.",
@@ -161,27 +155,27 @@
    },
    {
     "key": "r217-hair-oil",
-    "text": "Hair Growth Oil is $10 for 2 ounces, $18 for 4, $26 for 6, and $35 for 8 ounces.",
-    "say": "Hair Growth Oil is $10 for 2 ounces, $18 for 4, $26 for 6, and $35 for 8 ounces.",
-    "recorded": true
+    "text": "Hair Growth Oil is a botanical blend of herbs and natural oils, made for scalp and hair care. It comes in several sizes.",
+    "say": "Hair Growth Oil is a botanical blend of herbs and natural oils, made for scalp and hair care. It comes in several sizes.",
+    "recorded": false
    },
    {
     "key": "r217-face",
-    "text": "Facial serum is $8 for 2 ounces, $16 for 6, and $22 for 8. The hydrating facial serum is $9.",
-    "say": "Facial serum is $8 for 2 ounces, $16 for 6, and $22 for 8. The hydrating facial serum is $9.",
-    "recorded": true
+    "text": "Madam Allure makes facial serums for daily skin care, including a hydrating facial serum, in several sizes.",
+    "say": "Madam Allure makes facial serums for daily skin care, including a hydrating facial serum, in several sizes.",
+    "recorded": false
    },
    {
     "key": "r217-shea",
-    "text": "Whipped shea butter is $9 for 4 ounces, $15 for 6, $21 for 8, and $28 for 16, for skin and hair.",
-    "say": "Whipped shea butter is $9 for 4 ounces, $15 for 6, $21 for 8, and $28 for 16, for skin and hair.",
-    "recorded": true
+    "text": "Whipped shea butter is a rich, fluffy moisturizer for both skin and hair, made in several sizes.",
+    "say": "Whipped shea butter is a rich, fluffy moisturizer for both skin and hair, made in several sizes.",
+    "recorded": false
    },
    {
     "key": "r217-home-scent",
-    "text": "For the home there is room and linen spray from $8, and aroma beads for $5 in your choice of fragrance.",
-    "say": "For the home there is room and linen spray from $8, and aroma beads for $5 in your choice of fragrance.",
-    "recorded": true
+    "text": "For the home there is room and linen spray and aroma beads, made in your choice of fragrance.",
+    "say": "For the home there is room and linen spray and aroma beads, made in your choice of fragrance.",
+    "recorded": false
    },
    {
     "key": "r217-custom-gift",
@@ -191,9 +185,9 @@
    },
    {
     "key": "r217-wine-glass",
-    "text": "The blinged wine glass is $35, made with custom glitter and rhinestones and sealed with epoxy.",
-    "say": "The blinged wine glass is $35, made with custom glitter and rhinestones and sealed with epoxy.",
-    "recorded": true
+    "text": "The blinged wine glass is made with custom glitter and rhinestones and sealed with epoxy, so it lasts as beautifully as it looks.",
+    "say": "The blinged wine glass is made with custom glitter and rhinestones and sealed with epoxy, so it lasts as beautifully as it looks.",
+    "recorded": false
    },
    {
     "key": "r217-deposit",
@@ -221,14 +215,14 @@
    },
    {
     "key": "r217-gift-sets",
-    "text": "Gift sets: the Bridal Celebration Set and Corporate Wellness Box are $55, the Gentleman’s Set $45, and the Welcome Home Set $35. Custom gifts are welcome too.",
-    "say": "Gift sets: the Bridal Celebration Set and Corporate Wellness Box are $55, the Gentleman’s Set $45, and the Welcome Home Set $35. Custom gifts are welcome too.",
+    "text": "Gift sets include the Bridal Celebration Set, the Corporate Wellness Box, the Gentleman’s Set, and the Welcome Home Set. Custom gifts are welcome too.",
+    "say": "Gift sets include the Bridal Celebration Set, the Corporate Wellness Box, the Gentleman’s Set, and the Welcome Home Set. Custom gifts are welcome too.",
     "recorded": false
    },
    {
     "key": "r217-fragrance-price",
-    "text": "Enticed by Madam Allure roll-on fragrance oils are $9 to $10 for 10 milliliters, in a moisturizing coconut-oil base with no alcohol.",
-    "say": "Enticed by Madam Allure roll-on fragrance oils are $9 to $10 for 10 milliliters, in a moisturizing coconut-oil base with no alcohol.",
+    "text": "Enticed by Madam Allure roll-on fragrance oils come in a moisturizing coconut-oil base with no alcohol. Current prices are on the Madam Allure price list.",
+    "say": "Enticed by Madam Allure roll-on fragrance oils come in a moisturizing coconut-oil base with no alcohol. Current prices are on the Madam Allure price list.",
     "recorded": false
    },
    {
@@ -239,38 +233,38 @@
    },
    {
     "key": "r217-body-oil",
-    "text": "Dry body oils are $14 to $16 for 4 ounces. They are lightweight, absorb quickly, and pair with your fragrance.",
-    "say": "Dry body oils are $14 to $16 for 4 ounces. They are lightweight, absorb quickly, and pair with your fragrance.",
+    "text": "Dry body oils are lightweight, absorb quickly, and pair beautifully with your fragrance.",
+    "say": "Dry body oils are lightweight, absorb quickly, and pair beautifully with your fragrance.",
     "recorded": false
    },
    {
     "key": "r217-beard",
-    "text": "For beards there is beard oil, from $10, and beard balm, from $10, made with natural butters and oils. The Powder Room on Floor 2 has a five-minute beard routine.",
-    "say": "For beards there is beard oil, from $10, and beard balm, from $10, made with natural butters and oils. The Powder Room on Floor 2 has a five-minute beard routine.",
+    "text": "For beards there is beard oil and beard balm, made with natural butters and oils. The Powder Room on Floor 2 has a five-minute beard routine.",
+    "say": "For beards there is beard oil and beard balm, made with natural butters and oils. The Powder Room on Floor 2 has a five-minute beard routine.",
     "recorded": false
    },
    {
     "key": "r217-hair",
-    "text": "For hair, Madam Allure makes a botanical hair oil from $10, an African black soap shampoo bar for $12, and whipped shea butter from $9 for skin and hair.",
-    "say": "For hair, Madam Allure makes a botanical hair oil from $10, an African black soap shampoo bar for $12, and whipped shea butter from $9 for skin and hair.",
+    "text": "For hair, Madam Allure makes a botanical hair oil, an African black soap shampoo bar, and whipped shea butter for skin and hair.",
+    "say": "For hair, Madam Allure makes a botanical hair oil, an African black soap shampoo bar, and whipped shea butter for skin and hair.",
     "recorded": false
    },
    {
     "key": "r217-soap",
-    "text": "Handmade soaps are $8 for turmeric, $10 for turmeric with ginger or kaolin clay, $13 for Yoni Rose, and $14 for African black soap.",
-    "say": "Handmade soaps are $8 for turmeric, $10 for turmeric with ginger or kaolin clay, $13 for Yoni Rose, and $14 for African black soap.",
+    "text": "Handmade soaps include turmeric, turmeric with ginger or kaolin clay, Yoni Rose, and African black soap.",
+    "say": "Handmade soaps include turmeric, turmeric with ginger or kaolin clay, Yoni Rose, and African black soap.",
     "recorded": false
    },
    {
     "key": "r217-bath",
-    "text": "For the bath there are bath truffles from $14, bath tea from $9, bath salt for $10, body scrubs for $16, and foaming bath butter for $24.",
-    "say": "For the bath there are bath truffles from $14, bath tea from $9, bath salt for $10, body scrubs for $16, and foaming bath butter for $24.",
+    "text": "For the bath there are bath truffles, bath tea, bath salt, body scrubs, and foaming bath butter.",
+    "say": "For the bath there are bath truffles, bath tea, bath salt, body scrubs, and foaming bath butter.",
     "recorded": false
    },
    {
     "key": "r217-skin",
-    "text": "For dry skin, try whipped shea butter from $9, a dry body oil from $14, or a facial serum from $8. The Powder Room on Floor 2 has easy at-home rituals.",
-    "say": "For dry skin, try whipped shea butter from $9, a dry body oil from $14, or a facial serum from $8. The Powder Room on Floor 2 has easy at-home rituals.",
+    "text": "For dry skin, try whipped shea butter, a dry body oil, or a facial serum. The Powder Room on Floor 2 has easy at-home rituals.",
+    "say": "For dry skin, try whipped shea butter, a dry body oil, or a facial serum. The Powder Room on Floor 2 has easy at-home rituals.",
     "recorded": false
    },
    {
@@ -317,8 +311,8 @@
    },
    {
     "key": "r217-consult",
-    "text": "Your first 30-minute discovery consultation is free. After that, consultation is $125 an hour, scheduled and paid in advance, and it is credited toward an ongoing engagement.",
-    "say": "Your first 30-minute discovery consultation is free. After that, consultation is $125 an hour, scheduled and paid in advance, and it is credited toward an ongoing engagement.",
+    "text": "Your first 30-minute discovery consultation is free. After that, consultations are scheduled and paid in advance, and they are credited toward an ongoing engagement.",
+    "say": "Your first 30-minute discovery consultation is free. After that, consultations are scheduled and paid in advance, and they are credited toward an ongoing engagement.",
     "recorded": false
    },
    {
@@ -341,8 +335,8 @@
    },
    {
     "key": "r217-prices",
-    "text": "Prices are listed inside each suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will give you the price.",
-    "say": "Prices are listed inside each suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will give you the price.",
+    "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
+    "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
     "recorded": false
    },
    {
@@ -365,20 +359,20 @@
    },
    {
     "key": "r217-nudge-1",
-    "text": "You deserve a little pampering. Send a request, and Tanika will make yours fresh to order.",
-    "say": "You deserve a little pampering. Send a request, and Tanika will make yours fresh to order.",
+    "text": "Every size and price is on the Madam Allure price list. When you are ready, send a request, and Tanika will make yours fresh to order.",
+    "say": "Every size and price is on the Madam Allure price list. When you are ready, send a request, and Tanika will make yours fresh to order.",
     "recorded": false
    },
    {
     "key": "r217-nudge-2",
-    "text": "Thinking of someone special? Any of these can become a gift. Just mention it in your request.",
-    "say": "Thinking of someone special? Any of these can become a gift. Just mention it in your request.",
+    "text": "Thinking of someone special? Any of these can become a gift. The price list has the details; just mention the gift in your request.",
+    "say": "Thinking of someone special? Any of these can become a gift. The price list has the details; just mention the gift in your request.",
     "recorded": false
    },
    {
     "key": "r217-nudge-3",
-    "text": "Would you like to try it? Send a request, and we will get your order started.",
-    "say": "Would you like to try it? Send a request, and we will get your order started.",
+    "text": "Would you like to try it? Check the Madam Allure price list, then send a request to get your order started.",
+    "say": "Would you like to try it? Check the Madam Allure price list, then send a request to get your order started.",
     "recorded": false
    }
   ]
@@ -413,8 +407,8 @@
    },
    {
     "key": "r305-small-prints",
-    "text": "Bookmarks are $5 to $12, keychains and name tags $6 to $14, ornaments $8 to $18, and puzzle boxes $20 to $35. Personalized costs a little more.",
-    "say": "Bookmarks are $5 to $12, keychains and name tags $6 to $14, ornaments $8 to $18, and puzzle boxes $20 to $35. Personalized costs a little more.",
+    "text": "Allure Fusions prints bookmarks, keychains, name tags, ornaments, and puzzle boxes, and any of them can be personalized.",
+    "say": "Allure Fusions prints bookmarks, keychains, name tags, ornaments, and puzzle boxes, and any of them can be personalized.",
     "recorded": false
    },
    {
@@ -449,8 +443,8 @@
    },
    {
     "key": "r305-lithophane",
-    "text": "A lithophane is a 3D printed panel that reveals your photo when it is lit from behind. Photo lamps are $45 to $85, depending on size and the number of panels.",
-    "say": "A lithophane is a 3-D printed panel that reveals your photo when it is lit from behind. Photo lamps are $45 to $85, depending on size and the number of panels.",
+    "text": "A lithophane is a 3D printed panel that reveals your photo when it is lit from behind. Photo lamps come in several sizes and panel counts.",
+    "say": "A lithophane is a 3-D printed panel that reveals your photo when it is lit from behind. Photo lamps come in several sizes and panel counts.",
     "recorded": false
    },
    {
@@ -473,8 +467,8 @@
    },
    {
     "key": "r305-laser",
-    "text": "Allure Fusions offers laser engraving and cutting: slate coaster sets of four for $20 to $30, engraved tags from $8, ornaments from $10, and custom signs and gifts from $18.",
-    "say": "Allure Fusions offers laser engraving and cutting: slate coaster sets of four for $20 to $30, engraved tags from $8, ornaments from $10, and custom signs and gifts from $18.",
+    "text": "Allure Fusions offers laser engraving and cutting: slate coaster sets, engraved tags, ornaments, and custom signs and gifts.",
+    "say": "Allure Fusions offers laser engraving and cutting: slate coaster sets, engraved tags, ornaments, and custom signs and gifts.",
     "recorded": false
    },
    {
@@ -503,8 +497,8 @@
    },
    {
     "key": "r305-favors",
-    "text": "Event favors are $6 to $15 each, and ornaments are $8 to $18. For bulk orders, send a request with your quantity and date for a quote.",
-    "say": "Event favors are $6 to $15 each, and ornaments are $8 to $18. For bulk orders, send a request with your quantity and date for a quote.",
+    "text": "Allure Fusions makes event favors and ornaments for parties, showers, and celebrations. For bulk orders, send a request with your quantity and date for a quote.",
+    "say": "Allure Fusions makes event favors and ornaments for parties, showers, and celebrations. For bulk orders, send a request with your quantity and date for a quote.",
     "recorded": false
    },
    {
@@ -515,8 +509,8 @@
    },
    {
     "key": "r305-print-price",
-    "text": "3D printed pieces start at $5 for bookmarks, with vases at $20 to $40 and photo lamps at $45 to $85. Custom projects are quoted after review.",
-    "say": "3-D printed pieces start at $5 for bookmarks, with vases at $20 to $40 and photo lamps at $45 to $85. Custom projects are quoted after review.",
+    "text": "3D printed pieces range from bookmarks to vases and photo lamps. Current prices are on the Allure Fusions price list, and custom projects are quoted after review.",
+    "say": "3-D printed pieces range from bookmarks to vases and photo lamps. Current prices are on the Allure Fusions price list, and custom projects are quoted after review.",
     "recorded": false
    },
    {
@@ -551,8 +545,8 @@
    },
    {
     "key": "r305-consult",
-    "text": "Your first 30-minute discovery consultation is free. After that, consultation is $125 an hour, scheduled and paid in advance, and it is credited toward an ongoing engagement.",
-    "say": "Your first 30-minute discovery consultation is free. After that, consultation is $125 an hour, scheduled and paid in advance, and it is credited toward an ongoing engagement.",
+    "text": "Your first 30-minute discovery consultation is free. After that, consultations are scheduled and paid in advance, and they are credited toward an ongoing engagement.",
+    "say": "Your first 30-minute discovery consultation is free. After that, consultations are scheduled and paid in advance, and they are credited toward an ongoing engagement.",
     "recorded": false
    },
    {
@@ -575,8 +569,8 @@
    },
    {
     "key": "r305-prices",
-    "text": "Prices are listed inside each suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will give you the price.",
-    "say": "Prices are listed inside each suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will give you the price.",
+    "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
+    "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
     "recorded": false
    },
    {
@@ -599,20 +593,20 @@
    },
    {
     "key": "r305-nudge-1",
-    "text": "Have an idea in mind? Send a request with a photo or sketch, and we will quote it for you.",
-    "say": "Have an idea in mind? Send a request with a photo or sketch, and we will quote it for you.",
+    "text": "Have an idea in mind? The Allure Fusions price list has starting prices, and a request with a photo or sketch gets you a quote.",
+    "say": "Have an idea in mind? The Allure Fusions price list has starting prices, and a request with a photo or sketch gets you a quote.",
     "recorded": false
    },
    {
     "key": "r305-nudge-2",
-    "text": "Custom pieces make unforgettable gifts. Send a request, and we will bring your idea to life.",
-    "say": "Custom pieces make unforgettable gifts. Send a request, and we will bring your idea to life.",
+    "text": "Custom pieces make unforgettable gifts. See the Allure Fusions price list, then send a request, and we will bring your idea to life.",
+    "say": "Custom pieces make unforgettable gifts. See the Allure Fusions price list, then send a request, and we will bring your idea to life.",
     "recorded": false
    },
    {
     "key": "r305-nudge-3",
-    "text": "Ready to start? Send a request with your details and date, and we will take it from there.",
-    "say": "Ready to start? Send a request with your details and date, and we will take it from there.",
+    "text": "Ready to start? Check the Allure Fusions price list, then send a request with your details and date.",
+    "say": "Ready to start? Check the Allure Fusions price list, then send a request with your details and date.",
     "recorded": false
    }
   ]
@@ -695,26 +689,26 @@
    },
    {
     "key": "r412-audit",
-    "text": "The AI Readiness Audit starts at $350. It looks at your workflows, tools, data, and risks to find your best opportunities for AI.",
-    "say": "The AI Readiness Audit starts at $350. It looks at your workflows, tools, data, and risks to find your best opportunities for AI.",
+    "text": "The AI Readiness Audit looks at your workflows, tools, data, and risks to find your best opportunities for AI.",
+    "say": "The AI Readiness Audit looks at your workflows, tools, data, and risks to find your best opportunities for AI.",
     "recorded": false
    },
    {
     "key": "r412-start",
-    "text": "Start with a free 30-minute discovery consultation. From there, an AI Readiness Audit, starting at $350, shows where AI can help most.",
-    "say": "Start with a free 30-minute discovery consultation. From there, an AI Readiness Audit, starting at $350, shows where AI can help most.",
+    "text": "Start with a free 30-minute discovery consultation. From there, an AI Readiness Audit shows where AI can help most.",
+    "say": "Start with a free 30-minute discovery consultation. From there, an AI Readiness Audit shows where AI can help most.",
     "recorded": false
    },
    {
     "key": "r412-agent",
-    "text": "Custom AI agents start at $1,500. They can handle customer support, internal knowledge, lead intake, or guided services.",
-    "say": "Custom AI agents start at $1,500. They can handle customer support, internal knowledge, lead intake, or guided services.",
+    "text": "Custom AI agents can handle customer support, internal knowledge, lead intake, or guided services.",
+    "say": "Custom AI agents can handle customer support, internal knowledge, lead intake, or guided services.",
     "recorded": false
    },
    {
     "key": "r412-automation",
-    "text": "An automation strategy starts at $750 and gives you a practical roadmap. Building connected workflows is quoted per project.",
-    "say": "An automation strategy starts at $750 and gives you a practical roadmap. Building connected workflows is quoted per project.",
+    "text": "An automation strategy gives you a practical roadmap. Building connected workflows is quoted per project.",
+    "say": "An automation strategy gives you a practical roadmap. Building connected workflows is quoted per project.",
     "recorded": false
    },
    {
@@ -725,14 +719,14 @@
    },
    {
     "key": "r412-lms",
-    "text": "Learning systems consulting starts at $125 an hour, covering LMS administration, reporting, certification workflows, and integrations.",
-    "say": "Learning systems consulting starts at $125 an hour, covering L-M-S administration, reporting, certification workflows, and integrations.",
+    "text": "Learning systems consulting covers LMS administration, reporting, certification workflows, and integrations.",
+    "say": "Learning systems consulting covers L-M-S administration, reporting, certification workflows, and integrations.",
     "recorded": false
    },
    {
     "key": "r412-training",
-    "text": "Team AI training starts at $500, with practical, role-focused sessions that help your team use AI responsibly and confidently.",
-    "say": "Team AI training starts at $500, with practical, role-focused sessions that help your team use AI responsibly and confidently.",
+    "text": "Team AI training offers practical, role-focused sessions that help your team use AI responsibly and confidently.",
+    "say": "Team AI training offers practical, role-focused sessions that help your team use AI responsibly and confidently.",
     "recorded": false
    },
    {
@@ -779,8 +773,8 @@
    },
    {
     "key": "r412-consult",
-    "text": "Your first 30-minute discovery consultation is free. After that, consultation is $125 an hour, scheduled and paid in advance, and it is credited toward an ongoing engagement.",
-    "say": "Your first 30-minute discovery consultation is free. After that, consultation is $125 an hour, scheduled and paid in advance, and it is credited toward an ongoing engagement.",
+    "text": "Your first 30-minute discovery consultation is free. After that, consultations are scheduled and paid in advance, and they are credited toward an ongoing engagement.",
+    "say": "Your first 30-minute discovery consultation is free. After that, consultations are scheduled and paid in advance, and they are credited toward an ongoing engagement.",
     "recorded": false
    },
    {
@@ -791,8 +785,8 @@
    },
    {
     "key": "r412-prices",
-    "text": "Prices are listed inside each suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will give you the price.",
-    "say": "Prices are listed inside each suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will give you the price.",
+    "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
+    "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
     "recorded": false
    },
    {
@@ -815,20 +809,20 @@
    },
    {
     "key": "r412-nudge-1",
-    "text": "Curious where AI fits your business? Your first 30-minute discovery consultation is free.",
-    "say": "Curious where AI fits your business? Your first 30-minute discovery consultation is free.",
+    "text": "Curious where AI fits your business? Your first 30-minute discovery consultation is free, and the AI AuthoriTech price list shows every service.",
+    "say": "Curious where AI fits your business? Your first 30-minute discovery consultation is free, and the A-I Awthor-ih-tek price list shows every service.",
     "recorded": false
    },
    {
     "key": "r412-nudge-2",
-    "text": "Tell us one task that eats up your week, and we will show you how it could run on its own.",
-    "say": "Tell us one task that eats up your week, and we will show you how it could run on its own.",
+    "text": "Tell us one task that eats up your week. The price list has the details, and a free discovery call shows how it could run on its own.",
+    "say": "Tell us one task that eats up your week. The price list has the details, and a free discovery call shows how it could run on its own.",
     "recorded": false
    },
    {
     "key": "r412-nudge-3",
-    "text": "Ready for the next step? Request your free discovery call, and we will map out your first win.",
-    "say": "Ready for the next step? Request your free discovery call, and we will map out your first win.",
+    "text": "Ready for the next step? Review the AI AuthoriTech price list, then request your free discovery call.",
+    "say": "Ready for the next step? Review the A-I Awthor-ih-tek price list, then request your free discovery call.",
     "recorded": false
    }
   ]

@@ -33,6 +33,9 @@ const LINES = {
   // No elevator welcome for the lobby: the concierge greets visitors there (owner, Nov 25).
   // Nov 27 (owner): the elevator voice (Blake Harlow, male) announces only the floor and
   // the business, short enough to finish as the doors open; the receptionist welcomes them.
+  // Owner, Nov 27: the elevator also announces the lobby on the way back down
+  // (the concierge greeting is not repeated).
+  'floor-1': 'Floor one. Main Lobby.',
   'floor-2': 'Floor two. Madam Allure.',
   'floor-3': 'Floor three. Allure Fusions.',
   'floor-4': 'Floor four. AI AuthoriTech.',

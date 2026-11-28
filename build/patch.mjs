@@ -27,6 +27,9 @@ const patches = [
   // so the ride lasts as long as "Floor two. Madam Allure." takes to say.
   ['window.setTimeout(()=>{if(e===1)C(`Floor 1. Main Lobby.`)', 'window.setTimeout(()=>window.ccsVoice.afterSpeech(()=>{if(e===1)C(`Floor 1. Main Lobby.`)'],
   ['window.ccsVoice.arrive(e),y(!1)},n?350:1500)', 'window.ccsVoice.arrive(e),y(!1)},0,300),n?350:1500)'],
+  // Owner, Nov 27: the floor and suite show once, in the top bar, worded like the old
+  // bottom plaque (which is now hidden in build/site.mjs).
+  ['reception`?`Suite ${n} · Floor ${R.floor}`', 'reception`?`Floor ${R.floor} · Suite ${n}`'],
 
   // Concierge speaks on her own when the visitor arrives (build/voice.js), and replies aloud.
   ['(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),',
