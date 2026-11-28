@@ -8,8 +8,8 @@ Make each line below with your ElevenLabs voice (or record it yourself). Save it
 |---|---|---|
 | Lobby concierge (Floor 1) | **Veda Sky** (Expressive Customer Service). Speed 1.08 for the four replies (her greeting is her own download), stability 50, similarity 75, style 0 | `greeting`, `reply-*`, `faq-*` |
 | Madam Allure receptionist (Floor 2) | **Kai** (Real AI Receptionist), the softest voice, for beauty and self-care | `welcome-217`, `lounge-powder`, `r217-*` |
-| Allure Fusions receptionist (Floor 3) | **Maya** (Receptionist & Customer Service) | `welcome-305`, `lounge-maker`, `r305-*` |
-| AI AuthoriTech receptionist (Floor 4) | **Tiffany** (Warm, Conversational Narrator) | `welcome-412`, `lounge-clarity`, `r412-*` |
+| Allure Fusions receptionist (Floor 3) | **Bhee** (Tanika's choice, Nov 28; replaces Maya) | `welcome-305`, `lounge-maker`, `r305-*` |
+| AI AuthoriTech receptionist (Floor 4) | **Tanika_Real**, Tanika's own voice (Nov 28; replaces Tiffany) | `welcome-412`, `lounge-clarity`, `r412-*` |
 | Elevator | **Blake Harlow**, floor announcements only | `floor-2` to `floor-4` |
 
 Use the same settings for every line of one voice so they match. Type suite numbers the way they are said (two-seventeen, three-oh-five, four-twelve) so the voice does not read "two one seven".

@@ -24,7 +24,7 @@
    {
     "key": "reply-412",
     "text": "AI AuthoriTech is the right destination for AI strategy, automation, custom agents, and digital transformation. You'll find it in Suite 412 on Floor 4.",
-    "say": "AI Uhthora-tek is the right destination for AI strategy, automation, custom agents, and digital transformation. You'll find it in Suite four-twelve on Floor 4.",
+    "say": "A I Uh-thora-tek is the right destination for AI strategy, automation, custom agents, and digital transformation. You'll find it in Suite four-twelve on Floor 4.",
     "recorded": true
    },
    {
@@ -66,7 +66,7 @@
    {
     "key": "faq-contact",
     "text": "Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madamallure@gmail.com, Allure Fusions at allurefusionsfirm@gmail.com, or AI AuthoriTech at ai.authoritech@gmail.com.",
-    "say": "Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madam allure at gmail dot com, Allure Fusions at allure fusions firm at gmail dot com, or AI Uhthora-tek at A-I dot Uhthora-tek at gmail dot com.",
+    "say": "Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madam allure at gmail dot com, Allure Fusions at allure fusions firm at gmail dot com, or A I Uh-thora-tek at A I dot Uh-thora-tek at gmail dot com.",
     "recorded": true
    },
    {
@@ -78,7 +78,7 @@
    {
     "key": "faq-direct",
     "text": "Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3D printing and laser printing; and AI AuthoriTech on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up.",
-    "say": "Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3-D printing and laser printing; and AI Uhthora-tek on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up.",
+    "say": "Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3-D printing and laser printing; and A I Uh-thora-tek on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up.",
     "recorded": true
    },
    {
@@ -114,7 +114,7 @@
    {
     "key": "floor-4",
     "text": "Floor four. AI AuthoriTech.",
-    "say": "Floor four. AI Uhthora-tek.",
+    "say": "Floor four. A I Uh-thora-tek.",
     "recorded": true
    }
   ]
@@ -379,7 +379,7 @@
  },
  {
   "who": "Allure Fusions receptionist (Floor 3, Suite 305)",
-  "voice": "Maya - Receptionist & Customer Service (chosen Nov 27)",
+  "voice": "Bhee (Tanika, Nov 28; replaces Maya)",
   "lines": [
    {
     "key": "welcome-305",
@@ -613,12 +613,12 @@
  },
  {
   "who": "AI AuthoriTech receptionist (Floor 4, Suite 412)",
-  "voice": "Tiffany - Warm, Conversational Narrator (chosen Nov 27)",
+  "voice": "Tanika_Real, Tanika own voice (Nov 28; replaces Tiffany)",
   "lines": [
    {
     "key": "welcome-412",
     "text": "Welcome to AI AuthoriTech. Please check in.",
-    "say": "Welcome to AI Uhthora-tek. Please check in.",
+    "say": "Welcome to A I Uh-thora-tek. Please check in.",
     "recorded": true
    },
    {

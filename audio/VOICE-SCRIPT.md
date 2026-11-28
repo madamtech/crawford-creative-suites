@@ -15,16 +15,16 @@ Voice: Veda Sky (chosen). Speed 1.08, stability 50, similarity 75, style 0.
 | `greeting.mp3` | Welcome to Crawford Creative Suites. How may I direct you? | Welcome to Crawford Creative Suites. How may I direct you? | yes |
 | `reply-217.mp3` | Madam Allure is the perfect destination for beauty, fragrance, self-care, memorial creations, and personalized gifts. You'll find it in Suite 217 on Floor 2. | Madam Allure is the perfect destination for beauty, fragrance, self-care, memorial creations, and personalized gifts. You'll find it in Suite two-seventeen on Floor 2. | yes |
 | `reply-305.mp3` | Allure Fusions is the perfect destination. It is where bold design and beauty fuse. You'll find it in Suite 305 on Floor 3. | Allure Fusions is the perfect destination. It is where bold design and beauty fuse. You'll find it in Suite three-oh-five on Floor 3. | yes |
-| `reply-412.mp3` | AI AuthoriTech is the right destination for AI strategy, automation, custom agents, and digital transformation. You'll find it in Suite 412 on Floor 4. | AI Uhthora-tek is the right destination for AI strategy, automation, custom agents, and digital transformation. You'll find it in Suite four-twelve on Floor 4. | yes |
+| `reply-412.mp3` | AI AuthoriTech is the right destination for AI strategy, automation, custom agents, and digital transformation. You'll find it in Suite 412 on Floor 4. | A I Uh-thora-tek is the right destination for AI strategy, automation, custom agents, and digital transformation. You'll find it in Suite four-twelve on Floor 4. | yes |
 | `reply-unknown.mp3` | I couldn’t quite place that. Try the directory, or tell me what kind of business you need. | I couldn’t quite place that. Try the directory, or tell me what kind of business you need. | yes |
 | `faq-hello.mp3` | Hello, and welcome! Ask me about any of our three suites, or tell me what you are looking for. | Hello, and welcome! Ask me about any of our three suites, or tell me what you are looking for. | yes |
 | `faq-myorder.mp3` | You can follow every order and project in My Orders. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed. | You can follow every order and project in My Orders. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed. | yes |
 | `faq-owner.mp3` | All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant. | All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant. | yes |
 | `faq-visit.mp3` | Crawford Creative Suites is an online building, so there is no storefront to visit. You are welcome to explore all three suites right here. | Crawford Creative Suites is an online building, so there is no storefront to visit. You are welcome to explore all three suites right here. | yes |
 | `faq-hours.mp3` | The building is open online any time. Send a request whenever you like, and Tanika will reply by email. | The building is open online any time. Send a request whenever you like, and Tanika will reply by email. | yes |
-| `faq-contact.mp3` | Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madamallure@gmail.com, Allure Fusions at allurefusionsfirm@gmail.com, or AI AuthoriTech at ai.authoritech@gmail.com. | Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madam allure at gmail dot com, Allure Fusions at allure fusions firm at gmail dot com, or AI Uhthora-tek at A-I dot Uhthora-tek at gmail dot com. | yes |
+| `faq-contact.mp3` | Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madamallure@gmail.com, Allure Fusions at allurefusionsfirm@gmail.com, or AI AuthoriTech at ai.authoritech@gmail.com. | Choose a suite and send a request; it goes straight to that business. You can also email Madam Allure at madam allure at gmail dot com, Allure Fusions at allure fusions firm at gmail dot com, or A I Uh-thora-tek at A I dot Uh-thora-tek at gmail dot com. | yes |
 | `faq-prices.mp3` | Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one. | Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one. | yes |
-| `faq-direct.mp3` | Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3D printing and laser printing; and AI AuthoriTech on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up. | Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3-D printing and laser printing; and AI Uhthora-tek on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up. | yes |
+| `faq-direct.mp3` | Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3D printing and laser printing; and AI AuthoriTech on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up. | Each business handles that with you directly, so their receptionist can help. Madam Allure on Floor 2 offers beauty, fragrance, and gifts; Allure Fusions on Floor 3 offers 3-D printing and laser printing; and A I Uh-thora-tek on Floor 4 offers AI strategy and automation. Choose a suite on the board, and I will send you up. | yes |
 | `lobby-send-tail.mp3` | Tap below, and their receptionist will answer your question when you arrive. | Tap below, and their receptionist will answer your question when you arrive. | yes |
 
 ## Elevator
@@ -36,7 +36,7 @@ Voice: Blake Harlow (chosen Nov 27). Floor announcements only.
 | `floor-1.mp3` | Floor one. Main Lobby. | Floor one. Main Lobby. | yes |
 | `floor-2.mp3` | Floor two. Madam Allure. | Floor two. Madam Allure. | yes |
 | `floor-3.mp3` | Floor three. Allure Fusions. | Floor three. Allure Fusions. | yes |
-| `floor-4.mp3` | Floor four. AI AuthoriTech. | Floor four. AI Uhthora-tek. | yes |
+| `floor-4.mp3` | Floor four. AI AuthoriTech. | Floor four. A I Uh-thora-tek. | yes |
 
 ## Madam Allure receptionist (Floor 2, Suite 217)
 
@@ -89,7 +89,7 @@ Voice: Kai - Real AI Receptionist (chosen Nov 27)
 
 ## Allure Fusions receptionist (Floor 3, Suite 305)
 
-Voice: Maya - Receptionist & Customer Service (chosen Nov 27)
+Voice: Bhee (Tanika, Nov 28; replaces Maya)
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
@@ -134,11 +134,11 @@ Voice: Maya - Receptionist & Customer Service (chosen Nov 27)
 
 ## AI AuthoriTech receptionist (Floor 4, Suite 412)
 
-Voice: Tiffany - Warm, Conversational Narrator (chosen Nov 27)
+Voice: Tanika_Real, Tanika own voice (Nov 28; replaces Tiffany)
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
-| `welcome-412.mp3` | Welcome to AI AuthoriTech. Please check in. | Welcome to AI Uhthora-tek. Please check in. | yes |
+| `welcome-412.mp3` | Welcome to AI AuthoriTech. Please check in. | Welcome to A I Uh-thora-tek. Please check in. | yes |
 | `sent-412.mp3` | Your question came up from the lobby, and I have your answer right here. | Your question came up from the lobby, and I have your answer right here. | yes |
 | `lounge-clarity.mp3` | Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype. | Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype. | yes |
 | `r412-process.mp3` | It starts with a free 30-minute discovery call. You then get a written proposal with scope, timeline, and price, and work begins once you accept it. | It starts with a free 30-minute discovery call. You then get a written proposal with scope, timeline, and price, and work begins once you accept it. | yes |
