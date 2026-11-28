@@ -133,91 +133,91 @@
     "key": "welcome-217",
     "text": "Welcome to Madam Allure. Please check in.",
     "say": "Welcome to Madam Allure. Please check in.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "sent-217",
     "text": "Your question came up from the lobby, and I have your answer right here.",
     "say": "Your question came up from the lobby, and I have your answer right here.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "lounge-powder",
     "text": "Welcome to the Powder Room, a quiet place to explore beauty rituals, fragrance, and self-care.",
     "say": "Welcome to the Powder Room, a quiet place to explore beauty rituals, fragrance, and self-care.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-memorial-order",
     "text": "Tap Request a memorial piece in the catalog and share the names, dates, and colors. You will get a quote after review.",
     "say": "Tap Request a memorial piece in the catalog and share the names, dates, and colors. You will get a quote after review.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-how-buy",
     "text": "Open Browse products and pricing, then tap a product to buy it on the Madam Allure shop. Payment is handled there securely.",
     "say": "Open Browse products and pricing, then tap a product to buy it on the Madam Allure shop. Payment is handled there securely.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-hair-oil",
     "text": "Hair Growth Oil is $10 for 2 ounces, $18 for 4, $26 for 6, and $35 for 8 ounces.",
     "say": "Hair Growth Oil is $10 for 2 ounces, $18 for 4, $26 for 6, and $35 for 8 ounces.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-face",
     "text": "Facial serum is $8 for 2 ounces, $16 for 6, and $22 for 8. The hydrating facial serum is $9.",
     "say": "Facial serum is $8 for 2 ounces, $16 for 6, and $22 for 8. The hydrating facial serum is $9.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-shea",
     "text": "Whipped shea butter is $9 for 4 ounces, $15 for 6, $21 for 8, and $28 for 16, for skin and hair.",
     "say": "Whipped shea butter is $9 for 4 ounces, $15 for 6, $21 for 8, and $28 for 16, for skin and hair.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-home-scent",
     "text": "For the home there is room and linen spray from $8, and aroma beads for $5 in your choice of fragrance.",
     "say": "For the home there is room and linen spray from $8, and aroma beads for $5 in your choice of fragrance.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-custom-gift",
     "text": "Yes, Madam Allure makes custom and personalized gifts. Tap Request a custom gift in the catalog, and you will get a quote after review.",
     "say": "Yes, Madam Allure makes custom and personalized gifts. Tap Request a custom gift in the catalog, and you will get a quote after review.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-wine-glass",
     "text": "The blinged wine glass is $35, made with custom glitter and rhinestones and sealed with epoxy.",
     "say": "The blinged wine glass is $35, made with custom glitter and rhinestones and sealed with epoxy.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-deposit",
     "text": "Shop products are paid at checkout. Custom and memorial pieces are quoted first: $35 or less is paid in full, and larger orders start with a 60 percent deposit.",
     "say": "Shop products are paid at checkout. Custom and memorial pieces are quoted first: $35 or less is paid in full, and larger orders start with a 60 percent deposit.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-contact",
     "text": "Send a request here, or email Madam Allure at madamallure@gmail.com.",
     "say": "Send a request here, or email Madam Allure at madam allure at gmail dot com.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-memorial",
     "text": "Madam Allure creates memorial keepsakes: ribbons, plaques, fans, fan whiteboards, and towels. Allure Fusions can also make a memorial photo lamp from a favorite picture.",
     "say": "Madam Allure creates memorial keepsakes: ribbons, plaques, fans, fan whiteboards, and towels. Allure Fusions can also make a memorial photo lamp from a favorite picture.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-makeup",
     "text": "Tanika is a licensed cosmetologist and makeup artist. To ask about makeup or styling for an event, send a request to Madam Allure.",
     "say": "Tanika is a licensed cosmetologist and makeup artist. To ask about makeup or styling for an event, send a request to Madam Allure.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-gift-sets",
