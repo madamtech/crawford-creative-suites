@@ -733,7 +733,7 @@
     "key": "r412-privacy",
     "text": "Keep confidential or customer information out of AI tools unless your organization has approved them. We help set those rules as part of responsible AI planning.",
     "say": "Keep confidential or customer information out of AI tools unless your organization has approved them. We help set those rules as part of responsible AI planning.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-virtual",
@@ -811,7 +811,7 @@
     "key": "r412-nudge-1",
     "text": "Curious where AI fits your business? Your first 30-minute discovery consultation is free, and our price list shows every service.",
     "say": "Curious where AI fits your business? Your first 30-minute discovery consultation is free, and our price list shows every service.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-nudge-2",
