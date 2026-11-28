@@ -59,9 +59,14 @@ Personal or Texas Crafting Queens) and hands each to `public.wave_import_invoice
   the 60% deposit, otherwise no kind. A kind already used by another invoice of that order is never reused (no double invoicing).
 - **Stored:** number, amounts, due/invoice date, status, view/pay URL, business, customer name and email, PO number, items,
   `last_synced_at`. Payments on linked invoices are booked as `wave` payments; unlinked invoices only record status and paid.
-- **Safety:** DRAFT invoices are skipped. Only invoices created on or after Vault `wave_import_since`
-  (default 2026-11-28 00:00 CT) are imported, so older real invoices are not pulled in. Older ones are counted in the
-  poll result (`old`). Change the Vault value to backfill.
+- **Safety:** DRAFT invoices are skipped. Cutoff is per business (Vault `wave_import_since` may be a date or JSON
+  `{"default":"2026-11-28T00:00:00-06:00","madam_allure":"2021-01-25T00:00:00-06:00"}`).
+  Defaults: Madam Allure **2021-01-25 00:00 CT** (covers the 26 older real invoices, earliest created 2:56 PM CT that day);
+  Allure Fusions Firm and AI AuthoriTech stay **2026-11-28 00:00 CT**.
+- **Historical / past clients:** invoices created in Wave before 2026-11-28 are flagged `historical`. They are never
+  auto-linked by email, and never by PO number onto a TEST portal record. They are stored unlinked unless a non-test
+  order number matches the PO. Paid historical invoices do not create Needs attention or `invoice.ready` events.
+  The Admin Office Invoices tab has a **Past clients only** filter.
 - The app's own invoices (created by `wave-invoice`) are recognised by Wave id and only get their details refreshed.
 
 ## Portal

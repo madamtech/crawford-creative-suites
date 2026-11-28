@@ -166,6 +166,7 @@ function invoiceBox(list, showBiz) {
         h('span', { class: 'n', text: `Invoice #${i.invoice_number || ''}` }),
         i.kind ? h('small', { text: ` · ${INV_KIND[i.kind]}` }) : '',
         showBiz ? h('small', { text: ` · ${BUSINESS[i.business] || ''}` }) : '',
+        i.historical ? h('small', { class: 'ccs-past', text: ' · Past' }) : '',
         i.test ? h('small', { class: 'ccs-test', text: ' · TEST' }) : '',
         h('div', { class: 'ccs-meta', text: [money(i.amount), INV_STATE[i.status] || i.status, !invPaid(i) && owed && Number(i.amount_paid) > 0 ? `${money(owed)} left` : '', i.due_date && !invPaid(i) ? `due ${day(i.due_date)}` : ''].filter(Boolean).join(' · ') })),
       h('a', { class: invPaid(i) ? 'ccs-btn' : 'ccs-btn ccs-primary', href: i.view_url, target: '_blank', rel: 'noopener', text: invPaid(i) ? 'View receipt' : 'View & pay' })));
@@ -249,7 +250,7 @@ function linksBox() {
 }
 
 // ---------- Admin Office ----------
-let adminState = { tab: 'overview', status: '', q: '', iq: '', ibiz: '', iunmatched: false };
+let adminState = { tab: 'overview', status: '', q: '', iq: '', ibiz: '', iunmatched: false, ipast: false };
 async function showAdmin(flash) {
   // Already in the Admin Office (changing tabs, Refresh)? Keep the current page on screen
   // until the new one is ready, instead of flashing "Loading…".
@@ -273,7 +274,7 @@ async function showAdmin(flash) {
   try { att = (await api.rpc('admin_attention')) || []; } catch { /* older database: no attention list yet */ }
   try { inv = (await api.rpc('admin_invoices')) || inv; } catch { /* older database: no invoices yet */ }
   const tabs = [['overview', att.length ? `Overview (${att.length})` : 'Overview'], ['allure_fusions', 'Allure Fusions'], ['ai_authoritech', 'AI AuthoriTech'], ['madam_allure', 'Madam Allure Orders'],
-    ['invoices', inv.unmatched ? `Invoices (${inv.unmatched} to link)` : 'Invoices'], ['leads', 'Leads']];
+    ['invoices', inv.unmatched ? `Invoices (${inv.unmatched} to link)` : (inv.historical ? `Invoices (${inv.historical} past)` : 'Invoices')], ['leads', 'Leads']];
   const nav = h('nav', { class: 'ccs-tabs', role: 'tablist' }, tabs.map(([k, label]) => h('button', {
     type: 'button', role: 'tab', 'aria-selected': String(adminState.tab === k), onclick: () => { adminState.tab = k; adminState.status = ''; showAdmin(); }, text: label })));
   const top = h('div', { class: 'ccs-bar' }, h('button', { type: 'button', onclick: () => showProjects(), text: '← My Orders' }),
@@ -326,9 +327,12 @@ function invoicesAdmin(rows, projects) {
   const biz = h('select', { onchange: (e) => { adminState.ibiz = e.target.value; render(); } }, h('option', { value: '', text: 'All businesses' }),
     Object.entries(BUSINESS).map(([k, v]) => h('option', { value: k, text: v, selected: adminState.ibiz === k ? 'selected' : null })));
   const un = h('input', { type: 'checkbox', checked: adminState.iunmatched ? 'checked' : null, onchange: (e) => { adminState.iunmatched = e.target.checked; render(); } });
+  const past = h('input', { type: 'checkbox', checked: adminState.ipast ? 'checked' : null, onchange: (e) => { adminState.ipast = e.target.checked; render(); } });
   const q = h('input', { type: 'search', value: adminState.iq, placeholder: 'Invoice #, customer or order', oninput: (e) => { adminState.iq = e.target.value; render(); } });
   wrap.append(h('div', { class: 'ccs-filter' }, h('label', {}, 'Business', biz), h('label', {}, 'Search', q)),
-    h('label', { class: 'ccs-check' }, un, ' Unmatched only (not linked to an order)'));
+    h('div', { class: 'ccs-checks' },
+      h('label', { class: 'ccs-check' }, un, ' Unmatched only (current invoices not linked to an order)'),
+      h('label', { class: 'ccs-check' }, past, ' Past clients only (older Wave invoices)')));
   const list = h('div', { class: 'ccs-rows' });
   wrap.append(list);
   function linkForm(i) {
@@ -349,12 +353,12 @@ function invoicesAdmin(rows, projects) {
     const d = h('details', { class: 'ccs-row', style: `--biz:${ACCENT[i.business]}` });
     d.append(h('summary', {},
       h('span', { class: 'n', text: `#${i.invoice_number || ''}` }), h('span', { class: 'who', text: i.customer_name || i.customer_email || '(no customer)' }),
-      h('span', { class: 'what', text: linked ? `${i.order_number}${i.kind ? ` · ${INV_KIND[i.kind]}` : ''}` : 'Not linked to an order' }),
+      h('span', { class: 'what', text: linked ? `${i.order_number}${i.kind ? ` · ${INV_KIND[i.kind]}` : ''}` : (i.historical ? 'Past client · not linked' : 'Not linked to an order') }),
       h('span', { class: 'ccs-pill', 'data-status': linked ? 'Active' : 'New Request', text: INV_STATE[i.status] || i.status || '' }),
       h('span', { class: 'm', text: `${money(i.amount_paid) || '$0'} of ${money(i.amount)}` }), h('span', { class: 'due', text: i.due_date ? day(i.due_date) : '' })));
     const det = h('div', { class: 'ccs-detail' },
       h('p', { class: 'ccs-meta', text: [BUSINESS[i.business], i.customer_email, i.po_number ? `PO ${i.po_number}` : '', i.imported ? 'found in Wave' : 'created here',
-        linked ? `linked by ${String(i.matched_by || '').replace('_', ' ')}` : '', i.test ? 'TEST' : ''].filter(Boolean).join(' · ') }),
+        linked ? `linked by ${String(i.matched_by || '').replace('_', ' ')}` : '', i.historical ? 'past client' : '', i.test ? 'TEST' : ''].filter(Boolean).join(' · ') }),
       i.items_summary ? h('p', { class: 'ccs-details', text: i.items_summary }) : '',
       i.last_error ? note(i.last_error, 'err') : '',
       h('div', { class: 'ccs-actions' }, h('a', { class: 'ccs-btn', href: i.view_url, target: '_blank', rel: 'noopener', text: 'Open in Wave ↗' })));
@@ -370,7 +374,9 @@ function invoicesAdmin(rows, projects) {
   }
   function render() {
     const t = adminState.iq.toLowerCase();
-    const shown = rows.filter((i) => (!adminState.ibiz || i.business === adminState.ibiz) && (!adminState.iunmatched || !i.entity_id)
+    const shown = rows.filter((i) => (!adminState.ibiz || i.business === adminState.ibiz)
+      && (!adminState.iunmatched || (!i.entity_id && !i.historical))
+      && (!adminState.ipast || i.historical)
       && (!t || [i.invoice_number, i.customer_name, i.customer_email, i.order_number, i.po_number].some((x) => String(x || '').toLowerCase().includes(t))));
     list.replaceChildren(...(shown.length ? shown.map(row) : [note(rows.length ? 'No invoices match.' : 'No invoices yet. Invoices created in Wave appear here within 15 minutes.')]));
   }

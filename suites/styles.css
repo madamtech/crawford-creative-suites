@@ -748,3 +748,6 @@ body[data-portal-open]{overflow:hidden}
 .ccs-linkform{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
 .ccs-linkform input{flex:1 1 180px;color:#fff;box-sizing:border-box;font:15px Lora,Georgia,serif;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.28);padding:.55rem .65rem}
 @media (max-width:620px){.ccs-invoice,.ccs-attn{flex-direction:column;align-items:flex-start}}
+.ccs-past{color:#aef0ea;font:700 .62rem Arial,Helvetica,sans-serif;letter-spacing:.06em}
+.ccs-checks{display:flex;flex-wrap:wrap;gap:.2rem 1.2rem;margin:.2rem 0 .8rem}
+.ccs-checks .ccs-check{margin:0}

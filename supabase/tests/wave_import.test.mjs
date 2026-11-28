@@ -158,3 +158,46 @@ test('the new functions are not open to browsers', async () => {
   const rows = await db.as('authenticated', { email: 'admin@example.test' }, async (t) => (await t.query('select public.admin_attention() as r')).rows[0].r);
   assert.ok(Array.isArray(rows) && rows.length > 0);
 });
+
+test('historical invoices parse comma amounts, stay unlinked from TEST orders, and stay quiet when paid', async () => {
+  // A TEST order with the same email as a real past invoice must never receive it.
+  await one(`insert into public.madam_allure_orders (name, email, amount, status, source, is_test, items)
+    values ('TEST bait', 'past.client@example.test', 32, 'Quoted', 'website', true, '[{"name":"x"}]') returning id`);
+  const beforeA = (await one(`select count(*)::int n from public.event_outbox where event_type = 'attention.needed'`)).n;
+  const beforeR = (await one(`select count(*)::int n from public.event_outbox where event_type = 'invoice.ready'`)).n;
+  const r = (await one('select public.wave_import_invoice($1) as r', [JSON.stringify({
+    business: 'madam_allure', wave_invoice_id: 'wv-hist-1', number: '8', view_url: 'https://next.waveapps.com/x/8',
+    status: 'PAID', total: '1,750.00', customer_name: 'Past Client', customer_email: 'past.client@example.test',
+    due_date: '2021-04-02', invoice_date: '2021-03-19', created_at: '2021-04-02T18:44:21.846Z',
+    last_sent_at: '2021-04-02T19:00:00Z', items_summary: 'Past order', test_mode: true,
+  })])).r;
+  assert.equal(r.action, 'imported');
+  assert.equal(r.linked, false);
+  assert.equal(r.historical, true);
+  const row = await one(`select amount, historical, test_mode, entity_id, wave_status from public.wave_invoices where wave_invoice_id = 'wv-hist-1'`);
+  assert.equal(Number(row.amount), 1750);
+  assert.equal(row.historical, true);
+  assert.equal(row.test_mode, false);
+  assert.equal(row.entity_id, null);
+  const item = await one(`select resolved_at is not null as cleared, missing from public.needs_attention where invoice_id = $1`, [r.id]);
+  assert.equal(item == null || item.cleared === true || (item.missing || []).length === 0, true);
+  assert.equal((await one(`select count(*)::int n from public.event_outbox where event_type = 'attention.needed'`)).n, beforeA);
+  assert.equal((await one(`select count(*)::int n from public.event_outbox where event_type = 'invoice.ready'`)).n, beforeR);
+});
+
+test('an unpaid historical invoice can still be flagged, but is not auto-linked by email', async () => {
+  await one(`insert into public.madam_allure_orders (name, email, amount, status, source, is_test, items)
+    values ('TEST bait 2', 'overdue.client@example.test', 200, 'Quoted', 'website', true, '[{"name":"x"}]') returning id`);
+  const r = (await one('select public.wave_import_invoice($1) as r', [JSON.stringify({
+    business: 'madam_allure', wave_invoice_id: 'wv-hist-overdue', number: '2180', view_url: 'https://next.waveapps.com/x/2180',
+    status: 'OVERDUE', total: '270.63', customer_name: 'Past Due Client', customer_email: 'overdue.client@example.test',
+    due_date: '2026-10-03', invoice_date: '2026-10-03', created_at: '2026-10-13T16:37:25.789Z',
+    last_sent_at: '2026-10-13T17:00:00Z', items_summary: 'Unpaid past invoice', test_mode: true,
+  })])).r;
+  assert.equal(r.linked, false);
+  assert.equal(r.historical, true);
+  const item = await one(`select message, resolved_at, missing from public.needs_attention where invoice_id = $1`, [r.id]);
+  assert.equal(item.resolved_at, null);
+  assert.ok(item.missing.includes('linked_order'));
+  assert.match(item.message, /Invoice #2180 for Madam Allure came in\. Missing: a linked order\./);
+});
