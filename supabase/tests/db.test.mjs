@@ -178,3 +178,78 @@ test('size limit: files over 25 MB are refused', async () => {
   const [{ id }] = await rows(`select id from public.orders where order_number = 'AFF-0003'`);
   await assert.rejects(asService(`select public.register_intake_files($1::jsonb)`, [JSON.stringify({ id, files: [{ path: 'orders/AFF-0003/99998888-big.stl', original_name: 'big.stl', size_bytes: 26214401 }] })]), /check constraint/);
 });
+
+test('quote images: admin attaches drafts, the owner sees them only after the quote is sent, nobody else ever', async () => {
+  const put = (claims, name, bucket = 'quote-images') => asUser(claims, `insert into storage.objects (bucket_id, name, owner) values ($1, $2, $3) returning name`, [bucket, name, claims.sub]);
+  const add = (claims, path, version = 1) => asUser(claims, `select public.admin_add_quote_image($1, 'mockup.png', 'image/png', 2048, $2)`, [path, version]);
+  const [{ id: orderId }] = await rows(`select id from public.orders where order_number = 'AFF-0002'`);
+
+  // customers cannot upload, admin can; only images and PDF; only into a real record folder
+  await assert.rejects(put(jordan, 'orders/AFF-0002/aa11bb22-mock.png'), /row-level security/);
+  await assert.rejects(put(admin, 'orders/AFF-0002/aa11bb22-run.exe'), /row-level security/);
+  await assert.rejects(put(admin, 'orders/AFF-9999/aa11bb22-mock.png'), /row-level security/);
+  await put(admin, 'orders/AFF-0002/aa11bb22-mock.png');
+  await put(admin, 'orders/AFF-0002/cc33dd44-mock2.webp');
+  await put(admin, 'orders/AFF-0004/ee55ff66-other.pdf');
+
+  // registering needs admin
+  await assert.rejects(add(jordan, 'orders/AFF-0002/aa11bb22-mock.png'), /admin only/);
+  await add(admin, 'orders/AFF-0002/aa11bb22-mock.png');
+  await add(admin, 'orders/AFF-0002/cc33dd44-mock2.webp');
+  await add(admin, 'orders/AFF-0004/ee55ff66-other.pdf');
+  await assert.rejects(add(admin, 'orders/AFF-0002/zz99-not-uploaded.png'), /file not uploaded/);
+
+  // draft: invisible to the owner (rows and files), visible to admin
+  const draftRows = await asUser(jordan, `select count(*)::int n from public.quote_images`);
+  assert.equal(draftRows[0].n, 0);
+  assert.equal((await asUser(jordan, `select name from storage.objects where bucket_id = 'quote-images'`)).length, 0);
+  const [{ q: adminView }] = await asUser(admin, `select public.quote_images_for('order', $1) q`, [orderId]);
+  assert.equal(adminView[0].sent, false);
+  assert.equal(adminView[0].images.length, 2);
+
+  // admin can remove a draft; the path comes back so the browser can delete the file too
+  await put(admin, 'orders/AFF-0004/99aa00bb-draft.pdf');
+  const extra = await asUser(admin, `select public.admin_add_quote_image('orders/AFF-0004/99aa00bb-draft.pdf', 'x', 'application/pdf', 1, 2) r`);
+  assert.equal(extra[0].r.ok, true);
+  const [{ id: extraId }] = await asUser(admin, `select id from public.quote_images where quote_version = 2`);
+  await assert.rejects(asUser(jordan, `select public.admin_remove_quote_image($1)`, [extraId]), /admin only/);
+  const [{ r: removed }] = await asUser(admin, `select public.admin_remove_quote_image($1) r`, [extraId]);
+  assert.equal(removed.path, 'orders/AFF-0004/99aa00bb-draft.pdf');
+  assert.equal((await asUser(admin, `select count(*)::int n from public.quote_images where quote_version = 2`))[0].n, 0);
+
+  // send: the owner sees exactly her own sent images
+  await assert.rejects(asUser(jordan, `select public.admin_release_quote_images('order', $1, 1)`, [orderId]), /admin only/);
+  const [{ r: sent }] = await asUser(admin, `select public.admin_release_quote_images('order', $1, 1) r`, [orderId]);
+  assert.equal(sent.released, 2);
+  const [{ q: custView }] = await asUser(jordan, `select public.quote_images_for('order', $1) q`, [orderId]);
+  assert.equal(custView.length, 1);
+  assert.equal(custView[0].sent, true);
+  assert.deepEqual(custView[0].images.map((i) => i.name), ['mockup.png', 'mockup.png']);
+  const files = await asUser(jordan, `select name from storage.objects where bucket_id = 'quote-images' order by name`);
+  assert.deepEqual(files.map((f) => f.name), ['orders/AFF-0002/aa11bb22-mock.png', 'orders/AFF-0002/cc33dd44-mock2.webp']);
+
+  // another customer sees nothing of it, even though that order's own draft exists
+  assert.equal((await asUser(riley, `select count(*)::int n from public.quote_images`))[0].n, 0);
+  assert.equal((await asUser(riley, `select name from storage.objects where bucket_id = 'quote-images'`)).length, 0);
+  assert.deepEqual((await asUser(riley, `select public.quote_images_for('order', $1) q`, [orderId]))[0].q, []);
+  // customers cannot delete or change anything
+  assert.equal((await asUser(jordan, `delete from storage.objects where bucket_id = 'quote-images' returning name`)).length, 0);
+  await assert.rejects(asUser(jordan, `delete from public.quote_images`), /permission denied/);
+  await assert.rejects(asAnon(`select * from public.quote_images`), /permission denied/);
+
+  // a sent version is frozen: no adds, no removes; a new version starts fresh
+  await put(admin, 'orders/AFF-0002/77778888-late.jpg');
+  await assert.rejects(add(admin, 'orders/AFF-0002/77778888-late.jpg', 1), /already sent/);
+  const [{ id: firstId }] = await asUser(admin, `select id from public.quote_images where path = 'orders/AFF-0002/aa11bb22-mock.png'`);
+  await assert.rejects(asUser(admin, `select public.admin_remove_quote_image($1)`, [firstId]), /already sent/);
+  await add(admin, 'orders/AFF-0002/77778888-late.jpg', 2);
+  const [{ q: afterV2 }] = await asUser(jordan, `select public.quote_images_for('order', $1) q`, [orderId]);
+  assert.equal(afterV2.length, 1, 'draft v2 stays hidden from the customer');
+  const [{ q: adminV2 }] = await asUser(admin, `select public.quote_images_for('order', $1) q`, [orderId]);
+  assert.deepEqual(adminV2.map((v) => [v.version, v.sent]), [[1, true], [2, false]]);
+
+  // bucket settings
+  const [bucket] = await rows(`select public, file_size_limit from storage.buckets where id = 'quote-images'`);
+  assert.equal(bucket.public, false);
+  assert.equal(Number(bucket.file_size_limit), 10485760);
+});

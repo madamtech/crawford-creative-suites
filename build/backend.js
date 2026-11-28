@@ -158,6 +158,53 @@ export async function downloadUrl(path) {
   return `${base()}/storage/v1${b.signedURL}${download}`;
 }
 
+// ---------- quote images (private bucket "quote-images") ----------
+// Admin attaches mock-ups to a quote; the customer sees them only after the quote is sent.
+export const QUOTE_IMAGE_TYPES = '.jpg,.jpeg,.png,.webp,.heic,.heif,.pdf';
+export const QUOTE_IMAGE_MAX = 10 * 1024 * 1024;
+const QUOTE_MIME = { jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', webp: 'image/webp', heic: 'image/heic', heif: 'image/heif', pdf: 'application/pdf' };
+const quoteMime = (file) => QUOTE_MIME[String(file.name).toLowerCase().split('.').pop()];
+export function checkQuoteImage(file) {
+  if (!quoteMime(file)) return `${file.name} is not a JPG, PNG, WEBP, HEIC or PDF file.`;
+  if (file.size > QUOTE_IMAGE_MAX) return `${file.name} is larger than 10 MB.`;
+  if (!file.size) return `${file.name} is empty.`;
+  return null;
+}
+const encodePath = (path) => path.split('/').map(encodeURIComponent).join('/');
+
+// Admin: upload into the record's folder, then register it on quote version `version`.
+export async function uploadQuoteImage(folderPath, file, version) {
+  const safe = file.name.normalize('NFKD').replace(/[^\w.\- ]+/g, '').replace(/\s+/g, '-').slice(-80) || 'file';
+  const path = `${folderPath}/${crypto.randomUUID().replace(/-/g, '').slice(0, 8)}-${safe}`;
+  const t = await accessToken();
+  const res = await fetch(`${base()}/storage/v1/object/quote-images/${encodePath(path)}`, {
+    method: 'POST', headers: { apikey: cfg().anonKey, Authorization: `Bearer ${t}`, 'Content-Type': quoteMime(file), 'x-upsert': 'false' }, body: file,
+  });
+  await parse(res);
+  await rpc('admin_add_quote_image', { p_path: path, p_name: file.name, p_type: quoteMime(file), p_size: file.size, p_version: version });
+  return path;
+}
+
+// Admin: remove a draft image (database row first, then the file).
+export async function removeQuoteImage(id) {
+  const r = await rpc('admin_remove_quote_image', { p_id: id });
+  if (r?.path) {
+    const t = await accessToken();
+    await fetch(`${base()}/storage/v1/object/quote-images/${encodePath(r.path)}`, { method: 'DELETE', headers: { apikey: cfg().anonKey, Authorization: `Bearer ${t}` } }).catch(() => {});
+  }
+}
+
+// Short-lived private link (1 hour, long enough to look at a page of thumbnails).
+export async function quoteImageUrl(path) {
+  const t = await accessToken();
+  const res = await fetch(`${base()}/storage/v1/object/sign/quote-images/${encodePath(path)}`, {
+    method: 'POST', headers: { apikey: cfg().anonKey, Authorization: `Bearer ${t}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ expiresIn: 3600 }),
+  });
+  const b = await parse(res);
+  return `${base()}/storage/v1${b.signedURL}`;
+}
+
 // ---------- spam check ----------
 let turnstileLoad;
 export async function turnstileToken() {

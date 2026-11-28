@@ -167,7 +167,7 @@ function projectCard(p) {
     card.append(h('details', { class: 'ccs-history' }, h('summary', { text: 'History' }),
       h('ol', {}, p.events.map((e) => h('li', {}, h('span', { text: when(e.at) }), ` ${e.field === 'paid' ? 'Payment' : 'Status'}: ${e.field === 'paid' ? PAID[e.new] || e.new : e.new}`)))));
   }
-  card.append(filesBox(p, false));
+  card.append(quoteGallery(p), filesBox(p, false));
   return card;
 }
 
@@ -209,6 +209,141 @@ function filesBox(p, admin) {
     input.value = '';
   };
   box.append(list, h('label', { class: 'ccs-upload' }, 'Add a file (JPG, PNG, PDF, SVG, DXF, STL or 3MF, up to 25 MB)', input), status);
+  return box;
+}
+
+// ---------- quote images ----------
+const fileSize = (n) => (n >= 1048576 ? `${(n / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} KB`);
+const isPdf = (name) => /\.pdf$/i.test(name || '');
+
+// One thumbnail: an <img> for pictures, a labelled tile for PDFs, and the file name when the browser
+// cannot draw the picture (HEIC outside Safari). `src` is a promise of a URL or a ready URL.
+function thumb(name, src, { href, onRemove } = {}) {
+  const tile = h('figure', { class: 'ccs-thumb' });
+  const fallback = () => tile.querySelector('.ccs-thumb-img')?.replaceWith(h('span', { class: 'ccs-thumb-file', text: isPdf(name) ? 'PDF' : 'No preview' }));
+  const media = isPdf(name) ? h('span', { class: 'ccs-thumb-file', text: 'PDF' }) : h('img', { class: 'ccs-thumb-img', alt: name, loading: 'lazy' });
+  if (media.tagName === 'IMG') { media.addEventListener('error', fallback); Promise.resolve(src).then((u) => { media.src = u; }).catch(fallback); }
+  const open = h('a', { class: 'ccs-thumb-open', target: '_blank', rel: 'noopener', 'aria-label': `Open ${name}` }, media);
+  if (href) Promise.resolve(href).then((u) => open.setAttribute('href', u)).catch(() => {});
+  tile.append(open, h('figcaption', { text: name }));
+  if (onRemove) tile.append(h('button', { type: 'button', class: 'ccs-thumb-x', 'aria-label': `Remove ${name}`, onclick: onRemove, text: '×' }));
+  return tile;
+}
+
+// Customer, My Projects: the pictures that came with the quote, shown above the approve step.
+// Nothing shows until the quote (and its images) was sent; any error just hides the box.
+function quoteGallery(p) {
+  const box = h('div', { class: 'ccs-qgallery', hidden: true });
+  if (p.kind === 'shop') return box;
+  api.rpc('quote_images_for', { p_entity_type: p.entity_type, p_entity_id: p.id }).then((versions) => {
+    const sent = (versions || []).filter((v) => v.sent && v.images.length);
+    const v = sent[sent.length - 1];
+    if (!v) return;
+    box.append(h('strong', { text: sent.length > 1 ? `Your quote: mock-up (version ${v.version})` : 'Your quote: mock-up' }),
+      h('div', { class: 'ccs-thumbs' }, v.images.map((i) => {
+        const url = api.quoteImageUrl(i.path);
+        url.catch(() => {});
+        return thumb(i.name, url, { href: url });
+      })),
+      // Placeholder: the real Approve / Request changes step is built with the quote-approval work.
+      h('div', { class: 'ccs-quote-approve', 'data-quote-approve': p.number },
+        h('button', { type: 'button', class: 'ccs-primary', disabled: true, text: 'Approve this quote' }),
+        h('small', { text: 'Online approval is coming soon. For now, reply to your quote email to approve it or ask for changes.' })));
+    box.hidden = false;
+  }).catch(() => {});
+  return box;
+}
+
+// Admin Office: attach mock-ups and other visuals to a quote before sending it.
+function quoteImagesBox(p) {
+  const box = h('div', { class: 'ccs-qimg' });
+  if (p.kind === 'shop') return box;   // Ueni shop orders have no custom quote
+  const folder = `${FOLDER[p.entity_type]}/${p.number}`;
+  let versions = [], version = 1, staged = [];
+  const stage = h('div', { class: 'ccs-thumbs' });
+  const msgs = h('div', { 'aria-live': 'polite' });
+  const body = h('div');
+  const input = h('input', { type: 'file', accept: api.QUOTE_IMAGE_TYPES, multiple: true, 'aria-label': `Choose quote images for ${p.number}` });
+  const current = () => versions.find((v) => v.version === version);
+  const latest = () => Math.max(1, ...versions.map((v) => v.version));
+
+  async function load() {
+    try { versions = await api.rpc('quote_images_for', { p_entity_type: p.entity_type, p_entity_id: p.id }); }
+    catch (err) { body.replaceChildren(note(err.message, 'err')); return; }
+    render();
+  }
+
+  function renderStage() {
+    stage.replaceChildren(...staged.map((f) => thumb(f.name, URL.createObjectURL(f), { onRemove: () => { staged = staged.filter((x) => x !== f); renderStage(); } })));
+    attach.hidden = !staged.length;
+    attach.textContent = `Attach ${staged.length} file${staged.length === 1 ? '' : 's'} to version ${version}`;
+  }
+
+  const attach = h('button', { type: 'button', class: 'ccs-primary', hidden: true, onclick: async () => {
+    busy(attach, true);
+    const todo = staged.slice();
+    for (const file of todo) {
+      const line = note(`Uploading ${file.name}…`);
+      msgs.append(line);
+      try { await api.uploadQuoteImage(folder, file, version); staged = staged.filter((x) => x !== file); line.remove(); }
+      catch (err) { line.textContent = `${file.name}: ${err.message}`; line.className = 'ccs-note err'; }
+    }
+    attach.disabled = false;
+    await load();
+    renderStage();
+  } });
+
+  input.onchange = () => {
+    for (const file of input.files) {
+      const bad = api.checkQuoteImage(file);
+      if (bad) msgs.append(note(bad, 'err'));
+      else if (!staged.some((x) => x.name === file.name && x.size === file.size)) staged.push(file);
+    }
+    input.value = '';
+    renderStage();
+  };
+
+  function render() {
+    version = Math.min(version, latest());
+    const cur = current();
+    const sent = !!cur?.sent;
+    const parts = [];
+    if (versions.length || version > 1) {
+      parts.push(h('div', { class: 'ccs-versions' },
+        ...[...new Set([...versions.map((v) => v.version), version])].sort((a, b) => a - b).map((n) => h('button', { type: 'button', 'aria-pressed': String(n === version),
+          onclick: () => { version = n; staged = []; renderStage(); render(); }, text: `Version ${n}${versions.find((v) => v.version === n)?.sent ? ' (sent)' : ''}` }))));
+    }
+    if (cur?.images.length) {
+      parts.push(h('div', { class: 'ccs-thumbs' }, cur.images.map((i) => {
+        const url = api.quoteImageUrl(i.path);
+        url.catch(() => {});
+        return thumb(i.name, url, { href: url, onRemove: sent ? null : async () => {
+          try { await api.removeQuoteImage(i.id); await load(); } catch (err) { msgs.append(note(err.message, 'err')); }
+        } });
+      })));
+    }
+    if (sent) {
+      parts.push(note(`Version ${version} was sent ${day(cur.sent_at)}. The customer can see these images. To change them, start a new version.`, 'ok'),
+        h('button', { type: 'button', onclick: () => { version = latest() + 1; staged = []; render(); renderStage(); }, text: `Start version ${latest() + 1}` }));
+    } else {
+      parts.push(h('label', { class: 'ccs-upload' }, 'Add mock-up images (JPG, PNG, WEBP, HEIC or PDF, up to 10 MB each)', input), stage, attach);
+      if (cur?.images.length) {
+        parts.push(h('div', { class: 'ccs-actions' }, h('button', { type: 'button', class: 'ccs-primary', onclick: async (e) => {
+          if (!confirm(`Show these ${cur.images.length} image(s) to ${p.name} with the quote? After this, version ${version} cannot be changed.`)) return;
+          busy(e.target, true);
+          try { await api.rpc('admin_release_quote_images', { p_entity_type: p.entity_type, p_entity_id: p.id, p_version: version }); await load(); }
+          catch (err) { busy(e.target, false); msgs.append(note(err.message, 'err')); }
+        }, text: 'Show to customer with the quote' })));
+      }
+    }
+    body.replaceChildren(...parts);
+    renderStage();
+  }
+
+  box.append(h('h4', { text: 'Quote images' }),
+    h('p', { class: 'ccs-meta', text: 'Attach mock-ups or other visuals before you send the quote. The customer cannot see them until you choose "Show to customer".' }),
+    body, msgs);
+  load();
   return box;
 }
 
@@ -354,7 +489,7 @@ function adminDetail(p) {
   } });
   const hist = p.events?.length ? h('details', { class: 'ccs-history' }, h('summary', { text: 'Change history' }),
     h('ol', {}, p.events.map((ev) => h('li', {}, h('span', { text: when(ev.at) }), ` ${ev.field}: ${ev.old ?? '(blank)'} → ${ev.new ?? '(blank)'} `, h('small', { text: ev.by || '' }))))) : '';
-  wrap.append(contact, fields, form, h('h4', { text: 'Payments' }), payForm, filesBox(p, true), hist, h('div', { class: 'ccs-actions' }, member));
+  wrap.append(contact, fields, form, quoteImagesBox(p), h('h4', { text: 'Payments' }), payForm, filesBox(p, true), hist, h('div', { class: 'ccs-actions' }, member));
   return wrap;
 }
 
