@@ -2,3 +2,4 @@ node_modules/
 build/app.patched.js
 .claude/
 .tmp/
+audio-review/

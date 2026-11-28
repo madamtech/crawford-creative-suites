@@ -1,0 +1,16 @@
+{
+  "name": "Crawford Creative Suites Morning",
+  "short_name": "CCS Morning",
+  "description": "Morning dashboard across Madam Allure and Allure Fusions.",
+  "id": "./morning-dashboard.html",
+  "start_url": "./morning-dashboard.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0C0D0F",
+  "theme_color": "#0C0D0F",
+  "icons": [
+    { "src": "icons/cs-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/cs-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/cs-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

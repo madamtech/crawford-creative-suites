@@ -1,0 +1,15 @@
+{
+  "name": "AI AuthoriTech Portal",
+  "short_name": "AuthoriTech",
+  "description": "Owner portal for AI AuthoriTech consulting and the Skool community launch.",
+  "id": "./ai-authoritech-portal.html",
+  "start_url": "./ai-authoritech-portal.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0C0D0F",
+  "theme_color": "#0C0D0F",
+  "icons": [
+    { "src": "icons/at-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/at-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

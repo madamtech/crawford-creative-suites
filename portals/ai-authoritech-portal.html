@@ -1,0 +1,1049 @@
+<!doctype html>
+<html lang="en"><head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI AuthoriTech Portal</title>
+<meta name="theme-color" content="#0C0D0F">
+<link rel="icon" href="icons/at-192.png">
+<link rel="apple-touch-icon" href="icons/at-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italianno&family=Lora:ital,wght@0,500;0,600;1,500;1,600;1,700&family=Crimson+Pro:ital,wght@1,600&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+body{margin:0}[hidden]{display:none!important}
+/* Layout: owner portal. Brand bar + tab strip, one view at a time. Dark-first with teal glow trim and rose-gold display type.
+   Brand: teal, taupe, metallic rose gold, sapphire blue, black, white. */
+:root{
+  --bg:#0C0D0F; --surface:#16171A; --surface-2:#1F1E20; --line:#35312E;
+  --ink:#F5F2EF; --muted:#B2A89E;
+  --teal:#2FC4BA; --teal-soft:#10302E;
+  --rose:#E5AC98; --rose-soft:#3A2622;
+  --taupe:#CDBBA8; --taupe-soft:#2D2824;
+  --sapphire:#7FA2FF; --sapphire-soft:#19244A;
+  --red:#FF7A7A; --red-soft:#3D1C1C;
+  --amber:#F2B84B; --amber-soft:#3A2D13;
+  --green:#5FD39A; --green-soft:#133224;
+  --rosegold:linear-gradient(120deg,#B76E79 0%,#E8C2B0 40%,#F3D9CC 52%,#C98B7F 75%,#B76E79 100%);
+  --glow:1;
+  --f-script:"Great Vibes", "Segoe Script", "Brush Script MT", cursive;
+  --f-display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --f-body:"Inter", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#FAF8F6; --surface:#FFFFFF; --surface-2:#F1ECE7; --line:#DDD3CA;
+  --ink:#141518; --muted:#6B6157;
+  --teal:#0D857D; --teal-soft:#DCF0EE;
+  --rose:#A4614F; --rose-soft:#F6E5DE;
+  --taupe:#7A6656; --taupe-soft:#EFE7DF;
+  --sapphire:#1F4FB8; --sapphire-soft:#E1E9FA;
+  --red:#C0392B; --red-soft:#FBE4E1;
+  --amber:#A86A00; --amber-soft:#FBEFD6;
+  --green:#1E8A55; --green-soft:#DDF3E7;
+  color-scheme:light;
+}}
+:root[data-theme="light"]{
+  --bg:#FAF8F6; --surface:#FFFFFF; --surface-2:#F1ECE7; --line:#DDD3CA;
+  --ink:#141518; --muted:#6B6157;
+  --teal:#0D857D; --teal-soft:#DCF0EE;
+  --rose:#A4614F; --rose-soft:#F6E5DE;
+  --taupe:#7A6656; --taupe-soft:#EFE7DF;
+  --sapphire:#1F4FB8; --sapphire-soft:#E1E9FA;
+  --red:#C0392B; --red-soft:#FBE4E1;
+  --amber:#A86A00; --amber-soft:#FBEFD6;
+  --green:#1E8A55; --green-soft:#DDF3E7;
+  color-scheme:light;
+}
+:root[data-glow="off"]{--glow:0}
+*{box-sizing:border-box}
+html,body{background:var(--bg);color:var(--ink)}
+body{font-family:var(--f-body);font-size:14.5px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{margin:0;text-wrap:balance}
+h2{font-family:var(--f-display);font-size:30px;font-weight:600;line-height:1.1}
+h3{font-size:15px;font-weight:600}
+p{margin:0}
+.muted{color:var(--muted)}
+.small{font-size:13px;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--surface)}
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar-top{display:flex;align-items:center;gap:14px;padding-block:12px;flex-wrap:wrap}
+.mono-logo{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--rosegold);color:#1A1210;font-family:var(--f-display);font-weight:700;font-size:18px;flex:none;box-shadow:0 0 calc(var(--glow)*14px) rgba(229,172,152,.45)}
+.brand{display:grid;line-height:1.1}
+.brand b{font-family:var(--f-display);font-size:24px;font-weight:700;background:var(--rosegold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.bar-tools{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:inherit;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--muted);cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--teal);color:var(--teal);background:var(--teal-soft)}
+.chip:focus-visible,.tab:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--sapphire);outline-offset:2px}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;padding-bottom:0;scrollbar-width:thin}
+.tab{font:inherit;font-size:13.5px;font-weight:500;padding:10px 13px;border:0;border-bottom:2px solid transparent;background:none;color:var(--muted);cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--teal)}
+
+main{padding-block:24px 48px}
+.view{display:grid;gap:18px}
+.view-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.source{display:inline-flex;gap:6px;align-items:center;font-size:11.5px;font-family:var(--f-mono);padding:3px 8px;border-radius:6px;border:1px solid var(--line);color:var(--muted)}
+.source.real::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
+.source.example::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--amber)}
+
+.card{background:var(--surface);border:1px solid color-mix(in srgb, var(--teal) calc(15% + var(--glow)*25%), var(--line));border-radius:12px;padding:16px;box-shadow:0 0 calc(var(--glow)*18px) calc(var(--glow)*-5px) color-mix(in srgb, var(--teal) 60%, transparent);min-width:0}
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+.ribbon{display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:10px;background:var(--green-soft);color:var(--green);font-weight:600;font-size:13.5px;flex-wrap:wrap}
+.ribbon .small{color:inherit;opacity:.85;font-weight:500}
+.kpi{display:grid;gap:4px}
+.kpi b{font-family:var(--f-display);font-size:38px;line-height:1;font-weight:700}
+.kpi.red b{color:var(--red)} .kpi.amber b{color:var(--amber)} .kpi.teal b{color:var(--teal)} .kpi.rose b{color:var(--rose)}
+
+.list{display:grid;gap:8px}
+.attn{display:grid;grid-template-columns:6px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--surface-2)}
+.attn i{align-self:stretch;border-radius:4px}
+.sev-urgent i{background:var(--red)} .sev-soon i{background:var(--amber)} .sev-improve i{background:var(--sapphire)} .sev-ok i{background:var(--green)}
+.pill{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.p-urgent{background:var(--red-soft);color:var(--red)} .p-soon{background:var(--amber-soft);color:var(--amber)}
+.p-improve{background:var(--sapphire-soft);color:var(--sapphire)} .p-ok{background:var(--green-soft);color:var(--green)}
+.p-rose{background:var(--rose-soft);color:var(--rose)} .p-taupe{background:var(--taupe-soft);color:var(--taupe)}
+
+.btn{font:inherit;font-size:13px;font-weight:600;padding:7px 12px;border-radius:8px;border:1px solid var(--teal);background:transparent;color:var(--ink);cursor:pointer}
+.btn:hover{background:var(--teal-soft)}
+.btn.primary{background:var(--teal);color:var(--bg);border-color:var(--teal)}
+.btn.small-btn{padding:4px 9px;font-size:12px}
+.check{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line)}
+.check:first-child{border-top:0}
+.check input{width:18px;height:18px;accent-color:var(--teal);margin-top:1px;flex:none}
+.check.done span{text-decoration:line-through;color:var(--muted)}
+
+/* board */
+.board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:12px;overflow-x:auto;padding-bottom:6px}
+.col{background:var(--surface-2);border-radius:12px;padding:10px;display:grid;gap:8px;align-content:start;min-height:120px}
+.col-head{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:600;padding:2px 4px}
+.ocard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;display:grid;gap:6px}
+.ocard.late{border-color:var(--red);box-shadow:0 0 calc(var(--glow)*12px) -4px var(--red)}
+.ocard .row{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+.who{font-weight:600}
+.blurred .who,.blurred .pii{filter:blur(6px);user-select:none}
+
+/* catalog */
+.coll{display:grid;gap:10px}
+.coll-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.coll-head h3{font-family:var(--f-display);font-size:22px;font-weight:700;color:var(--rose)}
+.prod{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:10px 0;border-top:1px solid var(--line)}
+.prod:first-of-type{border-top:0}
+.prod .price{font-family:var(--f-mono);font-weight:600;white-space:nowrap}
+.prod .meta{grid-column:1/-1;font-size:12.5px;color:var(--muted)}
+
+/* form */
+form{display:grid;gap:14px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+label.f{display:grid;gap:5px;font-size:12.5px;font-weight:600;color:var(--muted)}
+input,select,textarea{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%}
+textarea{min-height:80px;resize:vertical}
+.lines{display:grid;gap:8px}
+.line{display:grid;grid-template-columns:minmax(0,1fr) 80px 90px 34px;gap:8px;align-items:center}
+@media (max-width:560px){.line{grid-template-columns:minmax(0,1fr) 64px 34px}.line .lt{display:none}}
+.totals{display:grid;gap:4px;padding:12px;border-radius:10px;background:var(--surface-2)}
+.totals div{display:flex;justify-content:space-between;gap:10px}
+.totals .due{font-size:16px;font-weight:700;color:var(--teal)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:600;font-size:13.5px;z-index:30}
+
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+.tbl{overflow-x:auto}
+.tbl table{min-width:560px}
+th,td{text-align:left;padding:9px 10px;border-top:1px solid var(--line);vertical-align:top}
+thead th{border-top:0;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.meter{height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden;min-width:80px}
+.meter span{display:block;height:100%;border-radius:99px}
+
+.msg{display:grid;gap:8px}
+.msg pre{margin:0;white-space:pre-wrap;font-family:var(--f-body);font-size:13.5px;background:var(--surface-2);border-radius:8px;padding:12px;line-height:1.55}
+footer{padding-block:20px 40px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* Portal additions: data freshness, launch tracker, content calendar, intake */
+.asof{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);padding:6px 10px;border:1px dashed var(--line);border-radius:999px;white-space:nowrap}
+.banner{padding:10px 14px;border-radius:10px;font-size:13.5px}
+.banner.warn{background:var(--amber-soft);color:var(--amber)}
+.banner.bad{background:var(--red-soft);color:var(--red)}
+.filters{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.progress{height:10px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.progress span{display:block;height:100%;background:var(--rosegold);border-radius:99px;box-shadow:0 0 calc(var(--glow)*10px) rgba(229,172,152,.5)}
+.countdown{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.countdown b{font-family:var(--f-display);font-size:56px;line-height:1;background:var(--rosegold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.phase{display:grid;gap:2px}
+.phase h3{font-family:var(--f-display);font-size:21px;color:var(--rose);margin:6px 0 2px}
+.task{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 0;border-top:1px solid var(--line)}
+.task input{width:18px;height:18px;accent-color:var(--teal)}
+.task.done span.t{text-decoration:line-through;color:var(--muted)}
+.cal-week{display:grid;gap:6px}
+.cal-week h3{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:6px}
+.post{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--surface-2)}
+.post .d{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.post .status{cursor:pointer;border:0;font:inherit}
+.checks{display:flex;flex-wrap:wrap;gap:8px 14px}
+.checks label{display:flex;gap:6px;align-items:center;font-size:13px;font-weight:500;color:var(--ink)}
+.checks input{width:16px;height:16px;accent-color:var(--teal)}
+.brief pre{margin:0;white-space:pre-wrap;font-family:var(--f-body);font-size:13px;background:var(--surface-2);border-radius:8px;padding:12px;line-height:1.55}
+.brand b.wordmark span{font-size:inherit;letter-spacing:0;text-transform:none;color:transparent}
+.brand b.wordmark{font-family:var(--f-script);font-weight:400;font-size:38px;line-height:1;background:none;color:inherit;padding:2px 4px 0 0}
+.svc .price{font-family:var(--f-mono);font-weight:600;color:var(--teal)}
+
+/* Real logos (Nov 2026) */
+.logo-img{flex:none;display:block;object-fit:contain}
+.logo-img.ma{width:64px;height:64px;filter:drop-shadow(0 0 1px rgba(255,255,255,.35)) drop-shadow(0 0 calc(var(--glow)*8px) rgba(47,196,186,.45))}
+.logo-img.at{width:52px;height:52px;filter:drop-shadow(0 0 calc(var(--glow)*8px) rgba(47,196,186,.45))}
+.wm-ai{background:var(--rosegold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wm-at{background:linear-gradient(120deg,#1E9C93 0%,#5FE0D6 45%,#2FC4BA 70%,#178079 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ===== Type system v3 (Nov 22, 2026): four layers =====
+   Layer 1 · business names: brand title images (Madam Allure signature; AI AuthoriTech and
+             Crawford Creative Suites in Amoresa; Allure Fusions in Brittany), made in Canva
+   Layer 2 · Italianno: greetings, collection names, accents
+   Layer 3 · Lora italic semibold: main text, prices, buttons (free stand-in for Forward Serif)
+   Layer 4a · Crimson Pro italic semibold: small uppercase labels (Real data, dates, table headers, tags)
+   Layer 4 · Instrument Serif italic: section headings, big numbers, quotes (free stand-in for Atlante Display) */
+:root{--f-script:"Italianno","Segoe Script",cursive;--f-display:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --f-body:"Lora",Georgia,"Times New Roman",serif;--f-mono:"Lora",Georgia,"Times New Roman",serif;--f-label:"Crimson Pro",Georgia,"Times New Roman",serif}
+body{font-family:var(--f-body);font-style:italic;font-weight:600;font-size:15px}
+.small,.muted,td,.prod .meta{font-weight:500}
+/* Layer 4a: small uppercase labels */
+.eyebrow,.source,thead th,.brand span,.asof,.pill,.ltag,.tag{font-family:var(--f-label);font-style:italic;font-weight:600;letter-spacing:.14em}
+.source{font-size:12px}.pill{letter-spacing:.06em;font-size:12px}
+input,select,textarea,button{font-style:italic}
+h2{font-family:var(--f-display);font-style:italic;font-weight:400;font-size:34px;letter-spacing:0;line-height:1.1}
+h3{font-family:var(--f-display);font-style:italic;font-weight:400;font-size:21px}
+.kpi b,.mach b,.countdown b,.mini b{font-family:var(--f-display);font-style:italic;font-weight:400}
+.coll-head h3{font-family:var(--f-script);font-style:normal;font-weight:400;font-size:36px;line-height:1.05;color:var(--rose)}
+.eyebrow{font-size:12px}
+.mono,td.num,.price{font-variant-numeric:lining-nums tabular-nums}
+/* Layer 2 greeting: teal metallic, separate from the rose-gold names */
+.script{display:inline-block;font-family:var(--f-script);font-style:normal;font-weight:400;font-size:1.5em;line-height:.85;padding-right:.06em;margin-right:-.12em;
+  background:linear-gradient(120deg,#1FA99F 0%,#7FEDE3 45%,#2FC4BA 70%,#178079 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Layer 1 brand titles + shadow effects: soft glow on dark, lifted shadow on light */
+.brand .title-img{display:block;height:46px;width:auto;max-width:min(62vw,340px);margin-bottom:2px;filter:drop-shadow(0 0 6px rgba(255,255,255,.12)) drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+.shop-title{display:block;height:34px;width:auto;max-width:100%;filter:drop-shadow(0 0 6px rgba(255,255,255,.12)) drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+:root[data-theme="light"] .brand .title-img,:root[data-theme="light"] .shop-title{filter:drop-shadow(0 1px 1px rgba(60,35,30,.45)) drop-shadow(0 3px 5px rgba(60,35,30,.18))}
+:root[data-theme="light"] .brand .title-img.cs,:root[data-theme="light"] .shop-title.cs{filter:drop-shadow(0 1px 1px rgba(45,30,22,.75)) drop-shadow(0 2px 3px rgba(45,30,22,.45)) drop-shadow(0 5px 9px rgba(45,30,22,.25))}
+:root[data-theme="light"] .script{background:linear-gradient(120deg,#0F7C74 0%,#1FA99F 45%,#127A73 100%);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 1px 1px rgba(10,60,56,.45)) drop-shadow(0 4px 8px rgba(10,60,56,.22))}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]) .brand .title-img,:root:not([data-theme="dark"]) .shop-title{filter:drop-shadow(0 1px 1px rgba(60,35,30,.45)) drop-shadow(0 3px 5px rgba(60,35,30,.18))}
+  :root:not([data-theme="dark"]) .brand .title-img.cs,:root:not([data-theme="dark"]) .shop-title.cs{filter:drop-shadow(0 1px 1px rgba(45,30,22,.75)) drop-shadow(0 2px 3px rgba(45,30,22,.45)) drop-shadow(0 5px 9px rgba(45,30,22,.25))}
+  :root:not([data-theme="dark"]) .script{background:linear-gradient(120deg,#0F7C74 0%,#1FA99F 45%,#127A73 100%);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 1px 1px rgba(10,60,56,.45)) drop-shadow(0 4px 8px rgba(10,60,56,.22))}
+}
+/* Metallic monograms (brand color each) for brands without a logo graphic */
+.mono-logo.af{background:linear-gradient(135deg,#050C2B 0%,#0D1F5C 24%,#5D7FD6 47%,#9DB4F0 52%,#1B3A8C 66%,#071236 100%);color:#F3F6FF;font-family:var(--f-display);font-style:italic;font-weight:400;font-size:19px;box-shadow:0 0 calc(var(--glow)*14px) rgba(64,104,214,.6),inset 0 0 0 1px rgba(255,255,255,.3)}
+.mono-logo.cs{background:linear-gradient(135deg,#4F4033 0%,#8E7A68 24%,#F4EBE0 48%,#D6C4B0 58%,#8E7A68 78%,#4A3C30 100%);color:#1F1915;font-family:var(--f-display);font-style:italic;font-weight:400;font-size:19px;box-shadow:0 0 calc(var(--glow)*14px) rgba(205,187,168,.55),inset 0 0 0 1px rgba(255,255,255,.35)}
+
+/* ===== Caution color from the brand palette (replaces yellow) =====
+   "Soon" tags, warnings, needs-attention ribbon and example-data dots use a rose-gold copper. */
+:root{--amber:#E59A7E;--amber-soft:#3A2420}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--amber:#A5523C;--amber-soft:#F8E3DA}}
+:root[data-theme="light"]{--amber:#A5523C;--amber-soft:#F8E3DA}
+
+/* ===== Portal layout: left side panel on screens 760px and wider ===== */
+.portal-switch{display:none}
+@media (min-width:760px){
+  body{padding-left:252px}
+  header.bar{position:fixed;top:0;left:0;bottom:0;width:252px;border-bottom:0;border-right:1px solid color-mix(in srgb,var(--teal) calc(20% + var(--glow)*25%),var(--line));
+    box-shadow:0 0 calc(var(--glow)*22px) calc(var(--glow)*-6px) color-mix(in srgb,var(--teal) 55%,transparent);overflow-y:auto;z-index:15}
+  header.bar > .wrap{max-width:none;margin:0;padding:20px 14px 16px;display:flex;flex-direction:column;gap:14px;min-height:100%}
+  .bar-top{display:contents}
+  .bar-top > .mono-logo,.bar-top > .logo-img{order:1;width:72px;height:72px;font-size:26px}
+  .bar-top > .brand{order:2}
+  .bar-top > .brand .title-img{max-width:216px;height:auto;max-height:52px}
+  .bar-top > .brand span{white-space:normal;line-height:1.4}
+  header.bar nav.tabs{order:3;flex-direction:column;overflow:visible;gap:2px;padding-bottom:0;margin:4px -14px 0}
+  header.bar .tab{text-align:left;border-bottom:0;border-left:3px solid transparent;padding:9px 14px 9px 17px;font-size:15px}
+  header.bar .tab:hover{background:var(--surface-2);color:var(--ink)}
+  header.bar .tab[aria-selected="true"],header.bar .tab[aria-current="page"]{border-left-color:var(--teal);background:var(--teal-soft);color:var(--ink)}
+  .portal-switch{order:4;display:grid;gap:2px;padding-top:12px;border-top:1px solid var(--line)}
+  .portal-switch .ps-title{font-family:var(--f-label);font-style:italic;font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:0 2px 4px}
+  .portal-switch a{display:block;padding:6px 8px;border-radius:8px;color:var(--muted);text-decoration:none;font-size:14px}
+  .portal-switch a:hover{background:var(--surface-2);color:var(--ink)}
+  .portal-switch a[aria-current="page"]{color:var(--teal)}
+  .bar-top > .bar-tools{order:5;margin-top:auto;margin-left:0;display:grid;gap:6px}
+  .bar-tools .chip{width:100%;text-align:left}
+  .bar-tools .asof{white-space:normal;text-align:center}
+}
+
+/* ===== Status: on track = LED-illuminated teal with heavier trim ===== */
+:root{--green:#5FE6DA;--green-soft:#0E3533}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--green:#0D857D;--green-soft:#DCF0EE}}
+:root[data-theme="light"]{--green:#0D857D;--green-soft:#DCF0EE}
+.ribbon{border:1px solid transparent}
+.ribbon.warn{background:var(--amber-soft);color:var(--amber);border-color:color-mix(in srgb,var(--amber) 45%,transparent)}
+.ribbon.ok{position:relative;padding-left:34px;background:linear-gradient(90deg,rgba(47,196,186,.22),rgba(47,196,186,.07));color:#9CF3EA;border:2px solid #2FC4BA;
+  box-shadow:0 0 calc(var(--glow)*20px) rgba(47,196,186,.55),inset 0 0 calc(var(--glow)*16px) rgba(47,196,186,.28)}
+.ribbon.ok::before{content:"";position:absolute;left:13px;top:50%;width:11px;height:11px;margin-top:-5.5px;border-radius:50%;background:#B9FFF8;
+  box-shadow:0 0 4px #B9FFF8,0 0 10px #2FC4BA,0 0 20px #2FC4BA;animation:led 2.6s ease-in-out infinite}
+@keyframes led{50%{opacity:.5;box-shadow:0 0 3px #B9FFF8,0 0 6px #2FC4BA}}
+:root[data-theme="light"] .ribbon.ok{color:#0B6E67;background:linear-gradient(90deg,#D3F3F0,#EEF9F8)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .ribbon.ok{color:#0B6E67;background:linear-gradient(90deg,#D3F3F0,#EEF9F8)}}
+@media (prefers-reduced-motion:reduce){.ribbon.ok::before{animation:none}}
+.pill.p-ok{box-shadow:0 0 calc(var(--glow)*8px) rgba(47,196,186,.45);border:1px solid color-mix(in srgb,var(--green) 55%,transparent)}
+
+/* Presentation mode: hide actual pricing (quotes vary) */
+.blurred [data-view="services"] > p.small{display:none}
+.blurred .svc .price{font-size:0}
+.blurred .svc .price::after{content:"Custom quote after consultation";font-size:14px}
+.blurred #kpis .kpi.rose b,.blurred .board .mono.small,.blurred #fit .due,.blurred #brief{filter:blur(8px);user-select:none}
+
+/* ===== Messages v2: template picker, auto-fill, needs-reply inbox ===== */
+.msgs{display:grid;gap:14px;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+@media (max-width:980px){.msgs{grid-template-columns:minmax(0,1fr)}}
+.composer{display:grid;gap:12px;align-content:start}
+.composer textarea{min-height:300px;line-height:1.55;font-size:15px}
+.composer .subj{font-weight:600}
+.fillnote{font-size:13px;color:var(--muted)}
+.fillnote mark{background:var(--amber-soft);color:var(--amber);border-radius:4px;padding:0 4px}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}
+.inbox{display:grid;gap:8px;align-content:start}
+.mail{display:grid;gap:4px;padding:10px 12px;border-radius:10px;background:var(--surface-2);border-left:3px solid var(--line)}
+.mail.old{border-left-color:var(--red)} .mail.new{border-left-color:var(--teal)}
+.mail .row{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+.mail .subj{font-weight:600}
+.mail.done{opacity:.5}
+.links{display:grid;gap:10px}
+
+/* ===== Alert colors: one deep fuchsia family (alerts only) =====
+   Urgent = deep fuchsia, Soon = medium fuchsia, Low = soft orchid. On track stays LED teal.
+   Dashboard numbers, labels and everything else keep the brand colors. */
+:root{--red:#F0229F;--red-soft:#3A0F2C;--amber:#C9479F;--amber-soft:#33152B;--alert-low:#B77DB0;--alert-low-soft:#2C1B2A}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--red:#A50E74;--red-soft:#F7DDEE;--amber:#9B3F84;--amber-soft:#F3E2EE;--alert-low:#86587F;--alert-low-soft:#F1E7EF}}
+:root[data-theme="light"]{--red:#A50E74;--red-soft:#F7DDEE;--amber:#9B3F84;--amber-soft:#F3E2EE;--alert-low:#86587F;--alert-low-soft:#F1E7EF}
+.sev-improve i{background:var(--alert-low)}
+.p-improve{background:var(--alert-low-soft);color:var(--alert-low)}
+.p-urgent{border:1px solid color-mix(in srgb,var(--red) 40%,transparent)}
+.p-soon{border:1px solid color-mix(in srgb,var(--amber) 40%,transparent)}
+/* Dashboard numbers stay brand colors, not alert colors */
+.kpi.red b{color:var(--rose)}
+.kpi.amber b{color:var(--taupe)}
+.kpi.rose b{color:var(--rose)}
+.source.example::before{background:var(--taupe)}
+
+/* ===== FINAL color rule (owner, Nov 22): everything in brand colors.
+   Alert colors (fuchsia family) appear ONLY on the urgency tags: Urgent, Soon, Improve,
+   in the "Needs your attention" lists, the "Needs a reply" inbox and the launch tracker. ===== */
+:root{--red:#E5AC98;--red-soft:#3A2622;--amber:#CDBBA8;--amber-soft:#2D2824;
+  --al-urgent:#F0229F;--al-urgent-soft:#3A0F2C;--al-soon:#C9479F;--al-soon-soft:#33152B;--al-low:#B77DB0;--al-low-soft:#2C1B2A}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--red:#A4614F;--red-soft:#F6E5DE;--amber:#7A6656;--amber-soft:#EFE7DF;
+  --al-urgent:#A50E74;--al-urgent-soft:#F7DDEE;--al-soon:#9B3F84;--al-soon-soft:#F3E2EE;--al-low:#86587F;--al-low-soft:#F1E7EF}}
+:root[data-theme="light"]{--red:#A4614F;--red-soft:#F6E5DE;--amber:#7A6656;--amber-soft:#EFE7DF;
+  --al-urgent:#A50E74;--al-urgent-soft:#F7DDEE;--al-soon:#9B3F84;--al-soon-soft:#F3E2EE;--al-low:#86587F;--al-low-soft:#F1E7EF}
+/* side lines on list items: brand rose gold for every level */
+.sev-urgent i,.sev-soon i,.sev-improve i{background:var(--rosegold)}
+.sev-ok i{background:var(--teal)}
+/* tags outside the urgency lists use brand tones */
+.p-urgent{background:var(--rose-soft);color:var(--rose);border:1px solid color-mix(in srgb,var(--rose) 35%,transparent)}
+.p-soon{background:var(--taupe-soft);color:var(--taupe);border:1px solid color-mix(in srgb,var(--taupe) 35%,transparent)}
+.p-improve{background:var(--sapphire-soft);color:var(--sapphire);border:1px solid color-mix(in srgb,var(--sapphire) 35%,transparent)}
+/* urgency tags: the only place alert colors show */
+.attn .p-urgent,.mail .p-urgent,.task .p-urgent{background:var(--al-urgent-soft);color:var(--al-urgent);border-color:color-mix(in srgb,var(--al-urgent) 45%,transparent)}
+.attn .p-soon,.mail .p-soon,.task .p-soon{background:var(--al-soon-soft);color:var(--al-soon);border-color:color-mix(in srgb,var(--al-soon) 45%,transparent)}
+.attn .p-improve,.mail .p-improve,.task .p-improve{background:var(--al-low-soft);color:var(--al-low);border-color:color-mix(in srgb,var(--al-low) 45%,transparent)}
+/* needs-attention bar, warnings, late-order trim and inbox edges: brand */
+.ribbon.warn{background:var(--rose-soft);color:var(--rose);border-color:color-mix(in srgb,var(--rose) 45%,transparent)}
+.banner.warn{background:var(--rose-soft);color:var(--rose)}
+.banner.bad{background:var(--rose-soft);color:var(--rose)}
+.ocard.late{border-color:var(--rose);box-shadow:0 0 calc(var(--glow)*12px) -4px var(--rose)}
+.mail.old{border-left-color:var(--rose)} .mail.new{border-left-color:var(--teal)}
+.fillnote mark{background:var(--rose-soft);color:var(--rose)}
+
+/* ===== Side panel highlight: rose gold (owner preferred over the greenish teal) ===== */
+header.bar .tab[aria-selected="true"],header.bar .tab[aria-current="page"]{color:var(--ink);background:linear-gradient(90deg,color-mix(in srgb,#E8C2B0 22%,transparent),transparent);border-left-color:#E8C2B0;
+  box-shadow:inset 3px 0 0 #E8C2B0,0 0 calc(var(--glow)*14px) -6px rgba(229,172,152,.7)}
+header.bar .tab[aria-selected="true"]{border-bottom-color:#E8C2B0}
+@media (min-width:760px){header.bar .tab[aria-selected="true"],header.bar .tab[aria-current="page"]{border-left-color:#E8C2B0}}
+.portal-switch a[aria-current="page"]{color:var(--rose)}
+:root[data-theme="light"] header.bar .tab[aria-selected="true"]{background:linear-gradient(90deg,#F6E5DE,transparent);border-left-color:#B76E79;border-bottom-color:#B76E79;box-shadow:inset 3px 0 0 #B76E79}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) header.bar .tab[aria-selected="true"]{background:linear-gradient(90deg,#F6E5DE,transparent);border-left-color:#B76E79;border-bottom-color:#B76E79;box-shadow:inset 3px 0 0 #B76E79}}
+
+/* ===== "Needs attention" bar: sapphire highlight with trim, distinct from the teal on-track LED ===== */
+.ribbon.warn{background:linear-gradient(90deg,rgba(127,162,255,.20),rgba(127,162,255,.06));color:#B9CCFF;border:2px solid #7FA2FF;
+  box-shadow:0 0 calc(var(--glow)*18px) rgba(127,162,255,.45),inset 0 0 calc(var(--glow)*12px) rgba(127,162,255,.2)}
+.ribbon.warn .small{color:#DCE5FF}
+:root[data-theme="light"] .ribbon.warn{background:linear-gradient(90deg,#DCE6FB,#F1F5FD);color:#1F4FB8;border-color:#1F4FB8;box-shadow:0 0 calc(var(--glow)*14px) rgba(31,79,184,.25)}
+:root[data-theme="light"] .ribbon.warn .small{color:#2B4F9E}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .ribbon.warn{background:linear-gradient(90deg,#DCE6FB,#F1F5FD);color:#1F4FB8;border-color:#1F4FB8;box-shadow:0 0 calc(var(--glow)*14px) rgba(31,79,184,.25)}
+  :root:not([data-theme="dark"]) .ribbon.warn .small{color:#2B4F9E}}
+
+/* ===== Card trim and glow in the same teal as the greeting (no warm-brown mixing, which read as green) ===== */
+:root{--teal-soft:#0E2E33}
+:root[data-theme="light"]{--teal-soft:#DDF3F2}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--teal-soft:#DDF3F2}}
+.card{border-color:rgba(63,208,200,calc(.22 + var(--glow)*.38));box-shadow:0 0 calc(var(--glow)*18px) calc(var(--glow)*-5px) rgba(95,224,216,.6)}
+@media (min-width:760px){header.bar{border-right-color:rgba(63,208,200,calc(.2 + var(--glow)*.3));box-shadow:0 0 calc(var(--glow)*22px) calc(var(--glow)*-6px) rgba(95,224,216,.5)}}
+:root[data-theme="light"] .card{border-color:rgba(31,169,159,calc(.3 + var(--glow)*.3));box-shadow:0 0 calc(var(--glow)*16px) calc(var(--glow)*-5px) rgba(31,169,159,.35)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .card{border-color:rgba(31,169,159,calc(.3 + var(--glow)*.3));box-shadow:0 0 calc(var(--glow)*16px) calc(var(--glow)*-5px) rgba(31,169,159,.35)}}
+
+/* ===== Card trim: the greeting's turquoise gradient (gradient border + aqua glow) ===== */
+:root{--trim:linear-gradient(120deg,#1FA99F 0%,#7FEDE3 45%,#2FC4BA 70%,#178079 100%);--trim-glow:rgba(127,237,227,.42)}
+:root[data-theme="light"]{--trim:linear-gradient(120deg,#0F7C74 0%,#3FCFC4 45%,#1FA99F 70%,#127A73 100%);--trim-glow:rgba(31,169,159,.3)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--trim:linear-gradient(120deg,#0F7C74 0%,#3FCFC4 45%,#1FA99F 70%,#127A73 100%);--trim-glow:rgba(31,169,159,.3)}}
+.card{border:1.5px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,var(--trim) border-box;
+  box-shadow:0 0 calc(var(--glow)*16px) calc(var(--glow)*-4px) var(--trim-glow)}
+:root[data-glow="off"] .card{background:linear-gradient(var(--surface),var(--surface)) padding-box,linear-gradient(var(--line),var(--line)) border-box}
+
+/* ===== Card shadow under the gradient trim (both modes); the aqua glow still follows the Glow trim switch ===== */
+.card{box-shadow:0 2px 3px rgba(0,0,0,.45),0 10px 22px -6px rgba(0,0,0,.65),0 0 calc(var(--glow)*16px) calc(var(--glow)*-4px) var(--trim-glow)}
+:root[data-theme="light"] .card{box-shadow:0 1px 2px rgba(18,60,58,.14),0 8px 20px -6px rgba(15,90,85,.30),0 0 calc(var(--glow)*14px) calc(var(--glow)*-4px) var(--trim-glow)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .card{box-shadow:0 1px 2px rgba(18,60,58,.14),0 8px 20px -6px rgba(15,90,85,.30),0 0 calc(var(--glow)*14px) calc(var(--glow)*-4px) var(--trim-glow)}}
+
+/* ===== Heavier card shadow (owner: more noticeable) ===== */
+.card{box-shadow:0 3px 6px rgba(0,0,0,.55),0 16px 32px -8px rgba(0,0,0,.8),0 0 calc(var(--glow)*16px) calc(var(--glow)*-4px) var(--trim-glow)}
+:root[data-theme="light"] .card{box-shadow:0 2px 4px rgba(18,60,58,.2),0 14px 30px -8px rgba(15,90,85,.42),0 0 calc(var(--glow)*14px) calc(var(--glow)*-4px) var(--trim-glow)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .card{box-shadow:0 2px 4px rgba(18,60,58,.2),0 14px 30px -8px rgba(15,90,85,.42),0 0 calc(var(--glow)*14px) calc(var(--glow)*-4px) var(--trim-glow)}}
+
+/* ===== Urgency tags, clearer steps:
+   Urgent = filled deep fuchsia (unchanged color), Soon = medium pink outline, Improve = baby pink ===== */
+:root{--al-soon:#FF8CCB;--al-soon-soft:rgba(255,140,203,.12);--al-low:#FFD1E8;--al-low-soft:rgba(255,209,232,.10)}
+:root[data-theme="light"]{--al-soon:#C2448F;--al-soon-soft:#FBE3F1;--al-low:#A86A8E;--al-low-soft:#FFF0F7}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--al-soon:#C2448F;--al-soon-soft:#FBE3F1;--al-low:#A86A8E;--al-low-soft:#FFF0F7}}
+.attn .p-urgent,.mail .p-urgent,.task .p-urgent{background:var(--al-urgent);color:#FFFFFF;border-color:var(--al-urgent);box-shadow:0 0 calc(var(--glow)*10px) color-mix(in srgb,var(--al-urgent) 55%,transparent)}
+.attn .p-soon,.mail .p-soon,.task .p-soon{background:var(--al-soon-soft);color:var(--al-soon);border:1px solid var(--al-soon)}
+.attn .p-improve,.mail .p-improve,.task .p-improve{background:var(--al-low-soft);color:var(--al-low);border:1px dashed color-mix(in srgb,var(--al-low) 70%,transparent)}
+:root[data-theme="light"] .attn .p-improve,:root[data-theme="light"] .mail .p-improve,:root[data-theme="light"] .task .p-improve{border-color:#F4B8D6}
+
+/* ===== Urgency tags: same style for all three, stepping from darkest to lightest pink =====
+   Urgent keeps the original look (owner's favorite). Soon = medium pink. Improve = baby pink. */
+:root{--al-urgent:#F0229F;--al-urgent-soft:#3A0F2C;--al-soon:#F77AC0;--al-soon-soft:#3A1A2F;--al-low:#FFC4E1;--al-low-soft:#36262F}
+:root[data-theme="light"]{--al-urgent:#A50E74;--al-urgent-soft:#F7DDEE;--al-soon:#C8509A;--al-soon-soft:#FAE6F2;--al-low:#D47FAF;--al-low-soft:#FFF1F8}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--al-urgent:#A50E74;--al-urgent-soft:#F7DDEE;--al-soon:#C8509A;--al-soon-soft:#FAE6F2;--al-low:#D47FAF;--al-low-soft:#FFF1F8}}
+.attn .p-urgent,.mail .p-urgent,.task .p-urgent{background:var(--al-urgent-soft);color:var(--al-urgent);border:1px solid color-mix(in srgb,var(--al-urgent) 45%,transparent);box-shadow:none}
+.attn .p-soon,.mail .p-soon,.task .p-soon{background:var(--al-soon-soft);color:var(--al-soon);border:1px solid color-mix(in srgb,var(--al-soon) 45%,transparent)}
+.attn .p-improve,.mail .p-improve,.task .p-improve{background:var(--al-low-soft);color:var(--al-low);border:1px solid color-mix(in srgb,var(--al-low) 45%,transparent)}
+:root[data-theme="light"] .attn .p-improve,:root[data-theme="light"] .mail .p-improve,:root[data-theme="light"] .task .p-improve{border-color:color-mix(in srgb,var(--al-low) 45%,transparent)}
+
+/* Social this week */
+.soc{display:grid;grid-template-columns:150px minmax(0,1fr) auto;gap:12px;align-items:center;padding:9px 12px;border-radius:10px;background:var(--surface-2)}
+@media (max-width:560px){.soc{grid-template-columns:minmax(0,1fr) auto}.soc>.mono{grid-column:1/-1}}
+
+/* ===== Social status labels: sapphire gradient, darkest to lightest =====
+   Scheduled keeps the deep sapphire. Drafted = medium blue. Idea = baby blue with extra highlight.
+   Light mode adds a darker navy trim around the lighter words so they stay readable. */
+:root{--sb-draft:#A6C2FF;--sb-draft-soft:#1B2A55;--sb-idea:#D4EAFF;--sb-idea-soft:#1E3358}
+.soc .p-sched{background:var(--sapphire-soft);color:var(--sapphire);border:1px solid color-mix(in srgb,var(--sapphire) 35%,transparent)}
+.soc .p-draft{background:var(--sb-draft-soft);color:var(--sb-draft);border:1px solid color-mix(in srgb,var(--sb-draft) 45%,transparent)}
+.soc .p-idea{background:var(--sb-idea-soft);color:var(--sb-idea);border:1px solid color-mix(in srgb,var(--sb-idea) 55%,transparent);text-shadow:0 0 6px rgba(160,205,255,.75);box-shadow:0 0 8px rgba(140,195,255,.35)}
+:root[data-theme="light"]{--sb-draft:#3F74E0;--sb-draft-soft:#E6EEFC;--sb-idea:#8CC4FF;--sb-idea-soft:#F1F8FF}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--sb-draft:#3F74E0;--sb-draft-soft:#E6EEFC;--sb-idea:#8CC4FF;--sb-idea-soft:#F1F8FF}}
+:root[data-theme="light"] .soc .p-idea{border-color:#2A58B8;box-shadow:0 0 8px rgba(120,180,255,.55);text-shadow:-.6px -.6px 0 #163C8C,.6px -.6px 0 #163C8C,-.6px .6px 0 #163C8C,.6px .6px 0 #163C8C,0 0 5px rgba(120,180,255,.8)}
+:root[data-theme="light"] .soc .p-draft{border-color:color-mix(in srgb,#1F4FB8 55%,transparent)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .soc .p-idea{border-color:#2A58B8;box-shadow:0 0 8px rgba(120,180,255,.55);text-shadow:-.6px -.6px 0 #163C8C,.6px -.6px 0 #163C8C,-.6px .6px 0 #163C8C,.6px .6px 0 #163C8C,0 0 5px rgba(120,180,255,.8)}}
+</style>
+<link rel="stylesheet" href="modules/portal-kit.css?v=20261123g">
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <div class="bar-top">
+      <img class="logo-img at" src="brand/at-symbol-128.png" alt="" width="52" height="52">
+      <div class="brand"><img class="title-img" src="brand/at-title.png" alt="AI AuthoriTech" width="251" height="46"><span>Owner portal · AI consulting agency</span></div>
+      <div class="bar-tools">
+        <span class="asof" id="asof">Loading data…</span>
+        <button type="button" class="chip" id="t-present" aria-pressed="false">Presentation mode</button>
+        <button type="button" class="chip" id="t-glow" aria-pressed="true">Glow trim</button>
+        <button type="button" class="chip" id="t-theme" aria-pressed="false">Light mode</button>
+      </div>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Portal sections">
+      <button class="tab" role="tab" data-v="today" aria-selected="true">Today</button>
+      <button class="tab" role="tab" data-v="pipeline" aria-selected="false">Client pipeline</button>
+      <button class="tab" role="tab" data-v="intake" aria-selected="false">Client intake</button>
+      <button class="tab" role="tab" data-v="services" aria-selected="false">Services</button>
+      <button class="tab" role="tab" data-v="svclog" aria-selected="false">Menu & time</button>
+      <button class="tab" role="tab" data-v="pricecalc" aria-selected="false">Price a service</button>
+      <button class="tab" role="tab" data-v="launch" aria-selected="false">Skool launch</button>
+      <button class="tab" role="tab" data-v="content" aria-selected="false">Content calendar</button>
+      <button class="tab" role="tab" data-v="messages" aria-selected="false">Messages</button>
+      <button class="tab" role="tab" data-v="rep" aria-selected="false">Reports</button>
+      <button class="tab" role="tab" data-v="led" aria-selected="false">Finances</button>
+      <button class="tab" role="tab" data-v="bud" aria-selected="false">Budgets &amp; costs</button>
+      <button class="tab" role="tab" data-v="auto" aria-selected="false">Automations</button>
+    </nav>
+    <nav class="portal-switch" aria-label="Your portals"><span class="ps-title">Your portals</span><a href="morning-dashboard.html">Morning dashboard</a><a href="madam-allure-portal.html">Madam Allure</a><a href="allure-fusions-portal.html">Allure Fusions</a><a href="ai-authoritech-portal.html" aria-current="page">AI AuthoriTech</a><a href="skool-community-portal.html">Skool community</a></nav>
+  </div>
+</header>
+
+<main class="wrap" id="app">
+  <div class="banner" id="stale" hidden role="status"></div>
+
+  <!-- TODAY -->
+  <section class="view" data-view="today">
+    <div class="view-head">
+      <div><span class="eyebrow" id="today-date"></span><h2 id="greet">Good morning.</h2></div>
+      <span data-src="clients" data-label="Clients"></span>
+    </div>
+    <div class="ribbon" id="ribbon"></div>
+    <div class="grid g4" id="kpis"></div>
+    <div class="grid g2">
+      <div class="card">
+        <div class="view-head" style="margin-bottom:10px"><h3>Needs your attention</h3><span class="small">Ranked by urgency</span></div>
+        <div class="list" id="attn"></div>
+      </div>
+      <div class="card">
+        <div class="view-head" style="margin-bottom:6px"><h3>Morning checklist</h3><button type="button" class="btn small-btn" id="reset-check">Reset for today</button></div>
+        <div id="checklist"></div>
+        <p class="small" style="margin-top:8px">Ticks save on this device.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="view" data-view="pipeline" hidden>
+    <div class="view-head">
+      <div><span class="eyebrow">Client pipeline</span><h2>Every engagement on one board</h2></div>
+      <span data-src="clients" data-label="Clients" data-extra=" · new ones you add save on this device"></span>
+    </div>
+    <p class="small">Rose-gold trim means the next follow-up is today or overdue. Use "Next" to move a client forward.</p>
+    <div class="board" id="board"></div>
+  </section>
+
+  <!-- INTAKE -->
+  <section class="view" data-view="intake" hidden>
+    <div class="view-head">
+      <div><span class="eyebrow">Discovery intake</span><h2>New client inquiry</h2></div>
+      <span class="source real">Real data · service prices from your list</span>
+    </div>
+    <div class="grid g2">
+      <form class="card" id="intake-form" novalidate>
+        <div class="fgrid">
+          <label class="f" for="i-name">Contact first name<input id="i-name" required autocomplete="off"></label>
+          <label class="f" for="i-org">Business or organization<input id="i-org" autocomplete="off"></label>
+          <label class="f" for="i-type">Engagement type<select id="i-type"></select></label>
+          <label class="f" for="i-exp">Current AI experience
+            <select id="i-exp"><option>None yet</option><option>Experimenting with ChatGPT or similar</option><option>Using a few AI tools</option><option>Using AI daily in the business</option><option>Already running automations</option></select></label>
+        </div>
+        <label class="f" for="i-challenge">Business challenge<textarea id="i-challenge" placeholder="What’s slowing the business down or costing time?"></textarea></label>
+        <label class="f" for="i-outcome">Desired outcome<textarea id="i-outcome" placeholder="What does success look like in 90 days?"></textarea></label>
+        <label class="f" for="i-opp">Automation opportunity<textarea id="i-opp" placeholder="Repeated tasks, handoffs, questions answered over and over"></textarea></label>
+        <div class="f" style="font-size:12.5px;font-weight:600;color:var(--muted)">Tools to integrate with
+          <div class="checks" id="i-int" style="margin-top:6px"></div></div>
+        <div class="fgrid">
+          <label class="f" for="i-time">Timeline<select id="i-time"><option>As soon as possible</option><option>Within 30 days</option><option>60 to 90 days</option><option>Just exploring</option></select></label>
+          <label class="f" for="i-budget">Budget<select id="i-budget"><option value="0">Not sure yet</option><option value="499">Under $500</option><option value="1500">$500 to $1,500</option><option value="5000">$1,500 to $5,000</option><option value="99999">$5,000 or more</option></select></label>
+        </div>
+        <div class="totals" id="fit"></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="submit" class="btn primary">Add to pipeline as Lead</button><button type="button" class="btn" id="copy-brief">Copy discovery brief</button></div>
+        <p class="small" id="form-msg" aria-live="polite"></p>
+      </form>
+      <div style="display:grid;gap:14px;align-content:start">
+        <div class="card" style="display:grid;gap:10px">
+          <h3>How engagements work</h3>
+          <ul class="small" style="margin:0;padding-left:18px;display:grid;gap:6px">
+            <li>The first 30-minute consultation is free.</li>
+            <li>Additional consulting time is $125 per hour.</li>
+            <li>Project work is scoped in a written proposal. Scope, payment schedule and start date are agreed there before work begins.</li>
+            <li>"From" prices are starting points. The final investment depends on scope.</li>
+          </ul>
+        </div>
+        <div class="card brief"><div class="view-head" style="margin-bottom:8px"><h3>Discovery brief preview</h3><span class="small">Updates as you type</span></div><pre id="brief"></pre></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="view" data-view="services" hidden>
+    <div class="view-head">
+      <div><span class="eyebrow">Service menu</span><h2>Services &amp; starting investment</h2></div>
+      <span class="source real">Real data · Crawford Creative Suites list, Nov 22, 2026</span>
+    </div>
+    <div class="grid g3" id="services"></div>
+    <p class="small">First 30-minute consultation is free, then $125 per hour.</p>
+  </section>
+
+  <!-- LAUNCH -->
+  <section class="view" data-view="launch" hidden>
+    <div class="view-head">
+      <div><span class="eyebrow">Skool community launch</span><h2>Launch tracker</h2></div>
+      <span data-src="launch" data-label="Suggested launch plan" data-extra=" · ticks save on this device"></span>
+    </div>
+    <div class="grid g2">
+      <div class="card" style="display:grid;gap:10px">
+        <div class="countdown"><b class="mono" id="days-left">0</b><span class="muted">days until launch · Friday, January 1, 2027</span></div>
+        <div class="progress" aria-hidden="true"><span id="launch-bar" style="width:0"></span></div>
+        <span class="small" id="launch-sum"></span>
+      </div>
+      <div class="card" style="display:grid;gap:6px;align-content:start">
+        <h3>What the community teaches</h3>
+        <p class="small">Makers learn to build owner portals like Madam Allure, Allure Fusions and this one. Each portal you build is course demo material, so record as you go.</p>
+      </div>
+    </div>
+    <div class="card" id="launch"></div>
+  </section>
+
+  <!-- CONTENT -->
+  <section class="view" data-view="content" hidden>
+    <div class="view-head">
+      <div><span class="eyebrow">Skool &amp; social content calendar</span><h2>What's going out, and when</h2></div>
+      <span data-src="content" data-label="Suggested calendar" data-extra=" · click a status to move it forward"></span>
+    </div>
+    <div class="filters" id="ch-filter"></div>
+    <div class="card" id="calendar" style="display:grid;gap:8px"></div>
+  </section>
+
+  <!-- MESSAGES -->
+  <section class="view" data-view="messages" hidden>
+    <div class="view-head">
+      <div><span class="eyebrow">Client message library</span><h2>Messages &amp; replies</h2></div>
+      <span class="small">Templates fill themselves in from your orders and links.</span>
+    </div>
+    <div class="grid g2" id="messages"></div>
+  </section>
+
+  <!-- AUTOMATIONS -->
+  <section class="view" data-view="auto" hidden>
+    <div class="view-head">
+      <div><span class="eyebrow">What's automated</span><h2>Honest status of every automation</h2></div>
+      <span class="small">Nothing is marked Running until it actually runs.</span>
+    </div>
+    <div class="card tbl"><table><thead><tr><th>Automation</th><th>When</th><th>Tool</th><th>Status</th></tr></thead><tbody id="autos"></tbody></table></div>
+  </section>
+
+  <section class="view" data-view="svclog" hidden><div id="at-svclog"></div></section>
+
+  <section class="view" data-view="pricecalc" hidden><div id="at-pricecalc"></div></section>
+
+  <section class="view" data-view="rep" hidden><div id="at-rep"></div></section>
+  <section class="view" data-view="led" hidden><div id="at-led"></div></section>
+  <section class="view" data-view="bud" hidden><div id="at-bud"></div></section>
+</main>
+
+<footer>
+  <div class="wrap">AI AuthoriTech owner portal · Version 1 · Service prices are real. Clients, the launch plan and the content calendar come from <span class="mono">data/ai-authoritech.data.js</span> and are examples or suggestions until your data is connected. A Crawford Creative Suites portal, built as a single free HTML file.</div>
+</footer>
+
+<script src="modules/email-kit.js?v=20261123p"></script>
+<script src="modules/data-sync.js?v=20261126a"></script>
+<script>window.PORTAL_DATA=null;</script>
+<script src="data/ai-authoritech.data.js"></script>
+<script>
+(function(){
+  var KEY='at_', DATA_FILE='data/ai-authoritech.data.js';
+  var D=window.PORTAL_DATA;
+  var TODAY=new Date(); TODAY.setHours(0,0,0,0);
+  var LAUNCH=new Date(2027,0,1);
+  function addDays(n){var d=new Date(TODAY); d.setDate(d.getDate()+n); return d;}
+  function iso(d){var z=new Date(d.getTime()-d.getTimezoneOffset()*6e4); return z.toISOString().slice(0,10);}
+  function pd(s){return new Date(s+'T00:00:00');}
+  function fmt(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric'});}
+  function money(n){return '$'+Number(n).toLocaleString('en-US',{maximumFractionDigits:0});}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});}
+  function store(k,v){try{ if(v===undefined){var r=localStorage.getItem(KEY+k); return r?JSON.parse(r):null;} localStorage.setItem(KEY+k,JSON.stringify(v)); }catch(e){return null;}}
+  function toast(t){var el=document.createElement('div'); el.className='toast'; el.textContent=t; document.body.appendChild(el); setTimeout(function(){el.remove();},2200);}
+  function daysTo(d){return Math.round((d-TODAY)/864e5);}
+
+  /* ---------- Data file, freshness and Real/Example labels ---------- */
+  var SECT=(D&&D.sections)||{};
+  function freshness(){
+    var b=document.getElementById('stale'), chip=document.getElementById('asof');
+    if(!D){chip.textContent='No data file'; b.hidden=false; b.className='banner bad';
+      b.innerHTML='<b>No data file found.</b> This page expects <span class="mono">'+DATA_FILE+'</span> in the same folder. Run <span class="mono">Refresh-Portals.ps1</span> (see README) to create it.'; return;}
+    var t=new Date(D.asOf), hrs=(Date.now()-t)/36e5, lim=D.staleAfterHours||26;
+    chip.textContent='Data as of '+t.toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+    if(hrs>lim){b.hidden=false; b.className='banner warn';
+      b.innerHTML='<b>This data is '+(hrs<48?Math.round(hrs)+' hours':Math.round(hrs/24)+' days')+' old.</b> The daily refresh may not have run. Open Task Scheduler and check “Crawford Portals Refresh”, or run Refresh-Portals.ps1 by hand.';}
+  }
+  function labelSources(){
+    document.querySelectorAll('[data-src]').forEach(function(el){
+      var real=SECT[el.dataset.src]==='real';
+      el.className='source '+(real?'real':'example');
+      el.innerHTML=(real?'Real data':'Example data')+' · '+el.dataset.label+(el.dataset.extra||'');
+    });
+  }
+
+  /* ---------- REAL services ---------- */
+  var SERVICES=[
+    {n:'AI Readiness Audit',p:350,unit:'',d:'A clear look at where AI fits in the business today, what’s blocking it, and the first three moves.'},
+    {n:'Automation Strategy',p:750,unit:'',d:'A prioritized roadmap of the workflows worth automating, with tools, costs and order of work.'},
+    {n:'Custom Chatbot Agents',p:1500,unit:'',d:'An assistant trained on the business’s own knowledge for customers or staff.'},
+    {n:'Workflow Implementation',p:null,unit:'',d:'Hands-on build of the automations in the strategy. Custom quote after scoping.'},
+    {n:'Learning Systems Consulting',p:125,unit:'/hr',d:'LMS, training and certification program design for teams and educators.'},
+    {n:'Team AI Training',p:500,unit:'',d:'Practical AI training sessions so the team can use the tools with confidence.'}
+  ];
+  function priceLabel(s){return s.p==null?'Custom quote':'From '+money(s.p)+s.unit;}
+
+  /* ---------- Clients ---------- */
+  var STAGES=['Lead','Discovery Call','Proposal Sent','Agreement Signed','In Progress','Delivered','Follow-up'];
+  var ACTIVE=['Agreement Signed','In Progress'];
+  var added=store('clients')||[], stageOver=store('stages')||{};
+  function clients(){
+    return ((D&&D.clients)||[]).map(function(c){return Object.assign({src:SECT.clients||'example'},c);})
+      .concat(added.map(function(c){return Object.assign({src:'added'},c);}))
+      .map(function(c){c.followDate=c.follow?pd(c.follow):TODAY; if(stageOver[c.id]) c.stage=stageOver[c.id]; return c;});
+  }
+  function overdue(c){return daysTo(c.followDate)<=0 && c.stage!=='Follow-up';}
+
+  /* ---------- Launch & content ---------- */
+  var ticks=store('launch')||{}, cstat=store('content')||{};
+  var CSTAT=['Idea','Drafted','Scheduled','Posted'];
+  function launch(){return ((D&&D.launch)||[]).map(function(t){t=Object.assign({},t); t.dueDate=pd(t.due); t.done=ticks[t.id]!==undefined?ticks[t.id]:!!t.done; return t;});}
+  function content(){return ((D&&D.content)||[]).map(function(p){p=Object.assign({},p); p.d=pd(p.date); if(cstat[p.id]) p.status=cstat[p.id]; return p;}).sort(function(a,b){return a.d-b.d;});}
+
+  /* ---------- Theme, glow, presentation ---------- */
+  var root=document.documentElement, prefs=store('prefs')||{};
+  function applyPrefs(){
+    if(prefs.theme) root.setAttribute('data-theme',prefs.theme);
+    root.setAttribute('data-glow', prefs.glow===false?'off':'on');
+    document.getElementById('t-glow').setAttribute('aria-pressed', prefs.glow!==false);
+    document.getElementById('t-theme').setAttribute('aria-pressed', root.getAttribute('data-theme')==='light');
+    document.getElementById('app').classList.toggle('blurred', !!prefs.present);
+    document.getElementById('t-present').setAttribute('aria-pressed', !!prefs.present);
+  }
+  document.getElementById('t-glow').onclick=function(){prefs.glow=(prefs.glow===false); store('prefs',prefs); applyPrefs();};
+  document.getElementById('t-theme').onclick=function(){prefs.theme=(root.getAttribute('data-theme')==='light')?'dark':'light'; store('prefs',prefs); applyPrefs();};
+  document.getElementById('t-present').onclick=function(){prefs.present=!prefs.present; store('prefs',prefs); applyPrefs(); toast(prefs.present?'Client names hidden':'Client names shown');};
+
+  /* ---------- Tabs ---------- */
+  var tabs=document.querySelectorAll('.tab'), views=document.querySelectorAll('.view');
+  function show(v){
+    if(!document.querySelector('[data-view="'+v+'"]')) v='today';
+    tabs.forEach(function(t){t.setAttribute('aria-selected', t.dataset.v===v);});
+    views.forEach(function(s){s.hidden=s.dataset.view!==v;});
+    store('tab',v);
+  }
+  tabs.forEach(function(t){t.onclick=function(){show(t.dataset.v);};});
+
+  /* ---------- Today ---------- */
+  function kpi(label,n,tone,sub){return '<div class="card kpi '+tone+'"><span class="small">'+label+'</span><b class="mono">'+n+'</b><span class="small">'+sub+'</span></div>';}
+  function renderToday(){
+    var h=new Date().getHours();
+    document.getElementById('greet').innerHTML='<span class="script">'+(h<12?'Good morning':h<17?'Good afternoon':'Good evening')+'</span>, here’s today.';
+    document.getElementById('today-date').textContent=TODAY.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+    var cs=clients(), active=cs.filter(function(c){return ACTIVE.indexOf(c.stage)>-1;});
+    var open=cs.filter(function(c){return STAGES.indexOf(c.stage)<STAGES.indexOf('Agreement Signed');});
+    var pipe=open.reduce(function(s,c){return s+Number(c.value||0);},0);
+    var due=cs.filter(overdue), dl=daysTo(LAUNCH);
+    var lt=launch(), soon=lt.filter(function(t){return !t.done && daysTo(t.dueDate)<=3;});
+    var posts=content().filter(function(p){var d=daysTo(p.d); return d>=0&&d<=7&&(p.status==='Idea'||p.status==='Drafted');});
+    document.getElementById('kpis').innerHTML=
+      kpi('Active clients',active.length,'teal','Signed or in progress')+
+      kpi('Open pipeline',money(pipe),'rose','Leads, calls and proposals')+
+      kpi('Follow-ups due',due.length,due.length?'red':'teal','Today or overdue')+
+      kpi('Days to Skool launch',dl>0?dl:0,dl<=14?'amber':'teal','January 1, 2027');
+    var ok=due.length===0&&soon.length===0, rb=document.getElementById('ribbon');
+    rb.className='ribbon '+(ok?'ok':'warn'); rb.style.background=''; rb.style.color='';
+    rb.innerHTML=(ok?'Today looks on track.':'Today needs attention: '+due.length+' follow-up'+(due.length===1?'':'s')+' and '+soon.length+' launch task'+(soon.length===1?'':'s')+' due soon.')+
+      (SECT.clients==='real'?'':' <span class="small">Clients are examples until your data is connected.</span>');
+    var items=[];
+    due.forEach(function(c){var d=daysTo(c.followDate); items.push(['urgent','<span class="who">'+esc(c.who)+'</span> · '+esc(c.org)+': '+esc(c.nextStep)+(d<0?' ('+Math.abs(d)+'d overdue)':' (today)'),'Urgent']);});
+    soon.forEach(function(t){var d=daysTo(t.dueDate); items.push([d<0?'urgent':'soon','Skool launch: '+esc(t.task)+(d<0?' ('+Math.abs(d)+'d overdue)':d===0?' (due today)':' (due '+fmt(t.dueDate)+')'),d<0?'Urgent':'Soon']);});
+    posts.forEach(function(p){items.push(['soon','Finish and schedule '+esc(p.channel)+' post for '+fmt(p.d)+': '+esc(p.title),'Soon']);});
+    cs.filter(function(c){return c.stage==='Delivered';}).forEach(function(c){items.push(['improve','Ask <span class="who">'+esc(c.who)+'</span> for a testimonial or case study','Improve']);});
+    if(!items.length) items.push(['ok','Nothing needs you right now','On track']);
+    var rank={urgent:0,soon:1,improve:2,ok:3}; items.sort(function(a,b){return rank[a[0]]-rank[b[0]];});
+    document.getElementById('attn').innerHTML=items.map(function(i){return '<div class="attn sev-'+i[0]+'"><i></i><span>'+i[1]+'</span><span class="pill p-'+i[0]+'">'+i[2]+'</span></div>';}).join('');
+    renderChecklist();
+  }
+  var CHECK=['Check inquiries, email and Skool DMs','Send today’s follow-ups','Prep for today’s calls','Move one launch task forward','Draft or schedule one content post','Update the pipeline'];
+  function renderChecklist(){
+    var k='check_'+iso(TODAY), state=store(k)||{}, box=document.getElementById('checklist');
+    box.innerHTML=CHECK.map(function(t,i){return '<label class="check'+(state[i]?' done':'')+'" for="ck'+i+'"><input type="checkbox" id="ck'+i+'"'+(state[i]?' checked':'')+'><span>'+esc(t)+'</span></label>';}).join('');
+    box.querySelectorAll('input').forEach(function(cb,i){cb.onchange=function(){state[i]=cb.checked; store(k,state); cb.parentNode.classList.toggle('done',cb.checked);};});
+    document.getElementById('reset-check').onclick=function(){store(k,{}); renderChecklist();};
+  }
+
+  /* ---------- Board ---------- */
+  function renderBoard(){
+    var cs=clients();
+    document.getElementById('board').innerHTML=STAGES.map(function(s){
+      var col=cs.filter(function(c){return c.stage===s;});
+      return '<div class="col"><div class="col-head"><span>'+s+'</span><span class="pill p-taupe">'+col.length+'</span></div>'+
+        col.map(function(c){
+          var i=STAGES.indexOf(c.stage), d=daysTo(c.followDate);
+          var tag=c.src==='added'?'<span class="pill p-ok">Added</span>':c.src==='real'?'<span class="pill p-improve">Real</span>':'<span class="pill p-taupe">Example</span>';
+          return '<div class="ocard'+(overdue(c)?' late':'')+'"><div class="row"><span class="mono small">'+esc(c.id)+'</span>'+tag+'</div>'+
+            '<span class="who">'+esc(c.who)+'</span><span class="small pii">'+esc(c.org)+'</span>'+
+            '<div class="row"><span class="pill p-rose">'+esc(c.service)+'</span><span class="mono small">'+(c.value?money(c.value):'Quote')+'</span></div>'+
+            '<span class="small">Next: '+esc(c.nextStep)+' · '+(d<0?Math.abs(d)+'d overdue':d===0?'today':fmt(c.followDate))+'</span>'+
+            (i<STAGES.length-1?'<button type="button" class="btn small-btn" data-next="'+esc(c.id)+'">Next: '+STAGES[i+1]+'</button>':'')+'</div>';
+        }).join('')+'</div>';
+    }).join('');
+    document.querySelectorAll('[data-next]').forEach(function(b){b.onclick=function(){
+      var c=clients().find(function(x){return x.id===b.dataset.next;});
+      stageOver[c.id]=STAGES[STAGES.indexOf(c.stage)+1]; store('stages',stageOver); renderBoard(); renderToday();
+      toast(c.id+' moved to '+stageOver[c.id]);
+    };});
+  }
+
+  /* ---------- Services ---------- */
+  function renderServices(){
+    document.getElementById('services').innerHTML=SERVICES.map(function(s){
+      return '<div class="card svc" style="display:grid;gap:6px;align-content:start"><h3 style="font-family:var(--f-display);font-size:22px;color:var(--rose)">'+esc(s.n)+'</h3><span class="price">'+priceLabel(s)+'</span><p class="small">'+esc(s.d)+'</p></div>';
+    }).join('');
+  }
+
+  /* ---------- Intake ---------- */
+  var INTEG=['Google Workspace','Microsoft 365','Gmail or Outlook','Shopify or Etsy','Square or Stripe','CRM (HubSpot, etc.)','Skool or an LMS','Zapier, Make or Power Automate','Website or WordPress','Other'];
+  function val(id){return document.getElementById(id).value.trim();}
+  function svc(){return SERVICES.find(function(s){return s.n===document.getElementById('i-type').value;});}
+  function integrations(){return Array.prototype.slice.call(document.querySelectorAll('#i-int input:checked')).map(function(x){return x.value;});}
+  function renderFit(){
+    var s=svc(), b=+document.getElementById('i-budget').value, start=s.p==null?null:(s.unit?s.p:s.p);
+    var msg='';
+    if(b===0) msg='<div class="small"><span>Budget not set. Confirm it on the discovery call.</span><span></span></div>';
+    else if(start!=null && !s.unit && b<start) msg='<div class="small" style="color:var(--amber)"><span>Budget is below the starting price. Offer the AI Readiness Audit or hourly consulting first.</span><span></span></div>';
+    else msg='<div class="small" style="color:var(--green)"><span>Budget fits the starting investment.</span><span></span></div>';
+    document.getElementById('fit').innerHTML='<div><span>'+esc(s.n)+'</span><span class="mono due">'+priceLabel(s)+'</span></div>'+
+      '<div class="small"><span>First 30-minute consultation</span><span class="mono">Free</span></div>'+msg;
+    document.getElementById('brief').textContent=brief();
+  }
+  function brief(){
+    var s=svc(), opt=function(id){var e=document.getElementById(id); return e.options[e.selectedIndex].text;};
+    return 'DISCOVERY BRIEF · AI AuthoriTech\n'+
+      'Contact: '+(val('i-name')||'[first name]')+(val('i-org')?' · '+val('i-org'):'')+'\n'+
+      'Engagement: '+s.n+' ('+priceLabel(s)+')\n'+
+      'Current AI experience: '+opt('i-exp')+'\n\n'+
+      'Business challenge:\n'+(val('i-challenge')||'—')+'\n\n'+
+      'Desired outcome:\n'+(val('i-outcome')||'—')+'\n\n'+
+      'Automation opportunity:\n'+(val('i-opp')||'—')+'\n\n'+
+      'Integrations: '+(integrations().join(', ')||'—')+'\n'+
+      'Timeline: '+opt('i-time')+'\n'+
+      'Budget: '+opt('i-budget')+'\n\n'+
+      'Terms: first 30-minute consultation free, then $125/hr. Project scope and payment schedule set in the proposal.';
+  }
+  function setupIntake(){
+    document.getElementById('i-type').innerHTML=SERVICES.map(function(s){return '<option>'+esc(s.n)+'</option>';}).join('');
+    document.getElementById('i-int').innerHTML=INTEG.map(function(n,i){return '<label for="ig'+i+'"><input type="checkbox" id="ig'+i+'" value="'+esc(n)+'"> '+esc(n)+'</label>';}).join('');
+    document.getElementById('intake-form').addEventListener('input',renderFit);
+    document.getElementById('intake-form').addEventListener('change',renderFit);
+    document.getElementById('copy-brief').onclick=function(){
+      var t=brief(); try{navigator.clipboard.writeText(t).then(function(){toast('Discovery brief copied');},function(){toast('Select the brief and press Ctrl+C');});}catch(e){toast('Select the brief and press Ctrl+C');}
+    };
+    document.getElementById('intake-form').onsubmit=function(e){
+      e.preventDefault();
+      var msg=document.getElementById('form-msg'), name=val('i-name');
+      if(!name||!val('i-challenge')){msg.textContent='Add a first name and the business challenge.'; msg.style.color='var(--red)'; return;}
+      var s=svc();
+      var c={id:'AT-N'+String(added.length+1).padStart(3,'0'),who:name,org:val('i-org')||'—',service:s.n,value:s.unit?0:(s.p||0),stage:'Lead',nextStep:'Book free 30-minute discovery call',follow:iso(addDays(1)),
+        challenge:val('i-challenge'),outcome:val('i-outcome'),opportunity:val('i-opp'),integrations:integrations(),
+        experience:document.getElementById('i-exp').value,timeline:document.getElementById('i-time').value,budget:document.getElementById('i-budget').selectedOptions[0].text};
+      added.push(c); store('clients',added);
+      msg.style.color='var(--green)'; msg.textContent=c.id+' added to the pipeline as a Lead. Follow-up set for tomorrow.';
+      this.reset(); renderFit(); renderBoard(); renderToday();
+    };
+    renderFit();
+  }
+
+  /* ---------- Launch tracker ---------- */
+  function renderLaunch(){
+    var lt=launch(), done=lt.filter(function(t){return t.done;}).length, dl=daysTo(LAUNCH);
+    document.getElementById('days-left').textContent=dl>0?dl:0;
+    document.getElementById('launch-bar').style.width=(lt.length?Math.round(done/lt.length*100):0)+'%';
+    document.getElementById('launch-sum').textContent=done+' of '+lt.length+' launch tasks done'+(lt.length?' ('+Math.round(done/lt.length*100)+'%)':'');
+    var phases=[]; lt.forEach(function(t){if(phases.indexOf(t.phase)<0) phases.push(t.phase);});
+    var box=document.getElementById('launch');
+    box.innerHTML=phases.map(function(ph){
+      return '<div class="phase"><h3>'+esc(ph)+'</h3>'+lt.filter(function(t){return t.phase===ph;}).map(function(t){
+        var d=daysTo(t.dueDate), pill=t.done?'<span class="pill p-ok">Done</span>':d<0?'<span class="pill p-urgent">'+Math.abs(d)+'d overdue</span>':d<=3?'<span class="pill p-soon">'+fmt(t.dueDate)+'</span>':'<span class="pill p-taupe">'+fmt(t.dueDate)+'</span>';
+        return '<label class="task'+(t.done?' done':'')+'" for="lt-'+esc(t.id)+'"><input type="checkbox" id="lt-'+esc(t.id)+'" data-lt="'+esc(t.id)+'"'+(t.done?' checked':'')+'><span class="t">'+esc(t.task)+'</span>'+pill+'</label>';
+      }).join('')+'</div>';
+    }).join('');
+    box.querySelectorAll('[data-lt]').forEach(function(cb){cb.onchange=function(){ticks[cb.dataset.lt]=cb.checked; store('launch',ticks); renderLaunch(); renderToday();};});
+  }
+
+  /* ---------- Content calendar ---------- */
+  var chan='All';
+  function renderContent(){
+    var all=content(), chans=['All']; all.forEach(function(p){if(chans.indexOf(p.channel)<0) chans.push(p.channel);});
+    document.getElementById('ch-filter').innerHTML=chans.map(function(c){return '<button type="button" class="chip" data-ch="'+esc(c)+'" aria-pressed="'+(c===chan)+'">'+esc(c)+'</button>';}).join('');
+    document.querySelectorAll('[data-ch]').forEach(function(b){b.onclick=function(){chan=b.dataset.ch; renderContent();};});
+    var list=all.filter(function(p){return chan==='All'||p.channel===chan;}), weeks={}, order=[];
+    list.forEach(function(p){var m=new Date(p.d); m.setDate(m.getDate()-((m.getDay()+6)%7)); var k=iso(m); if(!weeks[k]){weeks[k]=[]; order.push(k);} weeks[k].push(p);});
+    var cls={Idea:'p-taupe',Drafted:'p-soon',Scheduled:'p-improve',Posted:'p-ok'};
+    document.getElementById('calendar').innerHTML=order.map(function(k){
+      return '<div class="cal-week"><h3>Week of '+fmt(pd(k))+'</h3>'+weeks[k].map(function(p){
+        return '<div class="post"><span class="d">'+fmt(p.d)+'</span><span><b style="font-weight:600">'+esc(p.title)+'</b><br><span class="small">'+esc(p.channel)+' · '+esc(p.type)+'</span></span>'+
+          '<button type="button" class="pill status '+(cls[p.status]||'p-taupe')+'" data-post="'+esc(p.id)+'" title="Move to next status">'+esc(p.status)+'</button></div>';
+      }).join('')+'</div>';
+    }).join('')||'<p class="small">No posts for this channel.</p>';
+    document.querySelectorAll('[data-post]').forEach(function(b){b.onclick=function(){
+      var p=content().find(function(x){return x.id===b.dataset.post;}); cstat[p.id]=CSTAT[(CSTAT.indexOf(p.status)+1)%CSTAT.length]; store('content',cstat); renderContent(); renderToday();
+    };});
+  }
+
+  /* ---------- Messages ---------- */
+  var MSGS=[
+    ['Discovery call confirmation','Hi [First name],\n\nThanks for reaching out to AI AuthoriTech! Your free 30-minute discovery call is set for [day, date] at [time] [time zone]: [meeting link]\n\nTo make the most of it, think about the one task you’d most like off your plate and the tools you use every day.\n\nTalk soon,\nAI AuthoriTech'],
+    ['After the discovery call','Hi [First name],\n\nThank you for the conversation today. Here’s what I heard:\n• Challenge: [challenge]\n• Goal: [outcome]\n• Best first step: [service]\n\nI’ll send a written proposal with scope, timeline and investment by [date]. Any questions before then, just reply.\n\nAI AuthoriTech'],
+    ['Proposal follow-up','Hi [First name],\n\nChecking in on the proposal for [service] I sent on [date]. Happy to walk through it, adjust the scope, or answer questions. Would a quick 15-minute call help?\n\nAI AuthoriTech'],
+    ['Kickoff welcome','Hi [First name],\n\nWelcome aboard! We kick off [service] on [date]. Before then, please send:\n• Access to [tools]\n• Examples of [documents or workflows]\n• Anyone else who should join the kickoff\n\nI’m excited to get started.\n\nAI AuthoriTech'],
+    ['Weekly check-in','Hi [First name],\n\nThis week’s progress on [project]:\n• Done: [items]\n• Next: [items]\n• Needed from you: [items]\n\nWe’re [on track / adjusting the timeline because …].\n\nAI AuthoriTech'],
+    ['Testimonial request','Hi [First name],\n\nIt was a joy working on [project] with you. Would you share two or three sentences about the result? A quick note on what changed for your business helps other owners decide. Reply here or use [review link].\n\nThank you!\nAI AuthoriTech'],
+    ['Skool community invite','Hi [First name],\n\nOn January 1, 2027 I’m opening a Skool community where makers learn to build owner portals and free automations like the ones we used in your project. I’d love for you to be a founding member: [invite link]\n\nAI AuthoriTech']
+  ];
+
+  /* ---------- Messages v2: template picker with auto-fill + needs-reply inbox ----------
+     Templates are grouped by type. Choosing an order or client fills in the details.
+     "Needs a reply" comes from the data file (section "inbox"); later it syncs from
+     Gmail, Outlook or GoHighLevel (see AUDIT.md). Your links are saved on this device. */
+  function setupMessages(cfg){
+    var TPL=MSGS.map(function(m){var meta=cfg.meta[m[0]]||['Other',m[0]+' · '+cfg.brand]; return {t:m[0],cat:meta[0],subj:meta[1],body:m[1]};}).concat(cfg.extra);
+    if(window.EMAILKIT&&EMAILKIT.templates(cfg.brand)) TPL=EMAILKIT.templates(cfg.brand).slice();
+    var cats=[]; TPL.forEach(function(x){if(cats.indexOf(x.cat)<0) cats.push(x.cat);});
+    var SK=cfg.sk||'', links=store(SK+'msg_links')||{}, doneMail=store(SK+'mail_done')||{};
+    var host=document.getElementById('messages');
+    host.className='msgs';
+    host.innerHTML=
+      '<div class="card composer"><div class="view-head"><h3>Write a message</h3><span class="small">Pick a template, then the '+cfg.recLabel.toLowerCase()+'</span></div>'+
+        '<div class="fgrid"><label class="f" for="m-tpl">Template<select id="m-tpl">'+cats.map(function(c){return '<optgroup label="'+esc(c)+'">'+TPL.map(function(x,i){return x.cat===c?'<option value="'+i+'">'+esc(x.t)+'</option>':'';}).join('')+'</optgroup>';}).join('')+'</select></label>'+
+        '<label class="f" for="m-rec">'+esc(cfg.recLabel)+'<select id="m-rec"></select></label></div>'+
+        '<label class="f" for="m-subj">Subject<input id="m-subj" class="subj"></label>'+
+        '<label class="f" for="m-body">Message<textarea id="m-body"></textarea></label>'+
+        '<p class="fillnote" id="m-note" aria-live="polite"></p>'+
+        '<div class="btnrow"><button type="button" class="btn primary" id="m-copy">Copy message</button><button type="button" class="btn" id="m-mail">Open in email app</button><button type="button" class="btn" id="m-reset">Refill</button></div>'+
+      '</div>'+
+      '<div style="display:grid;gap:14px;align-content:start">'+
+        '<div class="card inbox"><div class="view-head"><h3>Needs a reply</h3><span data-src="inbox" data-label="Inbox"></span></div><div id="m-inbox" class="list"></div><p class="small">Reply opens the suggested template with the details filled in. Done ticks save on this device.</p></div>'+
+        '<div class="card links"><h3>Your links</h3><p class="small">Filled into templates automatically. Saved on this device only.</p>'+
+          cfg.links.map(function(l){return '<label class="f" for="lk-'+l[0]+'">'+esc(l[1])+'<input id="lk-'+l[0]+'" data-lk="'+l[0]+'" placeholder="'+esc(l[2])+'" value="'+esc(links[l[0]]||'')+'"></label>';}).join('')+
+        '</div>'+
+      '</div>';
+    var tSel=document.getElementById('m-tpl'), rSel=document.getElementById('m-rec');
+    function recs(){return cfg.records();}
+    function fillRecs(sel){rSel.innerHTML='<option value="">Choose '+cfg.recLabel.toLowerCase()+' (optional)</option>'+recs().map(function(r){return '<option value="'+esc(r.id)+'"'+(r.id===sel?' selected':'')+'>'+esc(r.id+' · '+r.who+' · '+cfg.recText(r))+'</option>';}).join('');}
+    function values(){
+      var v={}; cfg.links.forEach(function(l){ if(links[l[0]]) v[l[0]]=links[l[0]]; });
+      var r=recs().find(function(x){return x.id===rSel.value;});
+      if(r){var f=cfg.fields(r); Object.keys(f).forEach(function(k){ if(f[k]!==undefined&&f[k]!=='') v[k]=String(f[k]); });}
+      return v;
+    }
+    function fill(text,v){return text.replace(/\[([^\]]+)\]/g,function(m,k){var key=k.toLowerCase(); return v[key]!==undefined?v[key]:m;});}
+    function build(){
+      var t=TPL[+tSel.value], v=values();
+      document.getElementById('m-subj').value=fill(t.subj,v);
+      document.getElementById('m-body').value=fill(t.body,v)+(window.EMAILKIT?'\n\n'+EMAILKIT.sigText(cfg.brand):'');
+      note();
+    }
+    function note(){
+      var left=(document.getElementById('m-subj').value+' '+document.getElementById('m-body').value).match(/\[[^\]]+\]/g)||[];
+      var uniq=left.filter(function(x,i){return left.indexOf(x)===i;});
+      document.getElementById('m-note').innerHTML=uniq.length?'Still to fill in: '+uniq.map(function(x){return '<mark>'+esc(x)+'</mark>';}).join(' '):'All details filled in. Read it over, then send.';
+    }
+    tSel.onchange=build; rSel.onchange=build; document.getElementById('m-reset').onclick=build;
+    /* Email kit: signature on every message, branded HTML email, signature settings */
+    if(window.EMAILKIT){
+      var col=host.children[1], S0=EMAILKIT.sig(cfg.brand);
+      col.insertAdjacentHTML('beforeend','<div class="card"><h3>Your email signature</h3><p class="small">Added to the bottom of every message and branded email. Saved on this device.</p>'+
+        [['close','Closing line'],['name','Name'],['title','Business name'],['tag','Tagline'],['phone','Phone'],['logoUrl','Logo image link (optional, for GoHighLevel)'],['titleUrl','Signature or title image link (optional)']].map(function(f){return '<label class="f">'+f[1]+'<input data-sig="'+f[0]+'" value="'+esc(S0[f[0]]||'')+'"></label>';}).join('')+'</div>');
+      col.querySelectorAll('[data-sig]').forEach(function(i){i.onchange=function(){var s=EMAILKIT.sig(cfg.brand); s[i.dataset.sig]=i.value.trim(); EMAILKIT.saveSig(cfg.brand,s); build(); toast('Signature saved');};});
+      var row=document.getElementById('m-reset').parentNode;
+      row.insertAdjacentHTML('beforeend','<button type="button" class="btn" id="m-html">Copy branded email</button><button type="button" class="btn" id="m-prev">Preview branded email</button>');
+      function bodyOnly(){var b=document.getElementById('m-body').value, s=EMAILKIT.sigText(cfg.brand); var i=b.lastIndexOf(s.split('\n')[0]); return i>0?b.slice(0,i).replace(/\s+$/,''):b;}
+      document.getElementById('m-html').onclick=function(){
+        var h=EMAILKIT.html(cfg.brand,document.getElementById('m-subj').value,bodyOnly()), txt=document.getElementById('m-body').value;
+        try{navigator.clipboard.write([new ClipboardItem({'text/html':new Blob([h],{type:'text/html'}),'text/plain':new Blob([txt],{type:'text/plain'})})]).then(function(){toast('Branded email copied. Paste it into Gmail or GoHighLevel.');},function(){toast('Copy did not work in this browser');});}catch(e){toast('Copy did not work in this browser');}
+      };
+      document.getElementById('m-prev').onclick=function(){
+        var w=document.createElement('div'); w.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:99;display:grid;place-items:center;padding:20px';
+        w.innerHTML='<div style="background:#fff;border-radius:12px;width:min(720px,96vw);height:min(86vh,900px);display:grid;grid-template-rows:auto 1fr"><div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;font:600 14px Arial;color:#222">Subject: '+esc(document.getElementById('m-subj').value)+'<button type="button" class="btn small-btn" id="m-prev-x">Close</button></div><iframe style="border:0;width:100%;height:100%"></iframe></div>';
+        document.body.appendChild(w); w.querySelector('iframe').srcdoc='<!doctype html><meta charset="utf-8"><body style="margin:0">'+EMAILKIT.html(cfg.brand,'',bodyOnly())+'</body>';
+        w.onclick=function(e){if(e.target===w||e.target.id==='m-prev-x') w.remove();};
+      };
+    }
+
+    document.getElementById('m-body').oninput=note; document.getElementById('m-subj').oninput=note;
+    document.getElementById('m-copy').onclick=function(){
+      var txt='Subject: '+document.getElementById('m-subj').value+'\n\n'+document.getElementById('m-body').value;
+      try{navigator.clipboard.writeText(txt).then(function(){toast('Message copied');},function(){toast('Select the message and press Ctrl+C');});}catch(e){toast('Select the message and press Ctrl+C');}
+    };
+    document.getElementById('m-mail').onclick=function(){
+      location.href='mailto:?subject='+encodeURIComponent(document.getElementById('m-subj').value)+'&body='+encodeURIComponent(document.getElementById('m-body').value);
+    };
+    host.querySelectorAll('[data-lk]').forEach(function(inp){inp.oninput=function(){links[inp.dataset.lk]=inp.value.trim(); store(SK+'msg_links',links); build();};});
+    function renderInbox(){
+      var list=((D&&D.inbox)||[]).slice().sort(function(a,b){return (a.received||'').localeCompare(b.received||'');});
+      var open=list.filter(function(m){return !doneMail[m.id];}).length;
+      var tab=document.querySelector('.tab[data-v="messages"]'); if(tab) tab.textContent='Messages'+(open?' ('+open+')':'');
+      document.getElementById('m-inbox').innerHTML=list.map(function(m){
+        var age=m.received?Math.round((TODAY-new Date(m.received+'T00:00:00'))/864e5):0;
+        return '<div class="mail '+(doneMail[m.id]?'done':age>=1?'old':'new')+'"><div class="row"><span class="subj">'+esc(m.subject)+'</span><span class="pill '+(age>=1?'p-urgent':'p-improve')+'">'+(age<=0?'Today':age+'d waiting')+'</span></div>'+
+          '<span class="small"><span class="who">'+esc(m.from)+'</span> · '+esc(m.channel)+' · '+esc(m.category)+(m.order?' · '+esc(m.order):'')+'</span>'+
+          '<div class="btnrow"><button type="button" class="btn small-btn" data-reply="'+esc(m.id)+'">Reply: '+esc(m.template)+'</button><button type="button" class="btn small-btn" data-done="'+esc(m.id)+'">'+(doneMail[m.id]?'Undo':'Done')+'</button></div></div>';
+      }).join('')||'<p class="small">Nothing waiting. Nice.</p>';
+      host.querySelectorAll('[data-reply]').forEach(function(b){b.onclick=function(){
+        var m=list.find(function(x){return x.id===b.dataset.reply;}); var i=TPL.findIndex(function(x){return x.t===m.template;});
+        if(i>-1) tSel.value=i; fillRecs(m.order||''); build(); document.getElementById('m-body').focus(); toast('Template filled in for '+m.from);
+      };});
+      host.querySelectorAll('[data-done]').forEach(function(b){b.onclick=function(){ if(doneMail[b.dataset.done]) delete doneMail[b.dataset.done]; else doneMail[b.dataset.done]=true; store(SK+'mail_done',doneMail); renderInbox();};});
+    }
+    fillRecs(''); build(); renderInbox();
+  }
+
+  /* ---------- Automations ---------- */
+  var AUTOS=[
+    ['Refresh clients, launch plan and calendar into this portal','Daily 6:30 am','Windows Task Scheduler + Refresh-Portals.ps1','Running'],
+    ['Weekly snapshot for history and course demos','Mondays 7:00 am','Windows Task Scheduler','Running'],
+    ['Stale-data warning when the refresh misses','Every page open','Built into this portal','Running'],
+    ['Follow-up due flags and launch countdown','Every page open','Built into this portal','Running'],
+    ['Discovery brief from the intake form','On every intake','Built into this portal','Running'],
+    ['Intake form on the public site feeds the pipeline','On submit','Google Forms + Google Sheets','Planned'],
+    ['Post scheduling for the content calendar','Weekly','Meta Business Suite and Skool scheduled posts','Planned']
+  ];
+  function renderAutos(){
+    var cls={Running:'p-ok','Ready to Build':'p-improve',Planned:'p-taupe'};
+    document.getElementById('autos').innerHTML=AUTOS.map(function(a){return '<tr><td>'+esc(a[0])+'</td><td>'+esc(a[1])+'</td><td>'+esc(a[2])+'</td><td><span class="pill '+cls[a[3]]+'">'+a[3]+'</span></td></tr>';}).join('');
+  }
+
+  /* ---------- Installable app (needs https hosting) ---------- */
+  if(/^https?:$/.test(location.protocol)){
+    var l=document.createElement('link'); l.rel='manifest'; l.href='ai-authoritech.webmanifest'; document.head.appendChild(l);
+    if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function(){});
+  }
+
+  applyPrefs(); freshness(); labelSources();
+  renderToday(); renderBoard(); renderServices(); setupIntake(); renderLaunch(); renderContent(); renderAutos();
+
+  /* ---------- Social this week (data section "social": from GHL Social Planner via Dazz'l, example for now) ---------- */
+  function renderSocial(){
+    var view=document.querySelector('[data-view="today"]'); if(!view) return;
+    var box=document.getElementById('social-week');
+    if(!box){box=document.createElement('div'); box.className='card'; box.id='social-week'; view.appendChild(box);}
+    var t0=new Date(); t0.setHours(0,0,0,0);
+    var posts=((D&&D.social)||[]).map(function(p){var d=p.date?new Date(p.date+'T00:00:00'):t0; return Object.assign({d:d},p);})
+      .filter(function(p){var n=Math.round((p.d-t0)/864e5); return n>=0&&n<7;}).sort(function(a,b){return a.d-b.d;});
+    var cls={Idea:'p-idea',Drafted:'p-draft',Scheduled:'p-sched',Posted:'p-ok'};
+    box.innerHTML='<div class="view-head" style="margin-bottom:10px"><h3>Social this week</h3><span data-src="social" data-label="Social posts"></span></div>'+
+      '<div class="list">'+(posts.map(function(p){
+        return '<div class="soc"><span class="mono small">'+p.d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})+' · '+esc(p.time||'')+'</span>'+
+          '<span><b style="font-weight:600">'+esc(p.title)+'</b><br><span class="small">'+esc(p.network)+' · '+esc(p.account)+'</span></span>'+
+          '<span class="pill '+(cls[p.status]||'p-taupe')+'">'+esc(p.status)+'</span></div>';
+      }).join('')||'<p class="small">No posts planned this week.</p>')+'</div>'+
+      '<p class="small" style="margin-top:8px">Scheduled in GoHighLevel Social Planner, brand-matched accounts only.</p>';
+    if(typeof labelSources==='function') labelSources();
+  }
+  renderSocial();
+  setupMessages({brand:'AI AuthoriTech', recLabel:'Client',
+    records:function(){return clients();},
+    recText:function(c){return c.service;},
+    fields:function(c){return {'first name':String(c.who||'').split(/\s+/)[0],'service':c.service,'project':c.service,'business':c.org,'challenge':c.challenge,'outcome':c.outcome};},
+    links:[['meeting link','Meeting or booking link','Calendly, Google Meet, Zoom or GHL calendar'],['invoice link','Invoice or payment link','Stripe, Square or GHL invoice'],['review link','Testimonial link','Google review or form link'],['invite link','Skool invite link','Your Skool community invite']],
+    meta:{'Discovery call confirmation':['Discovery','Your free discovery call is booked'],'After the discovery call':['Discovery','Next steps from our call'],
+      'Proposal follow-up':['Proposals','Following up on your [service] proposal'],'Kickoff welcome':['Projects','Welcome aboard: [service] kickoff'],
+      'Weekly check-in':['Projects','This week on [project]'],'Testimonial request':['Reviews','Would you share a few words?'],
+      'Skool community invite':['Community','You’re invited: founding member of the community']},
+    extra:[
+      {t:'Support request',cat:'Support',subj:'About [issue] in your [service]',body:'Hi [First name],\n\nThanks for flagging [issue]. I’m looking into it now. Here’s what I’ll check first:\n• [step]\n\nI’ll update you by [date]. If it’s urgent, reply here and I’ll prioritize it.\n\nAI AuthoriTech'}
+    ]});
+  show('today'); /* always open on Today */
+})();
+</script>
+<script src="modules/portal-kit.js?v=20261123g"></script>
+<script src="modules/services.js?v=20261123g"></script>
+<script>ServiceMenu({"prefix":"at_svc_","slug":"ai-authoritech","brand":"AI AuthoriTech","logEl":"at-svclog","calcEl":"at-pricecalc"});</script>
+<script src="modules/brand-at.js?v=20261123g"></script>
+<script src="modules/reports.js?v=20261123g"></script>
+<script src="modules/reports-extra.js?v=20261123g"></script>
+<script src="modules/reports-more.js?v=20261123g"></script>
+<script src="modules/budgets.js?v=20261123g"></script>
+<script>var RP_at = Reports(window.REPORT_SETUP.at); Budgets(RP_at, "at", "at-bud");</script>
+<script>PK.subtabs([{"label": "Clients", "subs": [["pipeline", "Pipeline"], ["intake", "Client intake"]]}, {"label": "Services", "subs": [["services", "Service list"], ["svclog", "Service menu & time"], ["pricecalc", "Price a service"]]}, {"label": "Content & projects", "subs": [["content", "Content calendar"], ["launch", "Skool community project"]]}, {"label": "Reports", "subs": [["rep", "Reports"], ["led", "Finances"], ["bud", "Budgets & costs"]]}]);</script>
+</body></html>

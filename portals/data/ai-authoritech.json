@@ -1,0 +1,413 @@
+{
+ "portal": "ai-authoritech",
+ "note": "EXAMPLE DATA for the published preview. EXAMPLE DATA. Fictional clients. The launch plan and content calendar are suggestions to edit. followIn = days from the refresh date.",
+ "staleAfterHours": 26,
+ "sections": {
+  "clients": "example",
+  "launch": "example",
+  "content": "example",
+  "inbox": "example",
+  "social": "example"
+ },
+ "clients": [
+  {
+   "id": "AT-301",
+   "who": "Dana",
+   "org": "Bright Path Dental (example)",
+   "service": "AI Readiness Audit",
+   "value": 350,
+   "stage": "Discovery Call",
+   "nextStep": "Discovery call at 10 am",
+   "followIn": 0
+  },
+  {
+   "id": "AT-302",
+   "who": "Chris",
+   "org": "Harbor Lane Realty (example)",
+   "service": "Custom Chatbot Agents",
+   "value": 1500,
+   "stage": "Proposal Sent",
+   "nextStep": "Follow up on proposal",
+   "followIn": 3
+  },
+  {
+   "id": "AT-303",
+   "who": "Pat",
+   "org": "Northside Bakery (example)",
+   "service": "Automation Strategy",
+   "value": 750,
+   "stage": "In Progress",
+   "nextStep": "Deliver strategy roadmap",
+   "followIn": 6
+  },
+  {
+   "id": "AT-304",
+   "who": "Sam",
+   "org": "Summit Learning Co. (example)",
+   "service": "Learning Systems Consulting",
+   "value": 1000,
+   "stage": "Agreement Signed",
+   "nextStep": "Kickoff call (8 hrs at $125/hr)",
+   "followIn": 2
+  },
+  {
+   "id": "AT-305",
+   "who": "Lee",
+   "org": "Riverbend Nonprofit (example)",
+   "service": "Team AI Training",
+   "value": 500,
+   "stage": "Lead",
+   "nextStep": "Reply to inquiry and book call",
+   "followIn": -1
+  },
+  {
+   "id": "AT-306",
+   "who": "Robin",
+   "org": "Coastal Boutique (example)",
+   "service": "Workflow Implementation",
+   "value": 0,
+   "stage": "Delivered",
+   "nextStep": "Ask for testimonial",
+   "followIn": 4
+  }
+ ],
+ "launch": [
+  {
+   "id": "L01",
+   "phase": "Foundation",
+   "task": "Confirm the community name and Skool URL",
+   "due": "2026-11-25"
+  },
+  {
+   "id": "L02",
+   "phase": "Foundation",
+   "task": "Write the community description and who it's for",
+   "due": "2026-11-27"
+  },
+  {
+   "id": "L03",
+   "phase": "Foundation",
+   "task": "Decide pricing: free, paid or founding-member rate",
+   "due": "2026-11-30"
+  },
+  {
+   "id": "L04",
+   "phase": "Foundation",
+   "task": "Set up the Skool group, categories and rules",
+   "due": "2026-12-02"
+  },
+  {
+   "id": "L05",
+   "phase": "Build the classroom",
+   "task": "Record the welcome video",
+   "due": "2026-12-04"
+  },
+  {
+   "id": "L06",
+   "phase": "Build the classroom",
+   "task": "Finish the three demo portals (course material)",
+   "due": "2026-12-06"
+  },
+  {
+   "id": "L07",
+   "phase": "Build the classroom",
+   "task": "Outline Module 1: Plan your owner portal",
+   "due": "2026-12-09"
+  },
+  {
+   "id": "L08",
+   "phase": "Build the classroom",
+   "task": "Record Module 1 lessons",
+   "due": "2026-12-13"
+  },
+  {
+   "id": "L09",
+   "phase": "Build the classroom",
+   "task": "Outline Module 2: Build it as one free HTML page",
+   "due": "2026-12-16"
+  },
+  {
+   "id": "L10",
+   "phase": "Build the classroom",
+   "task": "Record Module 2 lessons",
+   "due": "2026-12-20"
+  },
+  {
+   "id": "L11",
+   "phase": "Build the classroom",
+   "task": "Module 3: Put it on autopilot (scheduled refresh, install as an app)",
+   "due": "2026-12-22"
+  },
+  {
+   "id": "L12",
+   "phase": "Pre-launch",
+   "task": "Make launch graphics in brand colors",
+   "due": "2026-12-23"
+  },
+  {
+   "id": "L13",
+   "phase": "Pre-launch",
+   "task": "Invite founding members from the waitlist",
+   "due": "2026-12-27"
+  },
+  {
+   "id": "L14",
+   "phase": "Pre-launch",
+   "task": "Schedule launch-day posts",
+   "due": "2026-12-30"
+  },
+  {
+   "id": "L15",
+   "phase": "Pre-launch",
+   "task": "Walk through the classroom on a phone",
+   "due": "2026-12-31"
+  },
+  {
+   "id": "L16",
+   "phase": "Launch week",
+   "task": "Open the doors and post the welcome thread",
+   "due": "2027-01-01"
+  },
+  {
+   "id": "L17",
+   "phase": "Launch week",
+   "task": "First live call: build your Today tab",
+   "due": "2027-01-03"
+  },
+  {
+   "id": "L18",
+   "phase": "Launch week",
+   "task": "Week 1 recap and feedback poll",
+   "due": "2027-01-07"
+  }
+ ],
+ "content": [
+  {
+   "id": "C01",
+   "date": "2026-11-24",
+   "channel": "Instagram",
+   "type": "Teaser",
+   "title": "Behind the scenes: my three businesses run on free portals",
+   "status": "Drafted"
+  },
+  {
+   "id": "C02",
+   "date": "2026-11-26",
+   "channel": "Email",
+   "type": "Waitlist",
+   "title": "Something new is coming January 1",
+   "status": "Idea"
+  },
+  {
+   "id": "C03",
+   "date": "2026-12-01",
+   "channel": "LinkedIn",
+   "type": "Post",
+   "title": "Why makers need a portal, not another app",
+   "status": "Idea"
+  },
+  {
+   "id": "C04",
+   "date": "2026-12-03",
+   "channel": "Instagram",
+   "type": "Reel",
+   "title": "Portal tour: the Today tab",
+   "status": "Idea"
+  },
+  {
+   "id": "C05",
+   "date": "2026-12-08",
+   "channel": "Facebook",
+   "type": "Poll",
+   "title": "What eats most of your week?",
+   "status": "Idea"
+  },
+  {
+   "id": "C06",
+   "date": "2026-12-10",
+   "channel": "Instagram",
+   "type": "Carousel",
+   "title": "5 automations that cost $0",
+   "status": "Idea"
+  },
+  {
+   "id": "C07",
+   "date": "2026-12-15",
+   "channel": "Email",
+   "type": "Offer",
+   "title": "Founding member invitation",
+   "status": "Idea"
+  },
+  {
+   "id": "C08",
+   "date": "2026-12-17",
+   "channel": "LinkedIn",
+   "type": "Case study",
+   "title": "How a print queue saved hours a week",
+   "status": "Idea"
+  },
+  {
+   "id": "C09",
+   "date": "2026-12-22",
+   "channel": "Instagram",
+   "type": "Countdown",
+   "title": "10 days until doors open",
+   "status": "Idea"
+  },
+  {
+   "id": "C10",
+   "date": "2026-12-29",
+   "channel": "Email",
+   "type": "Reminder",
+   "title": "Doors open January 1",
+   "status": "Idea"
+  },
+  {
+   "id": "C11",
+   "date": "2027-01-01",
+   "channel": "Skool",
+   "type": "Post",
+   "title": "Welcome! Start here",
+   "status": "Idea"
+  },
+  {
+   "id": "C12",
+   "date": "2027-01-01",
+   "channel": "Instagram",
+   "type": "Announcement",
+   "title": "We're live: join the community",
+   "status": "Idea"
+  },
+  {
+   "id": "C13",
+   "date": "2027-01-03",
+   "channel": "Skool",
+   "type": "Live",
+   "title": "Build your Today tab together",
+   "status": "Idea"
+  },
+  {
+   "id": "C14",
+   "date": "2027-01-06",
+   "channel": "Skool",
+   "type": "Lesson drop",
+   "title": "Module 2 opens",
+   "status": "Idea"
+  },
+  {
+   "id": "C15",
+   "date": "2027-01-10",
+   "channel": "Skool",
+   "type": "Challenge",
+   "title": "7-day portal challenge",
+   "status": "Idea"
+  },
+  {
+   "id": "C16",
+   "date": "2027-01-13",
+   "channel": "Skool",
+   "type": "Live",
+   "title": "Office hours",
+   "status": "Idea"
+  },
+  {
+   "id": "C17",
+   "date": "2027-01-20",
+   "channel": "Email",
+   "type": "Roundup",
+   "title": "Member wins from the first three weeks",
+   "status": "Idea"
+  }
+ ],
+ "inbox": [
+  {
+   "id": "IN-1",
+   "from": "Lee",
+   "channel": "Email",
+   "subject": "AI training for our staff?",
+   "category": "Discovery",
+   "order": "AT-305",
+   "template": "Discovery call confirmation",
+   "receivedIn": -1
+  },
+  {
+   "id": "IN-2",
+   "from": "Chris",
+   "channel": "Email",
+   "subject": "Questions on the proposal",
+   "category": "Proposals",
+   "order": "AT-302",
+   "template": "Proposal follow-up",
+   "receivedIn": 0
+  },
+  {
+   "id": "IN-3",
+   "from": "Robin",
+   "channel": "Email",
+   "subject": "Automation stopped sending emails",
+   "category": "Support",
+   "order": "AT-306",
+   "template": "Support request",
+   "receivedIn": 0
+  },
+  {
+   "id": "IN-4",
+   "from": "Sam",
+   "channel": "Email",
+   "subject": "What time is our kickoff?",
+   "category": "Projects",
+   "order": "AT-304",
+   "template": "Kickoff welcome",
+   "receivedIn": -1
+  }
+ ],
+ "social": [
+  {
+   "id": "S-1",
+   "dateIn": 0,
+   "time": "9:00 AM",
+   "network": "LinkedIn",
+   "account": "AI AuthoriTech",
+   "status": "Scheduled",
+   "title": "3 automations every small business can start free"
+  },
+  {
+   "id": "S-2",
+   "dateIn": 1,
+   "time": "12:00 PM",
+   "network": "Instagram",
+   "account": "ai.authoritech",
+   "status": "Scheduled",
+   "title": "Behind the scenes: my business portals"
+  },
+  {
+   "id": "S-3",
+   "dateIn": 2,
+   "time": "6:00 PM",
+   "network": "Facebook",
+   "account": "AI Authoritech",
+   "status": "Drafted",
+   "title": "Skool community: something new is coming"
+  },
+  {
+   "id": "S-4",
+   "dateIn": 3,
+   "time": "7:00 PM",
+   "network": "TikTok",
+   "account": "madam.tech",
+   "status": "Idea",
+   "title": "AI myth vs fact"
+  },
+  {
+   "id": "S-5",
+   "dateIn": 5,
+   "time": "9:00 AM",
+   "network": "LinkedIn",
+   "account": "AI AuthoriTech",
+   "status": "Idea",
+   "title": "Case study: a print queue that saves hours"
+  }
+ ],
+ "asOf": "2026-11-28T15:44:44.966Z",
+ "redacted": true
+}

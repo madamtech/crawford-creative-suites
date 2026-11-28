@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en"><head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Crawford Morning Dashboard</title>
+<meta name="theme-color" content="#0C0D0F">
+<link rel="icon" href="icons/cs-192.png">
+<link rel="apple-touch-icon" href="icons/cs-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italianno&family=Lora:ital,wght@0,500;0,600;1,500;1,600;1,700&family=Crimson+Pro:ital,wght@1,600&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+body{margin:0}[hidden]{display:none!important}
+/* Layout: owner portal. Brand bar + tab strip, one view at a time. Dark-first with teal glow trim and rose-gold display type.
+   Brand: teal, taupe, metallic rose gold, sapphire blue, black, white. */
+:root{
+  --bg:#0C0D0F; --surface:#16171A; --surface-2:#1F1E20; --line:#35312E;
+  --ink:#F5F2EF; --muted:#B2A89E;
+  --teal:#2FC4BA; --teal-soft:#10302E;
+  --rose:#E5AC98; --rose-soft:#3A2622;
+  --taupe:#CDBBA8; --taupe-soft:#2D2824;
+  --sapphire:#7FA2FF; --sapphire-soft:#19244A;
+  --red:#FF7A7A; --red-soft:#3D1C1C;
+  --amber:#F2B84B; --amber-soft:#3A2D13;
+  --green:#5FD39A; --green-soft:#133224;
+  --rosegold:linear-gradient(120deg,#B76E79 0%,#E8C2B0 40%,#F3D9CC 52%,#C98B7F 75%,#B76E79 100%);
+  --glow:1;
+  --f-display:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --f-body:"Inter", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#FAF8F6; --surface:#FFFFFF; --surface-2:#F1ECE7; --line:#DDD3CA;
+  --ink:#141518; --muted:#6B6157;
+  --teal:#0D857D; --teal-soft:#DCF0EE;
+  --rose:#A4614F; --rose-soft:#F6E5DE;
+  --taupe:#7A6656; --taupe-soft:#EFE7DF;
+  --sapphire:#1F4FB8; --sapphire-soft:#E1E9FA;
+  --red:#C0392B; --red-soft:#FBE4E1;
+  --amber:#A86A00; --amber-soft:#FBEFD6;
+  --green:#1E8A55; --green-soft:#DDF3E7;
+  color-scheme:light;
+}}
+:root[data-theme="light"]{
+  --bg:#FAF8F6; --surface:#FFFFFF; --surface-2:#F1ECE7; --line:#DDD3CA;
+  --ink:#141518; --muted:#6B6157;
+  --teal:#0D857D; --teal-soft:#DCF0EE;
+  --rose:#A4614F; --rose-soft:#F6E5DE;
+  --taupe:#7A6656; --taupe-soft:#EFE7DF;
+  --sapphire:#1F4FB8; --sapphire-soft:#E1E9FA;
+  --red:#C0392B; --red-soft:#FBE4E1;
+  --amber:#A86A00; --amber-soft:#FBEFD6;
+  --green:#1E8A55; --green-soft:#DDF3E7;
+  color-scheme:light;
+}
+:root[data-glow="off"]{--glow:0}
+*{box-sizing:border-box}
+html,body{background:var(--bg);color:var(--ink)}
+body{font-family:var(--f-body);font-size:14.5px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+h1,h2,h3{margin:0;text-wrap:balance}
+h2{font-family:var(--f-display);font-size:30px;font-weight:600;line-height:1.1}
+h3{font-size:15px;font-weight:600}
+p{margin:0}
+.muted{color:var(--muted)}
+.small{font-size:13px;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:20;background:var(--surface)}
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar-top{display:flex;align-items:center;gap:14px;padding-block:12px;flex-wrap:wrap}
+.mono-logo{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--rosegold);color:#1A1210;font-family:var(--f-display);font-weight:700;font-size:18px;flex:none;box-shadow:0 0 calc(var(--glow)*14px) rgba(229,172,152,.45)}
+.brand{display:grid;line-height:1.1}
+.brand b{font-family:var(--f-display);font-size:24px;font-weight:700;background:var(--rosegold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand span{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.bar-tools{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:inherit;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2);color:var(--muted);cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--teal);color:var(--teal);background:var(--teal-soft)}
+.chip:focus-visible,.tab:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--sapphire);outline-offset:2px}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;padding-bottom:0;scrollbar-width:thin}
+.tab{font:inherit;font-size:13.5px;font-weight:500;padding:10px 13px;border:0;border-bottom:2px solid transparent;background:none;color:var(--muted);cursor:pointer;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--teal)}
+
+main{padding-block:24px 48px}
+.view{display:grid;gap:18px}
+.view-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.source{display:inline-flex;gap:6px;align-items:center;font-size:11.5px;font-family:var(--f-mono);padding:3px 8px;border-radius:6px;border:1px solid var(--line);color:var(--muted)}
+.source.real::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
+.source.example::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--amber)}
+
+.card{background:var(--surface);border:1px solid color-mix(in srgb, var(--teal) calc(15% + var(--glow)*25%), var(--line));border-radius:12px;padding:16px;box-shadow:0 0 calc(var(--glow)*18px) calc(var(--glow)*-5px) color-mix(in srgb, var(--teal) 60%, transparent);min-width:0}
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+.ribbon{display:flex;gap:10px;align-items:center;padding:10px 14px;border-radius:10px;background:var(--green-soft);color:var(--green);font-weight:600;font-size:13.5px;flex-wrap:wrap}
+.ribbon .small{color:inherit;opacity:.85;font-weight:500}
+.kpi{display:grid;gap:4px}
+.kpi b{font-family:var(--f-display);font-size:38px;line-height:1;font-weight:700}
+.kpi.red b{color:var(--red)} .kpi.amber b{color:var(--amber)} .kpi.teal b{color:var(--teal)} .kpi.rose b{color:var(--rose)}
+
+.list{display:grid;gap:8px}
+.attn{display:grid;grid-template-columns:6px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--surface-2)}
+.attn i{align-self:stretch;border-radius:4px}
+.sev-urgent i{background:var(--red)} .sev-soon i{background:var(--amber)} .sev-improve i{background:var(--sapphire)} .sev-ok i{background:var(--green)}
+.pill{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.p-urgent{background:var(--red-soft);color:var(--red)} .p-soon{background:var(--amber-soft);color:var(--amber)}
+.p-improve{background:var(--sapphire-soft);color:var(--sapphire)} .p-ok{background:var(--green-soft);color:var(--green)}
+.p-rose{background:var(--rose-soft);color:var(--rose)} .p-taupe{background:var(--taupe-soft);color:var(--taupe)}
+
+.btn{font:inherit;font-size:13px;font-weight:600;padding:7px 12px;border-radius:8px;border:1px solid var(--teal);background:transparent;color:var(--ink);cursor:pointer}
+.btn:hover{background:var(--teal-soft)}
+.btn.primary{background:var(--teal);color:var(--bg);border-color:var(--teal)}
+.btn.small-btn{padding:4px 9px;font-size:12px}
+.check{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line)}
+.check:first-child{border-top:0}
+.check input{width:18px;height:18px;accent-color:var(--teal);margin-top:1px;flex:none}
+.check.done span{text-decoration:line-through;color:var(--muted)}
+
+/* board */
+.board{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);gap:12px;overflow-x:auto;padding-bottom:6px}
+.col{background:var(--surface-2);border-radius:12px;padding:10px;display:grid;gap:8px;align-content:start;min-height:120px}
+.col-head{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:600;padding:2px 4px}
+.ocard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;display:grid;gap:6px}
+.ocard.late{border-color:var(--red);box-shadow:0 0 calc(var(--glow)*12px) -4px var(--red)}
+.ocard .row{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+.who{font-weight:600}
+.blurred .who,.blurred .pii{filter:blur(6px);user-select:none}
+
+/* catalog */
+.coll{display:grid;gap:10px}
+.coll-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.coll-head h3{font-family:var(--f-display);font-size:22px;font-weight:700;color:var(--rose)}
+.prod{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;padding:10px 0;border-top:1px solid var(--line)}
+.prod:first-of-type{border-top:0}
+.prod .price{font-family:var(--f-mono);font-weight:600;white-space:nowrap}
+.prod .meta{grid-column:1/-1;font-size:12.5px;color:var(--muted)}
+
+/* form */
+form{display:grid;gap:14px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+label.f{display:grid;gap:5px;font-size:12.5px;font-weight:600;color:var(--muted)}
+input,select,textarea{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;width:100%}
+textarea{min-height:80px;resize:vertical}
+.lines{display:grid;gap:8px}
+.line{display:grid;grid-template-columns:minmax(0,1fr) 80px 90px 34px;gap:8px;align-items:center}
+@media (max-width:560px){.line{grid-template-columns:minmax(0,1fr) 64px 34px}.line .lt{display:none}}
+.totals{display:grid;gap:4px;padding:12px;border-radius:10px;background:var(--surface-2)}
+.totals div{display:flex;justify-content:space-between;gap:10px}
+.totals .due{font-size:16px;font-weight:700;color:var(--teal)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-weight:600;font-size:13.5px;z-index:30}
+
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+.tbl{overflow-x:auto}
+.tbl table{min-width:560px}
+th,td{text-align:left;padding:9px 10px;border-top:1px solid var(--line);vertical-align:top}
+thead th{border-top:0;font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.meter{height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden;min-width:80px}
+.meter span{display:block;height:100%;border-radius:99px}
+
+.msg{display:grid;gap:8px}
+.msg pre{margin:0;white-space:pre-wrap;font-family:var(--f-body);font-size:13.5px;background:var(--surface-2);border-radius:8px;padding:12px;line-height:1.55}
+footer{padding-block:20px 40px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.asof{font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.banner{padding:10px 14px;border-radius:10px;font-size:13.5px}
+.banner.warn{background:var(--amber-soft);color:var(--amber)}
+.banner.bad{background:var(--red-soft);color:var(--red)}
+.shop{display:grid;gap:12px;align-content:start}
+.shop-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.shop-head .mono-logo{width:34px;height:34px;font-size:14px}
+.shop-head h3{font-family:var(--f-display);font-size:24px;font-weight:700;color:var(--rose)}
+.mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mini div{background:var(--surface-2);border-radius:10px;padding:10px;display:grid;gap:2px}
+.mini b{font-family:var(--f-display);font-size:30px;line-height:1}
+.open-link{font-size:13px;font-weight:600;color:var(--teal);text-decoration:none}
+.open-link:hover{text-decoration:underline}
+
+/* Real logos (Nov 2026) */
+.logo-img{flex:none;display:block;object-fit:contain}
+.logo-img.ma{width:64px;height:64px;filter:drop-shadow(0 0 1px rgba(255,255,255,.35)) drop-shadow(0 0 calc(var(--glow)*8px) rgba(47,196,186,.45))}
+.logo-img.at{width:52px;height:52px;filter:drop-shadow(0 0 calc(var(--glow)*8px) rgba(47,196,186,.45))}
+.wm-ai{background:var(--rosegold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.wm-at{background:linear-gradient(120deg,#1E9C93 0%,#5FE0D6 45%,#2FC4BA 70%,#178079 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ===== Type system v3 (Nov 22, 2026): four layers =====
+   Layer 1 · business names: brand title images (Madam Allure signature; AI AuthoriTech and
+             Crawford Creative Suites in Amoresa; Allure Fusions in Brittany), made in Canva
+   Layer 2 · Italianno: greetings, collection names, accents
+   Layer 3 · Lora italic semibold: main text, prices, buttons (free stand-in for Forward Serif)
+   Layer 4a · Crimson Pro italic semibold: small uppercase labels (Real data, dates, table headers, tags)
+   Layer 4 · Instrument Serif italic: section headings, big numbers, quotes (free stand-in for Atlante Display) */
+:root{--f-script:"Italianno","Segoe Script",cursive;--f-display:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --f-body:"Lora",Georgia,"Times New Roman",serif;--f-mono:"Lora",Georgia,"Times New Roman",serif;--f-label:"Crimson Pro",Georgia,"Times New Roman",serif}
+body{font-family:var(--f-body);font-style:italic;font-weight:600;font-size:15px}
+.small,.muted,td,.prod .meta{font-weight:500}
+/* Layer 4a: small uppercase labels */
+.eyebrow,.source,thead th,.brand span,.asof,.pill,.ltag,.tag{font-family:var(--f-label);font-style:italic;font-weight:600;letter-spacing:.14em}
+.source{font-size:12px}.pill{letter-spacing:.06em;font-size:12px}
+input,select,textarea,button{font-style:italic}
+h2{font-family:var(--f-display);font-style:italic;font-weight:400;font-size:34px;letter-spacing:0;line-height:1.1}
+h3{font-family:var(--f-display);font-style:italic;font-weight:400;font-size:21px}
+.kpi b,.mach b,.countdown b,.mini b{font-family:var(--f-display);font-style:italic;font-weight:400}
+.coll-head h3{font-family:var(--f-script);font-style:normal;font-weight:400;font-size:36px;line-height:1.05;color:var(--rose)}
+.eyebrow{font-size:12px}
+.mono,td.num,.price{font-variant-numeric:lining-nums tabular-nums}
+/* Layer 2 greeting: teal metallic, separate from the rose-gold names */
+.script{display:inline-block;font-family:var(--f-script);font-style:normal;font-weight:400;font-size:1.5em;line-height:.85;padding-right:.06em;margin-right:-.12em;
+  background:linear-gradient(120deg,#1FA99F 0%,#7FEDE3 45%,#2FC4BA 70%,#178079 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* Layer 1 brand titles + shadow effects: soft glow on dark, lifted shadow on light */
+.brand .title-img{display:block;height:46px;width:auto;max-width:min(62vw,340px);margin-bottom:2px;filter:drop-shadow(0 0 6px rgba(255,255,255,.12)) drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+.shop-title{display:block;height:34px;width:auto;max-width:100%;filter:drop-shadow(0 0 6px rgba(255,255,255,.12)) drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+:root[data-theme="light"] .brand .title-img,:root[data-theme="light"] .shop-title{filter:drop-shadow(0 1px 1px rgba(60,35,30,.45)) drop-shadow(0 3px 5px rgba(60,35,30,.18))}
+:root[data-theme="light"] .brand .title-img.cs,:root[data-theme="light"] .shop-title.cs{filter:drop-shadow(0 1px 1px rgba(45,30,22,.75)) drop-shadow(0 2px 3px rgba(45,30,22,.45)) drop-shadow(0 5px 9px rgba(45,30,22,.25))}
+:root[data-theme="light"] .script{background:linear-gradient(120deg,#0F7C74 0%,#1FA99F 45%,#127A73 100%);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 1px 1px rgba(10,60,56,.45)) drop-shadow(0 4px 8px rgba(10,60,56,.22))}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]) .brand .title-img,:root:not([data-theme="dark"]) .shop-title{filter:drop-shadow(0 1px 1px rgba(60,35,30,.45)) drop-shadow(0 3px 5px rgba(60,35,30,.18))}
+  :root:not([data-theme="dark"]) .brand .title-img.cs,:root:not([data-theme="dark"]) .shop-title.cs{filter:drop-shadow(0 1px 1px rgba(45,30,22,.75)) drop-shadow(0 2px 3px rgba(45,30,22,.45)) drop-shadow(0 5px 9px rgba(45,30,22,.25))}
+  :root:not([data-theme="dark"]) .script{background:linear-gradient(120deg,#0F7C74 0%,#1FA99F 45%,#127A73 100%);-webkit-background-clip:text;background-clip:text;filter:drop-shadow(0 1px 1px rgba(10,60,56,.45)) drop-shadow(0 4px 8px rgba(10,60,56,.22))}
+}
+/* Metallic monograms (brand color each) for brands without a logo graphic */
+.mono-logo.af{background:linear-gradient(135deg,#050C2B 0%,#0D1F5C 24%,#5D7FD6 47%,#9DB4F0 52%,#1B3A8C 66%,#071236 100%);color:#F3F6FF;font-family:var(--f-display);font-style:italic;font-weight:400;font-size:19px;box-shadow:0 0 calc(var(--glow)*14px) rgba(64,104,214,.6),inset 0 0 0 1px rgba(255,255,255,.3)}
+.mono-logo.cs{background:linear-gradient(135deg,#4F4033 0%,#8E7A68 24%,#F4EBE0 48%,#D6C4B0 58%,#8E7A68 78%,#4A3C30 100%);color:#1F1915;font-family:var(--f-display);font-style:italic;font-weight:400;font-size:19px;box-shadow:0 0 calc(var(--glow)*14px) rgba(205,187,168,.55),inset 0 0 0 1px rgba(255,255,255,.35)}
+
+/* ===== Caution color from the brand palette (replaces yellow) =====
+   "Soon" tags, warnings, needs-attention ribbon and example-data dots use a rose-gold copper. */
+:root{--amber:#E59A7E;--amber-soft:#3A2420}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--amber:#A5523C;--amber-soft:#F8E3DA}}
+:root[data-theme="light"]{--amber:#A5523C;--amber-soft:#F8E3DA}
+
+/* ===== Portal layout: left side panel on screens 760px and wider ===== */
+.portal-switch{display:none}
+@media (min-width:760px){
+  body{padding-left:252px}
+  header.bar{position:fixed;top:0;left:0;bottom:0;width:252px;border-bottom:0;border-right:1px solid color-mix(in srgb,var(--teal) calc(20% + var(--glow)*25%),var(--line));
+    box-shadow:0 0 calc(var(--glow)*22px) calc(var(--glow)*-6px) color-mix(in srgb,var(--teal) 55%,transparent);overflow-y:auto;z-index:15}
+  header.bar > .wrap{max-width:none;margin:0;padding:20px 14px 16px;display:flex;flex-direction:column;gap:14px;min-height:100%}
+  .bar-top{display:contents}
+  .bar-top > .mono-logo,.bar-top > .logo-img{order:1;width:72px;height:72px;font-size:26px}
+  .bar-top > .brand{order:2}
+  .bar-top > .brand .title-img{max-width:216px;height:auto;max-height:52px}
+  .bar-top > .brand span{white-space:normal;line-height:1.4}
+  header.bar nav.tabs{order:3;flex-direction:column;overflow:visible;gap:2px;padding-bottom:0;margin:4px -14px 0}
+  header.bar .tab{text-align:left;border-bottom:0;border-left:3px solid transparent;padding:9px 14px 9px 17px;font-size:15px}
+  header.bar .tab:hover{background:var(--surface-2);color:var(--ink)}
+  header.bar .tab[aria-selected="true"],header.bar .tab[aria-current="page"]{border-left-color:var(--teal);background:var(--teal-soft);color:var(--ink)}
+  .portal-switch{order:4;display:grid;gap:2px;padding-top:12px;border-top:1px solid var(--line)}
+  .portal-switch .ps-title{font-family:var(--f-label);font-style:italic;font-weight:600;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:0 2px 4px}
+  .portal-switch a{display:block;padding:6px 8px;border-radius:8px;color:var(--muted);text-decoration:none;font-size:14px}
+  .portal-switch a:hover{background:var(--surface-2);color:var(--ink)}
+  .portal-switch a[aria-current="page"]{color:var(--teal)}
+  .bar-top > .bar-tools{order:5;margin-top:auto;margin-left:0;display:grid;gap:6px}
+  .bar-tools .chip{width:100%;text-align:left}
+  .bar-tools .asof{white-space:normal;text-align:center}
+}
+
+/* ===== Status: on track = LED-illuminated teal with heavier trim ===== */
+:root{--green:#5FE6DA;--green-soft:#0E3533}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--green:#0D857D;--green-soft:#DCF0EE}}
+:root[data-theme="light"]{--green:#0D857D;--green-soft:#DCF0EE}
+.ribbon{border:1px solid transparent}
+.ribbon.warn{background:var(--amber-soft);color:var(--amber);border-color:color-mix(in srgb,var(--amber) 45%,transparent)}
+.ribbon.ok{position:relative;padding-left:34px;background:linear-gradient(90deg,rgba(47,196,186,.22),rgba(47,196,186,.07));color:#9CF3EA;border:2px solid #2FC4BA;
+  box-shadow:0 0 calc(var(--glow)*20px) rgba(47,196,186,.55),inset 0 0 calc(var(--glow)*16px) rgba(47,196,186,.28)}
+.ribbon.ok::before{content:"";position:absolute;left:13px;top:50%;width:11px;height:11px;margin-top:-5.5px;border-radius:50%;background:#B9FFF8;
+  box-shadow:0 0 4px #B9FFF8,0 0 10px #2FC4BA,0 0 20px #2FC4BA;animation:led 2.6s ease-in-out infinite}
+@keyframes led{50%{opacity:.5;box-shadow:0 0 3px #B9FFF8,0 0 6px #2FC4BA}}
+:root[data-theme="light"] .ribbon.ok{color:#0B6E67;background:linear-gradient(90deg,#D3F3F0,#EEF9F8)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .ribbon.ok{color:#0B6E67;background:linear-gradient(90deg,#D3F3F0,#EEF9F8)}}
+@media (prefers-reduced-motion:reduce){.ribbon.ok::before{animation:none}}
+.pill.p-ok{box-shadow:0 0 calc(var(--glow)*8px) rgba(47,196,186,.45);border:1px solid color-mix(in srgb,var(--green) 55%,transparent)}
+
+
+/* ===== Alert colors: one deep fuchsia family (alerts only) =====
+   Urgent = deep fuchsia, Soon = medium fuchsia, Low = soft orchid. On track stays LED teal.
+   Dashboard numbers, labels and everything else keep the brand colors. */
+:root{--red:#F0229F;--red-soft:#3A0F2C;--amber:#C9479F;--amber-soft:#33152B;--alert-low:#B77DB0;--alert-low-soft:#2C1B2A}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--red:#A50E74;--red-soft:#F7DDEE;--amber:#9B3F84;--amber-soft:#F3E2EE;--alert-low:#86587F;--alert-low-soft:#F1E7EF}}
+:root[data-theme="light"]{--red:#A50E74;--red-soft:#F7DDEE;--amber:#9B3F84;--amber-soft:#F3E2EE;--alert-low:#86587F;--alert-low-soft:#F1E7EF}
+.sev-improve i{background:var(--alert-low)}
+.p-improve{background:var(--alert-low-soft);color:var(--alert-low)}
+.p-urgent{border:1px solid color-mix(in srgb,var(--red) 40%,transparent)}
+.p-soon{border:1px solid color-mix(in srgb,var(--amber) 40%,transparent)}
+/* Dashboard numbers stay brand colors, not alert colors */
+.kpi.red b{color:var(--rose)}
+.kpi.amber b{color:var(--taupe)}
+.kpi.rose b{color:var(--rose)}
+.source.example::before{background:var(--taupe)}
+
+/* ===== FINAL color rule (owner, Nov 22): everything in brand colors.
+   Alert colors (fuchsia family) appear ONLY on the urgency tags: Urgent, Soon, Improve,
+   in the "Needs your attention" lists, the "Needs a reply" inbox and the launch tracker. ===== */
+:root{--red:#E5AC98;--red-soft:#3A2622;--amber:#CDBBA8;--amber-soft:#2D2824;
+  --al-urgent:#F0229F;--al-urgent-soft:#3A0F2C;--al-soon:#C9479F;--al-soon-soft:#33152B;--al-low:#B77DB0;--al-low-soft:#2C1B2A}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--red:#A4614F;--red-soft:#F6E5DE;--amber:#7A6656;--amber-soft:#EFE7DF;
+  --al-urgent:#A50E74;--al-urgent-soft:#F7DDEE;--al-soon:#9B3F84;--al-soon-soft:#F3E2EE;--al-low:#86587F;--al-low-soft:#F1E7EF}}
+:root[data-theme="light"]{--red:#A4614F;--red-soft:#F6E5DE;--amber:#7A6656;--amber-soft:#EFE7DF;
+  --al-urgent:#A50E74;--al-urgent-soft:#F7DDEE;--al-soon:#9B3F84;--al-soon-soft:#F3E2EE;--al-low:#86587F;--al-low-soft:#F1E7EF}
+/* side lines on list items: brand rose gold for every level */
+.sev-urgent i,.sev-soon i,.sev-improve i{background:var(--rosegold)}
+.sev-ok i{background:var(--teal)}
+/* tags outside the urgency lists use brand tones */
+.p-urgent{background:var(--rose-soft);color:var(--rose);border:1px solid color-mix(in srgb,var(--rose) 35%,transparent)}
+.p-soon{background:var(--taupe-soft);color:var(--taupe);border:1px solid color-mix(in srgb,var(--taupe) 35%,transparent)}
+.p-improve{background:var(--sapphire-soft);color:var(--sapphire);border:1px solid color-mix(in srgb,var(--sapphire) 35%,transparent)}
+/* urgency tags: the only place alert colors show */
+.attn .p-urgent,.mail .p-urgent,.task .p-urgent{background:var(--al-urgent-soft);color:var(--al-urgent);border-color:color-mix(in srgb,var(--al-urgent) 45%,transparent)}
+.attn .p-soon,.mail .p-soon,.task .p-soon{background:var(--al-soon-soft);color:var(--al-soon);border-color:color-mix(in srgb,var(--al-soon) 45%,transparent)}
+.attn .p-improve,.mail .p-improve,.task .p-improve{background:var(--al-low-soft);color:var(--al-low);border-color:color-mix(in srgb,var(--al-low) 45%,transparent)}
+/* needs-attention bar, warnings, late-order trim and inbox edges: brand */
+.ribbon.warn{background:var(--rose-soft);color:var(--rose);border-color:color-mix(in srgb,var(--rose) 45%,transparent)}
+.banner.warn{background:var(--rose-soft);color:var(--rose)}
+.banner.bad{background:var(--rose-soft);color:var(--rose)}
+.ocard.late{border-color:var(--rose);box-shadow:0 0 calc(var(--glow)*12px) -4px var(--rose)}
+.mail.old{border-left-color:var(--rose)} .mail.new{border-left-color:var(--teal)}
+.fillnote mark{background:var(--rose-soft);color:var(--rose)}
+
+/* ===== Side panel highlight: rose gold (owner preferred over the greenish teal) ===== */
+header.bar .tab[aria-selected="true"],header.bar .tab[aria-current="page"]{color:var(--ink);background:linear-gradient(90deg,color-mix(in srgb,#E8C2B0 22%,transparent),transparent);border-left-color:#E8C2B0;
+  box-shadow:inset 3px 0 0 #E8C2B0,0 0 calc(var(--glow)*14px) -6px rgba(229,172,152,.7)}
+header.bar .tab[aria-selected="true"]{border-bottom-color:#E8C2B0}
+@media (min-width:760px){header.bar .tab[aria-selected="true"],header.bar .tab[aria-current="page"]{border-left-color:#E8C2B0}}
+.portal-switch a[aria-current="page"]{color:var(--rose)}
+:root[data-theme="light"] header.bar .tab[aria-selected="true"]{background:linear-gradient(90deg,#F6E5DE,transparent);border-left-color:#B76E79;border-bottom-color:#B76E79;box-shadow:inset 3px 0 0 #B76E79}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) header.bar .tab[aria-selected="true"]{background:linear-gradient(90deg,#F6E5DE,transparent);border-left-color:#B76E79;border-bottom-color:#B76E79;box-shadow:inset 3px 0 0 #B76E79}}
+
+/* ===== "Needs attention" bar: sapphire highlight with trim, distinct from the teal on-track LED ===== */
+.ribbon.warn{background:linear-gradient(90deg,rgba(127,162,255,.20),rgba(127,162,255,.06));color:#B9CCFF;border:2px solid #7FA2FF;
+  box-shadow:0 0 calc(var(--glow)*18px) rgba(127,162,255,.45),inset 0 0 calc(var(--glow)*12px) rgba(127,162,255,.2)}
+.ribbon.warn .small{color:#DCE5FF}
+:root[data-theme="light"] .ribbon.warn{background:linear-gradient(90deg,#DCE6FB,#F1F5FD);color:#1F4FB8;border-color:#1F4FB8;box-shadow:0 0 calc(var(--glow)*14px) rgba(31,79,184,.25)}
+:root[data-theme="light"] .ribbon.warn .small{color:#2B4F9E}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .ribbon.warn{background:linear-gradient(90deg,#DCE6FB,#F1F5FD);color:#1F4FB8;border-color:#1F4FB8;box-shadow:0 0 calc(var(--glow)*14px) rgba(31,79,184,.25)}
+  :root:not([data-theme="dark"]) .ribbon.warn .small{color:#2B4F9E}}
+
+/* ===== Card trim and glow in the same teal as the greeting (no warm-brown mixing, which read as green) ===== */
+:root{--teal-soft:#0E2E33}
+:root[data-theme="light"]{--teal-soft:#DDF3F2}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--teal-soft:#DDF3F2}}
+.card{border-color:rgba(63,208,200,calc(.22 + var(--glow)*.38));box-shadow:0 0 calc(var(--glow)*18px) calc(var(--glow)*-5px) rgba(95,224,216,.6)}
+@media (min-width:760px){header.bar{border-right-color:rgba(63,208,200,calc(.2 + var(--glow)*.3));box-shadow:0 0 calc(var(--glow)*22px) calc(var(--glow)*-6px) rgba(95,224,216,.5)}}
+:root[data-theme="light"] .card{border-color:rgba(31,169,159,calc(.3 + var(--glow)*.3));box-shadow:0 0 calc(var(--glow)*16px) calc(var(--glow)*-5px) rgba(31,169,159,.35)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .card{border-color:rgba(31,169,159,calc(.3 + var(--glow)*.3));box-shadow:0 0 calc(var(--glow)*16px) calc(var(--glow)*-5px) rgba(31,169,159,.35)}}
+
+/* ===== Card trim: the greeting's turquoise gradient (gradient border + aqua glow) ===== */
+:root{--trim:linear-gradient(120deg,#1FA99F 0%,#7FEDE3 45%,#2FC4BA 70%,#178079 100%);--trim-glow:rgba(127,237,227,.42)}
+:root[data-theme="light"]{--trim:linear-gradient(120deg,#0F7C74 0%,#3FCFC4 45%,#1FA99F 70%,#127A73 100%);--trim-glow:rgba(31,169,159,.3)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--trim:linear-gradient(120deg,#0F7C74 0%,#3FCFC4 45%,#1FA99F 70%,#127A73 100%);--trim-glow:rgba(31,169,159,.3)}}
+.card{border:1.5px solid transparent;background:linear-gradient(var(--surface),var(--surface)) padding-box,var(--trim) border-box;
+  box-shadow:0 0 calc(var(--glow)*16px) calc(var(--glow)*-4px) var(--trim-glow)}
+:root[data-glow="off"] .card{background:linear-gradient(var(--surface),var(--surface)) padding-box,linear-gradient(var(--line),var(--line)) border-box}
+
+/* ===== Card shadow under the gradient trim (both modes); the aqua glow still follows the Glow trim switch ===== */
+.card{box-shadow:0 2px 3px rgba(0,0,0,.45),0 10px 22px -6px rgba(0,0,0,.65),0 0 calc(var(--glow)*16px) calc(var(--glow)*-4px) var(--trim-glow)}
+:root[data-theme="light"] .card{box-shadow:0 1px 2px rgba(18,60,58,.14),0 8px 20px -6px rgba(15,90,85,.30),0 0 calc(var(--glow)*14px) calc(var(--glow)*-4px) var(--trim-glow)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .card{box-shadow:0 1px 2px rgba(18,60,58,.14),0 8px 20px -6px rgba(15,90,85,.30),0 0 calc(var(--glow)*14px) calc(var(--glow)*-4px) var(--trim-glow)}}
+
+/* ===== Heavier card shadow (owner: more noticeable) ===== */
+.card{box-shadow:0 3px 6px rgba(0,0,0,.55),0 16px 32px -8px rgba(0,0,0,.8),0 0 calc(var(--glow)*16px) calc(var(--glow)*-4px) var(--trim-glow)}
+:root[data-theme="light"] .card{box-shadow:0 2px 4px rgba(18,60,58,.2),0 14px 30px -8px rgba(15,90,85,.42),0 0 calc(var(--glow)*14px) calc(var(--glow)*-4px) var(--trim-glow)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .card{box-shadow:0 2px 4px rgba(18,60,58,.2),0 14px 30px -8px rgba(15,90,85,.42),0 0 calc(var(--glow)*14px) calc(var(--glow)*-4px) var(--trim-glow)}}
+
+/* ===== Urgency tags, clearer steps:
+   Urgent = filled deep fuchsia (unchanged color), Soon = medium pink outline, Improve = baby pink ===== */
+:root{--al-soon:#FF8CCB;--al-soon-soft:rgba(255,140,203,.12);--al-low:#FFD1E8;--al-low-soft:rgba(255,209,232,.10)}
+:root[data-theme="light"]{--al-soon:#C2448F;--al-soon-soft:#FBE3F1;--al-low:#A86A8E;--al-low-soft:#FFF0F7}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--al-soon:#C2448F;--al-soon-soft:#FBE3F1;--al-low:#A86A8E;--al-low-soft:#FFF0F7}}
+.attn .p-urgent,.mail .p-urgent,.task .p-urgent{background:var(--al-urgent);color:#FFFFFF;border-color:var(--al-urgent);box-shadow:0 0 calc(var(--glow)*10px) color-mix(in srgb,var(--al-urgent) 55%,transparent)}
+.attn .p-soon,.mail .p-soon,.task .p-soon{background:var(--al-soon-soft);color:var(--al-soon);border:1px solid var(--al-soon)}
+.attn .p-improve,.mail .p-improve,.task .p-improve{background:var(--al-low-soft);color:var(--al-low);border:1px dashed color-mix(in srgb,var(--al-low) 70%,transparent)}
+:root[data-theme="light"] .attn .p-improve,:root[data-theme="light"] .mail .p-improve,:root[data-theme="light"] .task .p-improve{border-color:#F4B8D6}
+
+/* ===== Urgency tags: same style for all three, stepping from darkest to lightest pink =====
+   Urgent keeps the original look (owner's favorite). Soon = medium pink. Improve = baby pink. */
+:root{--al-urgent:#F0229F;--al-urgent-soft:#3A0F2C;--al-soon:#F77AC0;--al-soon-soft:#3A1A2F;--al-low:#FFC4E1;--al-low-soft:#36262F}
+:root[data-theme="light"]{--al-urgent:#A50E74;--al-urgent-soft:#F7DDEE;--al-soon:#C8509A;--al-soon-soft:#FAE6F2;--al-low:#D47FAF;--al-low-soft:#FFF1F8}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--al-urgent:#A50E74;--al-urgent-soft:#F7DDEE;--al-soon:#C8509A;--al-soon-soft:#FAE6F2;--al-low:#D47FAF;--al-low-soft:#FFF1F8}}
+.attn .p-urgent,.mail .p-urgent,.task .p-urgent{background:var(--al-urgent-soft);color:var(--al-urgent);border:1px solid color-mix(in srgb,var(--al-urgent) 45%,transparent);box-shadow:none}
+.attn .p-soon,.mail .p-soon,.task .p-soon{background:var(--al-soon-soft);color:var(--al-soon);border:1px solid color-mix(in srgb,var(--al-soon) 45%,transparent)}
+.attn .p-improve,.mail .p-improve,.task .p-improve{background:var(--al-low-soft);color:var(--al-low);border:1px solid color-mix(in srgb,var(--al-low) 45%,transparent)}
+:root[data-theme="light"] .attn .p-improve,:root[data-theme="light"] .mail .p-improve,:root[data-theme="light"] .task .p-improve{border-color:color-mix(in srgb,var(--al-low) 45%,transparent)}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <div class="bar-top">
+      <div class="mono-logo cs" aria-hidden="true">CS</div>
+      <div class="brand"><img class="title-img cs" src="brand/cs-title.png" alt="Crawford Creative Suites" width="399" height="46"><span>Morning dashboard · your boutique, shop and agency at a glance</span></div>
+      <div class="bar-tools">
+        <button type="button" class="chip" id="t-present" aria-pressed="false">Presentation mode</button>
+        <button type="button" class="chip" id="t-glow" aria-pressed="true">Glow trim</button>
+        <button type="button" class="chip" id="t-theme" aria-pressed="false">Light mode</button>
+      </div>
+    </div>
+    <nav class="portal-switch" aria-label="Your portals"><span class="ps-title">Your portals</span><a href="morning-dashboard.html" aria-current="page">Morning dashboard</a><a href="madam-allure-portal.html">Madam Allure</a><a href="allure-fusions-portal.html">Allure Fusions</a><a href="ai-authoritech-portal.html">AI AuthoriTech</a><a href="skool-community-portal.html">Skool community</a></nav>
+  </div>
+</header>
+
+<main class="wrap view" id="app">
+  <div class="view-head">
+    <div><span class="eyebrow" id="today-date"></span><h2 id="greet">Good morning.</h2></div>
+    <span id="src-label"></span>
+  </div>
+  <div id="banners" class="list"></div>
+  <div class="ribbon" id="ribbon"></div>
+  <div class="card">
+    <div class="view-head" style="margin-bottom:10px"><h3>Top of the list, across all three businesses</h3><span class="small">Ranked by urgency</span></div>
+    <div class="list" id="attn"></div>
+  </div>
+  <div class="grid g2" id="shops"></div>
+  <div class="card" id="consult" style="display:grid;gap:8px"></div>
+</main>
+
+<footer><div class="wrap">Reads the same data files as each portal, plus anything you moved or added in those portals on this device. A Crawford Creative Suites page, built as a single free HTML file.</div></footer>
+
+<script src="modules/data-sync.js?v=20261126a"></script>
+<script>window.PORTAL_DATA=null;</script>
+<script src="data/madam-allure.data.js"></script>
+<script>window.MA_DATA=window.PORTAL_DATA; window.PORTAL_DATA=null;</script>
+<script src="data/allure-fusions.data.js"></script>
+<script>window.AF_DATA=window.PORTAL_DATA; window.PORTAL_DATA=null;</script>
+<script src="data/ai-authoritech.data.js"></script>
+<script>window.AT_DATA=window.PORTAL_DATA; window.PORTAL_DATA=null;</script>
+<script>
+(function(){
+  var TODAY=new Date(); TODAY.setHours(0,0,0,0);
+  function days(s){return Math.round((new Date(s+'T00:00:00')-TODAY)/864e5);}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});}
+  function ls(k){try{var r=localStorage.getItem(k); return r?JSON.parse(r):null;}catch(e){return null;}}
+  function money(n){return '$'+Number(n).toFixed(2);}
+
+  var SHOPS=[
+    {key:'ma',name:'Madam Allure',mono:'MA',logo:'brand/ma-logo-160.png',title:'brand/ma-signature-rosegold.png',page:'madam-allure-portal.html',D:window.MA_DATA,file:'data/madam-allure.data.js',
+     stages:['Inquiry','Quoted','Deposit Paid','Making','Labeling','Ready to Ship','Shipped','Review Requested'],
+     stock:function(D){return (D.supplies||[]).filter(function(s){return Number(s.level)<0.5;}).map(function(s){return 'Reorder '+s.name+': '+s.onHand+' left';});},
+     addedDue:function(o){return o.dueISO;}},
+    {key:'af',name:'Allure Fusions',mono:'AF',title:'brand/af-title.png',page:'allure-fusions-portal.html',D:window.AF_DATA,file:'data/allure-fusions.data.js',
+     stages:['Inquiry','Quoted','Deposit Paid','Design Proof','Printing / Engraving','Finishing','Ready to Ship','Shipped','Review Requested'],
+     stock:function(D){return (D.materials||[]).filter(function(m){return Number(m.onHand)<=Number(m.reorderAt);}).map(function(m){return 'Reorder '+m.name+': '+m.onHand+' '+m.unit+' left';});},
+     addedDue:function(o){return o.due;}}
+  ];
+
+  /* prefs shared look */
+  var root=document.documentElement, prefs=ls('cs_prefs')||{};
+  function save(){try{localStorage.setItem('cs_prefs',JSON.stringify(prefs));}catch(e){}}
+  function apply(){
+    if(prefs.theme) root.setAttribute('data-theme',prefs.theme);
+    root.setAttribute('data-glow',prefs.glow===false?'off':'on');
+    document.getElementById('t-glow').setAttribute('aria-pressed',prefs.glow!==false);
+    document.getElementById('t-theme').setAttribute('aria-pressed',root.getAttribute('data-theme')==='light');
+    document.getElementById('app').classList.toggle('blurred',!!prefs.present);
+    document.getElementById('t-present').setAttribute('aria-pressed',!!prefs.present);
+  }
+  document.getElementById('t-glow').onclick=function(){prefs.glow=(prefs.glow===false); save(); apply();};
+  document.getElementById('t-theme').onclick=function(){prefs.theme=(root.getAttribute('data-theme')==='light')?'dark':'light'; save(); apply();};
+  document.getElementById('t-present').onclick=function(){prefs.present=!prefs.present; save(); apply();};
+
+  var h=new Date().getHours();
+  document.getElementById('greet').innerHTML='<span class="script">'+(h<12?'Good morning':h<17?'Good afternoon':'Good evening')+'</span>, here’s your boutique, shop and agency.';
+  document.getElementById('today-date').textContent=TODAY.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+
+  var items=[], banners=[], anyReal=false, cards=[], totalLate=0;
+  SHOPS.forEach(function(s){
+    var D=s.D;
+    if(!D){banners.push('<div class="banner bad"><b>'+s.name+': no data file.</b> Expected <span class="mono">'+s.file+'</span>.</div>'); return;}
+    var hrs=(Date.now()-new Date(D.asOf))/36e5;
+    if(hrs>(D.staleAfterHours||26)) banners.push('<div class="banner warn"><b>'+s.name+' data is '+Math.round(hrs)+' hours old.</b> Check the scheduled refresh.</div>');
+    var real=D.sections&&D.sections.orders==='real'; if(real) anyReal=true;
+    var over=ls(s.key+'_stages')||{}, added=ls(s.key+'_orders')||[];
+    var orders=(D.orders||[]).concat(added.map(function(o){return Object.assign({},o,{due:s.addedDue(o)});})).map(function(o){o=Object.assign({},o); if(over[o.id]) o.stage=over[o.id]; return o;});
+    var shipped=s.stages.indexOf('Shipped');
+    var open=orders.filter(function(o){return s.stages.indexOf(o.stage)<shipped;});
+    var late=open.filter(function(o){return days(o.due)<=2;});
+    var quoted=orders.filter(function(o){return o.stage==='Quoted';});
+    var low=s.stock(D);
+    totalLate+=late.length;
+    late.forEach(function(o){var d=days(o.due); items.push([0,'urgent','<b>'+s.mono+'</b> · <span class="who">'+esc(o.who)+'</span> · '+esc(o.items)+' due '+(d<=0?'today':'in '+d+'d')+', now '+esc(o.stage),'Urgent']);});
+    quoted.forEach(function(o){items.push([1,'soon','<b>'+s.mono+'</b> · Deposit reminder to <span class="who">'+esc(o.who)+'</span>'+(o.deposit?' ('+money(o.deposit)+')':''),'Soon']);});
+    low.forEach(function(t){items.push([1,'soon','<b>'+s.mono+'</b> · '+esc(t),'Soon']);});
+    var extra='';
+    if(s.key==='af'){var q=(D.queue||[]), qo=ls('af_queue')||{}; var mins=q.filter(function(j){return (qo[j.id]||j.status)!=='Done';}).reduce(function(a,j){return a+Number(j.mins||0);},0); extra='<div><span class="small">Machine time queued</span><b class="mono">'+Math.floor(mins/60)+'h '+(mins%60)+'m</b></div>';}
+    else {extra='<div><span class="small">Batches curing</span><b class="mono">'+(D.batches||[]).filter(function(b){return days(b.ready)>0;}).length+'</b></div>';}
+    cards.push('<div class="card shop"><div class="shop-head">'+(s.logo?'<img class="logo-img '+s.key+'" src="'+s.logo+'" alt="" width="40" height="40" style="width:40px;height:40px">':'<div class="mono-logo '+s.key+'" aria-hidden="true">'+s.mono+'</div>')+(s.title?'<img class="shop-title" src="'+s.title+'" alt="'+s.name+'">':'<h3>'+s.name+'</h3>')+'<span class="source '+(real?'real':'example')+'">'+(real?'Real data':'Example data')+'</span></div>'+
+      '<div class="mini"><div><span class="small">Open orders</span><b class="mono" style="color:var(--teal)">'+open.length+'</b></div>'+
+      '<div><span class="small">Due in 2 days</span><b class="mono" style="color:'+(late.length?'var(--rose)':'var(--teal)')+'">'+late.length+'</b></div>'+
+      '<div><span class="small">Awaiting deposit</span><b class="mono" style="color:'+(quoted.length?'var(--taupe)':'var(--teal)')+'">'+quoted.length+'</b></div>'+extra+'</div>'+
+      '<span class="small">'+low.length+' item'+(low.length===1?'':'s')+' to reorder · data as of '+new Date(D.asOf).toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})+'</span>'+
+      '<a class="open-link" href="'+s.page+'">Open '+s.name+' portal →</a></div>');
+  });
+
+  /* AI AuthoriTech strip */
+  var A=window.AT_DATA, cbox=document.getElementById('consult');
+  if(A){
+    var aover=ls('at_stages')||{}, aticks=ls('at_launch')||{};
+    var fu=(A.clients||[]).map(function(c){c=Object.assign({},c); if(aover[c.id]) c.stage=aover[c.id]; return c;}).filter(function(c){return c.stage!=='Follow-up' && days(c.follow)<=0;});
+    var dl=Math.max(0,Math.round((new Date(2027,0,1)-TODAY)/864e5));
+    var lt=(A.launch||[]), done=lt.filter(function(t){return aticks[t.id];}).length;
+    fu.forEach(function(c){items.push([0,'urgent','<b>AT</b> · Follow up with <span class="who">'+esc(c.who)+'</span>: '+esc(c.nextStep),'Urgent']);});
+    cbox.innerHTML='<div class="view-head"><div class="shop-head"><img class="logo-img at" src="brand/at-symbol-128.png" alt="" width="40" height="40" style="width:40px;height:40px"><img class="shop-title" src="brand/at-title.png" alt="AI AuthoriTech"></div><a class="open-link" href="ai-authoritech-portal.html">Open AI AuthoriTech portal →</a></div>'+
+      '<p class="small">'+fu.length+' client follow-up'+(fu.length===1?'':'s')+' due · Skool launch in <b style="color:var(--rose)">'+dl+' days</b> · '+done+' of '+lt.length+' launch tasks done</p>';
+  } else cbox.hidden=true;
+
+  items.sort(function(a,b){return a[0]-b[0];});
+  if(!items.length) items.push([3,'ok','Nothing needs you right now','On track']);
+  document.getElementById('attn').innerHTML=items.slice(0,10).map(function(i){return '<div class="attn sev-'+i[1]+'"><i></i><span>'+i[2]+'</span><span class="pill p-'+i[1]+'">'+i[3]+'</span></div>';}).join('')+(items.length>10?'<p class="small">+'+(items.length-10)+' more in the portals</p>':'');
+  document.getElementById('shops').innerHTML=cards.join('');
+  document.getElementById('banners').innerHTML=banners.join('');
+  var rb=document.getElementById('ribbon'), ok=totalLate===0;
+  rb.className='ribbon '+(ok?'ok':'warn'); rb.style.background=''; rb.style.color='';
+  rb.textContent=ok?'All three businesses look on track today.':totalLate+' order'+(totalLate===1?'':'s')+' due within 2 days across your businesses.';
+  var sl=document.getElementById('src-label'); sl.className='source '+(anyReal?'real':'example'); sl.textContent=anyReal?'Real data (some sections)':'Example data · all three businesses';
+
+  if(/^https?:$/.test(location.protocol)){
+    var l=document.createElement('link'); l.rel='manifest'; l.href='morning-dashboard.webmanifest'; document.head.appendChild(l);
+    if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function(){});
+  }
+  apply();
+})();
+</script>
+</body></html>

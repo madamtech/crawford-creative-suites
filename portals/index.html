@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crawford Creative Suites Portals</title>
+<meta name="theme-color" content="#0C0D0F">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="icons/cs-192.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;600&display=swap">
+<style>
+:root{--bg:#0C0D0F;--surface:#16171A;--line:#35312E;--ink:#F5F2EF;--muted:#B2A89E;--teal:#2FC4BA;--rosegold:linear-gradient(120deg,#B76E79 0%,#E8C2B0 40%,#F3D9CC 52%,#C98B7F 75%,#B76E79 100%);color-scheme:dark}
+@media (prefers-color-scheme: light){:root{--bg:#FAF8F6;--surface:#FFFFFF;--line:#DDD3CA;--ink:#141518;--muted:#6B6157;--teal:#0D857D;color-scheme:light}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,"Segoe UI",system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:40px 16px}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-size:38px;margin:0 0 4px;background:var(--rosegold);-webkit-background-clip:text;background-clip:text;color:transparent}
+p{color:var(--muted);margin:0 0 24px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+a.card{display:flex;gap:14px;align-items:center;padding:16px;border-radius:12px;background:var(--surface);border:1px solid color-mix(in srgb,var(--teal) 40%,var(--line));box-shadow:0 0 18px -5px color-mix(in srgb,var(--teal) 60%,transparent);color:inherit;text-decoration:none}
+a.card:hover{border-color:var(--teal)}
+a.card:focus-visible{outline:2px solid #7FA2FF;outline-offset:2px}
+img{width:48px;height:48px;border-radius:12px}
+b{display:block;font-weight:600}
+span{font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<main>
+  <h1>Crawford Creative Suites</h1>
+  <p>Private owner portals. To install one as an app, open it and choose Install from the browser's address bar or menu.</p>
+  <div class="grid">
+    <a class="card" href="morning-dashboard.html"><img src="icons/cs-192.png" alt=""><div><b>Morning dashboard</b><span>Your boutique, shop and agency at a glance</span></div></a>
+    <a class="card" href="madam-allure-portal.html"><img src="icons/ma-192.png" alt=""><div><b>Madam Allure</b><span>Beauty, fragrance &amp; custom gifts</span></div></a>
+    <a class="card" href="allure-fusions-portal.html"><img src="icons/af-192.png" alt=""><div><b>Allure Fusions</b><span>3D printing &amp; laser engraving</span></div></a>
+    <a class="card" href="ai-authoritech-portal.html"><img src="icons/at-192.png" alt=""><div><b>AI AuthoriTech</b><span>AI consulting agency</span></div></a>
+<a class="card" href="skool-community-portal.html"><img src="icons/at-192.png" alt=""><div><b>Skool community</b><span>Classes, sessions, members and automations</span></div></a>
+  </div>
+</main>
+<script>if(/^https?:$/.test(location.protocol)&&'serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function(){});</script>
+</body></html>
