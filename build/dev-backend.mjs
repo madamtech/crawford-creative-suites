@@ -67,7 +67,7 @@ const send = (res, status, body, headers = {}) => {
   const isBuf = Buffer.isBuffer(body);
   res.writeHead(status, { 'Cache-Control': 'no-store', 'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'authorization, apikey, content-type, x-client-info, x-upsert',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, OPTIONS', ...(isBuf || typeof body === 'string' ? {} : { 'Content-Type': 'application/json' }), ...headers });
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', ...(isBuf || typeof body === 'string' ? {} : { 'Content-Type': 'application/json' }), ...headers });
   res.end(isBuf || typeof body === 'string' ? body : JSON.stringify(body));
 };
 const readBody = (req) => new Promise((ok) => { const c = []; req.on('data', (d) => c.push(d)); req.on('end', () => ok(Buffer.concat(c))); });
@@ -216,6 +216,16 @@ createServer(async (req, res) => {
       } catch (e) { return send(res, 403, { error: 'new row violates row-level security policy', message: e.message }); }
       const f = await objectFile(bucket, path); mkdirSync(join(f, '..'), { recursive: true }); writeFileSync(f, body);
       return send(res, 200, { Key: `${bucket}/${path}` });
+    }
+
+    if ((m = p.match(/^\/storage\/v1\/object\/([^/]+)\/(.+)$/)) && req.method === 'DELETE') {
+      const bucket = m[1], path = decodeURIComponent(m[2]);
+      const who = caller(req);
+      if (!who || who.role !== 'authenticated') return send(res, 401, { error: 'sign in required' });
+      const gone = await db.as('authenticated', who.claims, async (t) => (await t.query('delete from storage.objects where bucket_id = $1 and name = $2 returning name', [bucket, path])).rows);
+      if (!gone.length) return send(res, 404, { error: 'Object not found' });
+      rmSync(await objectFile(bucket, path), { force: true });
+      return send(res, 200, { message: 'Successfully deleted' });
     }
 
     // ----- Edge Functions (the real handlers) -----
