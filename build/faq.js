@@ -418,6 +418,20 @@ function addReceptionAsk() {
     });
     scene.appendChild(box);
   }
+  // Owner, Nov 28: every receptionist box offers "Leave my details" (lead capture), in the
+  // same transparent button style as the lobby concierge. Only when the backend is on.
+  if (window.ccsPortal && window.ccsPortal.ready() && !box.querySelector('.reception-lead')) {
+    const where = { 217: 'Madam Allure receptionist', 305: 'Allure Fusions receptionist', 412: 'AI AuthoriTech receptionist' }[suite] || 'Receptionist';
+    const interest = { 217: 'madam_allure', 305: 'allure_fusions', 412: 'ai_authoritech' }[suite] || '';
+    const row = document.createElement('p');
+    row.className = 'concierge-extra reception-lead';
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = 'Leave my details';
+    btn.addEventListener('click', () => window.ccsPortal.lead(interest, where));
+    row.append(btn);
+    box.querySelector('form').after(row);
+  }
   // A question asked in the lobby is answered on arrival in this Receptionist
   // box (owner, Nov 25), labeled as the visitor's lobby question; the answer is
   // read after the welcome.
