@@ -36,7 +36,7 @@ Voice: Blake Harlow (chosen Nov 27). Floor announcements only.
 | `floor-1.mp3` | Floor one. Main Lobby. | Floor one. Main Lobby. | yes |
 | `floor-2.mp3` | Floor two. Madam Allure. | Floor two. Madam Allure. | yes |
 | `floor-3.mp3` | Floor three. Allure Fusions. | Floor three. Allure Fusions. | yes |
-| `floor-4.mp3` | Floor four. AI AuthoriTech. | Floor four. AI Uhthora-tek. |  |
+| `floor-4.mp3` | Floor four. AI AuthoriTech. | Floor four. AI Uhthora-tek. | yes |
 
 ## Madam Allure receptionist (Floor 2, Suite 217)
 
