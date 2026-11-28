@@ -619,7 +619,7 @@
     "key": "welcome-412",
     "text": "Welcome to AI AuthoriTech. Please check in.",
     "say": "Welcome to A-I uh-thor-a-tek. Please check in.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "sent-412",
@@ -661,13 +661,13 @@
     "key": "r412-deposit",
     "text": "Deposits are set in your written proposal, and the balance is due before final handoff.",
     "say": "Deposits are set in your written proposal, and the balance is due before final handoff.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-shipping",
     "text": "Everything is delivered virtually, so nothing ships. Documents, tools, and training are shared digitally.",
     "say": "Everything is delivered virtually, so nothing ships. Documents, tools, and training are shared digitally.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-contact",
@@ -679,7 +679,7 @@
     "key": "r412-timing",
     "text": "Timelines depend on the scope. Yours is set in your written proposal, after the free discovery call.",
     "say": "Timelines depend on the scope. Yours is set in your written proposal, after the free discovery call.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-replace",
@@ -721,13 +721,13 @@
     "key": "r412-lms",
     "text": "Learning systems consulting covers LMS administration, reporting, certification workflows, and integrations.",
     "say": "Learning systems consulting covers L-M-S administration, reporting, certification workflows, and integrations.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-training",
     "text": "Team AI training offers practical, role-focused sessions that help your team use AI responsibly and confidently.",
     "say": "Team AI training offers practical, role-focused sessions that help your team use AI responsibly and confidently.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-privacy",
@@ -745,61 +745,61 @@
     "key": "r412-hello",
     "text": "Hello, and welcome! Ask me about any of our three suites, or tell me what you are looking for.",
     "say": "Hello, and welcome! Ask me about any of our three suites, or tell me what you are looking for.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-myorder",
     "text": "You can follow every order and project in My Orders. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed.",
     "say": "You can follow every order and project in My Orders. Tap Log In at the top of the page, and we will email you a secure sign-in link. No password needed.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-owner",
     "text": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.",
     "say": "All three suites are run by Tanika Crawford: a licensed cosmetologist and makeup artist, a creative designer, and an AI consultant.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-visit",
     "text": "Crawford Creative Suites is an online building, so there is no storefront to visit. You are welcome to explore all three suites right here.",
     "say": "Crawford Creative Suites is an online building, so there is no storefront to visit. You are welcome to explore all three suites right here.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-hours",
     "text": "The building is open online any time. Send a request whenever you like, and Tanika will reply by email.",
     "say": "The building is open online any time. Send a request whenever you like, and Tanika will reply by email.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-consult",
     "text": "Your first 30-minute discovery consultation is free. After that, consultations are scheduled and paid in advance, and they are credited toward an ongoing engagement.",
     "say": "Your first 30-minute discovery consultation is free. After that, consultations are scheduled and paid in advance, and they are credited toward an ongoing engagement.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-returns",
     "text": "For returns, changes, or a problem with an order, send a request to the suite you ordered from, and Tanika will help you directly.",
     "say": "For returns, changes, or a problem with an order, send a request to the suite you ordered from, and Tanika will help you directly.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-prices",
     "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one.",
     "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-to-217",
     "text": "Madam Allure handles that, in Suite 217 on Floor 2. Take the elevator there, and their receptionist will help you.",
     "say": "Madam Allure handles that, in Suite two-seventeen on Floor 2. Take the elevator there, and their receptionist will help you.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-to-305",
     "text": "Allure Fusions handles that, in Suite 305 on Floor 3. Take the elevator there, and their receptionist will help you.",
     "say": "Allure Fusions handles that, in Suite three-oh-five on Floor 3. Take the elevator there, and their receptionist will help you.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-unknown",
