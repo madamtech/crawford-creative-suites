@@ -643,13 +643,13 @@
     "key": "r412-implement",
     "text": "Workflow implementation is quoted per project. We design and build the connected workflows with you.",
     "say": "Workflow implementation is quoted per project. We design and build the connected workflows with you.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-small-biz",
     "text": "We work with solo owners and small teams as well as larger ones, and we start with what takes most of your time.",
     "say": "We work with solo owners and small teams as well as larger ones, and we start with what takes most of your time.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-book",
@@ -673,7 +673,7 @@
     "key": "r412-contact",
     "text": "Request an AI readiness conversation here, or email us at ai.authoritech@gmail.com.",
     "say": "Request an AI readiness conversation here, or email us at the address on your screen.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-timing",
@@ -685,7 +685,7 @@
     "key": "r412-replace",
     "text": "AI works best as a tool that supports people. Human judgment, accountability, and relationships stay essential, and we design around that.",
     "say": "AI works best as a tool that supports people. Human judgment, accountability, and relationships stay essential, and we design around that.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-audit",
@@ -715,7 +715,7 @@
     "key": "r412-portal",
     "text": "We build custom portals and business command centers that bring your tools and information into one place. Each one is quoted per project.",
     "say": "We build custom portals and business command centers that bring your tools and information into one place. Each one is quoted per project.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-lms",
