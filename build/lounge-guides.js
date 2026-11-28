@@ -579,7 +579,7 @@ export const GUIDES = {
       'Flat panel: simple and classic, great on a shelf with a light behind it.',
       'Curved panel: a soft wraparound look that shows well from several angles.',
       'Cylinder lamp: the photo wraps all the way around a lamp.',
-      'Multi-photo lamp: several photos around one lamp for families and memorials.',
+      'Multi-photo lithophane lamp: several photos around one lamp for families and memorials.',
     ],
     to: 'services',
     next: 'See lithophane lamps & pricing',

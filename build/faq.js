@@ -61,7 +61,7 @@ export const FAQ = [
   { id: 'contact-217', suite: '217', deskOnly: true, match: [/\b(contact|email|e-mail|reach|phone|call|talk to (someone|a person|tanika))\b/],
     text: 'Send a request here, or email Madam Allure at madamallure@gmail.com.' },
   { id: 'memorial', suite: '217', match: [/\b(memorial|funeral|repast|in loving memory|passed away|celebration of life|homegoing)\b/],
-    text: 'Madam Allure creates memorial keepsakes: ribbons, plaques, fans, fan whiteboards, and towels. Allure Fusions can also make a memorial photo lamp from a favorite picture.' },
+    text: 'Madam Allure creates memorial keepsakes: ribbons, plaques, fans, fan whiteboards, and towels. Allure Fusions can also make a memorial lithophane lamp from a favorite picture.' },
   { id: 'makeup', suite: '217', match: [/\b(makeup|make-up|make up artist|mua|cosmetolog\w*|hair ?style|stylist|lashes)\b/],
     text: 'Tanika is a licensed cosmetologist and makeup artist. To ask about makeup or styling for an event, send a request to Madam Allure.' },
   { id: 'gift-sets', suite: '217', match: [/\b(gift set|gift sets|gift box|bridal|bridesmaid|wedding gift|corporate|wellness box|gentleman|welcome home|wine glass|gift)\b/],
@@ -103,7 +103,7 @@ export const FAQ = [
   { id: 'deposit-305', suite: '305', deskOnly: true, match: [/\b(deposit|payment|pay|paid|upfront|up front|installment)\b/],
     text: 'Orders of $35 or less are paid in full. Larger orders start with a 60 percent deposit, and the balance and shipping are paid before it ships.' },
   { id: 'lithophane', suite: '305', match: [/\b(lithophane|lithophanes|photo lamp|picture lamp|memory lamp|lamp|lamps)\b/],
-    text: 'A lithophane is a 3D printed panel that reveals your photo when it is lit from behind. Photo lamps come in several sizes and panel counts.' },
+    text: 'A lithophane is a 3D printed panel that reveals your photo when it is lit from behind. Lithophane lamps come in several sizes and panel counts.' },
   { id: 'photos', suite: '305', match: [/\b(photo|photos|picture|pictures|image)\b/, /\b(quality|best|good|which|send|resolution|blurry)\b/],
     text: 'Clear photos with good lighting, visible faces, and strong contrast give the best results. Dark, blurry, or small images may need extra preparation.' },
   { id: 'screen', suite: '305', match: [/\b(screen print\w*|t-?shirts?|shirts?|apparel|hoodies?|tees)\b/],
@@ -125,7 +125,7 @@ export const FAQ = [
   { id: 'care', suite: '305', match: [/\b(clean|cleaning|care for|hot car|sunlight|melt|melting|heat)\b/],
     text: 'Dust printed pieces with a soft, dry or slightly damp cloth. Keep them away from hot cars, direct heat, and long hours of strong sun.' },
   { id: 'print-price', suite: '305', match: [/\b(3d|print|printed|printing)\b/, PRICE],
-    text: '3D printed pieces range from bookmarks to vases and photo lamps. Current prices are on the Allure Fusions price list, and custom projects are quoted after review.' },
+    text: '3D printed pieces range from bookmarks to vases and lithophane lamps. Current prices are on the Allure Fusions price list, and custom projects are quoted after review.' },
 
   // ---------- AI AuthoriTech (412) ----------
   { id: 'process-412', suite: '412', match: [/\b(how does (it|this) work|the process|what happens next|next steps?|proposal)\b/],
@@ -167,7 +167,7 @@ export const FAQ = [
 
   // ---------- General prices (last) ----------
   { id: 'prices', suite: null, match: [PRICE],
-    text: 'Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.' },
+    text: 'Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one.' },
 ];
 
 // Spoken and typed questions are written differently ("self care", "selfcare", "self-care"),
@@ -195,7 +195,7 @@ const suiteFor = (question) => {
 
 const SUITES = {
   '217': { name: 'Madam Allure', floor: 2, offers: 'fragrance, bath and body care, gifts, and memorial keepsakes' },
-  '305': { name: 'Allure Fusions', floor: 3, offers: '3D printing, laser engraving, screen printing, and photo lamps' },
+  '305': { name: 'Allure Fusions', floor: 3, offers: '3D printing, laser engraving, screen printing, and lithophane lamps' },
   '412': { name: 'AI AuthoriTech', floor: 4, offers: 'AI strategy, automation, custom AI agents, and training' },
 };
 // Lobby reply to a business question that is not about one suite (payments,

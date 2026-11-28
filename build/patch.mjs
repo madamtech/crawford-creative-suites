@@ -30,6 +30,9 @@ const patches = [
   // Owner, Nov 27: the floor and suite show once, in the top bar, worded like the old
   // bottom plaque (which is now hidden in build/site.mjs).
   ['reception`?`Suite ${n} · Floor ${R.floor}`', 'reception`?`Floor ${R.floor} · Suite ${n}`'],
+  // Owner, Nov 27: Allure Fusions calls them lithophane lamps, never photo lamps.
+  ['description:`Original-design photo lamps priced by', 'description:`Original-design lithophane lamps priced by'],
+  ['related:`Photo lamps, memorial lamps, artist-i', 'related:`Lithophane lamps, memorial lamps, artist-i'],
 
   // Concierge speaks on her own when the visitor arrives (build/voice.js), and replies aloud.
   ['(0,i.jsx)(`p`,{children:`Tell me what you need or choose a destination below.`}),',

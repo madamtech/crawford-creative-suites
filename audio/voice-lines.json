@@ -71,8 +71,8 @@
    },
    {
     "key": "faq-prices",
-    "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
-    "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
+    "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one.",
+    "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one.",
     "recorded": false
    },
    {
@@ -85,7 +85,7 @@
     "key": "lobby-send-tail",
     "text": "Tap below, and their receptionist will answer your question when you arrive.",
     "say": "Tap below, and their receptionist will answer your question when you arrive.",
-    "recorded": false
+    "recorded": true
    }
   ]
  },
@@ -97,7 +97,7 @@
     "key": "floor-1",
     "text": "Floor one. Main Lobby.",
     "say": "Floor one. Main Lobby.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "floor-2",
@@ -157,25 +157,25 @@
     "key": "r217-hair-oil",
     "text": "Hair Growth Oil is a botanical blend of herbs and natural oils, made for scalp and hair care. It comes in several sizes.",
     "say": "Hair Growth Oil is a botanical blend of herbs and natural oils, made for scalp and hair care. It comes in several sizes.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-face",
     "text": "Madam Allure makes facial serums for daily skin care, including a hydrating facial serum, in several sizes.",
     "say": "Madam Allure makes facial serums for daily skin care, including a hydrating facial serum, in several sizes.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-shea",
     "text": "Whipped shea butter is a rich, fluffy moisturizer for both skin and hair, made in several sizes.",
     "say": "Whipped shea butter is a rich, fluffy moisturizer for both skin and hair, made in several sizes.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-home-scent",
     "text": "For the home there is room and linen spray and aroma beads, made in your choice of fragrance.",
     "say": "For the home there is room and linen spray and aroma beads, made in your choice of fragrance.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-custom-gift",
@@ -187,7 +187,7 @@
     "key": "r217-wine-glass",
     "text": "The blinged wine glass is made with custom glitter and rhinestones and sealed with epoxy, so it lasts as beautifully as it looks.",
     "say": "The blinged wine glass is made with custom glitter and rhinestones and sealed with epoxy, so it lasts as beautifully as it looks.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-deposit",
@@ -203,9 +203,9 @@
    },
    {
     "key": "r217-memorial",
-    "text": "Madam Allure creates memorial keepsakes: ribbons, plaques, fans, fan whiteboards, and towels. Allure Fusions can also make a memorial photo lamp from a favorite picture.",
-    "say": "Madam Allure creates memorial keepsakes: ribbons, plaques, fans, fan whiteboards, and towels. Allure Fusions can also make a memorial photo lamp from a favorite picture.",
-    "recorded": true
+    "text": "Madam Allure creates memorial keepsakes: ribbons, plaques, fans, fan whiteboards, and towels. Allure Fusions can also make a memorial lithophane lamp from a favorite picture.",
+    "say": "Madam Allure creates memorial keepsakes: ribbons, plaques, fans, fan whiteboards, and towels. Allure Fusions can also make a memorial lithophane lamp from a favorite picture.",
+    "recorded": false
    },
    {
     "key": "r217-makeup",
@@ -217,25 +217,25 @@
     "key": "r217-gift-sets",
     "text": "Gift sets include the Bridal Celebration Set, the Corporate Wellness Box, the Gentleman’s Set, and the Welcome Home Set. Custom gifts are welcome too.",
     "say": "Gift sets include the Bridal Celebration Set, the Corporate Wellness Box, the Gentleman’s Set, and the Welcome Home Set. Custom gifts are welcome too.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-fragrance-price",
     "text": "Enticed by Madam Allure roll-on fragrance oils come in a moisturizing coconut-oil base with no alcohol. Current prices are on the Madam Allure price list.",
     "say": "Enticed by Madam Allure roll-on fragrance oils come in a moisturizing coconut-oil base with no alcohol. Current prices are on the Madam Allure price list.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-fragrance",
     "text": "Enticed by Madam Allure has roll-on fragrance oils for women, men, and unisex, plus matching dry body oils.",
     "say": "Enticed by Madam Allure has roll-on fragrance oils for women, men, and unisex, plus matching dry body oils.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-body-oil",
     "text": "Dry body oils are lightweight, absorb quickly, and pair beautifully with your fragrance.",
     "say": "Dry body oils are lightweight, absorb quickly, and pair beautifully with your fragrance.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-beard",
@@ -247,7 +247,7 @@
     "key": "r217-hair",
     "text": "For hair, Madam Allure makes a botanical hair oil, an African black soap shampoo bar, and whipped shea butter for skin and hair.",
     "say": "For hair, Madam Allure makes a botanical hair oil, an African black soap shampoo bar, and whipped shea butter for skin and hair.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-soap",
@@ -265,7 +265,7 @@
     "key": "r217-skin",
     "text": "For dry skin, try whipped shea butter, a dry body oil, or a facial serum. The Powder Room on Floor 2 has easy at-home rituals.",
     "say": "For dry skin, try whipped shea butter, a dry body oil, or a facial serum. The Powder Room on Floor 2 has easy at-home rituals.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-sensitive",
@@ -335,8 +335,8 @@
    },
    {
     "key": "r217-prices",
-    "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
-    "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
+    "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one.",
+    "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one.",
     "recorded": false
    },
    {
@@ -355,25 +355,25 @@
     "key": "r217-unknown",
     "text": "I do not have that answer here yet. Send us a request, and Tanika will answer you personally.",
     "say": "I do not have that answer here yet. Send us a request, and Tanika will answer you personally.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-nudge-1",
     "text": "Every size and price is on the Madam Allure price list. When you are ready, send a request, and Tanika will make yours fresh to order.",
     "say": "Every size and price is on the Madam Allure price list. When you are ready, send a request, and Tanika will make yours fresh to order.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-nudge-2",
     "text": "Thinking of someone special? Any of these can become a gift. The price list has the details; just mention the gift in your request.",
     "say": "Thinking of someone special? Any of these can become a gift. The price list has the details; just mention the gift in your request.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r217-nudge-3",
     "text": "Would you like to try it? Check the Madam Allure price list, then send a request to get your order started.",
     "say": "Would you like to try it? Check the Madam Allure price list, then send a request to get your order started.",
-    "recorded": false
+    "recorded": true
    }
   ]
  },
@@ -385,25 +385,25 @@
     "key": "welcome-305",
     "text": "Welcome to Allure Fusions. Please check in.",
     "say": "Welcome to Allure Fusions. Please check in.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "sent-305",
     "text": "Your question came up from the lobby, and I have your answer right here.",
     "say": "Your question came up from the lobby, and I have your answer right here.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "lounge-maker",
     "text": "Welcome to the Maker's Lounge, where ideas, materials, and technology come together.",
     "say": "Welcome to the Maker's Lounge, where ideas, materials, and technology come together.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-how-order",
     "text": "Tap Build My Project, describe your idea, and add your artwork. We review it and send a quote, and production starts once the deposit is paid.",
     "say": "Tap Build My Project, describe your idea, and add your artwork. We review it and send a quote, and production starts once the deposit is paid.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-small-prints",
@@ -443,8 +443,8 @@
    },
    {
     "key": "r305-lithophane",
-    "text": "A lithophane is a 3D printed panel that reveals your photo when it is lit from behind. Photo lamps come in several sizes and panel counts.",
-    "say": "A lithophane is a 3-D printed panel that reveals your photo when it is lit from behind. Photo lamps come in several sizes and panel counts.",
+    "text": "A lithophane is a 3D printed panel that reveals your photo when it is lit from behind. Lithophane lamps come in several sizes and panel counts.",
+    "say": "A lithophane is a 3-D printed panel that reveals your photo when it is lit from behind. Lithophane lamps come in several sizes and panel counts.",
     "recorded": false
    },
    {
@@ -509,8 +509,8 @@
    },
    {
     "key": "r305-print-price",
-    "text": "3D printed pieces range from bookmarks to vases and photo lamps. Current prices are on the Allure Fusions price list, and custom projects are quoted after review.",
-    "say": "3-D printed pieces range from bookmarks to vases and photo lamps. Current prices are on the Allure Fusions price list, and custom projects are quoted after review.",
+    "text": "3D printed pieces range from bookmarks to vases and lithophane lamps. Current prices are on the Allure Fusions price list, and custom projects are quoted after review.",
+    "say": "3-D printed pieces range from bookmarks to vases and lithophane lamps. Current prices are on the Allure Fusions price list, and custom projects are quoted after review.",
     "recorded": false
    },
    {
@@ -569,8 +569,8 @@
    },
    {
     "key": "r305-prices",
-    "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
-    "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
+    "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one.",
+    "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one.",
     "recorded": false
    },
    {
@@ -595,19 +595,19 @@
     "key": "r305-nudge-1",
     "text": "Have an idea in mind? The Allure Fusions price list has starting prices, and a request with a photo or sketch gets you a quote.",
     "say": "Have an idea in mind? The Allure Fusions price list has starting prices, and a request with a photo or sketch gets you a quote.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-nudge-2",
     "text": "Custom pieces make unforgettable gifts. See the Allure Fusions price list, then send a request, and we will bring your idea to life.",
     "say": "Custom pieces make unforgettable gifts. See the Allure Fusions price list, then send a request, and we will bring your idea to life.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r305-nudge-3",
     "text": "Ready to start? Check the Allure Fusions price list, then send a request with your details and date.",
     "say": "Ready to start? Check the Allure Fusions price list, then send a request with your details and date.",
-    "recorded": false
+    "recorded": true
    }
   ]
  },
@@ -619,25 +619,25 @@
     "key": "welcome-412",
     "text": "Welcome to AI AuthoriTech. Please check in.",
     "say": "Welcome to A-I Awthor-ih-tek. Please check in.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "sent-412",
     "text": "Your question came up from the lobby, and I have your answer right here.",
     "say": "Your question came up from the lobby, and I have your answer right here.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "lounge-clarity",
     "text": "Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype.",
     "say": "Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-process",
     "text": "It starts with a free 30-minute discovery call. You then get a written proposal with scope, timeline, and price, and work begins once you accept it.",
     "say": "It starts with a free 30-minute discovery call. You then get a written proposal with scope, timeline, and price, and work begins once you accept it.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-implement",
@@ -691,25 +691,25 @@
     "key": "r412-audit",
     "text": "The AI Readiness Audit looks at your workflows, tools, data, and risks to find your best opportunities for AI.",
     "say": "The AI Readiness Audit looks at your workflows, tools, data, and risks to find your best opportunities for AI.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-start",
     "text": "Start with a free 30-minute discovery consultation. From there, an AI Readiness Audit shows where AI can help most.",
     "say": "Start with a free 30-minute discovery consultation. From there, an AI Readiness Audit shows where AI can help most.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-agent",
     "text": "Custom AI agents can handle customer support, internal knowledge, lead intake, or guided services.",
     "say": "Custom AI agents can handle customer support, internal knowledge, lead intake, or guided services.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-automation",
     "text": "An automation strategy gives you a practical roadmap. Building connected workflows is quoted per project.",
     "say": "An automation strategy gives you a practical roadmap. Building connected workflows is quoted per project.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-portal",
@@ -785,8 +785,8 @@
    },
    {
     "key": "r412-prices",
-    "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
-    "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a photo lamp, or an AI audit, and I will point you to the right one.",
+    "text": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one.",
+    "say": "Each business has its own price list inside its suite. Tell me what you are interested in, like fragrance, a lithophane lamp, or an AI audit, and I will point you to the right one.",
     "recorded": false
    },
    {
@@ -805,25 +805,25 @@
     "key": "r412-unknown",
     "text": "I do not have that answer here yet. Send us a request, and Tanika will answer you personally.",
     "say": "I do not have that answer here yet. Send us a request, and Tanika will answer you personally.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-nudge-1",
     "text": "Curious where AI fits your business? Your first 30-minute discovery consultation is free, and the AI AuthoriTech price list shows every service.",
     "say": "Curious where AI fits your business? Your first 30-minute discovery consultation is free, and the A-I Awthor-ih-tek price list shows every service.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-nudge-2",
     "text": "Tell us one task that eats up your week. The price list has the details, and a free discovery call shows how it could run on its own.",
     "say": "Tell us one task that eats up your week. The price list has the details, and a free discovery call shows how it could run on its own.",
-    "recorded": false
+    "recorded": true
    },
    {
     "key": "r412-nudge-3",
     "text": "Ready for the next step? Review the AI AuthoriTech price list, then request your free discovery call.",
     "say": "Ready for the next step? Review the A-I Awthor-ih-tek price list, then request your free discovery call.",
-    "recorded": false
+    "recorded": true
    }
   ]
  }
