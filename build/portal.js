@@ -521,7 +521,7 @@ function decorateLounges() {
     h('button', { type: 'button', class: 'ccs-link', onclick: () => lead(interest, where), text: 'Leave your details' })));
 }
 
-window.ccsPortal = { ready: api.ready, open, lead, maRequest, submitRequest, close: closePanel };
+window.ccsPortal = { ready: api.ready, signedIn: api.signedIn, open, lead, maRequest, submitRequest, close: closePanel };
 window.ccsUploadsReady = api.ready;
 window.ccsMaRequest = maRequest;
 

@@ -138,7 +138,7 @@ Voice: Tiffany - Warm, Conversational Narrator (chosen Nov 27)
 
 | File | On screen | Type this | Recorded |
 | --- | --- | --- | --- |
-| `welcome-412.mp3` | Welcome to Suite 412. Please check in. | Welcome to Suite four-twelve. Please check in. | yes |
+| `welcome-412.mp3` | Welcome to AI AuthoriTech. Please check in. | Welcome to AI Uhthora-tek. Please check in. | yes |
 | `sent-412.mp3` | Your question came up from the lobby, and I have your answer right here. | Your question came up from the lobby, and I have your answer right here. | yes |
 | `lounge-clarity.mp3` | Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype. | Welcome to the AI Clarity Lounge, a practical space for separating AI facts from hype. | yes |
 | `r412-process.mp3` | It starts with a free 30-minute discovery call. You then get a written proposal with scope, timeline, and price, and work begins once you accept it. | It starts with a free 30-minute discovery call. You then get a written proposal with scope, timeline, and price, and work begins once you accept it. | yes |

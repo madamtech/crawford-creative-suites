@@ -44,7 +44,7 @@ const LINES = {
   // says it arrived instead, then reads the answer (also shown on screen for sound off).
   'welcome-217': 'Welcome to Madam Allure. Please check in.',
   'welcome-305': 'Welcome to Allure Fusions. Please check in.',
-  'welcome-412': 'Welcome to Suite 412. Please check in.', // owner, Nov 28: name said only in the lobby
+  'welcome-412': 'Welcome to AI AuthoriTech. Please check in.', // owner-approved recording; keep as is
   'sent-217': 'Your question came up from the lobby, and I have your answer right here.',
   'sent-305': 'Your question came up from the lobby, and I have your answer right here.',
   'sent-412': 'Your question came up from the lobby, and I have your answer right here.',
